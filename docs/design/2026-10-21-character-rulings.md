@@ -118,3 +118,11 @@ supersede the readings above where they differ:
   `assets/sprite-drafts/2026-10-22/night/tufts@2x.png`, the most common opaque colour). Whether
   that blue sits with the ruled dark night water `#163f4b` has not been rendered, and the owner has
   not ruled on it.
+
+## Wetland tufts: zoom and night colour, 2026-10-22 about 15:30
+
+The owner, verbatim: "Keep tufts at z10, darker night tufts".
+
+- **Tufts from z10:** the sub-question's (d), as rendered. That settles the recovered report's
+  5(d)/(e).
+- **Night tufts darker than the inverted `#2485ad`.** The exact colour is not yet chosen.
