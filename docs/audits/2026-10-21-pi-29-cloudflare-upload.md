@@ -350,3 +350,33 @@ The dispatch is not preserved in this repo because it was withdrawn. An earlier 
 - **Route squares:** there are no `.rd5` files on R2 (`rclone lsf -R --files-only` returned 0). Rowan has
   asked for the layout `routing/<run-id>/segments4/<NAME>.rd5`, with `routing/manifest.json` uploaded
   last, kept private, with no Worker route. Uploading them needs a separate go from the owner.
+
+## Rollback copy deleted (supersedes "kept until the owner has tested" above)
+
+The owner said "Delete it" in Rowan's window, relayed to the planner. The planner then asked the
+owner in its own session: "Delete the Pi's 10-19 rollback map,
+/srv/forager-build/kept-usca/usca-20261019T011311Z (about 32 GB)? It's the only copy of the old map;
+Cloudflare has no backup". The owner answered, verbatim: "Yes, delete it".
+
+The reason: the Pi had 128,966,586,368 bytes free, and the weekly basemap build's start check needs
+157,020,310,761 (`logs/usca-20261021T111429Z.log`).
+
+Checks before deleting, at 2026-10-22 about 19:01Z (12:01 PDT):
+- no planetiler, osmium, brouter, rclone or build process was running;
+- `out-usca/current` still resolved to the 261021 output.
+
+Deleted: `/srv/forager-build/kept-usca/usca-20261019T011311Z/forager-usca.pmtiles`, 33,973,424,728
+bytes. This is the file the full comparison showed identical to the old R2 object.
+
+Kept in the same folder, about 1 MB: the failed 10-19 build's notes, `FAILED.txt`,
+`usca-20261019T011311Z.log`, `metrics.jsonl`, `versions.txt` and `bounds.txt`.
+
+| | Bytes free |
+|---|---|
+| Before | 128,966,586,368 |
+| After | 162,940,006,400 |
+
+**There is now no copy of the 10-19 release anywhere.** A rollback would mean rebuilding it.
+
+Untouched: the live 261021 output (34,141,705,380 bytes), `r2:forager-maps/us.pmtiles`, and
+everything else.
