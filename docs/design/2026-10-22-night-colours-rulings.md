@@ -301,3 +301,10 @@ This is read as accepting Sage-04's recommendations:
     map view.
 
 Still open: the eight topo questions.
+
+## Sent to Rowan, 2026-10-22 about 11:40
+
+On the owner's word, "Send Rowan the full set now", the planner sent Rowan (session
+`bridge:session_01EYWpbjwcxidzc6rvny9rgK`) the full set: the night colours, the checker rule and its
+numbers, rock, icons and topo. The message pointed to this record and to
+`docs/design/2026-10-22-topo-rulings.md`. Delivery is accepted by the server, not confirmed read.
