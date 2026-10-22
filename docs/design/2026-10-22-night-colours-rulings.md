@@ -86,3 +86,30 @@ come from the new pre-main Street design's day colours run through the night for
 
 The owner has not ruled on sage-05 yet. The renders are on the owner's private review page, round 5
 section.
+
+## The contrast floor, and the owner's direction, 2026-10-22 about 10:20
+
+The owner asked why the floor is 2.5. The planner's read of Forager `origin/pre-main`:
+- `map-style/tools/check-street-night.mjs` line 8 reads: "The thresholds are this check's own
+  operating limits, not a standard for maps". Its base is 3:1, the web-accessibility figure for
+  non-text UI.
+- 2.5:1 was set in -1345 (commit `5b270ac4b`) to fit road colours the owner had accepted (2.65 and
+  2.95 on the night forest).
+- Night water is held to 3:1 by `NightWaterTest.kt`.
+- Informal paths already have a band of 1.9 to 2.3 in place of the floor (-1480).
+
+The owner, verbatim:
+- "Blue light is hard to deal with because of how it lights up an area when it displays. The darker
+  blues are the only way to deal with that. Lower contrast threshold is probably the answer. Why is
+  it 2.5?"
+- "I think 2.5 is the same threshold I ran into issues last time. Mapping is a different beast than
+  web UI, so this likely needs a rerun of the design research"
+
+Asked whether to send Sage to redo the research from mapping sources, the owner answered, verbatim:
+"Option 1, but look at OSM night maps and see their color scheme, then just copy it.b"
+
+Option 1 was: brief Sage; research and a proposal only; the water and tree picks wait for it. The
+trailing ".b" is read as a typo.
+
+Next: Sage-06, a survey of OSM-based night styles and a proposal to adopt one scheme. The brief is
+in `prompts/preserved/2026-10-22-sage-06.md`.
