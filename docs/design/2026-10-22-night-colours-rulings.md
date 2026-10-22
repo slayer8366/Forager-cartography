@@ -200,3 +200,37 @@ not ruled.
 The owner asked "Are we getting new proposals to look at?" The planner offered a short round to
 render the stream blue, and the owner answered, verbatim: "Yes please". Sage-07 brief:
 `prompts/preserved/2026-10-22-sage-07.md`.
+
+## Sage-07 result, 2026-10-22 about 10:49
+
+Sage-07 rendered four variants with water lines (`water_stream`, `water_river`) in `#2a58ff`. The
+style has no canal layer. 16 renders, no errors. Renders in `/tmp/sage07-scratch/shots/` (scratch,
+off GitHub).
+
+| Variant | Base | Water lines | Water fill |
+|---|---|---|---|
+| V1 | Protomaps dark | `#2a58ff` | `#31353f` |
+| V2 | Protomaps dark | `#2a58ff` | `#163f4b` |
+| V2b | Protomaps dark | `#3962d9` (same luminance, less saturated) | `#163f4b` |
+| V3 | sage-05 base | `#2a58ff` | `#163f4b` |
+
+**Line contrast:** 2.8 to 3.1:1 on every Protomaps surface. In V3 the line is 1.20:1 on the green
+forest.
+
+**Crater Lake z12, mean blue channel with the preview controls masked (observed):**
+
+| Render | Mean blue |
+|---|---|
+| today's `#8ec5f0` | 169.4 |
+| V1 | 52.4 |
+| V2 | 60.2 |
+| V3 | 62.0 |
+
+**Observed:** the Paradise meadow creeks are strong in V1, V2 and V2b, and faint in V3. On wide
+rivers the line shows as a centre stripe.
+
+**Sage recommends V2.** The lake-label halo (`#31353f`) should follow the teal fill, after a check
+render. Moving the water off Protomaps' own colours is a departure from adopting Protomaps dark
+"as is".
+
+The owner has not ruled. The renders are on the review page, round 7.
