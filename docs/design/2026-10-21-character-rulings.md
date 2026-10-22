@@ -156,3 +156,5 @@ So the night tufts are **`#2485ad`**, the app's plain inversion of the day `#3fa
 - This supersedes the `#1d6a8a` pick above.
 - No night exception is needed for the tufts image.
 - The checker note above about a tufts limit no longer applies.
+
+**Night tufts, a trial render, about 15:50.** The owner said, verbatim: "Let's try the #1d6a8a and see how it looks". So Sage-08 renders `#1d6a8a` beside `#2485ad`. Brief: `prompts/preserved/2026-10-22-sage-08.md`. The ruling stays `#2485ad` until the owner chooses.
