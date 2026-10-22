@@ -125,3 +125,55 @@ That's not really something to credit over."
 
 So the scheme should need no attribution (CC0 or public domain). One lead was passed to Sage-06 to
 check, not assumed: the built archive's manifest records "Protomaps basemap design CC0".
+
+## Sage-06 result, 2026-10-22 10:26
+
+Sage-06 surveyed seven OSM-based night styles, reading the colour values from source. The renders
+are in `/tmp/sage06-scratch/shots/` (scratch, off GitHub) and the tables in
+`/tmp/sage06-scratch/colours6.out`. The planner holds the report in its session transcript.
+
+**Licence buckets** (Sage, read):
+
+| Bucket | Styles |
+|---|---|
+| No credit, CC0 | Protomaps dark. VersaTiles Eclipse is stated CC0 but generated from OSM Bright (CC-BY), so its status is uncertain. |
+| Credit | CARTO, OpenMapTiles and OpenFreeMap Dark Matter (CC-BY 4.0); Organic Maps (Apache-2.0, plus a visible credit asked for) |
+| Not usable | OsmAnd (GPLv3, artwork CC-BY-NC-ND) |
+| No values or licence found, dropped | MapTiler, Thunderforest |
+
+**Planner's verification:** the planner re-read the licence itself at about 10:40. `LICENSE.md`
+under "Visual Design", https://raw.githubusercontent.com/protomaps/basemaps/main/LICENSE.md: "The
+visual design of the Protomaps basemap styles was created by Geraldine Sarmiento for Protomaps LLC
+and released under a Creative Commons 0 (CC0) license." The README, lines 64 and 69, says "Map
+design is CC0" and that attribution is requested "but you are not required to do so". The OSM data
+credit is still required, and Forager already shows it.
+
+**Recommendation:** copy Protomaps dark (`namedFlavor("dark")`, `@protomaps/basemaps` 5.7.2, the same
+package Forager builds from). Forager-only layers keep Forager's hues at Protomaps' brightness:
+
+| Layer | Colour |
+|---|---|
+| tree glyph | `#2e4227` |
+| footpaths | `#6a3a2e` |
+| tracks | `#554434` |
+| hard trails | `#603f39` |
+| informal paths | `#4f382c` |
+| wetland | `#1c2421` |
+| tufts | `#31353f` |
+| bare rock | `#262624` |
+| park outline | `#2d422c` |
+
+Icons are unchanged.
+
+**Costs, observed:**
+- forest, meadow and ground are near-identical greys;
+- water `#31353f` is greyer than the target `#163f4b` and slightly lighter than the land;
+- Protomaps' own path grey `#333333` nearly vanishes, which is why Forager's trail colours are kept.
+
+**Proposed checker rules, derived from Protomaps dark:**
+- water at least 1.2:1 on land;
+- lines at least 1.2:1, roads and trails at least 1.35:1 on forest;
+- night luminance ceilings: fills 0.040, lines 0.065, text 0.42;
+- blue-dominant colours: blue channel at most 64, luminance at most 0.040.
+
+The owner has not yet ruled on sage-06's four questions. They are on the review page.
