@@ -160,3 +160,5 @@ So the night tufts are **`#2485ad`**, the app's plain inversion of the day `#3fa
 **Night tufts, a trial render, about 15:50.** The owner said, verbatim: "Let's try the #1d6a8a and see how it looks". So Sage-08 renders `#1d6a8a` beside `#2485ad`. Brief: `prompts/preserved/2026-10-22-sage-08.md`. The ruling stays `#2485ad` until the owner chooses.
 
 **Sage-08 result.** Renders are in `/tmp/sage08-scratch/shots/` (scratch). The `#2485ad` render is pixel-identical to the approved round-5 Ridgefield render. Contrast on the night wetland: `#2485ad` 2.18:1, `#1d6a8a` 1.51:1. Sage observed that `#1d6a8a` still reads at Ridgefield but recedes into texture in the Everglades z10. Sage recommends keeping `#2485ad`. The owner has not chosen; the ruling stays `#2485ad`.
+
+**Night tufts, final, about 16:00.** Having seen the sage-08 renders, the owner said, verbatim: "Keep #2485ad". The night tufts stay the plain inversion `#2485ad`. This closes the tufts question.
