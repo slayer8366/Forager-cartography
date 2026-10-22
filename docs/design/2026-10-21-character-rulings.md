@@ -87,3 +87,34 @@ Values are read from the scratch code named above. Night values are in
 | Sprite items | Filed in `assets/sprite-drafts/2026-10-22/` as cut-out PNGs of Sage's own drawings, with no Protomaps art. A shipped sprite v5 means merging them into Forager's sprite build. |
 | Night colour of the wetland tufts | Not separately ruled. The night sheet keeps the day `#3fa0c8`. Decide it at dispatch, against the ruled night palette. |
 | 8 | Open, as above. |
+
+## Correction, 2026-10-22 about 15:20: the sage-03 report was found
+
+The sage-03 report has been recovered from the earlier planner window's subagent log and filed as
+`docs/design/2026-10-21-sage-03-report-recovered.md`. It was delivered 2026-10-21 22:08:59 PDT.
+It was asked for by the owner, relayed by Rowan.
+
+Its "Owner's questions, revised (phase-1 order)" define what each "Option A" meant. These
+supersede the readings above where they differ:
+
+- **Ruling 8, trail names, is resolved.** Option (a): "Leave the label layer as ruled (−1286, z14)
+  and check once on the phone whether Native places more". So there's no style change. The
+  follow-up is one phone check of trail-name placement at z14.
+  - The other options were (b) `text-max-angle` 90 at z14 and (c) names from z15.
+  - The finding behind it: at Forest Park z14 the web engine places no names on winding trails,
+    only on straight fire lanes.
+- **Ruling 5, wetland:** option (a) "Fill plus tufts, with an app-side night colour `#2a4f47` for
+  the fill". This matches the record above.
+  - The report's sub-question, (d) tufts from z10 or (e) from z12, was not separately answered.
+    The owner answered "5 Option A" without the sub-letter.
+  - The renders used (d), z10, so that is what is recorded. Confirm with the owner if it matters.
+- **Ruling 1, tree glyph:** option (a), as recorded.
+  - Its night sub-question offered (i) the plain inversion or (ii) the dimmer `#81bc74`. The
+    owner's "slightly dimmer" was later settled as `#5d804f`.
+- **Rulings 2, 3, 4, 6 and 7:** these match the record above. The report's 2(a) gives the stream
+  widths z13 0.6, z14 1 and z15 1.5, and the label zoom equal to the line's.
+- **Correction to "Night colour of the wetland tufts" above.** The night sheet does not keep the
+  day `#3fa0c8`. Its tufts are inverted the app's way, to `#2485ad` (read 2026-10-22 from
+  `assets/sprite-drafts/2026-10-22/night/tufts@2x.png`, the most common opaque colour). Whether
+  that blue sits with the ruled dark night water `#163f4b` has not been rendered, and the owner has
+  not ruled on it.
