@@ -142,3 +142,31 @@ as relayed by Aspen:
 Coder's note: overwriting the live object without a backup on R2 is not reversible from R2. Before
 starting C, the coder is confirming the owner's ruling with the owner directly in the coder's own
 session, because it arrived second-hand.
+
+## Remote renamed
+
+The owner told Aspen "Change the local". Aspen ran
+`git remote set-url origin git@github.com:slayer8366/Forager-cartography.git` and checked it with
+`ls-remote` (main at `03a5468`). This replaces the note above that the URL was left unchanged.
+
+## Owner's ruling on the overwrite, and the full comparison
+
+Asked directly in the coder's session whether to overwrite the live object with no R2 backup,
+the owner chose "Full-compare first": confirm, before uploading, that the rollback source
+(`kept-usca/usca-20261019T011311Z/forager-usca.pmtiles`) is identical to the live
+`r2:forager-maps/us.pmtiles` in full. The owner then said "Go ahead and upload after match", and
+then **"Stop after the comparison. I'm switching to the cartography folder"**, which replaces it:
+**step C is not started and waits for a new go**, whatever the comparison shows.
+
+The comparison (`/home/bwann83/pi29-logs/fullcompare.sh`, read-only, detached with `setsid`) was
+started at 2026-10-22T02:04:09Z. It streams the whole live object with `rclone cat` through
+sha256, md5 and a byte count, without writing it to disk, at about 4 MB/s (roughly 2 h).
+
+- Local 10-19 file (done): md5 `72e98faabc44c4f47e32927e57a6c380`, sha256
+  `bbc0b65859e69808a51dd29c0441b521770e4a1c736350236de1b91ac915a272`.
+- R2's stored md5 for `us.pmtiles` (`rclone hashsum md5`): `72e98faabc44c4f47e32927e57a6c380`,
+  equal to the local file's. This is metadata recorded at upload time, not a read of the bytes.
+- Live object streamed: **pending at this commit.** Results land in `pi29-logs/r2-live.sha256`,
+  `r2-live.md5` and `r2-live.bytes`; `fullcompare.status` gets the pipeline exit code and a
+  `done` line; errors go to `fullcompare-rclone.log`. A match needs all of: exit 0, bytes
+  33973424728, and the sha256 and md5 equal to the local file's above.
