@@ -62,3 +62,27 @@ Notes:
 - The forest colour differs slightly from the `#436d35` Sage used.
 
 The targets were passed to Sage-05, which was still running. It is to place its steps around them.
+
+## Sage-05 result, 2026-10-22 10:01
+
+Sage-05 worked from 09:53 to 10:01. It delivered its report as a message. Its tool refused the
+report file, so the planner saved a condensed copy at `/tmp/sage05-scratch/REPORT.md` (scratch). The
+renders are in `/tmp/sage05-scratch/shots/`, scratch, and kept off GitHub.
+
+**Sage's finding (read from the repository):** the owner's targets are what the app's night map shows
+today. The swatch board, `docs/audits/2026-09-27-marker-swatch-board.md` near line 254, and
+`MapPaletteTest.kt` near line 177 measure the app's Street Night as forest `#446835`, glyph
+`#5C7D4A`, water `#173E48` and ground `#22201C`. The light values in sage-04 (`#8ec5f0`, `#9cd898`)
+come from the new pre-main Street design's day colours run through the night formula.
+
+**Recommended:**
+- water A3 `#163f4b`, with streams and rivers the same, at about 8% of `#8ec5f0`'s luminance;
+- trees T3 `#5d804f`, the last step that reads as separate marks (T4 `#57784a` reads as texture).
+
+**Costs, as Sage reports them:**
+- streams nearly vanish on dark meadows (1.08:1) and are faint on bare ground (1.41:1);
+- water and wetland are 1.25:1 apart, and the wetland's tufts carry the distinction;
+- every step is below the night checker's 2.5:1 floor, so the checker would need an exception.
+
+The owner has not ruled on sage-05 yet. The renders are on the owner's private review page, round 5
+section.
