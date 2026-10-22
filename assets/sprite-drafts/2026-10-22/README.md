@@ -26,7 +26,7 @@ only Sage's own new icons and patterns, plus the scripts and a README, with no t
 | `trailhead_b` | ruled trailhead (walker with pole) |
 | `viewpoint_c` | ruled viewpoint (binoculars) |
 | `tree_dark_irregular` | ruled tree glyph. Pattern, 64 px cell; `#3e7a3a` by day, `#5d804f` at night. |
-| `tufts` | ruled wetland tufts. Pattern, 32 px; night colour not separately ruled. |
+| `tufts` | ruled wetland tufts. Pattern, 32 px; `#3fa0c8` by day; the night sheet inverts it to `#2485ad`, which has not been ruled against the dark night water. |
 | `parking`, `camp_site`, `picnic_site`, `ranger_station` | ruled icons (ruling 6a) |
 | `trailhead`, `trailhead_c`, `viewpoint`, `viewpoint_b` | not chosen: the sage-03 drafts and the alternative redraws |
 | `tree_dark_dense`, `tree_dark_sparse`, `tree_light_dense`, `tree_light_sparse` | not chosen: superseded by the irregular cell (ruling 1) |
