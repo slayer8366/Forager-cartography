@@ -85,3 +85,14 @@ Sizes are stored (gzip) bytes, each followed by the sha256 of those bytes.
 - **R2 storage** rises by about 0.1 GB, from about 34.1 GB.
 - **Local copy:** `/home/bwann83/world-south/world-south.pmtiles` is kept for now. Deleting it is the
   owner's call.
+
+## Local copy deleted (supersedes "kept for now" above)
+
+The owner, 2026-10-22, verbatim: "Delete it." The planner deleted
+`/home/bwann83/world-south/world-south.pmtiles` (99,514,676 bytes) at about 14:20Z (07:20 PDT). The
+only copy is now `r2:forager-maps/world-south.pmtiles`. A new copy can be extracted again, but only
+while Protomaps keeps the 20261022 build online. The small `extract.log` and `upload.log` stay in
+`/home/bwann83/world-south/`.
+
+Rowan confirmed receipt of the key, header and check tiles, as the owner relayed it: "Rowan got your
+message".
