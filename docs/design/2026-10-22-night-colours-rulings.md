@@ -234,3 +234,23 @@ render. Moving the water off Protomaps' own colours is a departure from adopting
 "as is".
 
 The owner has not ruled. The renders are on the review page, round 7.
+
+## The owner's preference, 2026-10-22 about 10:50
+
+The owner sent three phone screenshots of the review page, all from the round-5 section "The
+recommended pair, at phone size". They show Sage-05's A3/T3 renders at Crater Lake z12, Ridgefield
+z13, Forest Park z14 and Paradise z14. The owner said, verbatim: "These look the best out of all of
+them".
+
+The planner reads this as a preference for the round-5 pair over the Protomaps dark copy (round 6)
+and the vivid-line variants (round 7). The round-5 pair is:
+
+| What | Colour |
+|---|---|
+| water fill, and stream and river lines | `#163f4b` |
+| tree glyph | `#5d804f` |
+| forest | `#446835` |
+| everything else | today's app night formula |
+
+The owner has not yet confirmed what follows from it: whether the copied scheme is dropped, how
+streams are drawn, and what replaces the checker floors.
