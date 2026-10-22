@@ -286,3 +286,18 @@ Sage-05's figures for the ruled colours, for the coder to confirm against the ap
 
 Still open: bare rock's night colour, the trailhead and viewpoint icons, and the eight topo
 questions.
+
+## Rock and icons, 2026-10-22 about 11:30
+
+The owner, verbatim: "Rock night color and trailhead/viewpoint icons are good".
+
+This is read as accepting Sage-04's recommendations:
+- **Bare rock at night:** rock3, cool slate `#6e7580`
+  (`/tmp/sage04-scratch/shots/snow-lake-z12-night-rock3.png`).
+- **Trailhead:** B, a walker with a pole.
+- **Viewpoint:** C, binoculars.
+  - The drafts are in the scratch sprite `/tmp/sage04-scratch/sprite/light@2x.png` and its night copy.
+  - They have only been judged on the 6× proof sheets. No trailhead or viewpoint fell in a rendered
+    map view.
+
+Still open: the eight topo questions.
