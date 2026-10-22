@@ -43,3 +43,22 @@ Sage-05 renders clearly darker steps for the water fill (with stream lines that 
 for the tree glyph. The brief is `/tmp/sage05-brief.md`, scratch, quoted in full in
 `prompts/preserved/2026-10-22-sage-05.md`. The owner's word that started the round: "Darker water
 fill and darker trees please".
+
+## Owner's target colours, 2026-10-22 about 09:55
+
+The owner sent two S22 screenshots of the app's night map, captioned verbatim: "Tree glyph colors
+and water colors to aim for". The planner sampled colours from the PNGs (1440×3120), taking the most
+common colour in each region:
+
+| what | sampled colour | region |
+|---|---|---|
+| night water fill | `#163f4b` | Willamette River, screenshot 1 |
+| tree glyph core | about `#5d804f` (edges blend toward the forest through `#537644`) | screenshot 2 |
+| night forest behind the glyphs | `#446835` | screenshot 2 |
+
+Notes:
+- These are screenshot samples: targets, not exact specs.
+- The glyph in the screenshot is the app's current double-tree pattern, not Sage's irregular cell.
+- The forest colour differs slightly from the `#436d35` Sage used.
+
+The targets were passed to Sage-05, which was still running. It is to place its steps around them.
