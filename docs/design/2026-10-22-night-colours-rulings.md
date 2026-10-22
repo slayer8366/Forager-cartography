@@ -119,3 +119,9 @@ just use it, because it's already nice and researched."
 
 So if Sage-06's recommended scheme is open to copy under its licence, the owner adopts it as is.
 Forager-specific layers it lacks get the minimum mapping. This was passed to Sage-06 while it ran.
+
+The owner added, verbatim, at about 10:35: "Find the option that we don't need to give credit.
+That's not really something to credit over."
+
+So the scheme should need no attribution (CC0 or public domain). One lead was passed to Sage-06 to
+check, not assumed: the built archive's manifest records "Protomaps basemap design CC0".
