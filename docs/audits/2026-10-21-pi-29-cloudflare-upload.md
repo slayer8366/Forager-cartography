@@ -108,6 +108,7 @@ The R2 token can't list buckets or see `forager-maps-backup`. Options, owner's c
 The clone at `/home/bwann83/forager-cartography` had no git identity and an HTTPS remote with no
 credentials on the Pi, so the first commit and push failed. Repo-local `user.name slayer8366` and
 `user.email armyofwann@gmail.com` were set, copied from `/home/bwann83/Forager/.git/config`. The
-owner changed `origin` to `git@github.com:slayer8366/forager-cartography.git` (the same SSH form as
-the Forager clone) by hand; the coder's own attempt to change it was refused by the session's
-permission check.
+coder's attempt to change `origin` to `git@github.com:slayer8366/forager-cartography.git` (the
+same SSH form as the Forager clone) was refused by the session's permission check. The owner then
+ran that `set-url` by hand, but `git remote -v` afterwards still showed the HTTPS URL, so the push
+failed again. Commits `ac1549e` and `9748ddf` (and this one) are local only, waiting on the remote.
