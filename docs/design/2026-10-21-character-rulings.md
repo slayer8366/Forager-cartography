@@ -144,3 +144,15 @@ pattern image, like the tree glyph's.
 The planner's note: `#1d6a8a` is above the ruled water ceiling (luminance 0.050, blue channel 96).
 That ceiling was set for water fills and lines; tufts are a pattern on the wetland, not water. The
 checker dispatch should exempt the tufts image or give it its own limit.
+
+**Night tufts colour, superseded about 15:45.** The owner sent a phone screenshot of the round-5
+Ridgefield render, the approved A3/T3 set, captioned verbatim: "This is what I approved earlier .
+Whatever that was".
+
+That render's style uses the sprite `sprite-night-steps/T3`. Its `tufts` image is `#2485ad`, the
+plain inversion (read). The planner asked which the owner wanted. The owner chose "Keep #2485ad".
+
+So the night tufts are **`#2485ad`**, the app's plain inversion of the day `#3fa0c8`, as rendered.
+- This supersedes the `#1d6a8a` pick above.
+- No night exception is needed for the tufts image.
+- The checker note above about a tufts limit no longer applies.
