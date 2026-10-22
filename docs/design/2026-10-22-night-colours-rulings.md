@@ -177,3 +177,22 @@ Icons are unchanged.
 - blue-dominant colours: blue channel at most 64, luminance at most 0.040.
 
 The owner has not yet ruled on sage-06's four questions. They are on the review page.
+
+## Another water colour from the owner, 2026-10-22 about 10:35
+
+The owner sent an S22 screenshot of the Topographical night map (the OpenTopoMap raster, inverted),
+captioned verbatim: "Another color to consider for water. It's both bright and dark".
+
+Sampled by the planner from the PNG (1440×3088):
+
+| What | Colour | Luminance | Notes |
+|---|---|---|---|
+| stream lines | `#2a58ff` | 0.147 | 28% of today's Street water `#8ec5f0` |
+| ground | `#111111` | 0.0056 | |
+
+Contrast between them: 3.54:1.
+
+The planner's note: the blue is saturated, so it stands out while its luminance stays low. At full
+blue channel, though, a large fill in it would put a lot of blue light on screen. The planner
+suggested that colour for water lines only, with a deep low-saturation fill for areas. The owner has
+not ruled.
