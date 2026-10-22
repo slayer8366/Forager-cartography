@@ -113,3 +113,9 @@ trailing ".b" is read as a typo.
 
 Next: Sage-06, a survey of OSM-based night styles and a proposal to adopt one scheme. The brief is
 in `prompts/preserved/2026-10-22-sage-06.md`.
+
+The owner added, verbatim, at about 10:30: "Unless it's not open to copy, but if it is then let's
+just use it, because it's already nice and researched."
+
+So if Sage-06's recommended scheme is open to copy under its licence, the owner adopts it as is.
+Forager-specific layers it lacks get the minimum mapping. This was passed to Sage-06 while it ran.
