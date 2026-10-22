@@ -112,3 +112,33 @@ coder's attempt to change `origin` to `git@github.com:slayer8366/forager-cartogr
 same SSH form as the Forager clone) was refused by the session's permission check. The owner then
 ran that `set-url` by hand, but `git remote -v` afterwards still showed the HTTPS URL, so the push
 failed again. Commits `ac1549e` and `9748ddf` (and this one) are local only, waiting on the remote.
+
+## Amendment from Aspen Meridian (received 2026-10-21, via cross-session message)
+
+Received from session `forager-f9` (Aspen), summarised point by point; the owner quote is verbatim
+as relayed by Aspen:
+
+> The owner, 2026-10-21, verbatim, on the backup: "I'm going to have that overwritten on
+> cloudflare. I don't care to do that work."
+
+1. Step B is dropped: no backup bucket, no mkdir, no server-side copy. The live `us.pmtiles` is
+   overwritten with no R2 backup. Options 2 and 3 are not taken.
+2. Reason step B became moot: the A.3 403. The R2 token cannot list buckets or reach
+   `forager-maps-backup`, so B would first have needed dashboard and token work, which the owner
+   declined.
+3. Step C runs as written, under pi-29's original go.
+4. D.3 changes: record the `X-Forager-Origin` header actually returned rather than expecting `r2`.
+   Checked read-only: `server/pmtiles-worker/src/index.ts` in the Forager clone (branch checked out
+   there at `a88f17ad0`; whether that is what is deployed is not checked) tries the Pi's
+   `pmtiles serve` first, falls back to R2 on anything but 200/204, and its comment gives the Pi
+   a z14 ceiling, so z15 tiles are expected from R2.
+5. Rollback source, if one is needed:
+   `/srv/forager-build/kept-usca/usca-20261019T011311Z/forager-usca.pmtiles`. It matched the live
+   object on 5 x 16 MiB samples (A.6), **not** on a full comparison. It is not to be deleted until
+   the owner has tested the new map in the app.
+6. Repo rename: the remote URL stays as it is; the redirect to `slayer8366/Forager-cartography` is
+   noted above. Changing it is a separate change for the owner to approve.
+
+Coder's note: overwriting the live object without a backup on R2 is not reversible from R2. Before
+starting C, the coder is confirming the owner's ruling with the owner directly in the coder's own
+session, because it arrived second-hand.
