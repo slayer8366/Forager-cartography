@@ -254,3 +254,35 @@ and the vivid-line variants (round 7). The round-5 pair is:
 
 The owner has not yet confirmed what follows from it: whether the copied scheme is dropped, how
 streams are drawn, and what replaces the checker floors.
+
+## Rulings, 2026-10-22 about 11:20
+
+Asked in the planner's session, the owner chose, verbatim:
+
+| Question | The owner's answer |
+|---|---|
+| The scheme | "Yes, drop the copy". Night stays on the app's own palette (green forest), with water `#163f4b` and trees `#5d804f`. Protomaps dark is not used. |
+| Streams | "Same as water (Recommended)". Stream and river lines are `#163f4b`, as in the round-5 renders. Meadow creeks stay faint. |
+| The checker | "Rules from your colours (Recommended)". The floors and a night brightness ceiling, with a tighter limit for blue, are set so the round-5 colours pass and today's `#8ec5f0` water fails. |
+
+This supersedes the sage-06 adoption of Protomaps dark (the owner's "just use it" was conditional,
+and round 5 was then preferred). It also closes sage-07: the vivid stream blue is not used.
+
+### The planner's call: the checker numbers
+
+These are technical. The owner ruled the rule; the numbers are the planner's. They are derived from
+Sage-05's figures for the ruled colours, for the coder to confirm against the app's real colours:
+
+1. **Night ceiling for water fills and lines:** relative luminance at most 0.050, and blue channel at
+   most 96.
+   - The ruled `#163f4b` has L 0.042 and blue 75, so it passes.
+   - Today's `#8ec5f0` has L 0.52 and blue 240, so it fails.
+2. **Water against land:** at least 1.05:1 on every night land fill. The ruled water's lowest is
+   1.08, on night grass/meadow.
+3. **Tree glyph against the night forest:** at least 1.35:1.
+   - `#5d804f` is 1.42:1, so it passes.
+   - Sage-05 observed that the next step down, T4 at 1.28:1, reads as texture.
+4. **Every other layer** keeps its current floor, until a later ruling.
+
+Still open: bare rock's night colour, the trailhead and viewpoint icons, and the eight topo
+questions.
