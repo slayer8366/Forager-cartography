@@ -196,3 +196,7 @@ The planner's note: the blue is saturated, so it stands out while its luminance 
 blue channel, though, a large fill in it would put a lot of blue light on screen. The planner
 suggested that colour for water lines only, with a deep low-saturation fill for areas. The owner has
 not ruled.
+
+The owner asked "Are we getting new proposals to look at?" The planner offered a short round to
+render the stream blue, and the owner answered, verbatim: "Yes please". Sage-07 brief:
+`prompts/preserved/2026-10-22-sage-07.md`.
