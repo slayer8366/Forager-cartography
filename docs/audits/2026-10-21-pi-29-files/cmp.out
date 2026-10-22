@@ -1,0 +1,24 @@
+z15 trail         15/5303/11553 HTTP 200 origin r2   local   12810 B served   12810 B MATCH
+   sha256 d3af92966551efc09f68e67b3bdc4563301d42928ebf199f7c21a5d684b07476
+z11 track         11/331/722 HTTP 200 origin r2   local   27057 B served   27057 B MATCH contains track=True
+   sha256 1522f27b0bb3a5d5077385caeca857848976e43a7cecb4dac6612c1e76975098
+z12 path          12/662/1444 HTTP 200 origin r2   local   20527 B served   20527 B MATCH contains path=True
+   sha256 83babe926563b03a5179be84ab87377c565223a892ea290fec9f93e1d872b80c
+Seattle           12/656/1430 HTTP 200 origin r2   local   85233 B served   85233 B MATCH
+   sha256 c07dc3c96fd1442481a8fc418bcca0461e778221d3551b176e5d863ee2ca9631
+Miami             12/1135/1744 HTTP 200 origin r2   local   72897 B served   72897 B MATCH
+   sha256 1c4b2545feaed23c7acad4db3bc5acdb782e18e3665f19815f27225f0715cbb2
+Anchorage         12/342/1161 HTTP 200 origin r2   local   62402 B served   62402 B MATCH
+   sha256 c49ec98bc5c0d22df6e6b7fc2d3bcb515ede3a3925f7d22386cbc981f473a4ea
+Honolulu          12/251/1799 HTTP 200 origin r2   local   79747 B served   79747 B MATCH
+   sha256 90d881c1bcfa77cfee260cfb3242ba0d8b5c62605f1f63549c5558041b279036
+Toronto           12/1144/1494 HTTP 200 origin r2   local  157735 B served  157735 B MATCH
+   sha256 63cbf808a9291ad51be1a07068f72b6d2f30a30da6c28d375a58097076a52eae
+Whitehorse        12/511/1172 HTTP 200 origin r2   local   24849 B served   24849 B MATCH
+   sha256 18f47cf38ee0db938618f293e753cc80c044a60404ee4432f8c8c48bde79f341
+St. John's        12/1448/1431 HTTP 200 origin r2   local   41123 B served   41123 B MATCH
+   sha256 580974f4677607673d95c226642461743a33e0f65a57545141824ab0ffb30c83
+San Juan          12/1295/1834 HTTP 200 origin r2   local   84106 B served   84106 B MATCH
+   sha256 9dc6db6ebfbd15e5510bf8bfe4ffd4232d93bf45a8b0738be8c68e81fc4e747d
+Charlotte Amalie  12/1309/1835 HTTP 200 origin r2   local   46500 B served   46500 B MATCH
+   sha256 e8433dd159bf5cc483cd6a58cfe5d07830c2129abcd7dc42d405bd645aa79e9a

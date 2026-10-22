@@ -170,3 +170,183 @@ sha256, md5 and a byte count, without writing it to disk, at about 4 MB/s (rough
   `r2-live.md5` and `r2-live.bytes`; `fullcompare.status` gets the pipeline exit code and a
   `done` line; errors go to `fullcompare-rclone.log`. A match needs all of: exit 0, bytes
   33973424728, and the sha256 and md5 equal to the local file's above.
+
+---
+
+Entries below were written by the planner session `forager-cartography-7b` on 2026-10-22, from the
+Pi's logs and unit state, which it read at 11:51Z (04:51 PDT) unless an entry says otherwise. Earlier text in this
+file is left as it was; where an entry below changes something above, it says so. The Pi's logs are
+in PDT; this record gives UTC first and PDT in brackets.
+
+## Status (supersedes the Status line at the top)
+
+**C done; D done except the owner's in-app test.** The 261021 map is the live
+`r2:forager-maps/us.pmtiles`. The first upload failed, a re-run was started and then stopped, and the
+first upload's multipart upload was resumed and completed. Details follow.
+
+## Full comparison: result (closes "Live object streamed: pending" above)
+
+`pi29-logs/fullcompare.status`: `start 2026-10-22T02:04:09Z`, `r2 pipeline exit=0 2026-10-22T05:30:42Z`,
+`done 2026-10-22T05:30:47Z` (22:30:47 PDT on 10-21).
+
+- `r2-live.bytes`: 33973424728
+- `r2-live.sha256`: `bbc0b65859e69808a51dd29c0441b521770e4a1c736350236de1b91ac915a272`
+- `r2-live.md5`: `72e98faabc44c4f47e32927e57a6c380`
+
+**Matched**: exit 0, the byte count, and both hashes equal to the local 10-19 file's. The kept file
+`kept-usca/usca-20261019T011311Z/forager-usca.pmtiles` is therefore a full copy of the release that was
+live until 11:33:36Z (04:33:36 PDT) on 10-22. It is now the only rollback copy.
+
+## Owner's go for C
+
+Given in the planner session after the comparison, verbatim: "Check the comparison, upload when it's ready".
+
+## C. Upload, first run: failed
+
+Unit `forager-pi29-us-upload`, the command exactly as in the dispatch's step C.
+
+- Started 2026-10-22T05:31:53Z (22:31:53 PDT on 10-21). Exited 09:15:58Z (02:15:58 PDT), `ExecMainStatus=5`,
+  Result exit-code.
+- `pi29-logs/us-upload.log`: steady progress to 29.298 GiB / 31.797 GiB at 08:33:53Z (01:33:53 PDT).
+  From 08:43:53Z (01:43:53 PDT) it reads 29.765 GiB at 0 B/s. From 08:57:53Z (01:57:53 PDT) the stats
+  total itself reads 29.765 GiB ("100%"), still 0 B/s, until the error.
+- The error, log line 225 (lines 227 and 230 repeat it). The Pi's own public IPv6 address is replaced
+  here with `[pi]`:
+  `ERROR : forager-usca.pmtiles: Failed to copy: multi-thread copy: failed to open chunk writer: create
+  multipart upload failed: operation error S3: CreateMultipartUpload, https response error StatusCode: 0,
+  RequestID: , HostID: , request send failed, Post "https://a6a899e01e2194ef8fff048c20130e14.r2.cloudflarestorage.com/forager-maps/us.pmtiles?uploads=":
+  dial tcp: lookup a6a899e01e2194ef8fff048c20130e14.r2.cloudflarestorage.com on [2001:558:feed::1]:53:
+  read udp [pi]:41335->[2001:558:feed::1]:53: i/o timeout`
+  followed by `failed to get rate limit token, retry quota exceeded, 0 available, 10 requested`.
+- What it shows: a DNS lookup of the R2 endpoint timed out against the ISP's IPv6 resolver, and the
+  S3 SDK's retry quota was used up.
+- Not established: why the final error is a CreateMultipartUpload this late in the run, and what happened
+  during the 32 minutes at 0 B/s.
+- Not recorded: the network at the moment of failure.
+- The live object was not changed (checked before the re-run, below).
+
+## Re-run: started, then stopped
+
+The owner, verbatim: "Re-run the upload, go ahead".
+
+Checked first, at about 10:25Z (03:25 PDT):
+- `rclone lsl r2:forager-maps/us.pmtiles` read `33973424728 2026-10-19 02:16:46.438514719`, so the old
+  release was still live.
+- The local source was unchanged: `current` still resolved to `20261017T202051Z-usca-20261021T111429Z`,
+  and the file was 34141705380 bytes.
+- The R2 endpoint resolved. The default routes matched A.5. A 5-ping to 1.1.1.1 averaged 148 ms (A.5:
+  18 ms).
+- `list-multipart-uploads` showed one unfinished upload for `us.pmtiles`, initiated
+  `2026-10-22T05:33:19.93Z`: the first run's, left behind.
+
+Unit `forager-pi29-us-upload-2`:
+- The same command as C, except the unit name and `--log-file /home/bwann83/pi29-logs/us-upload-2.log`.
+- Started 10:26:44Z (03:26:44 PDT).
+- It had no ERROR lines. By 10:43:44Z (03:43:44 PDT) it was at 3.237 GiB, at 123.920 KiB/s.
+- Stopped with SIGINT at 10:44:27Z (03:44:27 PDT), on the owner's choice below. Exit 130.
+
+## Resume of the first run's multipart upload
+
+rclone cannot resume a multipart upload. It re-sends every part. The first run's parts were still on R2,
+apparently because its own abort also failed (inferred from the DNS failure, not confirmed). The planner
+asked the owner whether to stop the re-run and resume those parts, or let the re-run finish. The owner
+chose, verbatim: "Stop re-run, resume (Recommended)".
+
+**Tool:** `resume.py`. It and every file it used are copied into `docs/audits/2026-10-21-pi-29-files/`.
+- HTTP goes through `curl --aws-sigv4`. The keys are read from the rclone config and passed on stdin,
+  never on the command line. Nothing was installed.
+- `verify`: lists the parts (ListParts), then compares each part's ETag and size with the MD5 of the
+  same 16 MiB chunk of the local file.
+- `upload`: sends each missing or mismatched part with `Content-MD5`, and accepts it only if the returned
+  ETag equals the local MD5. It tries each part up to 30 times.
+- `complete`: lists the parts again, refuses unless all 2,036 match, then calls CompleteMultipartUpload.
+- The upload has 2,036 parts because 34141705380 bytes is 2035 parts of 16 MiB plus 70,820 bytes.
+
+**Run** (`resume.log`):
+- Verify, 10:44:20Z (03:44:20 PDT): 1801 of 2036 parts on R2, all 1801 matching, 0 mismatched, 235
+  missing (part 1801 and parts 1803 to 2036).
+- Unit `forager-pi29-us-resume` ran 10:45:03Z to 11:33:36Z (03:45:03 to 04:33:36 PDT),
+  `ExecMainStatus=0`.
+- 12 failed attempts, each followed by a successful attempt of the same part: 11 were
+  `curl exit 56 ... SSL routines::sslv3 alert bad record mac`, and 1 was `curl exit 55 ... Connection reset
+  by peer`. Part 1924 took four attempts. None needed more.
+- Pre-complete, 11:33:22Z (04:33:22 PDT): `2036 match, 0 mismatch, 0 missing`.
+- CompleteMultipartUpload, 11:33:36Z (04:33:36 PDT): HTTP 200, ETag
+  `84e23aedaed65de49781f85a198f73cf-2036`. That equals the ETag computed from the local part MD5s, so R2
+  assembled the parts the local file has, in its order.
+
+## D. Tests
+
+Run by the planner session at about 11:35Z (04:35 PDT). Raw output is in `cmp.out`.
+
+**D.1 Size and leftover uploads.**
+- `rclone lsl` read `34141705380 ... us.pmtiles`, equal to the local file.
+- `list-multipart-uploads` returned `{"forager-maps": []}`. The first run's upload had been completed,
+  and the stopped re-run's upload was gone.
+
+**D.2 us.json.** Fetched with a cache-busting query: HTTP 200, `minzoom` 0, `maxzoom` 15.
+- The dispatch says "all six trail keys" without naming them.
+- The `roads` layer lists `foot`, `informal`, `sac_scale`, `surface`, `tracktype` and
+  `trail_visibility`, plus `access`.
+- Those six were taken as the trail keys. This is an assumption, not checked against a source.
+
+**D.3 to D.5 Tiles.** Every request was cache-busted. Each tile was decompressed where gzipped and
+compared byte for byte with `pmtiles tile` on the local archive. The sha256 of each is in `cmp.out`.
+
+| check | tile | HTTP | X-Forager-Origin | bytes | result |
+|---|---|---|---|---|---|
+| z15 trail | 15/5303/11553 | 200 | r2 | 12810 | match |
+| z11 track | 11/331/722 | 200 | r2 | 27057 | match |
+| z12 path | 12/662/1444 | 200 | r2 | 20527 | match |
+| Seattle | 12/656/1430 | 200 | r2 | 85233 | match |
+| Miami | 12/1135/1744 | 200 | r2 | 72897 | match |
+| Anchorage | 12/342/1161 | 200 | r2 | 62402 | match |
+| Honolulu | 12/251/1799 | 200 | r2 | 79747 | match |
+| Toronto | 12/1144/1494 | 200 | r2 | 157735 | match |
+| Whitehorse | 12/511/1172 | 200 | r2 | 24849 | match |
+| St. John's | 12/1448/1431 | 200 | r2 | 41123 | match |
+| San Juan | 12/1295/1834 | 200 | r2 | 84106 | match |
+| Charlotte Amalie | 12/1309/1835 | 200 | r2 | 46500 | match |
+
+**How the z11 and z12 tiles were picked.** They are the parents of the z15 tile. That they hold a track
+and a path was first seen by a byte search, then confirmed by decoding the roads layer with `mvt.py`
+(local archive only). Re-run at 11:52Z (04:52 PDT):
+- `10/165/361`: no path-kind features;
+- `11/331/722`: 5 features with kind_detail `track`, all with `min_zoom` 13;
+- `12/662/1444`: 12 features with kind_detail `path`, all with `min_zoom` 14.
+
+So tracks start in z11 tiles and paths in z12 tiles. Whether the app's style filters on `min_zoom`,
+which would hide them until z13 and z14, was not checked.
+
+**Not checked:**
+- the app;
+- edge caches, which may serve old tiles for up to a day.
+
+The owner's in-app test is still to come.
+
+## Coder dispatch withdrawn
+
+At about 11:40Z (04:40 PDT) the planner session dispatched a coder subagent to write the entries above
+(`~/pi-handoffs/2026-10-22-pi-29-record-dispatch.md`). The owner then ruled, verbatim: "Actually planner
+should be the one writing the record not coder. Next time you just write it like the EGD protocol has you
+do", and then "Undo the record the coder wrote and write it yourself like EGD protocol says".
+
+When the planner checked, the coder had already stopped:
+- It had committed nothing and had not changed this file.
+- It had left one untracked file, `prompts/preserved/2026-10-22-pi-29-record.md`. That file was
+  identical to the dispatch, and the planner deleted it.
+
+The dispatch is not preserved in this repo because it was withdrawn. An earlier dispatch,
+`~/pi-handoffs/2026-10-22-pi-29b-dispatch.md`, was never run and is out of date.
+
+## State after pi-29
+
+- **Live:** `r2:forager-maps/us.pmtiles` is the 261021 build, 34141705380 bytes.
+- **Rollback**, the only copy: `/srv/forager-build/kept-usca/usca-20261019T011311Z/forager-usca.pmtiles`.
+  Kept until the owner has tested the new map in the app. A rollback would mean uploading it, about 31.6
+  GiB.
+- **Rowan** was told cross-session that the map is live, and was sent the facts for the Street switch
+  (Forager PR #359). The switch goes back to the owner after the in-app test.
+- **Route squares:** there are no `.rd5` files on R2 (`rclone lsf -R --files-only` returned 0). Rowan has
+  asked for the layout `routing/<run-id>/segments4/<NAME>.rd5`, with `routing/manifest.json` uploaded
+  last, kept private, with no Worker route. Uploading them needs a separate go from the owner.
