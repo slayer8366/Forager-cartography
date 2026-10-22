@@ -102,3 +102,12 @@ The R2 token can't list buckets or see `forager-maps-backup`. Options, owner's c
    which the token can already write. Not in the dispatch, and it puts the backup in the bucket the
    Worker serves from, so its key could be reachable through the Worker depending on how the
    Worker maps paths (not checked).
+
+## Records-repo setup
+
+The clone at `/home/bwann83/forager-cartography` had no git identity and an HTTPS remote with no
+credentials on the Pi, so the first commit and push failed. Repo-local `user.name slayer8366` and
+`user.email armyofwann@gmail.com` were set, copied from `/home/bwann83/Forager/.git/config`. The
+owner changed `origin` to `git@github.com:slayer8366/forager-cartography.git` (the same SSH form as
+the Forager clone) by hand; the coder's own attempt to change it was refused by the session's
+permission check.
