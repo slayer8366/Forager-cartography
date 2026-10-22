@@ -126,3 +126,21 @@ The owner, verbatim: "Keep tufts at z10, darker night tufts".
 - **Tufts from z10:** the sub-question's (d), as rendered. That settles the recovered report's
   5(d)/(e).
 - **Night tufts darker than the inverted `#2485ad`.** The exact colour is not yet chosen.
+
+**Night tufts colour, ruled about 15:35.** The planner offered three candidates, with brightness
+and contrast against the night wetland `#2a4f47`:
+
+| Candidate | Luminance | Contrast on the wetland |
+|---|---|---|
+| `#2485ad` (today's inversion) | 0.202 | 2.18:1 |
+| `#1d6a8a` | 0.124 | 1.51:1 |
+| `#163f4b` (matching the night water) | 0.042 | 1.25:1 |
+
+The owner chose "Middle step #1d6a8a".
+
+So the night tufts are **`#1d6a8a`**. Not rendered. This is a named night exception for the tufts
+pattern image, like the tree glyph's.
+
+The planner's note: `#1d6a8a` is above the ruled water ceiling (luminance 0.050, blue channel 96).
+That ceiling was set for water fills and lines; tufts are a pattern on the wetland, not water. The
+checker dispatch should exempt the tufts image or give it its own limit.
