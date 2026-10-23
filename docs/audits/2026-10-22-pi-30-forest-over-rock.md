@@ -39,3 +39,5 @@ separate step needing the owner's go.
 ## Status
 
 Dispatched to a coder, about 21:10. Results follow below when the coder reports.
+
+**The owner on editing OSM,** about 21:20, verbatim: "OSM has the area covered in their maps properly, so we shouldn't need to edit it on their end". So no OSM edit; the fix is the build change only. The planner's note: OSM Carto draws the relation as forest, which is why it looks right there; the tags themselves still carry `natural=bare_rock`.
