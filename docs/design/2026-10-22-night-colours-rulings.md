@@ -349,3 +349,5 @@ planner):
   - Nothing else changes.
 - **Next:** Hazel's verify-first, Forager dispatch 2026-10-22-06. A `sprites/v5-night` upload to R2
   may follow, and needs the owner's go.
+
+**The owner on the live Trail Map, about 19:00.** Verbatim: "Day time maps looks good, but the night mode could use a simple inversion on those white icons that stay white". This confirms the RECORD -1565 rule, a plain inversion of the white icons, and accepts the day map as deployed. Relayed to Rowan.
