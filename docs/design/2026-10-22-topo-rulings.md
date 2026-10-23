@@ -43,3 +43,7 @@ and the water, so lakes stay flat. Trails, roads, glyphs and labels stay above b
 ## Next
 
 Sizing only (ruling 8). Nothing is built, downloaded, installed or uploaded until a separate go.
+
+## Timing confirmed, 2026-10-22 about 22:20
+
+The owner said "We'll have to run a topo build also". Offered a pilot (install GDAL, build two one-degree squares, measure), the owner chose "Wait for the night icon fix". Ruling 8 stands: the topo build starts after the character work, including the night icon set, ships. Since the sizing, the new USB drive at `/mnt/storage` (227 GB) can hold the topo outputs, so the NVMe stays free for the weekly build.
