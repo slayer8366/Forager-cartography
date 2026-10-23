@@ -308,3 +308,24 @@ On the owner's word, "Send Rowan the full set now", the planner sent Rowan (sess
 `bridge:session_01EYWpbjwcxidzc6rvny9rgK`) the full set: the night colours, the checker rule and its
 numbers, rock, icons and topo. The message pointed to this record and to
 `docs/design/2026-10-22-topo-rulings.md`. Delivery is accepted by the server, not confirmed read.
+
+## Observed on the phone: night mode doesn't recolour icons or shields, 2026-10-22 about 18:40
+
+The owner sent S22 screenshots of the live Trail Map, by day and by night, at Guy W. Talbot State
+Park, captioned verbatim: "See how these icons stay white during the switch? Including the highway
+icon".
+
+The planner sampled the PNGs. The icons and shields keep their day pixels at night:
+
+| Image | Day and night |
+|---|---|
+| picnic_site, viewpoint_c | `#d6f2e3` fill, `#4fa074` ring |
+| toilets (v4 base) | `#dcebfa` |
+| US 30 shield | `#ffffff` |
+
+The fills, lines and tree glyph did switch.
+
+This doesn't match the design's assumption: the icons are inverted at night, per sage-03 ruling 6 and
+the build-sprite-v5.mjs header.
+
+Reported to Rowan for Hazel. Whether road shields should change at night has not been ruled.
