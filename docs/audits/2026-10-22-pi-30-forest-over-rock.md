@@ -41,3 +41,5 @@ separate step needing the owner's go.
 Dispatched to a coder, about 21:10. Results follow below when the coder reports.
 
 **The owner on editing OSM,** about 21:20, verbatim: "OSM has the area covered in their maps properly, so we shouldn't need to edit it on their end". So no OSM edit; the fix is the build change only. The planner's note: OSM Carto draws the relation as forest, which is why it looks right there; the tags themselves still carry `natural=bare_rock`.
+
+**Coder stop at step B, and Amendment 1, about 21:40.** The coder found that upstream's landuse rule has no `wood`, so decision 1 would have dropped wood + bare_rock areas entirely. The planner verified it, and found no such element in the data. Amendment 1 (in the preserved dispatch) excludes `landuse=forest` only and leaves wood + bare_rock as bare_rock. This is a planner's call, recorded here. The jar before is `7f9c4aef942b3688980bfe91a67e455eb1bc59115a4b5a37ddee41d7ed98f8db` (coder, observed).
