@@ -63,3 +63,16 @@ the PNGs). Each logged "Copied (new)".
 - **The Worker redeploy:** that's the owner's, by hand, after Rowan signs in. Until then nothing reads
   `sprites/v5`.
 - **The Trail Map style change** that points at v5 is part of that deploy.
+
+## Worker redeployed (reported by Rowan, not checked by the planner)
+
+Rowan reported, cross-session, 2026-10-22 evening:
+- **The deploy:** on the owner's go, Rowan deployed the Worker with wrangler from Forager `pre-main`
+  `8b6f3572f`. The bundle's sha256 `3dd496fb…` equals CI run 39880409429's tested artifact.
+- **Versions:** live `1c2d8195-3a52-4e73-873f-8e6af1b34682`; rollback `f340ec30`.
+- **Live checks, Rowan's:** street-v1.json and street-v2.json equal the repo's; the four sprites/v5
+  files have the sums above; sprite v4 answers 200; the world fill still works.
+- **Record:** Forager RECORD -1564 (`records-after-173`, `f0562041`).
+- **Next:** the S22 night check.
+
+This supersedes "Not done" above. The planner has not re-run these live checks itself.
