@@ -329,3 +329,23 @@ This doesn't match the design's assumption: the icons are inverted at night, per
 the build-sprite-v5.mjs header.
 
 Reported to Rowan for Hazel. Whether road shields should change at night has not been ruled.
+
+**Diagnosis and fix, as reported by Rowan** (cross-session, 2026-10-22 evening; not checked by the
+planner):
+
+- **The cause,** found by Hazel and confirmed on the S22 with an instrumented build: the app repaints
+  sprite images in the setStyle callback about 220 ms before MapLibre Native has loaded them.
+  `getImage` returns null for all 61 images, and nothing retries. So every icon and shield keeps its
+  day pixels.
+- **A correction to the entry above:** the tree pattern did not switch either. What dimmed was the
+  forest fill under it (`#a9d39b` to `#446835`). The day glyph `#3e7a3a` is close to that new
+  fill, so the glyph looked dimmed. The planner's "the tree glyph did switch" was wrong.
+- **The fix** (the owner's choice, Forager RECORD -1565): a pre-built night sprite, swapped in when
+  Night Maps is on, with no repainting on the phone.
+  - The white icons are inverted.
+  - Shields invert too. Rowan reads this from the owner's "Including the highway icon".
+  - `tree_dark_irregular` at `#5d804f`.
+  - `tufts` at `#2485ad`.
+  - Nothing else changes.
+- **Next:** Hazel's verify-first, Forager dispatch 2026-10-22-06. A `sprites/v5-night` upload to R2
+  may follow, and needs the owner's go.
