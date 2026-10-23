@@ -45,3 +45,51 @@ Dispatched to a coder, about 21:10. Results follow below when the coder reports.
 **Coder stop at step B, and Amendment 1, about 21:40.** The coder found that upstream's landuse rule has no `wood`, so decision 1 would have dropped wood + bare_rock areas entirely. The planner verified it, and found no such element in the data. Amendment 1 (in the preserved dispatch) excludes `landuse=forest` only and leaves wood + bare_rock as bare_rock. This is a planner's call, recorded here. The jar before is `7f9c4aef942b3688980bfe91a67e455eb1bc59115a4b5a37ddee41d7ed98f8db` (coder, observed).
 
 **The coder's name.** The owner: "Willow is your coder I believe". Asked how to handle coder work, they chose "Helpers, called Willow". pi-30's coder is a helper started from the planner session; this record names that role Willow Quadrat, Pi coder, from here on.
+
+## Result: done, about 21:27 (Willow Quadrat, coder; checked by the planner at about 21:45)
+
+Willow's report: steps A to D, all observed by Willow. The planner re-checked the items marked
+**checked**.
+
+- **Code:** Forager `pi-build` `aa14e6eaa752fe830f8354574671cc0eda736246`, "map-build: forest wins
+  over bare rock in the landuse layer (dispatch pi-30)". It is a fast-forward from 961a90d36.
+  - It adds `map-build/patches/protomaps-basemaps/0002-landuse-forest-over-bare-rock.patch`. 0001 is
+    unchanged.
+  - **checked:** pins.env now reads `BASEMAPS_PATCHES` = 0001 then 0002.
+  - build-basemap-jar.sh applies both and adds the LanduseTest gate.
+  - The new rule, per Amendment 1: `rule(with("natural", "bare_rock"), without("landuse", "forest"),
+    use("kind", "bare_rock"))`.
+- **Tests:**
+  - 485 run, 0 failures, BUILD SUCCESS.
+  - **checked:** the log has "Forager tests ran: 29 cases, 0 failures" and "Forager landuse tests ran:
+    4 cases, 0 failures".
+  - Willow's extra pre-check: with Landuse.java reverted, case 1 fails "expected forest but was
+    bare_rock". So the test distinguishes the behaviours.
+- **Installed:**
+  - **checked:** `/opt/forager-build/map-build/COMMIT` = aa14e6ea, and the previous copy (e5f5add6) is
+    in `map-build.prev`.
+  - **checked:** the jar went from `7f9c4aef942b3688980bfe91a67e455eb1bc59115a4b5a37ddee41d7ed98f8db`
+    to `32126b8c9543d301b3bd288c4c063694a657b792b9f26f38020c418717d90fcc`.
+  - The rollback jar is in `/opt/forager-build/basemap.prev-20261022/`.
+- **Seaside test build** (osmium extract `-b -123.98,45.90,-123.80,46.05 -s smart`, Planetiler
+  `--maxzoom=14`, with each jar):
+  - In tile 13/1276/2915, feature 52776573098367 (r14965119) is `forest` with the new jar and
+    `bare_rock` with the rollback jar. The other 8 landuse (id, kind) pairs are identical.
+    **checked:** `diff tile-old.txt tile-new.txt` shows only that line.
+  - The genuine bare-rock relation r7138014 (no landuse tag) is bare_rock under both jars at z12-z14,
+    and so are r7138023 and r21189590.
+  - Logs are in `/home/bwann83/pi30-logs/`.
+  - The test needed a scratch copy of the daylight-landcover gpkg, because SQLite needs a writable
+    journal. The sources were not touched.
+- **Untouched:** **checked:** the timer's next run is still Sun 2026-10-25 03:24:55 PDT. R2,
+  out-usca and the cards were not touched, and nothing was uploaded.
+- **Left in place:** the worktree `/tmp/pi30-wt` and scratch clones.
+
+## Live
+
+Sunday's weekly build uses the new jar. Getting it to phones needs the separate R2 upload of
+us.pmtiles, with the owner's go.
+
+**Rollback:**
+1. Copy `basemap.prev-20261022/protomaps-basemap-HEAD-with-deps.jar` back over the installed jar.
+2. Reinstall map-build from e5f5add6, which is the `map-build.prev` copy.
