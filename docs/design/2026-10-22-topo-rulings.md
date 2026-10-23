@@ -47,3 +47,14 @@ Sizing only (ruling 8). Nothing is built, downloaded, installed or uploaded unti
 ## Timing confirmed, 2026-10-22 about 22:20
 
 The owner said "We'll have to run a topo build also". Offered a pilot (install GDAL, build two one-degree squares, measure), the owner chose "Wait for the night icon fix". Ruling 8 stands: the topo build starts after the character work, including the night icon set, ships. Since the sizing, the new USB drive at `/mnt/storage` (227 GB) can hold the topo outputs, so the NVMe stays free for the weekly build.
+
+**The plan, 2026-10-22 about 23:05.** The owner said, verbatim: "Topo work gets planned and measured,
+and after Sunday's build, we start on it. In the meantime, we'll get trail navigation done before
+Saturday".
+
+Asked whether to install GDAL and measure two squares before Sunday, the owner chose "Plan only, no
+install yet". So:
+- before Sunday: plan only, on paper;
+- after Sunday's weekly build: the GDAL install and the two-square measurement, each with its own
+  go, then the full build;
+- trail navigation comes first.

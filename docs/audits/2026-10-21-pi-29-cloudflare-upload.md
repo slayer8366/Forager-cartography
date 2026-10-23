@@ -380,3 +380,28 @@ Kept in the same folder, about 1 MB: the failed 10-19 build's notes, `FAILED.txt
 
 Untouched: the live 261021 output (34,141,705,380 bytes), `r2:forager-maps/us.pmtiles`, and
 everything else.
+
+## A new rollback copy, on the USB drive, 2026-10-22 23:03 PDT
+
+The owner added a 256 GB USB flash drive, "for storage space, so the nvme can be used for building".
+Asked, the owner said: "Yes, format and set up".
+
+**Drive setup:**
+- Reformatted from FAT32, which can't hold files over 4 GB, to ext4, label `forager-storage`.
+- Mounted at `/mnt/storage` through fstab with `nofail`. The old fstab is `/etc/fstab.bak-20261022`.
+- The owner moved it to USB 3; it runs at 5000 Mbps.
+
+**The copy:**
+- **First attempt:** failed with I/O errors, because the drive was moved mid-copy. The ext4 journal
+  recovered on `e2fsck`, and nothing was written to the NVMe.
+- **Second attempt:** a mount-guarded copy, 22:33:21 to 22:56:55, of the live output
+  `out-usca/20261017T202051Z-usca-20261021T111429Z` to
+  `/mnt/storage/rollback/usca-20261017T202051Z-usca-20261021T111429Z/`.
+
+**Verified at 23:03:42:** all 192 files match the originals by sha256.
+- `forager-usca.pmtiles` is `ad9c0f2dd86eb48fb56bf2bc416e602bed46443a6c6f30a5ed5810041fbd40aa`,
+  equal to the sha256 recorded in A.1.
+- The sums are in `SHA256SUMS` beside the copy.
+
+**This is now the rollback for the live `us.pmtiles`.** The weekly build removes this output from the
+NVMe when it next publishes. The NVMe copy is untouched.
