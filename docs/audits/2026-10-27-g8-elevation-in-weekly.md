@@ -148,3 +148,16 @@ report and go.
   | NVMe | 161,965,445,120 | +1.21 GB; about 4.8 GB in hand against last week's 157.2 GB need |
   | card | 81,753,735,168 | +2.30 GB |
   | `/mnt/storage` | 183,807,627,264 | |
+
+## The owner's install go, conditional (10-27 about 07:35 PDT, in Aspen's window)
+
+- The owner said "Go". Asked whether that meant now or after Sorrel's quick look at `ea67332db`
+  (not posted yet; `sorrel-pi32-elevation` is still `c3c914b70`, 06:59), the owner chose: **"Wait for
+  Sorrel, then install (Recommended)"**.
+- **So the install has its go.** It runs once Sorrel's quick look says mergeable:
+  1. Merge `pi-32-elevation` into `pi-build` (`--no-ff`).
+  2. Copy the store to `USCA_BEF_DIR` on the card and check `SHA256SUMS` there.
+  3. `install-map-build.sh` from a clean worktree.
+  4. Check `COMMIT`, and run `bef_store_ok … full` on the installed path.
+- **If Sorrel's look finds something to fix,** the go doesn't cover the changed commit until the owner
+  is asked again.
