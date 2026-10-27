@@ -161,3 +161,28 @@ report and go.
   4. Check `COMMIT`, and run `bef_store_ok … full` on the installed path.
 - **If Sorrel's look finds something to fix,** the go doesn't cover the changed commit until the owner
   is asked again.
+
+## Sorrel's quick look: B1 found and fixed (10-27, about 09:30 PDT)
+
+- **Quick look:** `sorrel-pi32-elevation` `25ecfe7cd` at `ea67332db`. It found one **blocker, B1**.
+  - The line that logs a band's pinned squares listed them with `ls -- *.u5d`. **In a band with no
+    unsuffixed tile, the normal case, `ls` exits 2, and `pipefail` with `errexit` ends the run at
+    brouter with nothing logged.** Sunday's run would have stopped at band two.
+  - My R10 stub always wrote `W80_N25.u5d`, so the tests never saw a band without one.
+  - **Reproduced in a clean bash on the Pi:** the old line exits 2 with only `.u5d_3` tiles. My
+    first attempt in this session's shell didn't fail, because its profile changes how globs
+    expand; the build runs under plain bash.
+- **Under the owner's condition, their install go doesn't cover the new commit.** No merge, no
+  install.
+- **Fixes in `8a9331fa6`:**
+  - **B1:** `find -maxdepth 1 -name '*.u5d'`.
+  - R10 gains an all-heights case: the run reaches WayLinker and logs no pinned squares.
+  - **N6:** R11 now asserts rc 0 and ok at fetch-only.
+- **N7, read 09:28 PDT:** `bef_store_ok` from this head was run against `/mnt/storage/elevation/bef3`,
+  the verified copy of what the install will put at `USCA_BEF_DIR` (that path doesn't exist yet).
+  - The `SHA256SUMS` sha256 equals the pin; 0 lines off the form `<sha>  srtm_X_Y.bef`.
+  - Quick check OK; full check OK in 13 s.
+- **N8, noted:** a node tile outside the 187 squares would also stop the run, naming the square.
+- **Tests:** functions 83, run 70, names 23, disk 95.
+- **Revert check:** with the `ls` line back, the new R10 case fails.
+- **Next:** Sorrel's quick look at `8a9331fa6`, then the owner is asked again for the install go.
