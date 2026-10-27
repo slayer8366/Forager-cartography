@@ -268,3 +268,22 @@ report and go.
     after the early run's +0.8 GB (inferred), so roughly 2 years at the measured growth (inferred,
     one interval).
   - `/mnt/storage` 169.1 GB.
+
+## Early run started (10-27 15:14 PDT)
+
+- **Cue met** (Forager RECORD -1755): the buildings are verified (-1748), and the night-glyph fix is
+  verified on #429's build (-1754). The owner, in Aspen's window: "Go ahead and begin the run".
+- **Before starting (read 15:13):**
+  - **The Pi had rebooted at 15:11.** `/mnt/archive` and `/mnt/storage` were both back from fstab;
+    the 256 GB drive is on USB 3 (now device 2); NTP synced.
+  - Service inactive; COMMIT `532f70fd6`; 182 `.bef` on the card.
+  - NVMe 177.9 GB free, card 79.8 GB.
+  - The timer's next fire is now Sun 11-01 02:29:45 PST, from its 30 min RandomizedDelay, re-drawn
+    at boot.
+- **Started:** `sudo systemctl start --no-block forager-build-usca.service` at **15:14:00 PDT**. Run
+  `usca-20261027T221400Z`, extracts 261026 (OSM 2026-10-26T21:24:46Z), inputs 18,825,253,619 B.
+- **State checks (read from the log):**
+  - NVMe 177.9 GB free against 157.2 GB needed.
+  - Card 79.8 GB free against 42.7 GB needed.
+  - **Elevation store: 182 `.bef` matching SHA256SUMS (`36b05da7…`)**, the full check, 15:14:10-15:14:31.
+- **Then:** fetch-extracts from 15:14:32. Expected end about 06:45 PDT Wed 10-28 (inferred, 15.5 h).
