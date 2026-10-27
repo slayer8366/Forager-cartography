@@ -1,0 +1,115 @@
+{
+ "run_id": "reference-trails-20261027T004706Z",
+ "built_at": "2026-10-27T00:47:06Z",
+ "file": {
+  "path": "reference-trails.pmtiles",
+  "size": 219923563,
+  "sha256": "240423f61966e046513f0aa2495651f0104e17243a7a51fa70d3f73c4e5ad096",
+  "minzoom": 10,
+  "maxzoom": 15,
+  "layers": [
+   "fs_trails",
+   "blm_trails"
+  ]
+ },
+ "features": {
+  "fs_trails": 86422,
+  "blm_trails": 17616
+ },
+ "sources": [
+  {
+   "layer": "fs_trails",
+   "name": "USDA Forest Service, National Forest System Trails (TrailNFS_Publish)",
+   "service_url": "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0",
+   "licence": "CC BY 4.0",
+   "credit": "USDA Forest Service",
+   "fetched": "2026-10-26",
+   "dates": {
+    "metadata_pubdate": "2025-05-14",
+    "metadata_date": "2024-07-24",
+    "catalog_modified": "2022-08-25"
+   },
+   "dates_note": "The live service gives no edit date (editingInfo empty). pubdate/metd are from S_USA.TrailNFS_Publish.xml; catalog_modified is catalog.data.gov's."
+  },
+  {
+   "layer": "blm_trails",
+   "name": "BLM National GTLF Public Display, trail layers 2-6",
+   "service_url": "https://gis.blm.gov/arcgis/rest/services/transportation/BLM_Natl_GTLF_Public_Display/MapServer",
+   "layers": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "licence": "Public domain",
+   "credit": "Bureau of Land Management",
+   "fetched": "2026-10-26",
+   "dates": {
+    "catalog_modified": "2026-10-13"
+   },
+   "dates_note": "catalog.data.gov blm-natl-gtlf-public-managed-trails, modified 2026-10-13T20:09:17Z."
+  }
+ ],
+ "coverage": {
+  "forests": 112,
+  "by_status": {
+   "mostly_centerline": 7,
+   "attributed": 102,
+   "centerline_only": 2,
+   "none": 1
+  },
+  "not_attributed": [
+   {
+    "forest": "Beaverhead-Deerlodge National Forest",
+    "status": "mostly_centerline",
+    "features": 746
+   },
+   {
+    "forest": "Nez Perce-Clearwater National Forest",
+    "status": "mostly_centerline",
+    "features": 1509
+   },
+   {
+    "forest": "Mendocino National Forest",
+    "status": "mostly_centerline",
+    "features": 296
+   },
+   {
+    "forest": "Plumas National Forest",
+    "status": "mostly_centerline",
+    "features": 468
+   },
+   {
+    "forest": "Malheur National Forest",
+    "status": "mostly_centerline",
+    "features": 214
+   },
+   {
+    "forest": "Umatilla National Forest",
+    "status": "centerline_only",
+    "features": 549
+   },
+   {
+    "forest": "Okanogan-Wenatchee National Forest",
+    "status": "mostly_centerline",
+    "features": 1492
+   },
+   {
+    "forest": "Cherokee National Forest",
+    "status": "mostly_centerline",
+    "features": 211
+   },
+   {
+    "forest": "National Forests in Mississippi",
+    "status": "centerline_only",
+    "features": 87
+   },
+   {
+    "forest": "Savannah River Site",
+    "status": "none",
+    "features": 0
+   }
+  ]
+ }
+}

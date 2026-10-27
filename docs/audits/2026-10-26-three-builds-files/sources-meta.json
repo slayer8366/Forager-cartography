@@ -1,0 +1,14 @@
+[
+ {"layer": "fs_trails", "name": "USDA Forest Service, National Forest System Trails (TrailNFS_Publish)",
+  "service_url": "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0",
+  "licence": "CC BY 4.0", "credit": "USDA Forest Service",
+  "fetched": "2026-10-26",
+  "dates": {"metadata_pubdate": "2025-05-14", "metadata_date": "2024-07-24", "catalog_modified": "2022-08-25"},
+  "dates_note": "The live service gives no edit date (editingInfo empty). pubdate/metd are from S_USA.TrailNFS_Publish.xml; catalog_modified is catalog.data.gov's."},
+ {"layer": "blm_trails", "name": "BLM National GTLF Public Display, trail layers 2-6",
+  "service_url": "https://gis.blm.gov/arcgis/rest/services/transportation/BLM_Natl_GTLF_Public_Display/MapServer",
+  "layers": [2, 3, 4, 5, 6], "licence": "Public domain", "credit": "Bureau of Land Management",
+  "fetched": "2026-10-26",
+  "dates": {"catalog_modified": "2026-10-13"},
+  "dates_note": "catalog.data.gov blm-natl-gtlf-public-managed-trails, modified 2026-10-13T20:09:17Z."}
+]

@@ -1,0 +1,1056 @@
+{
+ "source": "EDW_TrailNFSPublish_01/MapServer/0 grouped by admin_org[:4] x attributesubset, against EDW_ForestSystemBoundaries_01/MapServer/1 (112 administrative forests)",
+ "read": "2026-10-26",
+ "forests": [
+  {
+   "forestorgcode": "0102",
+   "forest": "Beaverhead-Deerlodge National Forest",
+   "features": 746,
+   "by_subset": {
+    "TrailNFS_MGMT": 27,
+    "TrailNFS_Centerline": 719
+   },
+   "status": "mostly_centerline"
+  },
+  {
+   "forestorgcode": "0103",
+   "forest": "Bitterroot National Forest",
+   "features": 635,
+   "by_subset": {
+    "TrailNFS_MGMT": 1,
+    "TrailNFS_Basic": 632,
+    "TrailNFS_Centerline": 2
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0104",
+   "forest": "Idaho Panhandle National Forests",
+   "features": 1099,
+   "by_subset": {
+    "TrailNFS_MGMT": 1097,
+    "TrailNFS_Centerline": 2
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0110",
+   "forest": "Flathead National Forest",
+   "features": 888,
+   "by_subset": {
+    "TrailNFS_MGMT": 888
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0111",
+   "forest": "Custer Gallatin National Forest",
+   "features": 2090,
+   "by_subset": {
+    "TrailNFS_MGMT": 2090
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0114",
+   "forest": "Kootenai National Forest",
+   "features": 2087,
+   "by_subset": {
+    "TrailNFS_MGMT": 2087
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0115",
+   "forest": "Helena-Lewis and Clark National Forest",
+   "features": 1626,
+   "by_subset": {
+    "TrailNFS_MGMT": 1626
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0116",
+   "forest": "Lolo National Forest",
+   "features": 773,
+   "by_subset": {
+    "TrailNFS_MGMT": 768,
+    "TrailNFS_Centerline": 2,
+    "TrailNFS_Basic": 3
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0117",
+   "forest": "Nez Perce-Clearwater National Forest",
+   "features": 1509,
+   "by_subset": {
+    "TrailNFS_Centerline": 1469,
+    "TrailNFS_Basic": 36,
+    "TrailNFS_MGMT": 4
+   },
+   "status": "mostly_centerline"
+  },
+  {
+   "forestorgcode": "0118",
+   "forest": "Dakota Prairie Grasslands",
+   "features": 80,
+   "by_subset": {
+    "TrailNFS_MGMT": 80
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0202",
+   "forest": "Bighorn National Forest",
+   "features": 518,
+   "by_subset": {
+    "TrailNFS_MGMT": 518
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0203",
+   "forest": "Black Hills National Forest",
+   "features": 663,
+   "by_subset": {
+    "TrailNFS_MGMT": 663
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0204",
+   "forest": "Grand Mesa, Uncompahgre and Gunnison National Forests",
+   "features": 1372,
+   "by_subset": {
+    "TrailNFS_MGMT": 1372
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0206",
+   "forest": "Medicine Bow-Routt National Forest",
+   "features": 780,
+   "by_subset": {
+    "TrailNFS_MGMT": 780
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0207",
+   "forest": "Nebraska National Forest",
+   "features": 133,
+   "by_subset": {
+    "TrailNFS_MGMT": 133
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0209",
+   "forest": "Rio Grande National Forest",
+   "features": 419,
+   "by_subset": {
+    "TrailNFS_MGMT": 419
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0210",
+   "forest": "Arapaho and Roosevelt National Forests",
+   "features": 910,
+   "by_subset": {
+    "TrailNFS_MGMT": 910
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0212",
+   "forest": "Pike and San Isabel National Forests",
+   "features": 1358,
+   "by_subset": {
+    "TrailNFS_MGMT": 1358
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0213",
+   "forest": "San Juan National Forest",
+   "features": 847,
+   "by_subset": {
+    "TrailNFS_MGMT": 847
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0214",
+   "forest": "Shoshone National Forest",
+   "features": 451,
+   "by_subset": {
+    "TrailNFS_MGMT": 451
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0215",
+   "forest": "White River National Forest",
+   "features": 1541,
+   "by_subset": {
+    "TrailNFS_MGMT": 1541
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0301",
+   "forest": "Apache-Sitgreaves National Forests",
+   "features": 441,
+   "by_subset": {
+    "TrailNFS_MGMT": 441
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0302",
+   "forest": "Carson National Forest",
+   "features": 178,
+   "by_subset": {
+    "TrailNFS_MGMT": 178
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0303",
+   "forest": "Cibola National Forest",
+   "features": 409,
+   "by_subset": {
+    "TrailNFS_MGMT": 409
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0304",
+   "forest": "Coconino National Forest",
+   "features": 508,
+   "by_subset": {
+    "TrailNFS_Basic": 508
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0305",
+   "forest": "Coronado National Forest",
+   "features": 462,
+   "by_subset": {
+    "TrailNFS_MGMT": 462
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0306",
+   "forest": "Gila National Forest",
+   "features": 1343,
+   "by_subset": {
+    "TrailNFS_MGMT": 1343
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0307",
+   "forest": "Kaibab National Forest",
+   "features": 95,
+   "by_subset": {
+    "TrailNFS_MGMT": 95
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0308",
+   "forest": "Lincoln National Forest",
+   "features": 236,
+   "by_subset": {
+    "TrailNFS_MGMT": 236
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0309",
+   "forest": "Prescott National Forest",
+   "features": 368,
+   "by_subset": {
+    "TrailNFS_MGMT": 368
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0310",
+   "forest": "Santa Fe National Forest",
+   "features": 359,
+   "by_subset": {
+    "TrailNFS_MGMT": 359
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0312",
+   "forest": "Tonto National Forest",
+   "features": 451,
+   "by_subset": {
+    "TrailNFS_MGMT": 451
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0401",
+   "forest": "Ashley National Forest",
+   "features": 700,
+   "by_subset": {
+    "TrailNFS_MGMT": 700
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0402",
+   "forest": "Boise National Forest",
+   "features": 1046,
+   "by_subset": {
+    "TrailNFS_MGMT": 1046
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0403",
+   "forest": "Bridger-Teton National Forest",
+   "features": 846,
+   "by_subset": {
+    "TrailNFS_MGMT": 846
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0407",
+   "forest": "Dixie National Forest",
+   "features": 579,
+   "by_subset": {
+    "TrailNFS_MGMT": 579
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0408",
+   "forest": "Fishlake National Forest",
+   "features": 1389,
+   "by_subset": {
+    "TrailNFS_MGMT": 1389
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0410",
+   "forest": "Manti-La Sal National Forest",
+   "features": 615,
+   "by_subset": {
+    "TrailNFS_MGMT": 615
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0412",
+   "forest": "Payette National Forest",
+   "features": 619,
+   "by_subset": {
+    "TrailNFS_MGMT": 597,
+    "TrailNFS_Centerline": 1,
+    "TrailNFS_Basic": 21
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0413",
+   "forest": "Salmon-Challis National Forest",
+   "features": 854,
+   "by_subset": {
+    "TrailNFS_MGMT": 853,
+    "TrailNFS_Basic": 1
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0414",
+   "forest": "Sawtooth National Forest",
+   "features": 979,
+   "by_subset": {
+    "TrailNFS_MGMT": 979
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0415",
+   "forest": "Caribou-Targhee National Forest",
+   "features": 1425,
+   "by_subset": {
+    "TrailNFS_MGMT": 1425
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0417",
+   "forest": "Humboldt-Toiyabe National Forest",
+   "features": 3454,
+   "by_subset": {
+    "TrailNFS_MGMT": 3453,
+    "TrailNFS_Centerline": 1
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0419",
+   "forest": "Uinta-Wasatch-Cache National Forest",
+   "features": 1746,
+   "by_subset": {
+    "TrailNFS_MGMT": 1746
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0501",
+   "forest": "Angeles National Forest",
+   "features": 280,
+   "by_subset": {
+    "TrailNFS_MGMT": 280
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0502",
+   "forest": "Cleveland National Forest",
+   "features": 156,
+   "by_subset": {
+    "TrailNFS_MGMT": 156
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0503",
+   "forest": "Eldorado National Forest",
+   "features": 627,
+   "by_subset": {
+    "TrailNFS_MGMT": 627
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0504",
+   "forest": "Inyo National Forest",
+   "features": 1686,
+   "by_subset": {
+    "TrailNFS_MGMT": 1686
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0505",
+   "forest": "Klamath National Forest",
+   "features": 313,
+   "by_subset": {
+    "TrailNFS_MGMT": 60,
+    "TrailNFS_Basic": 253
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0506",
+   "forest": "Lassen National Forest",
+   "features": 390,
+   "by_subset": {
+    "TrailNFS_MGMT": 390
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0507",
+   "forest": "Los Padres National Forest",
+   "features": 537,
+   "by_subset": {
+    "TrailNFS_MGMT": 537
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0508",
+   "forest": "Mendocino National Forest",
+   "features": 296,
+   "by_subset": {
+    "TrailNFS_Centerline": 287,
+    "TrailNFS_MGMT": 9
+   },
+   "status": "mostly_centerline"
+  },
+  {
+   "forestorgcode": "0509",
+   "forest": "Modoc National Forest",
+   "features": 49,
+   "by_subset": {
+    "TrailNFS_MGMT": 49
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0510",
+   "forest": "Six Rivers National Forest",
+   "features": 288,
+   "by_subset": {
+    "TrailNFS_MGMT": 288
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0511",
+   "forest": "Plumas National Forest",
+   "features": 468,
+   "by_subset": {
+    "TrailNFS_Centerline": 463,
+    "TrailNFS_MGMT": 5
+   },
+   "status": "mostly_centerline"
+  },
+  {
+   "forestorgcode": "0512",
+   "forest": "San Bernardino National Forest",
+   "features": 223,
+   "by_subset": {
+    "TrailNFS_Basic": 223
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0513",
+   "forest": "Sequoia National Forest",
+   "features": 313,
+   "by_subset": {
+    "TrailNFS_MGMT": 313
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0514",
+   "forest": "Shasta-Trinity National Forest",
+   "features": 818,
+   "by_subset": {
+    "TrailNFS_MGMT": 818
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0515",
+   "forest": "Sierra National Forest",
+   "features": 717,
+   "by_subset": {
+    "TrailNFS_MGMT": 717
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0516",
+   "forest": "Stanislaus National Forest",
+   "features": 1148,
+   "by_subset": {
+    "TrailNFS_MGMT": 1148
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0517",
+   "forest": "Tahoe National Forest",
+   "features": 664,
+   "by_subset": {
+    "TrailNFS_MGMT": 664
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0519",
+   "forest": "Lake Tahoe Basin Management Unit",
+   "features": 208,
+   "by_subset": {
+    "TrailNFS_Basic": 208
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0601",
+   "forest": "Deschutes National Forest",
+   "features": 1066,
+   "by_subset": {
+    "TrailNFS_Centerline": 1,
+    "TrailNFS_MGMT": 1065
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0602",
+   "forest": "Fremont-Winema National Forest",
+   "features": 419,
+   "by_subset": {
+    "TrailNFS_MGMT": 419
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0603",
+   "forest": "Gifford Pinchot National Forest",
+   "features": 552,
+   "by_subset": {
+    "TrailNFS_Centerline": 1,
+    "TrailNFS_MGMT": 551
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0604",
+   "forest": "Malheur National Forest",
+   "features": 214,
+   "by_subset": {
+    "TrailNFS_Centerline": 212,
+    "TrailNFS_Basic": 2
+   },
+   "status": "mostly_centerline"
+  },
+  {
+   "forestorgcode": "0605",
+   "forest": "Mt. Baker-Snoqualmie National Forest",
+   "features": 686,
+   "by_subset": {
+    "TrailNFS_MGMT": 683,
+    "TrailNFS_Centerline": 3
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0606",
+   "forest": "Mt. Hood National Forest",
+   "features": 761,
+   "by_subset": {
+    "TrailNFS_Basic": 758,
+    "TrailNFS_MGMT": 3
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0607",
+   "forest": "Ochoco National Forest",
+   "features": 147,
+   "by_subset": {
+    "TrailNFS_MGMT": 147
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0609",
+   "forest": "Olympic National Forest",
+   "features": 169,
+   "by_subset": {
+    "TrailNFS_MGMT": 169
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0610",
+   "forest": "Rogue River-Siskiyou National Forests",
+   "features": 534,
+   "by_subset": {
+    "TrailNFS_MGMT": 534
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0612",
+   "forest": "Siuslaw National Forest",
+   "features": 140,
+   "by_subset": {
+    "TrailNFS_MGMT": 140
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0614",
+   "forest": "Umatilla National Forest",
+   "features": 549,
+   "by_subset": {
+    "TrailNFS_Centerline": 549
+   },
+   "status": "centerline_only"
+  },
+  {
+   "forestorgcode": "0615",
+   "forest": "Umpqua National Forest",
+   "features": 1581,
+   "by_subset": {
+    "TrailNFS_MGMT": 1581
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0616",
+   "forest": "Wallowa-Whitman National Forest",
+   "features": 936,
+   "by_subset": {
+    "TrailNFS_Basic": 933,
+    "TrailNFS_MGMT": 3
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0617",
+   "forest": "Okanogan-Wenatchee National Forest",
+   "features": 1492,
+   "by_subset": {
+    "TrailNFS_Centerline": 1490,
+    "TrailNFS_MGMT": 2
+   },
+   "status": "mostly_centerline"
+  },
+  {
+   "forestorgcode": "0618",
+   "forest": "Willamette National Forest",
+   "features": 756,
+   "by_subset": {
+    "TrailNFS_Basic": 4,
+    "TrailNFS_MGMT": 752
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0621",
+   "forest": "Colville National Forest",
+   "features": 274,
+   "by_subset": {
+    "TrailNFS_MGMT": 273,
+    "TrailNFS_Centerline": 1
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0622",
+   "forest": "Columbia River Gorge National Scenic Area",
+   "features": 148,
+   "by_subset": {
+    "TrailNFS_Basic": 148
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0801",
+   "forest": "National Forests in Alabama",
+   "features": 68,
+   "by_subset": {
+    "TrailNFS_MGMT": 68
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0802",
+   "forest": "Daniel Boone National Forest",
+   "features": 1018,
+   "by_subset": {
+    "TrailNFS_Basic": 1018
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0803",
+   "forest": "Chattahoochee-Oconee National Forests",
+   "features": 384,
+   "by_subset": {
+    "TrailNFS_MGMT": 384
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0804",
+   "forest": "Cherokee National Forest",
+   "features": 211,
+   "by_subset": {
+    "TrailNFS_MGMT": 3,
+    "TrailNFS_Centerline": 208
+   },
+   "status": "mostly_centerline"
+  },
+  {
+   "forestorgcode": "0805",
+   "forest": "National Forests in Florida",
+   "features": 363,
+   "by_subset": {
+    "TrailNFS_MGMT": 363
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0806",
+   "forest": "Kisatchie National Forest",
+   "features": 39,
+   "by_subset": {
+    "TrailNFS_MGMT": 39
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0807",
+   "forest": "National Forests in Mississippi",
+   "features": 87,
+   "by_subset": {
+    "TrailNFS_Centerline": 87
+   },
+   "status": "centerline_only"
+  },
+  {
+   "forestorgcode": "0808",
+   "forest": "George Washington and Jefferson National Forest",
+   "features": 1294,
+   "by_subset": {
+    "TrailNFS_MGMT": 1293,
+    "TrailNFS_Centerline": 1
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0809",
+   "forest": "Ouachita National Forest",
+   "features": 295,
+   "by_subset": {
+    "TrailNFS_Basic": 295
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0810",
+   "forest": "Ozark-St. Francis National Forest",
+   "features": 259,
+   "by_subset": {
+    "TrailNFS_MGMT": 259
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0811",
+   "forest": "National Forests in North Carolina",
+   "features": 700,
+   "by_subset": {
+    "TrailNFS_MGMT": 698,
+    "TrailNFS_Basic": 2
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0812",
+   "forest": "Francis Marion and Sumter National Forests",
+   "features": 168,
+   "by_subset": {
+    "TrailNFS_Basic": 168
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0813",
+   "forest": "National Forests in Texas",
+   "features": 97,
+   "by_subset": {
+    "TrailNFS_MGMT": 97
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0816",
+   "forest": "El Yunque National Forest",
+   "features": 19,
+   "by_subset": {
+    "TrailNFS_MGMT": 19
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0836",
+   "forest": "Savannah River Site",
+   "features": 0,
+   "by_subset": {},
+   "status": "none"
+  },
+  {
+   "forestorgcode": "0860",
+   "forest": "Land Between the Lakes National Recreation Area",
+   "features": 2363,
+   "by_subset": {
+    "TrailNFS_MGMT": 2363
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0903",
+   "forest": "Chippewa National Forest",
+   "features": 297,
+   "by_subset": {
+    "TrailNFS_MGMT": 297
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0904",
+   "forest": "Huron-Manistee National Forest",
+   "features": 1030,
+   "by_subset": {
+    "TrailNFS_MGMT": 1030
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0905",
+   "forest": "Mark Twain National Forest",
+   "features": 393,
+   "by_subset": {
+    "TrailNFS_MGMT": 393
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0907",
+   "forest": "Ottawa National Forest",
+   "features": 3642,
+   "by_subset": {
+    "TrailNFS_MGMT": 3642
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0908",
+   "forest": "Shawnee National Forest",
+   "features": 348,
+   "by_subset": {
+    "TrailNFS_MGMT": 348
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0909",
+   "forest": "Superior National Forest",
+   "features": 3287,
+   "by_subset": {
+    "TrailNFS_MGMT": 3287
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0910",
+   "forest": "Hiawatha National Forest",
+   "features": 300,
+   "by_subset": {
+    "TrailNFS_MGMT": 300
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0912",
+   "forest": "Hoosier National Forest",
+   "features": 108,
+   "by_subset": {
+    "TrailNFS_MGMT": 108
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0913",
+   "forest": "Chequamegon-Nicolet National Forest",
+   "features": 991,
+   "by_subset": {
+    "TrailNFS_MGMT": 991
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0914",
+   "forest": "Wayne National Forest",
+   "features": 209,
+   "by_subset": {
+    "TrailNFS_MGMT": 209
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0915",
+   "forest": "Midewin National Tallgrass Prairie",
+   "features": 15,
+   "by_subset": {
+    "TrailNFS_MGMT": 15
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0919",
+   "forest": "Allegheny National Forest",
+   "features": 299,
+   "by_subset": {
+    "TrailNFS_MGMT": 299
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0920",
+   "forest": "Green Mountain and Finger Lakes National Forests",
+   "features": 1018,
+   "by_subset": {
+    "TrailNFS_MGMT": 1018
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0921",
+   "forest": "Monongahela National Forest",
+   "features": 265,
+   "by_subset": {
+    "TrailNFS_MGMT": 265
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "0922",
+   "forest": "White Mountain National Forest",
+   "features": 2093,
+   "by_subset": {
+    "TrailNFS_MGMT": 2093
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "1004",
+   "forest": "Chugach National Forest",
+   "features": 219,
+   "by_subset": {
+    "TrailNFS_MGMT": 219
+   },
+   "status": "attributed"
+  },
+  {
+   "forestorgcode": "1005",
+   "forest": "Tongass National Forest",
+   "features": 5273,
+   "by_subset": {
+    "TrailNFS_MGMT": 5273
+   },
+   "status": "attributed"
+  }
+ ],
+ "unmatched_admin_org": {
+  "": {
+   "TrailNFS_Centerline": 1,
+   "TrailNFS_Basic": 4,
+   "TrailNFS_MGMT": 32
+  },
+  "01": {
+   "TrailNFS_MGMT": 1
+  }
+ },
+ "unmatched_features": 38,
+ "status_meaning": {
+  "attributed": "most features carry Basic or MGMT attributes",
+  "mostly_centerline": "over half the features are the Centerline subset (geometry, few attributes)",
+  "centerline_only": "only the Centerline subset",
+  "none": "no trail features published"
+ }
+}
