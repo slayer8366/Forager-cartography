@@ -121,3 +121,30 @@ report and go.
   fails; without the name comparison the quick-check name test fails.
 - **Side note:** BRouter's cutter takes about 2 min to start even on a 0.9 MB input (121 s, 4 GB
   heap); a 120 s timeout cut off the first try.
+
+## Scratch moved to the 256 GB drive (10-27)
+
+- **The owner, via Rowan, verbatim:** "Move them to the 256 GB drive (Recommended)".
+  - The removal was first refused by this session's permission check as irreversible.
+  - The owner said "Go" in Aspen's window, at about 07:25 PDT.
+- **Copied** (06:48-06:50; drive read `/dev/sda1` on USB 3 before and after) with `rsync -a` to
+  `/mnt/storage/moved-20261027/`:
+
+  | Folder | Files | Links |
+  |---|---|---|
+  | `reference-trails-build` | 10 | 2, into `/mnt/archive/aspen-reference-trails-20261026`, unchanged |
+  | `pi31-scratch` | 23 | 0 |
+  | `names-measure` | 13 | 0 |
+  | the card's `forager-build/work/pi31-willow` | 5 | 0 |
+
+  Each folder has a `.sha256` and a `.links` list beside it.
+- **Verified** from the drive after `drop_caches`: at 06:50 and again at 07:25, every file OK and
+  every link identical.
+- **Originals removed** at 07:26.
+- **Free space at 07:26:24 (read):**
+
+  | Disk | Bytes free | Change |
+  |---|---|---|
+  | NVMe | 161,965,445,120 | +1.21 GB; about 4.8 GB in hand against last week's 157.2 GB need |
+  | card | 81,753,735,168 | +2.30 GB |
+  | `/mnt/storage` | 183,807,627,264 | |
