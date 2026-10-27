@@ -159,3 +159,26 @@ feature counts, the sources with their dates, and the coverage summary.
 2. pi-31's review, then the 261024 squares and names upload (owner's go via Rowan, -1695), described to
    Rowan before it happens.
 3. G6, the elevation pilot. It needs its own go.
+
+## G3 done: trails archive on R2 (10-26, about 19:55 PDT)
+
+Supersedes "Next" item 1 above.
+
+- **Go:** the owner, via Rowan (Forager RECORD -1700). The first attempt was refused by this session's
+  permission check as a production deploy, and nothing ran. The owner then said "Go" in this window.
+- **Before:** `rclone lsl r2:forager-maps --include 'reference-trails*'` was empty, and no reference tile
+  had been requested.
+- **Read-back:** `rclone cat` piped to `sha256sum`, compared with the local file:
+
+  | Object | Bytes | sha256 | Match |
+  |---|---|---|---|
+  | `reference-trails.pmtiles` | 219,923,563 | `240423f61966e046513f0aa2495651f0104e17243a7a51fa70d3f73c4e5ad096` | yes |
+  | `reference-trails-manifest.json` | 2,814 | `6cb68e27dda1b556cdd1fde8d5336574ea776b97bf0f94d17ba21954b1e70db9` | yes |
+
+- **Tiles:** fetched through the Worker at `/reference-trails/{z}/{x}/{y}.mvt?cb=aspen-g3-<epoch>`. These
+  were the first requests for these tiles.
+  - z10 192/393: HTTP 200, 14,157 bytes, `max-age=86400`. `fs_trails` has 133 features, the same count
+    as the local check. Examples: `trail_no` "01A" and "046".
+  - z15 6144/12597: HTTP 200, 677 bytes. `fs_trails` has 1 feature: `trail_no` "060", CORK RIDGE - PINE.
+    This is the archive's own z15 tile, not the overflow branch.
+- **Sent to Rowan.** The app is unchanged until its switch PR.
