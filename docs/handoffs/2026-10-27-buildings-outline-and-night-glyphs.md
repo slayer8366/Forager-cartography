@@ -135,3 +135,7 @@ name), not a sprite image.
 - Sunday's 11-01 run (route squares, names, heights) doesn't involve the style.
 
 The owner's five screenshots are in `2026-10-27-buildings-files/` (1-3 day, 4 night at full zoom, 5 night slightly zoomed out).
+
+## Outcome
+
+The buildings shipped via PR #426 and were verified on the S22 (Forager RECORD -1748). The owner, in Aspen's window, 2026-10-27 about 15:25 PDT: "Map buildings look much better now. I approve". The night tree glyph fix (PR #429) was verified on the S22 (-1754).
