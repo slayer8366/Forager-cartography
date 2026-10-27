@@ -231,3 +231,19 @@ report and go.
 - **Sunday's run** builds route squares with 3″ heights and names files. The app keeps
   `consider_elevation` off. Read after the run: the log's "elevation store:" line, the per-band
   "no heights, as pinned" lines, and the `.rd5` growth (+10-14 % expected).
+
+## The owner's plan for an early run (10-27, about 10:30 PDT)
+
+- **Verbatim:** "When the fixes are in place and verified, I'm going to have you run the build early.
+  And then we can run it on Sunday, and keep the schedule as planned."
+- **"The fixes"** are the buildings outline and the night tree glyphs (handoff `51d6358`). Both are
+  app-side style changes; the Pi build doesn't carry them. The early run tests names + heights (G8)
+  on real data before Sunday.
+- **Constraints, to be re-read before starting:**
+  - About 15.5 h (inferred), so it must start by about **Sat 10-31 10:00 PST**. `build-usca.lock`
+    stops the 02:13 timer run if it's still going.
+  - Its publish replaces the 261024 set on the Pi (`USCA_KEEP_GOOD_OUTPUTS=1`); R2 is untouched.
+  - Its set is about 0.8 GB bigger, so Sunday's start check has about 4 GB in hand (inferred; read
+    `df` before each run).
+  - Sunday builds only if Geofabrik has newer extracts.
+- **Starting it needs the owner's word typed in Aspen's window.**
