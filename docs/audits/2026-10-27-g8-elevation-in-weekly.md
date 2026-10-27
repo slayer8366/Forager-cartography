@@ -247,3 +247,24 @@ report and go.
     `df` before each run).
   - Sunday builds only if Geofabrik has newer extracts.
 - **Starting it needs the owner's word typed in Aspen's window.**
+
+## The owner's files off the NVMe (10-27, 14:07-14:21 PDT)
+
+- **The owner, in Aspen's window:** "Go ahead and move the 14gb to the flash drive". That's
+  `~/imx` and `~/archive`, the NVMe stopgap from the NVMe answer to Rowan.
+- **Before (read 14:07):**
+  - Nothing had them open (`lsof`); nothing in cron, systemd, fstab or the shell profile names them.
+  - The drive was `/dev/sda1` on USB 3.
+  - `imx`: a Python project with a virtualenv, 12,143,947,386 B, 4,566 files, 4 links.
+  - `archive`: bracket captures, 2,513,384,852 B, 253 files.
+- **Copied** with `rsync -a` to `/mnt/storage/moved-20261027/{imx,archive}`, with `.sha256` and
+  `.links` lists beside them.
+- **Verified** from the drive after `drop_caches`: all files OK, links identical. Originals removed
+  14:20.
+- **Note for the owner:** `imx/venv` records its old absolute path, so it needs re-creating before
+  it's used from the new place, or a link `~/imx` → the copy. Neither was done.
+- **Free (read 14:20:52):**
+  - **NVMe 176,621,113,344 B** (+14.67 GB). About 18.5 GB over Sunday's ~157.3 GB start need
+    after the early run's +0.8 GB (inferred), so roughly 2 years at the measured growth (inferred,
+    one interval).
+  - `/mnt/storage` 169.1 GB.
