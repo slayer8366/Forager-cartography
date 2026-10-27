@@ -182,3 +182,34 @@ Supersedes "Next" item 1 above.
   - z15 6144/12597: HTTP 200, 677 bytes. `fs_trails` has 1 feature: `trail_no` "060", CORK RIDGE - PINE.
     This is the archive's own z15 tile, not the overflow branch.
 - **Sent to Rowan.** The app is unchanged until its switch PR.
+
+## Names for 261024 built (G5, build part), 10-26 evening
+
+- **Review:** pi-31 was reviewed by Aspen. It is pushed to Forager `pi-31-names-stage`: `d99f9d2eb`,
+  `c9f6c3c3c`, `542964537` (README) and `6cdfaef15` (fix below). There is no PR; Rowan sets up
+  Sorrel's review.
+- **Tests (read):** 21 unit tests, `test_build_names.sh` 21 checks, `test_build_usca_functions.sh`
+  61 checks. All pass.
+- **First run, 21:00: failed.** `osmium export` was killed at 7.4 GB, 40 s into the encode.
+  - The pin `USCA_NAMES_EXPORT_INDEX=flex_mem` went dense on the full named input (199.6M nodes,
+    ids up to about 12e9).
+  - The encoder had written 187 empty files. The script failed loudly and published nothing.
+  - The output is kept in `/mnt/archive/aspen-names-261024-failed1`.
+- **Fix:** the pin was changed to `sparse_mem_array` (`6cdfaef15`). It would have failed the
+  weekly build the same way.
+- **Second run, 21:21-21:48: OK.**
+  - `build-names.sh` read the 261024 card extracts, with temporary files in
+    `/mnt/archive/aspen-names-261024-tmp`. The card's `forager-build/work` isn't writable by
+    bwann83.
+  - Names input: 199,621,707 nodes, 15,461,541 ways, 2.30 GB.
+  - Encode: 449 s, peak 4.2 GB.
+  - Output: 187 `.fnm` files, one per `.rd5`, 603,642,990 bytes. The largest is W75_N40 at
+    38,052,137 bytes, the same as the trial.
+  - Check passed. Output is in `/mnt/archive/aspen-names-261024/names1`.
+- **Staged upload (not sent):**
+  - Files: `routing/usca-20261025T101217Z/segments4/` holds 187 `.rd5`, 1,563,722,864 bytes. All
+    match `out-usca/current/manifest.json` by size and sha256. `names1/` holds 187 `.fnm`.
+  - Manifest: `routing/manifest.json` has `run_id`, `osm_timestamp` 2026-10-24T20:20:51Z,
+    `osm_sequence`, `files` (`segments4` only) and the new top-level `names` array. A copy is in
+    `2026-10-26-three-builds-files/routing-manifest-261024-staged.json`. It goes up last.
+  - Waits for the owner's go, through Rowan, typed in Aspen's window.
