@@ -186,3 +186,48 @@ report and go.
 - **Tests:** functions 83, run 70, names 23, disk 95.
 - **Revert check:** with the `ls` line back, the new R10 case fails.
 - **Next:** Sorrel's quick look at `8a9331fa6`, then the owner is asked again for the install go.
+
+## G8 installed (10-27, 09:40-09:44 PDT)
+
+- **Re-check:** Sorrel `4208a9e03` at `8a9331fa6`: mergeable for the 2026-11-01 run.
+- **The owner, in Aspen's window, asked again:** "Go, install now (Recommended)".
+- **1. Merge:** `532f70fd6` ("Merge pi-32-elevation (G8) …", `--no-ff`) on `pi-build` `20f75d063`,
+  in a fresh worktree, pushed. Suites at the merge head:
+
+  | Suite | Result |
+  |---|---|
+  | functions | 83 |
+  | run | 70 |
+  | names | 23 |
+  | disk | 95 |
+  | build_functions | 14 |
+  | fnam | 21 |
+
+  Worktree removed.
+- **2. Store on the card (09:41-09:43):**
+  - Service inactive; `/mnt/archive` is `/dev/mmcblk0p1`; no `elevation/` beforehand.
+  - Created `/mnt/archive/forager-build/elevation/bef3-20261027`, root:root 0755. Copied the 182
+    `.bef` (0644) from `/mnt/archive/aspen-elevation-g7/bef3`, plus `SHA256SUMS` (from
+    `bef3.sha256`); 1,926,613,676 bytes with the list.
+  - The `SHA256SUMS` sha256 is `36b05da7…102292`, equal to the pin.
+  - After `drop_caches`, `sha256sum -c` **as forager-build**: all 182 OK.
+- **3. Install:** `install-map-build.sh` from the clean merge worktree.
+  - **`COMMIT` = `532f70fd691a32a755fe99d2727e9df9428c4fdc`.**
+  - **Rollback:** `map-build.prev` = `20f75d063`; the older `aa14e6eaa` is `map-build.prev.1793119401`.
+- **4. Step 4** (Sorrel's N7 directory half), from the installed script and pins, as forager-build,
+  in a clean bash, after `drop_caches`:
+  - `USCA_BEF_DIR=/mnt/archive/forager-build/elevation/bef3-20261027`, 182 files.
+  - **Quick OK; full OK (21 s).**
+- **Also checked:**
+  - The installed `build-usca.sh` has the `heights_read_ok … "$USCA_BEF_NONE"` call and no
+    `no-elevation`.
+  - The installed file list matches `git archive 532f70fd6`.
+  - The functions suite from the installed copy: 83.
+  - forager-build can run the script.
+  - Timer: Sun 11-01 02:13 PST.
+- **Rollback steps:** `sudo mv -T /opt/forager-build/map-build /opt/forager-build/map-build.bad &&
+  sudo mv -T /opt/forager-build/map-build.prev /opt/forager-build/map-build`. The store on the card
+  can stay; 20f75d063 doesn't read it.
+- **Sunday's run** builds route squares with 3″ heights and names files. The app keeps
+  `consider_elevation` off. Read after the run: the log's "elevation store:" line, the per-band
+  "no heights, as pinned" lines, and the `.rd5` growth (+10-14 % expected).
