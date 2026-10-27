@@ -274,7 +274,7 @@ report and go.
 - **Cue met** (Forager RECORD -1755): the buildings are verified (-1748), and the night-glyph fix is
   verified on #429's build (-1754). The owner, in Aspen's window: "Go ahead and begin the run".
 - **Before starting (read 15:13):**
-  - **The Pi had rebooted at 15:11.** `/mnt/archive` and `/mnt/storage` were both back from fstab;
+  - **The Pi had rebooted at 15:11** (the owner, via Rowan: power unplugged, now fixed). `/mnt/archive` and `/mnt/storage` were both back from fstab;
     the 256 GB drive is on USB 3 (now device 2); NTP synced.
   - Service inactive; COMMIT `532f70fd6`; 182 `.bef` on the card.
   - NVMe 177.9 GB free, card 79.8 GB.
