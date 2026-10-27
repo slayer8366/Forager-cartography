@@ -236,3 +236,36 @@ Supersedes "Next" item 1 above.
   `6cdfaef15`) carry a model-named co-author line, the recorded slip pattern (Forager RECORD -506,
   -510). They are not amended. `932c0a0ee` uses the line without a model name.
 - **N5-N7:** noted and not changed.
+
+## 261024 routes and names live on R2 (G5 upload), 10-26 23:25:59 PDT
+
+- **Go:** the owner approved the list in Rowan's window (Forager RECORD -1709) and said "Go" in
+  Aspen's window at 21:52. The 261021 squares stay on R2 as the fallback.
+- **Script:** `2026-10-26-three-builds-files/upload-261024.sh`.
+  - The first launch had a 10-minute tool limit. It was stopped by PID at 21:52 and relaunched
+    detached.
+  - One leftover copy (PID 691894) was still in its first `rclone copy` and was stopped by PID. Its
+    cut-off transfers never became objects, and the read-back below covers every file.
+- **Upload, read back with `rclone check --download` (read):**
+
+  | Step | Done at | Result |
+  |---|---|---|
+  | `segments4/` | 22:44 | uploaded |
+  | `names1/` | 23:03 | uploaded |
+  | `segments4/` read-back | 23:23 | 187 matching, 0 differences |
+  | `names1/` read-back | 23:25 | 187 matching, 0 differences |
+  | counts | | 187 and 187 |
+
+  The upload was slow (about 0.4-0.9 MB/s) because it shared the Wi-Fi with G7.
+- **Manifest last:** `routing/manifest.json` went up at **23:25:59 PDT**.
+  - sha256 `faa23768f6abd5d65f9aaa63ef618800064903513dc00aa557028d597c937aeb`, the same on R2 as
+    locally.
+  - The app's area downloads now get 261024 squares.
+- **Parser check:** the Worker answers 403 for `routing/area.json` and `routing/manifest.json`
+  without the app key, so it couldn't be read through the Worker. Instead the Worker's own
+  `parseManifest` (Forager `origin/pre-main`, `server/pmtiles-worker/src/routing/manifest.ts`) was
+  run under Node 22.23.3 on the copy read back from R2: parsed OK, `runId`
+  usca-20261025T101217Z, `osmTimestamp` 2026-10-24T20:20:51Z, 187 squares. The `names` array is
+  ignored, as expected. Nothing was refused.
+- **R2 `routing/` now:** `manifest.json`, `usca-20261021T111429Z/` (the fallback) and
+  `usca-20261025T101217Z/`.
