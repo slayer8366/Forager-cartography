@@ -7,6 +7,7 @@ set -uo pipefail
 G=/mnt/archive/aspen-elevation-g7
 MRDEM=/vsicurl/https://canelevation-dem.s3.ca-central-1.amazonaws.com/mrdem-30/mrdem-30-dtm.tif
 BASE=https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/current
+H1=/mnt/storage/elevation/hgt1-3dep
 export GDAL_DISABLE_READDIR_ON_OPEN=EMPTY_DIR CPL_VSIL_CURL_ALLOWED_EXTENSIONS=.tif GDAL_HTTP_MAX_RETRY=5 GDAL_HTTP_RETRY_DELAY=4
 name=$1 w=$2 s=$3 us=$4 ca=$5 dep=$6
 out=$G/hgt3/$name.hgt
@@ -34,6 +35,20 @@ if [[ $dep != - ]]; then
     gdalwarp -q "${grid[@]}" -r average -cutline "$G/usa-cutline.geojson" "$cog" "$tif" 2>>"$tmp/err" || fail "3dep warp $(tail -1 "$tmp/err")"
   fi
   src+=("3dep:$dep:$(stat -c%s "$cog")")
+  # US 1" keep-copy (owner via Rowan, 10-27: "US only, from now"), from the COG already here: the
+  # pilot's 1" grid, clipped to the US like the 3" layer. Only onto the mounted 256 GB drive; a
+  # failure here fails the cell, so the cell is retried rather than kept without its 1" copy.
+  if [[ "$(findmnt -no SOURCE /mnt/storage 2>/dev/null)" == /dev/sda1 ]]; then
+    read -r x1 y1 x2 y2 < <(python3 -c "h=0.5/3600; print($w-h, $s-h, $w+1+h, $s+1+h)")
+    gdalwarp -q -overwrite -t_srs EPSG:4326 -te "$x1" "$y1" "$x2" "$y2" -ts 3601 3601 -ot Int16 -dstnodata -32768 \
+      -r bilinear -cutline "$G/usa-cutline.geojson" "$cog" "$tmp/one.tif" 2>>"$tmp/err" || fail "1in warp $(tail -1 "$tmp/err")"
+    mkdir -p "$tmp/h1"
+    gdal_translate -q -of SRTMHGT "$tmp/one.tif" "$tmp/h1/$name.hgt" 2>>"$tmp/err" || fail "1in translate $(tail -1 "$tmp/err")"
+    cp "$tmp/h1/$name.hgt" "$H1/$name.hgt.part" && mv "$H1/$name.hgt.part" "$H1/$name.hgt" || fail "1in copy to $H1"
+    src+=("1in")
+  else
+    fail "1in: /mnt/storage is not the 256 GB drive"
+  fi
   rm -f "$cog"
 fi
 

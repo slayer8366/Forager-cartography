@@ -103,3 +103,26 @@ Aspen. Times are PT. The scripts are in `2026-10-26-elevation-g7-files/`; the wo
 - **At 03:17, before any swap:** 3,375 of 4,403 cells done; 309 3DEP cells not yet done. The first
   three failures were 3DEP downloads (21:25); the fourth is N72W073, an MRDEM HTTP read error.
   All four are retried after the run.
+
+## 1″ swap (10-27 03:39 PDT)
+
+- **Correction:** at about 03:33-03:40 I told Rowan and the owner the 256 GB drive was still on USB 2.
+  That rested on a 03:32:04 check; the owner moved it at 03:32:39 (dmesg: `usb 3-2` disconnect,
+  then `usb 4-1` new SuperSpeed at 03:32:43). The owner: hardware state must be read at the time
+  of answering, not taken from an earlier check.
+- **Read at 03:37:41:**
+  - The 256 GB `forager-storage` is on bus 4, 5000M (USB 3).
+  - **The Lexar is not present.**
+- **Mount at 03:38:05:**
+  - `e2fsck -f -p` clean. `mount /mnt/storage` from fstab; `findmnt` shows `/dev/sda1`, ext4,
+    `rw,noatime`, 207,392,735,232 bytes free.
+  - Existing `forecast-data/`, `lost+found/` and `rollback/` are untouched.
+- **Test:** `cell-1in.sh` on N46W122 in a scratch copy, 29 s.
+  - The 1″ file is 25,934,402 bytes, 3601², origin (−122.000139, 47.000139); Rainier reads 4,386 m.
+  - The 3″ output is byte-identical to G7's.
+  - Test output removed.
+- **Swap at 03:39:05:** `cell-1in.sh` copied to a temp file and moved over `cell.sh`; `g7.sh` untouched.
+  - Done: 3,540 of 4,403. In progress: N74W080, N80W079, N80W080, on the old script.
+  - **US 3DEP cells to get a 1″ copy: 296** (not yet started). The 1,145 US cells done before the
+    swap have none.
+  - The line is also in `logs/g7.log`.
