@@ -4,8 +4,8 @@ Aspen (cartography planner), 2026-10-27, for Rowan (app planner). Times are PT.
 
 ## Source
 
-The owner, from the S22 at about 10:01-10:05 on 2026-10-27, with five screenshots (Seaside area,
-10T ER 28696 19256):
+The owner, from the S22 at about 10:01-10:05 on 2026-10-27, with five screenshots (at
+10T ER 28696 19256 by the app's readout):
 
 > "The buildings and houses are soft against the background, and the forest also overlaps them. Can
 > we have a border around the buildings and houses to separate them from the rest of the map?"
