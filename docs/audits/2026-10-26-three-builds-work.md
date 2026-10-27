@@ -269,3 +269,25 @@ Supersedes "Next" item 1 above.
   ignored, as expected. Nothing was refused.
 - **R2 `routing/` now:** `manifest.json`, `usca-20261021T111429Z/` (the fallback) and
   `usca-20261025T101217Z/`.
+
+## pi-31 merged into pi-build (10-27, about 03:10 PDT)
+
+- **Go:** the owner, verbatim: "Fix the gap, then merge (Recommended)" (Forager RECORD -1711).
+- **Fixes:** S5, N8 and N9 from Sorrel's re-check are in `0d2ebc955`. Sorrel's quick look at
+  `11b38b2e8` on `sorrel-pi31-names` says mergeable. N10-N12 are folded in on the next touch.
+- **Merge:** `20f75d063`, "Merge pi-31-names-stage (dispatch 2026-10-26-pi-31) …", `--no-ff` as for
+  pi-09 and pi-14. Made in a fresh worktree from `origin/pi-build` (`aa14e6eaa`) and pushed. The
+  worktree was removed.
+- **Suites on the Pi at the merge head (read):**
+
+  | Suite | Result |
+  |---|---|
+  | `test_build_names.sh` | 23 checks |
+  | `test_build_usca_functions.sh` | 67 |
+  | `test_fnam_build.py` | 21 tests OK |
+  | `test_build_functions.sh` | 14 |
+  | `test_build_usca_disk.sh` | 95 |
+  | `test_build_usca_run.sh` | 62, exit 0 |
+
+- **Not installed.** `/opt/forager-build/map-build/COMMIT` is still `aa14e6eaa`, with no names stage.
+  Sunday's run makes names only if `20f75d063` is installed before it. That needs a go.

@@ -77,3 +77,29 @@ Aspen. Times are PT. The scripts are in `2026-10-26-elevation-g7-files/`; the wo
   relabelled, and nothing else goes on it (no rollback copy).
 - **2, verbatim:** "Wait for the 256 GB drive (Recommended)". No 1″ keep-copies now. A re-pull, even
   with that drive back, needs the owner's word.
+
+## Drives and 1″, the owner via Rowan, 10-27 early
+
+- **The 256 GB drive came back** about 23:14 PDT on a USB 2 port. It is the old `forager-storage`
+  (same UUID), clean, 207.4 GB free (`dumpe2fs -h`), not mounted. The Lexar was unplugged.
+- **The owner, verbatim: "Move it; Lexar back for backup".** The 256 GB drive goes to the free USB 3
+  port and the Lexar back into the other USB 3 port. The heights backup (3″ `.hgt` + `.bef`) goes on
+  the Lexar, as before. The 256 GB drive holds only 1″ keep-copies.
+- **The owner, verbatim: "US only, from now (Recommended)".**
+  - US 1″ from the 3DEP COGs G7 already fetches, for US cells not yet started. `cell.sh` is swapped
+    atomically; `g7.sh` and running cells are untouched.
+  - No Canada 1″. No re-pull of cells already done without the owner's word.
+- **Order:**
+  1. The owner confirms both drives are moved.
+  2. Check `lsblk` and `lsusb -t`.
+  3. Mount `/mnt/storage` from fstab and check `findmnt` shows `/dev/sda1`.
+  4. Swap `cell.sh`.
+  5. Record the cell count at the swap.
+
+  No drive may be moved mid-write.
+- **The draft is `cell-1in.sh`, not swapped in:**
+  - It writes `/mnt/storage/elevation/hgt1-3dep/<name>.hgt` (3601², bilinear, clipped to the US).
+  - It writes only if `findmnt` shows `/dev/sda1`. Otherwise the cell fails and is retried.
+- **At 03:17, before any swap:** 3,375 of 4,403 cells done; 309 3DEP cells not yet done. The first
+  three failures were 3DEP downloads (21:25); the fourth is N72W073, an MRDEM HTTP read error.
+  All four are retried after the run.
