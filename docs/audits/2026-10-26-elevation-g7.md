@@ -126,3 +126,15 @@ Aspen. Times are PT. The scripts are in `2026-10-26-elevation-g7-files/`; the wo
   - **US 3DEP cells to get a 1″ copy: 296** (not yet started). The 1,145 US cells done before the
     swap have none.
   - The line is also in `logs/g7.log`.
+
+## Owner, 10-27 ~03:45 PDT, in Aspen's window (supersedes the Lexar backup ruling above)
+
+- Verbatim: "The 64GB isn't returning, this is your maps storage now". "This" is the 256 GB Lexar,
+  `forager-storage`, at `/mnt/storage`.
+- **This replaces:**
+  - "Lexar back for backup", which put the heights backup on the 64 GB drive;
+  - "The 256 GB drive holds only 1″ keep-copies".
+- **Now:** the heights backup (3″ `.hgt` + `.bef`, about 17 GB) goes to the 256 GB drive at
+  `/mnt/storage/elevation/`, verified by sha256 after G7 ends, beside `hgt1-3dep/`.
+- The owner also pointed out that both drives are Lexars and that `forecast-data/` on the 256 GB
+  drive is empty. Drives are named by size from here on.
