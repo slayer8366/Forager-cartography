@@ -291,3 +291,26 @@ Supersedes "Next" item 1 above.
 
 - **Not installed.** `/opt/forager-build/map-build/COMMIT` is still `aa14e6eaa`, with no names stage.
   Sunday's run makes names only if `20f75d063` is installed before it. That needs a go.
+
+## pi-31 installed (10-27, about 03:40 PDT)
+
+- **Go:** the owner via Rowan: "Install before Sunday (Recommended)".
+  - The first attempt was refused by this session's permission check as a production deploy,
+    and nothing ran.
+  - The owner then said "Go" in Aspen's window.
+- **How:** the repo's own `map-build/bin/install-map-build.sh`, as for pi-30, from a clean worktree
+  detached at `20f75d063`. The worktree was removed afterwards. `forager-build-usca.service` was
+  inactive.
+- **Checks (read):**
+  - `/opt/forager-build/map-build/COMMIT` = `20f75d063fe0721ddf990f3579d037f2007c3081`.
+  - **Rollback:** `/opt/forager-build/map-build.prev` holds `aa14e6eaa`. The older `e5f5add6` copy
+    moved to `map-build.prev.1793097215`.
+  - The names pins are present (`USCA_NAMES_EXPORT_INDEX=sparse_mem_array`, `USCA_NAMES_JOBS=3`,
+    `USCA_NAMES_MAX_INPUT_NODES=260000000`).
+  - The build user can read and run `build-usca.sh` and `build-names.sh`.
+  - The installed file list matches `git archive 20f75d063 map-build`.
+  - `test_build_usca_functions.sh` from the installed copy: 67 checks.
+  - The timer is unchanged: next run Sun 11-01 02:13 PST.
+- **G7 not affected:** it uses `/opt/forager-build/jdk` and the BRouter jar, not map-build.
+- **Rollback steps:** `sudo mv -T /opt/forager-build/map-build /opt/forager-build/map-build.bad &&
+  sudo mv -T /opt/forager-build/map-build.prev /opt/forager-build/map-build`.
