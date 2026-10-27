@@ -1,0 +1,13 @@
+2026-10-26 21:12:54 PDT cells: 4403; already done: 4
+2026-10-26 21:13:20 PDT cells: 4403; already done: 33
+2026-10-27 03:39:05 PDT swap: done 3540; in progress N74W080 N80W079 N80W080 ; US 3DEP cells to get 1in: 296
+2026-10-27 05:33:49 PDT cells done: 4399 of 4403 (3627 hgt, 772 empty); FAIL lines: 4
+2026-10-27 05:33:49 PDT not all cells done; re-run to resume
+2026-10-27 05:34:04 PDT cells: 4403; already done: 4399
+2026-10-27 05:34:37 PDT cells done: 4402 of 4403 (3630 hgt, 772 empty); FAIL lines: 5
+2026-10-27 05:34:37 PDT not all cells done; re-run to resume
+2026-10-27 05:36:00 PDT cells: 4403; already done: 4402
+2026-10-27 05:36:22 PDT cells done: 4403 of 4403 (3631 hgt, 772 empty); FAIL lines: 5
+2026-10-27 05:36:22 PDT convert
+2026-10-27 05:49:33 PDT bef: 182 files, 1926598934 bytes
+2026-10-27 05:49:33 PDT done

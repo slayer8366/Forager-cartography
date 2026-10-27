@@ -138,3 +138,57 @@ Aspen. Times are PT. The scripts are in `2026-10-26-elevation-g7-files/`; the wo
   `/mnt/storage/elevation/`, verified by sha256 after G7 ends, beside `hgt1-3dep/`.
 - The owner also pointed out that both drives are Lexars and that `forecast-data/` on the 256 GB
   drive is empty. Drives are named by size from here on.
+
+## G7 done (10-27 05:49 PDT); heights backup verified (06:03)
+
+**Cells (read: `logs/g7.log`, `logs/cells.log`, copied here):**
+- Pass 1 ended 05:33:49 with 4,399 of 4,403 done and 4 FAIL lines, by design ("re-run to resume").
+- Pass 2 (05:34): N29W096, N30W099 and N30W100 OK, each with its 1″ copy. N72W073 failed again on
+  the same MRDEM block.
+  - Tested in scratch: every overview choice then read it cleanly, the default one included, so
+    it was a flaky server read.
+  - The cell is Baffin Bay sea: 0.16 % valid, all 0 m.
+- Pass 3 (05:36): N72W073 OK. **4,403 of 4,403: 3,631 `.hgt`, 772 empty.** 5 FAIL lines in total,
+  every one retried OK.
+
+**Store (read):**
+- `ElevationRasterTileConverter all`, 05:36-05:49, no error lines.
+- **182 `.bef`, 1,926,598,934 bytes** (the pilot's estimate was 2.5-4 GB).
+- 3″ `.hgt`: 3,631 files, 10,474,826,654 bytes.
+- In `/mnt/archive/aspen-elevation-g7/bef3`; sha256 list `2026-10-26-elevation-g7-files/bef3.sha256`.
+- 5 squares have no `.bef`, none with US or Canadian land data: W170_N20, W180_N25 (open Pacific,
+  no 3DEP tile), W80_N25 (Bahamas), W95_N15, W95_N20 (Mexico and Guatemala).
+
+**Spot heights**, BRouter's PosUnifier point mode on the store:
+
+| Peak | Reads | Summit |
+|---|---|---|
+| Rainier | 4,375 m | 4,392 m |
+| Denali | 6,134 m | 6,190 m |
+| Robson | 3,868 m | 3,954 m |
+| Washington NH | 1,905 m | 1,917 m |
+| Whitney | 4,359 m | 4,421 m |
+| Logan | 5,878 m | 5,959 m |
+
+3″ averaging reads every peak low.
+
+**Heights backup (owner: the 256 GB drive is the maps storage):**
+- Read at 05:50:17: bus 4 at 5000M, `/dev/sda1`, `rw,noatime`.
+- Copied with rsync to `/mnt/storage/elevation/hgt3/` and `bef3/` in 514 s, 05:51-06:00. Still
+  `/dev/sda1` afterwards.
+- **The first verify did not run:** the checksum lists couldn't be written to the root-owned
+  `/mnt/storage/elevation/`.
+- **Second verify, read back from the drive** after `drop_caches`, against `SHA256SUMS` in each
+  folder: 06:01-06:03, **all 3,631 `.hgt` and all 182 `.bef` OK.**
+
+**US 1″ copies kept:**
+- **295 files, 7,650,660,878 bytes**, in `/mnt/storage/elevation/hgt1-3dep/`, each 25,934,402
+  bytes, with `SHA256SUMS` (written from the drive at 06:04).
+- These are every US 3DEP cell finished after the 03:39 swap. The "296" counted at the swap was one
+  too many: a cell finishing as the count ran.
+- 1,146 US cells have no 1″ copy.
+
+**Drive at 06:04:** `/mnt/storage` is 52 GB used, 175 GB free; `elevation/` is 20.05 GB. Nothing is
+writing.
+
+**Not done:** G8 (the weekly build's PosUnifier pointed at `bef3`) waits for the owner's word.
