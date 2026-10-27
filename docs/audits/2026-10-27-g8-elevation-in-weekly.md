@@ -84,3 +84,40 @@ report and go.
 2. Merge `pi-32-elevation` into `pi-build`, then run `install-map-build.sh` from a clean worktree.
    `map-build.prev` becomes `20f75d063`.
 3. Check `COMMIT`, and run `bef_store_ok … full` on the installed path.
+
+## Sorrel's review and the fixes (10-27 morning)
+
+- **Review:** Forager `sorrel-pi32-elevation` `c3c914b70`, `docs/reviews/2026-10-27-sorrel-pi32-elevation.md`.
+  Mergeable, nothing blocking.
+- **The owner, verbatim:** "Fix the gap, then install (Recommended)".
+- **Fixes in `ea67332db` on `pi-32-elevation`:**
+  - **S1:** `heights_read_ok` runs after each band's PosUnifier. It stops the run if a node tile is
+    left `<SQUARE>.u5d` (no heights read) for a square not in the new pin
+    `USCA_BEF_NONE="W170_N20 W180_N25 W80_N25 W95_N15 W95_N20"`.
+    - **The marker was read on the Pi first,** with BRouter 1.7.10 on the 261024 USVI extract:
+      with the store, `W65_N15.u5d_3` and `W70_N15.u5d_3`; with an empty folder, `W65_N15.u5d` and
+      `W70_N15.u5d`.
+  - **N1:** the state-stage check is skipped on `--fetch-only`.
+  - **N3:** a failed full check names the files.
+  - **N4:** the quick check compares names, not only counts.
+  - **N5:** a missing store says when the card isn't mounted.
+  - **N2:** R10 is now a behavioural test for the brouter stage.
+- **Tests:**
+
+  | Suite | Result |
+  |---|---|
+  | functions | 83 (7 new) |
+  | run | 69 |
+  | names | 23 |
+  | disk | 95 |
+  | build_functions | 14 |
+  | fnam | 21 |
+
+  The run suite's new scenarios:
+  - **R10:** with the store there, the run reaches WayLinker and logs the pinned squares. With the
+    store gone after the cutter, it fails at brouter, naming W125_N45, before WayLinker.
+  - **R11:** `--fetch-only` isn't stopped by a missing store.
+- **Revert checks,** each run once: without the heights check R10 fails; without the gate R11
+  fails; without the name comparison the quick-check name test fails.
+- **Side note:** BRouter's cutter takes about 2 min to start even on a 0.9 MB input (121 s, 4 GB
+  heap); a 120 s timeout cut off the first try.
