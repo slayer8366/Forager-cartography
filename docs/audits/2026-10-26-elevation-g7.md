@@ -63,3 +63,17 @@ Aspen. Times are PT. The scripts are in `2026-10-26-elevation-g7-files/`; the wo
 
 - **Started 21:13:20**, after a first launch at 21:12 was stopped by PID and relaunched detached
   (the tool's background limit is 2 h). 33 cells were already done; `cells.log` keeps every cell.
+
+## Owner rulings on storage (via Rowan, 10-26 evening)
+
+- **Devices (read, nothing written):**
+  - The "64GB SSD" is the Lexar USB flash stick: `/dev/sda`, 61.9 GB, ext4, label `forecast-data`,
+    empty, on the 5 Gbps port.
+  - The micro SD is loose. The Pi's one slot holds the 128 GB archive card, and no reader is
+    attached.
+  - The 256 GB drive is not connected.
+- **1, verbatim:** "Yes: back up heights (Recommended)". After G7 ends, the 3″ `.hgt` and the `.bef`
+  (about 17 GB) are copied to the Lexar and verified by sha256. It is not to be reformatted or
+  relabelled, and nothing else goes on it (no rollback copy).
+- **2, verbatim:** "Wait for the 256 GB drive (Recommended)". No 1″ keep-copies now. A re-pull, even
+  with that drive back, needs the owner's word.

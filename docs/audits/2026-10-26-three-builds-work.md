@@ -213,3 +213,26 @@ Supersedes "Next" item 1 above.
     `osm_sequence`, `files` (`segments4` only) and the new top-level `names` array. A copy is in
     `2026-10-26-three-builds-files/routing-manifest-261024-staged.json`. It goes up last.
   - Waits for the owner's go, through Rowan, typed in Aspen's window.
+
+## Sorrel's pi-31 review and the owner's S3 (10-26, 22:10)
+
+- **Review:** Forager `sorrel-pi31-names` `c52732724`, `docs/reviews/2026-10-26-sorrel-pi31-names.md`.
+  No blocking findings.
+- **S1 and S2 done** in `932c0a0ee` on `pi-31-names-stage`:
+  - `USCA_NAMES_MAX_INPUT_NODES=260000000`, checked right after the names cut, before BRouter. One
+    node past 2^28 doubles the index to 8.6 GB. `sparse_file_array` is named as the switch.
+  - The highway cut's size is logged, and `pins.env`'s disk section says what the names stage holds.
+  - N2 and N3 are in the same commit.
+  - `test_build_names.sh` has 23 checks. The new node-limit check fails with its own message when
+    the check is removed (revert check, run once).
+  - **Pipeline peak, corrected (read):** osmium 4.2 GB plus the encoder's own 1.24 GB
+    (`names-summary.json` `peak_rss_kib` 1,245,744) plus 3 × 45 MB workers, so about 5.6 GB, not 4.2.
+  - Sorrel re-checks before the merge into `pi-build`.
+- **S3, the owner via Rowan, verbatim:** "Whole week fails (Recommended)". A names failure keeps
+  `die`; S1 makes the out-of-memory case stop before BRouter.
+- **S4:** Rowan carries the FNAM v1 spec into Forager.
+- **N1:** Sorrel ran eight revert checks, and the record's one is above.
+- **N4, disclosed:** the four earlier pi-31 commits (`d99f9d2eb`, `c9f6c3c3c`, `542964537`,
+  `6cdfaef15`) carry a model-named co-author line, the recorded slip pattern (Forager RECORD -506,
+  -510). They are not amended. `932c0a0ee` uses the line without a model name.
+- **N5-N7:** noted and not changed.
