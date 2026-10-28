@@ -51,3 +51,24 @@ Everything is in `~/pi-handoffs/wayto-houses-261028/`, on the Pi only, because t
 - Do not change the Pi build, the `.rd5` and `.fnm` formats, BRouter 1.7.10 on the Pi, or R2.
 - Do not edit `hiking-mountain.brf` to fix this. The profile already produces the right route.
 - Keep the owner's coordinates out of anything pushed. Use the files in the handoff folder, or a shifted copy.
+
+## Outcome of steps 1 and 2 (Willow, 10-28 ~12:25 PDT). This supersedes "What the planner checked"
+
+- **The planner's premise was wrong.** The phone's route *is* the reference route. Willow called the engine
+  exactly as `BRouterTrailRouter.kt:146-163` does, on the handoff files, and got the same 12 points, 395 m
+  and cost 550. The route ends at the dead end of Legato Drive, 69 m from the pin. The planner checked the end
+  against the 10-26 extract (Legato Drive, 7 m). The reference's 69 m straight leg is the same leg across the
+  houses. The planner's "routes correctly, crosses no houses" was not checked against the buildings and is
+  withdrawn.
+- **Why it looked different:** the map was rotated, with a bearing of roughly 140–150°. That is fitted from
+  the road angles, because the bearing was not logged.
+- **Cause:** the routed part ends where BRouter matches the waypoint to its *nearest routable* way
+  (`FindWayToWaypointUseCase.kt:70,79-85`). The app adds no end-point logic. The approach the owner wants is
+  Parrish Road at the mouth of the private driveway, which is 73 m away, 4 m farther than Legato. So it is
+  never picked.
+- **Proposals, waiting on the owner:** A. End the route where a nearer closed way (private or no access)
+  meets a routable way, then a second engine run to that junction. B. Show the map's bearing during a
+  way-to while the map is rotated.
+- **Step 3's test is withdrawn as written.** It already passes on `4113c0780`. A replacement test asserts
+  that the route ends within about 10 m of the closed way's junction. It needs a public stand-in place, or it
+  stays Pi-local.
