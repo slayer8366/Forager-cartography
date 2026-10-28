@@ -92,3 +92,6 @@ difference between one side of a ravine and the other. The trail can't be good e
 **Data limits to resolve before building:**
 - OSM rarely has property lines.
 - Where do "private property", rivers and elevation come from on the phone, offline?
+
+**Owner, 10-28 (follow-up):** use **building footprints and fences** (`barrier=fence` and related) as the
+property lines for rule 2. No parcel data is needed.
