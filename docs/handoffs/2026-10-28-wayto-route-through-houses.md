@@ -187,3 +187,16 @@ The full report is in the planner's session; its scratch scripts are in the sess
 
 **Known limit:** areas downloaded before Sunday's upload have no `barriers` layer. The reader PR is to read the
 tile metadata, and say "fences not checked" instead of passing the gate.
+
+## pi-33 installed (10-28 16:43 PDT; planner checked 16:55)
+
+- **map-build:** `/opt/forager-build/map-build/COMMIT` = `5cbb559df`. The previous install is in `map-build.prev`
+  (`532f70fd6`).
+- **Jar:** sha256 `0cd6b501…`. It differs from the scratch build because the jar is stamped at build time.
+  496 tests, 0 failures, including all 11 new cases.
+- **Timer:** enabled, service inactive. The next run is **Sun 11-01 02:02:07 PST**. The unit is `Sun 10:00 UTC`
+  plus a random delay of up to 30 min, and the clocks change before then. The earlier "02:29" was the PDT-era
+  figure, and this supersedes it.
+- **Rollback:** jar `32126b8c…` from `/mnt/storage/rollback/basemap-jar-before-pi33/`, then swap `map-build.prev`
+  back in. Do not rerun `build-basemap-jar.sh` afterwards.
+- **PR 1:** slayer8366/Forager#433 → pre-main, head `8a8326af1`. PR CI run `40789014996` is green, 5 of 5 jobs.
