@@ -95,3 +95,12 @@ difference between one side of a ravine and the other. The trail can't be good e
 
 **Owner, 10-28 (follow-up):** use **building footprints and fences** (`barrier=fence` and related) as the
 property lines for rule 2. No parcel data is needed.
+
+**Owner, 10-28 (follow-up 2):** "For trails, the legs can stay so long as they pass our determined gates to
+be useful."
+- **Planner's reading:** on trails, the straight off-trail legs stay. That means the lead-in from the walker
+  and the final leg to the pin. Each is kept only if it passes the same gates: no building, no fence, no river,
+  no sharp drop.
+- The street-in-front drop-off applies where the pin is served by streets.
+- A leg that fails a gate is handled by rule 4.
+- **Open:** Willow is to propose how the app tells a trail case from a street case.
