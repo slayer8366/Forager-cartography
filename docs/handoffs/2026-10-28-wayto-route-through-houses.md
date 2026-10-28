@@ -138,3 +138,27 @@ straight leg, subject to the gates.
 7. Test fixtures: Boise (a stranger's home), or synthetic only.
 
 The full report is in the planner's session; its scratch scripts are in the session scratchpad.
+
+## Owner's go (10-28 ~15:10 PDT)
+
+1. **Elevation:** ship without the drop gate, and **show no note** about it. The 10 m elevation data is a
+   separate project for later. Not dispatched now.
+2. **Fences go into the weekly build.** Per the planner's recommendation, which the owner accepted under "the
+   rest is good", the address **street name** goes in with them.
+
+**The rest of the design is approved as proposed:**
+- closed ways are decoded from the route square, and the profile is not edited;
+- "river" means river, stream, ditch, canal and wetland, and culverts pass;
+- thresholds are 15, 25, 150 and 300 m;
+- tests use synthetic fixtures only in the repo, and the real case and Boise stay Pi-local.
+
+**Dispatched to Willow:**
+- the app work, in Willow's order of 5–7 PRs, with fixtures first;
+- the build change for fences and address streets.
+
+**Build change, procedure:**
+- Test on one band, report, and keep a rollback.
+- Installing it on the Pi before Sunday 11-01's 02:29 PST run needs the planner's check of the one-band
+  result first.
+- No R2 change. The new data arrives with Sunday's run through the normal upload, which needs the owner's go
+  as usual.
