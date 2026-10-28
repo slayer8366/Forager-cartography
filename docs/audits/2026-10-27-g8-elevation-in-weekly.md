@@ -316,3 +316,14 @@ Read 08:01 PDT from `/srv/forager-build/status-usca.json` and `logs/usca-2026102
 - **Free afterwards (read 08:01 PDT):** NVMe 177,126,944,768 B (177.1 GB); card 79,824,650,240 B (79.8 GB);
   `/mnt/storage` 169.1 GB.
 - **Not done:** no R2 upload. That needs the owner's go. Sunday 11-01's run is unchanged.
+
+## R2 upload, 10-28 (supersedes "Not done: no R2 upload" above)
+
+- **Upload went live 10:09 PDT 10-28** (`/mnt/archive/aspen-upload-261026/upload.log`). It started 08:35 PDT.
+  - segments4: 187 `.rd5` up by 09:52; read-back `0 differences found, 187 matching files` at 10:05.
+  - names1: 187 `.fnm`, 603,705,657 B, up by 09:53; read-back `0 differences found, 187 matching files` at 10:09.
+  - Counts 187/187, so the manifest was sent. `routing/manifest.json` now has run_id `usca-20261027T221400Z`.
+    Local and R2 sha256 match: `7ac9341a…f81ef`.
+- **Rollback:** the earlier manifest is saved as `manifest-261024-before.json` in the same folder. The
+  usca-20261021T111429Z and usca-20261025T101217Z sets are still on R2.
+- **Not yet checked:** fetching the squares and names through the Worker with the app key, and a route on the phone.
