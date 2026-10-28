@@ -104,3 +104,37 @@ be useful."
 - The street-in-front drop-off applies where the pin is served by streets.
 - A leg that fails a gate is handled by rule 4.
 - **Open:** Willow is to propose how the app tells a trail case from a street case.
+
+## Willow's design report (10-28 ~15:00 PDT): design only, nothing changed
+
+**What exists offline today:**
+- Building and water polygons are in the downloaded z10–15 map tiles, but the app has no code that reads them.
+- Fences are not on the phone at all.
+- Around the pin, the 10-26 extract has 0 barrier lines. The planner checked this too: 620 buildings and 0 barrier ways in the small box.
+- The route square's heights are from a 3-arc-second grid, about 92 × 65 m, sampled only at road nodes. That is
+  too coarse to see a ravine.
+- The pin's private driveways are in the route square.
+
+**Choosing the drop-off:**
+1. Find where the pin building's private access way comes out onto a public road.
+2. Then, if the build ever ships it, the address street.
+3. Then frontage: the shortest leg that passes the gates.
+
+Here this picks Parrish Road at the driveway mouth: a 73.4 m leg that crosses 0 buildings. The Legato leg
+crosses 2 buildings and fails.
+
+**Street end or trail end** is decided by buildings within 15 m, or built-up landuse. A trail end keeps the
+straight leg, subject to the gates.
+
+**Size:** about 5–7 PRs. Elevation is a separate project: a 1/3-arc-second USGS grid per downloaded area.
+
+**Calls waiting on the owner:**
+1. Elevation: block street drop-offs until it ships, or show "drop not checked".
+2. Fences: ship them in the build, or leave that gate off with a note.
+3. The address street in the basemap.
+4. Decode closed ways from the route square, or use a derived profile.
+5. What counts as a river.
+6. The thresholds.
+7. Test fixtures: Boise (a stranger's home), or synthetic only.
+
+The full report is in the planner's session; its scratch scripts are in the session scratchpad.
