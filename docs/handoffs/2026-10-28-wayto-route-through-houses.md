@@ -72,3 +72,23 @@ Everything is in `~/pi-handoffs/wayto-houses-261028/`, on the Pi only, because t
 - **Step 3's test is withdrawn as written.** It already passes on `4113c0780`. A replacement test asserts
   that the route ends within about 10 m of the closed way's junction. It needs a public stand-in place, or it
   stays Pi-local.
+
+## Owner's ruling (10-28 ~14:10 PDT). Replaces proposals A and B, which were both declined
+
+The owner said: "The route didn't take me to the house. It took me to the house behind it. That's the
+difference between one side of a ravine and the other. The trail can't be good enough, it has to be precise."
+
+1. **Drop-off at the street in front of the pin, the way Google does it.** The route ends on the public street
+   the pin's property faces. In this case that is Parrish Road, where the driveway to the pin starts. It is
+   **not** the nearest way in a straight line. The route must not go up private ways, including the pin's
+   own driveway. That was the planner's suggestion, and the owner said no.
+2. **The distance from the drop-off to the pin can vary.** The line from the drop-off to the pin must not cross
+   buildings, private property or rivers.
+3. **Use elevation to detect sharp drops** (a ravine, a bluff) between the drop-off and the pin, and reject any
+   drop-off that has one.
+4. Still applies from the planner, and the owner did not reject it: if no drop-off meets 2 and 3, the app says
+   so plainly. It does not draw a confident line or say "by trail".
+
+**Data limits to resolve before building:**
+- OSM rarely has property lines.
+- Where do "private property", rivers and elevation come from on the phone, offline?
