@@ -162,3 +162,28 @@ The full report is in the planner's session; its scratch scripts are in the sess
   result first.
 - No R2 change. The new data arrives with Sunday's run through the normal upload, which needs the owner's go
   as usual.
+
+## Progress (10-28 16:40 PDT, planner checked)
+
+**PR 1, the fixtures:**
+- Branch `wayto-dropoff-fixtures` at `8a8326af1`, based on pre-main.
+- The planner's dispatch said main. That was wrong: the repo's `CLAUDE.md` names pre-main as the target.
+- The fixture is a made-up street block drawn in the open Atlantic. Cases: A, the owner's trap; B, a fence;
+  C, a stream with a culvert; D, a trail pin; D2, a trail pin with a stream.
+- CI run `40784532287`, started by `workflow_dispatch`: 5 of 5 jobs green, 5,897 tests, 0 failures.
+- PR 1 to be opened against pre-main.
+
+**pi-33, the build change:**
+- Branch `pi-33-fences-addr` at `5cbb559df`. Basemap patch 0003 adds a `barriers` layer at z15 (fence, wall,
+  hedge, retaining_wall), keeps `addr_street` at z15, and puts `tunnel` on water lines from z14.
+- Boise one-box proof: 111,993 of 111,994 address points carry a street, 128 barrier lines, 405 tunnel tags.
+  z15 is +3.1 %, the whole archive +1.9 %. The full US is estimated at +0.6–1.1 GB.
+- Approved by the planner: tunnel (needed for culverts), retaining_wall included, and area hedges left out as
+  a known gap.
+- Install approved before Sunday 11-01.
+- **Rollback:** map-build `532f70fd6` plus the jar `32126b8c…` in
+  `/mnt/storage/rollback/basemap-jar-before-pi33/`, which the planner checked with `sha256sum -c`.
+- NVMe had 175.8 GB free at 16:40.
+
+**Known limit:** areas downloaded before Sunday's upload have no `barriers` layer. The reader PR is to read the
+tile metadata, and say "fences not checked" instead of passing the gate.
