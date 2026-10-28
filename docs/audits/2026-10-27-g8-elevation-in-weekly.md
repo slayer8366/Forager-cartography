@@ -287,3 +287,32 @@ report and go.
   - Card 79.8 GB free against 42.7 GB needed.
   - **Elevation store: 182 `.bef` matching SHA256SUMS (`36b05da7…`)**, the full check, 15:14:10-15:14:31.
 - **Then:** fetch-extracts from 15:14:32. Expected end about 06:45 PDT Wed 10-28 (inferred, 15.5 h).
+
+## Early run finished (10-28 05:59 PDT): ok
+
+Read 08:01 PDT from `/srv/forager-build/status-usca.json` and `logs/usca-20261027T221400Z.log`.
+
+- **End state:** `state ok`, `stage done`, no warnings. Published
+  `/srv/forager-build/out-usca/20261026T212446Z` at 12:59:23Z (05:59 PDT), 14 h 45 min after the start.
+- **Stage times (log):**
+  - downloads 15:14-17:23; merge to 17:46;
+  - Planetiler 17:46-01:32 (27,940 s, 7 h 46 min; last week 8 h 42 min);
+  - routing input 01:32-02:02 (829,409,865 nodes, 77,320,127 ways); bands 02:02-02:48;
+  - BRouter 02:48-05:48; names 05:48-05:54; validate 05:54; publish 05:54-05:59.
+- **Heights (G8), first full run:**
+  - No `read no heights` failure (0 matches in the log).
+  - `no heights, as pinned` lines, all only squares in `USCA_BEF_NONE`:
+    - -180:-125: W170_N20 W180_N25
+    - -100:-95, -95:-90, -90:-85: W95_N15 W95_N20. The squares sit on these bands' widened extracts.
+    - -85:-80, -80:-75: W80_N25
+    - The other bands printed none, so every square there read heights.
+  - Squares kept per band: 48, 9, 19, 20, 11, 13, 11, 12, 11, 33 = **187**.
+- **Names check:** `187 .fnm files, one per .rd5; 603705657 bytes; largest W75_N40.fnm, 38054680 bytes`.
+- **Validate:** archive z0-15, 9 layers, roads with all six trail keys; 9 sample points covered; 187 `.rd5`, 187 `.fnm`.
+- **Route squares:** 187 `.rd5`, **1,748,674,894 B**, against 261024's 1,563,722,864 B: **+11.8 %** (expected
+  +10-14 %; most of it is the heights). Archive `forager-usca.pmtiles` 34,137,101,257 B.
+- **Rotation:** publish removed the old output 20261024T202051Z and the 261024 extracts (NVMe and card). The
+  261024 set on R2 is untouched and still live.
+- **Free afterwards (read 08:01 PDT):** NVMe 177,126,944,768 B (177.1 GB); card 79,824,650,240 B (79.8 GB);
+  `/mnt/storage` 169.1 GB.
+- **Not done:** no R2 upload. That needs the owner's go. Sunday 11-01's run is unchanged.
