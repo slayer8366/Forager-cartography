@@ -226,3 +226,23 @@ tile metadata, and say "fences not checked" instead of passing the gate.
 - The planner leans to (b), before Sunday's run.
 - A phone check of the S26's `mbgl-offline.db` was not possible at 17:44: the phone was no longer connected to the
   Pi (`adb: no devices`).
+
+## PR 4 open (10-28 18:25 PDT)
+
+**#437** (`5dc73e7cb`): the street/trail classifier, the drop-off chooser (driveway mouth, then address street,
+then frontage) and the building, fence and water gates. Culverts pass. Anything unknown is "unchecked", never a
+pass. Fence state is passed tile by tile. CI green, 5,946 tests. It merges after #433, #435 and #436.
+
+**On the owner's case** (a Pi-local test, not committed):
+- The pin is a street end.
+- Parrish Road's three candidates pass the building and water gates: the two driveway mouths at 73.5 m and the
+  address street at 73.4 m.
+- Legato fails on buildings.
+
+**The fence gate:**
+- The build lists the `barriers` layer only if at least one fence exists somewhere in the archive. A tile set's
+  label therefore can't tell "no fences mapped here" from "fence data never loaded". This strengthens the case for
+  per-tile marking, option (b).
+- There are 0 fences mapped around the owner's pin. The gate can only stop legs where OSM has fences.
+
+**Next:** PR 5, the wiring, the plain note, and the street-end test that fails on 4113c0780.
