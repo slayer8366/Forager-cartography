@@ -246,3 +246,14 @@ pass. Fence state is passed tile by tile. CI green, 5,946 tests. It merges after
 - There are 0 fences mapped around the owner's pin. The gate can only stop legs where OSM has fences.
 
 **Next:** PR 5, the wiring, the plain note, and the street-end test that fails on 4113c0780.
+
+## Owner: option (b) (10-28 evening)
+
+**Ruling:** every z15 tile is marked in the build, so the app reads fence coverage per tile and not from the
+tile set's label.
+- It goes into Sunday 11-01's 02:02 PST run, as a pi-34 build change on top of pi-33, plus the reader change.
+- Same procedure as pi-33:
+  - prove it on a small area first;
+  - keep a rollback (map-build `5cbb559df`, jar `0cd6b501…`);
+  - the planner checks before install;
+  - no R2 change until the owner gives the go on the upload.
