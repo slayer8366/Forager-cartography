@@ -284,3 +284,11 @@ tile set's label.
 2. **The wording of the three notes.**
 3. **No pick-up chooser at the walker's end.** That leg is only checked.
 4. **The cost of the second engine run** is not timed yet, because the S26 is not connected.
+
+## pi-34 installed (10-28 19:41 PDT; planner checked afterwards)
+
+- **map-build:** `/opt/forager-build/map-build/COMMIT` = `288ce80cf`. `map-build.prev` = `5cbb559df`.
+- **Jar:** sha256 `1d892172…`. 499 tests; BarriersTest 8 of 8.
+- **Timer:** next run Sun 11-01 02:02:07 PST. The service is inactive.
+- **Rollback:** jar `0cd6b501…` from `/mnt/storage/rollback/basemap-jar-before-pi34/`, then swap
+  `map-build.prev` back in.
