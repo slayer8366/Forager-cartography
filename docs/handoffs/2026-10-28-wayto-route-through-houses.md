@@ -200,3 +200,29 @@ tile metadata, and say "fences not checked" instead of passing the gate.
 - **Rollback:** jar `32126b8c…` from `/mnt/storage/rollback/basemap-jar-before-pi33/`, then swap `map-build.prev`
   back in. Do not rerun `build-basemap-jar.sh` afterwards.
 - **PR 1:** slayer8366/Forager#433 → pre-main, head `8a8326af1`. PR CI run `40789014996` is green, 5 of 5 jobs.
+
+## PRs 2 and 3 open (10-28 17:43 PDT)
+
+- **#435, the offline tile reader** (`90c4a58af`):
+  - Reads buildings, addresses with their street, water with culverts, landuse and barriers from MapLibre's
+    offline database.
+  - A tile set without a barriers layer gives "fences not checked".
+  - CI green, 5,924 tests.
+- **#436, the closed-way reader** (`94160ad4a`):
+  - Uses BRouter's decoder and leaves the profile untouched.
+  - Finds where a private access way comes out onto a public street.
+  - In the owner's square (Pi-local test, not committed), the exits are the two driveway mouths on the street in
+    front, 73.5 m from the pin. The dead end behind is not one of them.
+  - CI green, 5,908 tests.
+- Both are stacked on #433 and merge after it.
+
+**Open design gap, for the owner:**
+- "Fences checked" is read from the tile set's stored description, not from each tile.
+- An older download could be misread as checked if MapLibre refreshes the description but not the tiles.
+- Willow's options:
+  - (a) accept it;
+  - (b) mark every z15 tile in the build;
+  - (c) compare dates.
+- The planner leans to (b), before Sunday's run.
+- A phone check of the S26's `mbgl-offline.db` was not possible at 17:44: the phone was no longer connected to the
+  Pi (`adb: no devices`).
