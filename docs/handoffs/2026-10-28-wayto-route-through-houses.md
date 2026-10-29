@@ -257,3 +257,30 @@ tile set's label.
   - keep a rollback (map-build `5cbb559df`, jar `0cd6b501…`);
   - the planner checks before install;
   - no R2 change until the owner gives the go on the upload.
+
+## pi-34, #439 and PR 5 (#438) (10-28 19:38 PDT; pi-34 checked by the planner at 19:39)
+
+- **pi-34 (`288ce80cf`)**, basemap patch 0004:
+  - Adds a field-less point at (0,0) to the barriers layer of every z15 tile, so a tile without fences still
+    says that fence data was loaded.
+  - 499 tests, and the new cases fail on 0003.
+  - Boise: 374 of 374 tiles marked. The owner's area: 9 of 9. Cost +0.10 % of the archive.
+  - Rollback `/mnt/storage/rollback/basemap-jar-before-pi34/` (jar `0cd6b501…`, map-build `5cbb559df`) passes
+    `sha256sum -c`.
+  - Install approved.
+- **#439:** fences, culverts and address streets are read from each tile's mark, not from the TileJSON. A tile
+  without the mark is never a pass. CI green, 5,948 tests.
+- **#438, PR 5:**
+  - Puts the drop-off and the gates into the way-to route.
+  - A failed check gives a plain note, with no drawn route and no "by trail".
+  - `FindWayToWaypointDropOffTest` fails on 4113c0780 for cases A, B and C (for example "the trail ends 141.4 m
+    from dropoff_a"). The trail pin passes on both.
+  - CI green, 5,952 tests.
+- **Merge order:** #433 → #435 → #436 → #437 → #439 → #438.
+
+**Open with the owner:**
+1. **When to merge and ship.** Areas downloaded before Sunday's upload have no mark, so way-to turns into the
+   note on them until they are downloaded again.
+2. **The wording of the three notes.**
+3. **No pick-up chooser at the walker's end.** That leg is only checked.
+4. **The cost of the second engine run** is not timed yet, because the S26 is not connected.
