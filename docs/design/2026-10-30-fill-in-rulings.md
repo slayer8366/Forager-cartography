@@ -265,3 +265,15 @@ Nothing is dispatched, published or installed yet.
   - **Unchanged:** `landuse_park_outline`.
   - **Not possible from these tiles:** parking-lot outlines, because parking isn't in the landuse
     layer.
+- **Willow's check against Carto** (gravitystorm/openstreetmap-carto master `9295745d`):
+  - Matches: `@industrial: #ebdbe8` (`landcover.mss:22`) and `@building-fill: #d9d0c9`
+    (`buildings.mss:1`).
+  - Differs: `@building-line` is `darken(@building-fill, 15%)`, which is `#b9a99c`, not `#c4b6ab`.
+  - Carto's `@industrial-line` is `#c6b3c3` (`landcover.mss:23`).
+- **The owner, in Aspen's window (about 15:10):**
+  - "OSM's #b9a99c (Recommended)";
+  - "Keep OSM's steps (Recommended)": tan with Carto's darker step at z14, which is
+    `darken(#d9d0c9, 4%)`, and the outline from z15;
+  - "Accept the inversion (Recommended)": v4's night buildings are the plain inversion of tan (fill
+    `#372e27`). This replaces -1733's night greys for v4 only. v1-v3 are unchanged.
+  - "OSM's #c6b3c3 (Recommended)" for the industrial edge.
