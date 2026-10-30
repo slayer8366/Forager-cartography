@@ -188,3 +188,6 @@ Nothing is dispatched, published or installed yet.
 - **Design note for the owner:** at night in forest at z13 and above, the black tertiary (3.28:1,
   2.26 px) outranks the night footpath (2.58:1, 1.35 px). The rail is slightly above the footpath.
   This follows from the OSM-like ruling.
+- **The owner, on the night-forest catch:** "Sage fixes it (Recommended)". Sage will propose night
+  tertiary and rail colours that stay OSM-like but sit under the trails in forest, for the owner to
+  pick. Willow adds the pick to PR #448.
