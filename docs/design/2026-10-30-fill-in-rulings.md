@@ -135,3 +135,22 @@ Nothing is dispatched, published or installed yet.
   - the owner's go to merge.
 
   The Worker deploy and the app switch, which adds v4 to `STREET_STYLE_URLS`, are each their own go.
+
+## S22 first look, and "the exact same design as OSM" (about 11:20-11:40)
+
+- **The owner, on the S22 with the v4 debug build beside the OSM layer near Portland at about z10:**
+  "Better, but when zoomed out the detail is still sparse. Is this the rest of the fix?"
+- **Aspen read the live tiles:** there are no minor roads below z12 (inner Portland: z10 and z11 have
+  none; z12 has 8).
+- **The owner, asked about the tile change:** "I didn't skip it. I asked for the exact same design as
+  OSM".
+  - **Ruling 3 above ("No tile-build change") is withdrawn.** It was the planner's reading of "skip
+    the tile change", and it was offered as a recommendation.
+  - **The aim is OSM's glance-level look,** including the street grid.
+- **Next:**
+  - **Willow:** a measure-only pilot of minor roads from z11 and from z10 on Oregon
+    (`prompts/preserved/2026-10-30-coder-02-street-grid-pilot.md`). Nothing goes into the weekly
+    build without the owner's go.
+  - **Motorways** (`#f0b95c`) read almost the same as trunk (`#f2bf72`). The owner chose "Ask Sage
+    for options (Recommended)", aiming for OSM's look. The night amber for motorways stays as ruled
+    unless the owner changes it.
