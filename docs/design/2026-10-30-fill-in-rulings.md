@@ -199,3 +199,9 @@ Nothing is dispatched, published or installed yet.
   have a border around forests, parks, bodies of water, etc.?"
 - **Sent to Sage** for options: outlines for each fill type, with colour, width, zooms and night.
   Then the owner picks, and Willow builds it into v4.
+- **The owner, with a matching pair (v4 against the OSM layer, same place at z16):** "OSM does this
+  faintly". **The aim is faint, OSM-style edges.** Aspen's read of the pair:
+  - the golf course has a thin edge a shade darker than its fill;
+  - industrial is OSM's lilac-pink, not our pale blue, so it parts from the earth by hue;
+  - buildings are a warm tan with a darker outline;
+  - the parking lot has a thin outline.
