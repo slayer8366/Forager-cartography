@@ -224,3 +224,44 @@ Nothing is dispatched, published or installed yet.
   - **Rail:** drop `roads_rail` from v4's night-layers, so it inverts to `#636c6f`.
 - **Trails** are the strongest line at night on forest, grass and ground with this set. Calculated by
   Sage.
+
+## Borders, industrial and buildings (about 14:55)
+
+- **Sage's options:** the sage-10 borders renders, in `/tmp/sage10-work/strips/borders-*`, off
+  GitHub. They're also on the owner's private study page.
+- **The owner, in Aspen's window:**
+  - "Faint (Recommended)";
+  - "No edge at night (Recommended)";
+  - "Lilac, like OSM (Recommended)";
+  - "Tan, like OSM". **This replaces RECORD -1733's grey buildings.**
+- **The spec (Sage's FAINT):**
+  - **Layers:** `landuse_edges` (source-layer landuse) and `water_edges` (water polygons), after
+    `landuse_pier`.
+  - **Width:** linear, 0.5 at z13, 0.75 at z15, 1.0 at z17. Minzoom 13. Residential, commercial and
+    railway land start at z14.
+  - **Edge colours** (day; night is the plain inversion):
+
+    | Area | Edge |
+    |---|---|
+    | Forest and wood | `#94b988` |
+    | Grass kinds | `#c2cdaa` |
+    | Parks | `#b4caa8` |
+    | Urban green | `#88b99d` |
+    | Wetland | `#adc8bc` |
+    | Bare rock | `#b0aba4` |
+    | Residential | `#c3bfba` |
+    | Commercial | `#d0bdb9` |
+    | Railway land | `#c4bfc2` |
+    | Farmland | `#ccceb4` |
+    | School and similar | `#c9c3bd` |
+    | Hospital | `#c9c0bf` |
+    | Water | `#71c3ce` (no edge at night; accepted) |
+    | Industrial | `#cfc1cc` (it goes with the lilac) |
+
+  - **Industrial fill** `#d1dde1` → `#ebdbe8`.
+  - **Buildings** from z14: fill `#d9d0c9`, outline `#c4b6ab`.
+  - **To confirm:** Sage recalled the lilac and tan values from OSM Carto's own files. Willow confirms
+    them against Carto.
+  - **Unchanged:** `landuse_park_outline`.
+  - **Not possible from these tiles:** parking-lot outlines, because parking isn't in the landuse
+    layer.
