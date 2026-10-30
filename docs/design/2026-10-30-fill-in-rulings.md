@@ -154,3 +154,37 @@ Nothing is dispatched, published or installed yet.
   - **Motorways** (`#f0b95c`) read almost the same as trunk (`#f2bf72`). The owner chose "Ask Sage
     for options (Recommended)", aiming for OSM's look. The night amber for motorways stays as ruled
     unless the owner changes it.
+
+## Motorways (about 11:55)
+
+- **Sage's options** (sage-10 renders in `/tmp/sage10-work/strips/`, off GitHub; also on the owner's
+  private study page): A, OSM Carto pink; B, brick; C, deep orange.
+- **The owner, in Aspen's window:**
+  - Day: "A: OSM pink (Recommended)".
+  - Night: "Invert like OSM (Recommended)". **This replaces "motorways stay amber".**
+- **The spec:**
+  - **Centre `#e892a2`:** `roads_highway`, `roads_bridges_highway`, `roads_link`, `roads_bridges_link`.
+  - **Casing `#dc2a67`:** `roads_highway_casing_early`, `roads_highway_casing_late`,
+    `roads_bridges_highway_casing`, `roads_link_casing`, `roads_bridges_link_casing`.
+  - **Tunnels** keep their grey.
+  - **Night:** drop `roads_highway`, `roads_bridges_highway`, `roads_link` and `roads_bridges_link`
+    from v4's night-layers, so they invert. The centre becomes `#7f2939` and the casing `#e83673`.
+  - **Confirm** the two values against OSM Carto's road colour file. Sage quoted them from memory.
+
+## Sorrel's verdict on PR #448 (about 11:50)
+
+- **The review:** Forager `sorrel-street-v4` at `11959e944`,
+  `docs/reviews/2026-10-30-sorrel-street-v4.md`.
+- **The verdict:** mergeable as plumbing ahead of the switch. No blockers.
+  - v4 equals the ruled design to the byte.
+  - v1-v3 are unchanged by file and by every app path.
+- **Should-fix:**
+  1. **For the switch PR:** pass `source.streetUri` for StreetWithTopoOver into the selector, and test
+     it.
+  2. The style night checker should require a night-fills entry for every fill-in day colour. Today
+     it catches only parks; Sorrel's revert of residential passed it.
+  3. The rail comment in `forager-fill-in.mjs` is wrong. The value stands.
+  4. CI runs no map-style checker. This was already the case before this PR.
+- **Design note for the owner:** at night in forest at z13 and above, the black tertiary (3.28:1,
+  2.26 px) outranks the night footpath (2.58:1, 1.35 px). The rail is slightly above the footpath.
+  This follows from the OSM-like ruling.
