@@ -96,5 +96,5 @@ Nothing is dispatched, published or installed yet.
 - **Ramps and slip roads** at night: "Invert them too (Recommended)". The option read: "Each ramp
   takes its road's OSM-like night colour, so a ramp matches the road it joins." Motorway ramps stay
   amber with the motorways. Sage specifies the values.
-- **Coding:** "New coder session (Recommended)". Willow is gone. The coder brief is
+- **Coding:** "New coder session (Recommended)". The owner named the new coder Willow (the earlier Willow session is gone). The coder brief is
   `prompts/preserved/2026-10-30-coder-01-street-v4.md`.
