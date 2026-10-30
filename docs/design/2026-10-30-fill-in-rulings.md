@@ -277,3 +277,8 @@ Nothing is dispatched, published or installed yet.
   - "Accept the inversion (Recommended)": v4's night buildings are the plain inversion of tan (fill
     `#372e27`). This replaces -1733's night greys for v4 only. v1-v3 are unchanged.
   - "OSM's #c6b3c3 (Recommended)" for the industrial edge.
+- **The z14 building step, as darkened by Carto:** `#d1c6bd` inverts to 1.001:1 on night water, which
+  fails the 1.05 floor. Willow computed this.
+  - **The owner:** "One step darker #ccc0b7 (Recommended)" (night `#493d34`, 1.083). This is the same
+    remedy as -1733.
+  - **Below z14:** tan `#d9d0c9` at 0.5 opacity.
