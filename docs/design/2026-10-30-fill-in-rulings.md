@@ -66,3 +66,35 @@ GL JS on the Pi. They show place names, so they are not in this repo.
   needs the owner's go.
 
 Nothing is dispatched, published or installed yet.
+
+## Night and the go for phase 2 (from Sage's sage-09 report, about 10:15)
+
+**The owner, as Sage quoted:**
+- ~09:33: "Closer to the OSM style".
+- ~09:44: "Undo that last change. Keep it osm-like".
+- ~09:46: "Yes, ship it". This was the answer to "OSM-like, with motorways staying amber, and the go
+  for phase 2?"
+- ~09:55: "You're only allowed to design and style. Coding is for coders" and "Pass the report to
+  Aspen who will instruct the coders".
+
+**The ruled v4 night:**
+
+| Feature | Night | Mechanism |
+|---|---|---|
+| Residential | `#2d2a25` | night-fills, new key |
+| Commercial | `#362824` | night-fills, new key |
+| Railway land | `#2b2829` | night-fills, new key |
+| Farmland | `#2e2a10` | night-fills, new key |
+| Parks | `#2c461e` | night-fills, new key |
+| Trunk, primary, secondary, tertiary | `#845104`, `#674400`, `#463100`, `#000000` | inversion; no night-layers entry for `roads_major` or `roads_bridges_major` in v4 |
+| Tertiary casing | `#70685a` | inversion |
+| Other major casings | `#a7853f` | inversion |
+| Rail | `#a3acae` | night-layers |
+| Motorways | v3's amber `#f0c060` | unchanged |
+
+**Asked in Aspen's window (~10:20):**
+- **Ramps and slip roads** at night: "Invert them too (Recommended)". The option read: "Each ramp
+  takes its road's OSM-like night colour, so a ramp matches the road it joins." Motorway ramps stay
+  amber with the motorways. Sage specifies the values.
+- **Coding:** "New coder session (Recommended)". Willow is gone. The coder brief is
+  `prompts/preserved/2026-10-30-coder-01-street-v4.md`.
