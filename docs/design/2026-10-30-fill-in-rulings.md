@@ -116,3 +116,22 @@ Nothing is dispatched, published or installed yet.
   - **Night:** this follows by inversion, with no table change.
 - **Night-layers: no change.** `roads_link` and `roads_bridges_link` keep `#e0ad4f`, so motorway
   ramps stay amber. Casings are unchanged.
+
+## PR #448 and the review (about 11:10)
+
+- **Willow's report** came in at about 10:57.
+  - PR #448, `street-v4` at `f228f9281` → `pre-main` at `b493cffeb`. Full CI is green (run 41097273828).
+  - The S22 debug APK is CI run 41099952632, branch `street-v4-s22-debug` (never merge).
+- **The owner, in Aspen's window:**
+  - Reviewer: "Sorrel (Recommended)". In Willow's window: "Sorrel can review for now".
+  - Willow's three calls: "Accept all three (Recommended)". They are:
+    1. the selector also matches `forager-street-v4.json`;
+    2. a new branch `street-v4`, with `street-v4-fill-in` superseded;
+    3. the throwaway branches are deleted after the S22 check.
+- **The review dispatch** is `prompts/preserved/2026-10-30-sorrel-street-v4.md`.
+- **Still to come:**
+  - the owner's S22 check;
+  - Sorrel's verdict;
+  - the owner's go to merge.
+
+  The Worker deploy and the app switch, which adds v4 to `STREET_STYLE_URLS`, are each their own go.
