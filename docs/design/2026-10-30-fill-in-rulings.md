@@ -98,3 +98,21 @@ Nothing is dispatched, published or installed yet.
   amber with the motorways. Sage specifies the values.
 - **Coding:** "New coder session (Recommended)". The owner named the new coder Willow (the earlier Willow session is gone). The coder brief is
   `prompts/preserved/2026-10-30-coder-01-street-v4.md`.
+
+## Ramps: Sage's spec and the owner's OK (about 11:00)
+
+- **Sage's finding.** These were read from the tiles and from v4.
+  - `roads_major` draws trunk-to-tertiary ramps (`is_link` with kind `major_road`).
+  - `roads_link` and `roads_bridges_link` show only motorway ramps.
+  - The draft's colour match covered `trunk_link`, but not `primary_link`, `secondary_link` or
+    `tertiary_link`. Those fell to v3's amber `#f6d68f`.
+- **The owner, in Aspen's window:** "Approve the fix (Recommended)".
+  - **Day:** the `line-color` match for `roads_major` and `roads_bridges_major` becomes:
+    - `["trunk","trunk_link"]` `#f2bf72`;
+    - `["primary","primary_link"]` `#f5d28c`;
+    - `["secondary","secondary_link"]` `#f8e3ae`;
+    - `["tertiary","tertiary_link"]` `#ffffff`;
+    - fallback `#f6d68f`.
+  - **Night:** this follows by inversion, with no table change.
+- **Night-layers: no change.** `roads_link` and `roads_bridges_link` keep `#e0ad4f`, so motorway
+  ramps stay amber. Casings are unchanged.
