@@ -191,3 +191,11 @@ Nothing is dispatched, published or installed yet.
 - **The owner, on the night-forest catch:** "Sage fixes it (Recommended)". Sage will propose night
   tertiary and rail colours that stay OSM-like but sit under the trails in forest, for the owner to
   pick. Willow adds the pick to PR #448.
+
+## Area borders (about 14:30)
+
+- **The owner, with an S22 screenshot of Oregon City at about z15:** "Things without a border blends
+  together, and is hard to see where one ends and another begins until you really look at it. Can we
+  have a border around forests, parks, bodies of water, etc.?"
+- **Sent to Sage** for options: outlines for each fill type, with colour, width, zooms and night.
+  Then the owner picks, and Willow builds it into v4.
