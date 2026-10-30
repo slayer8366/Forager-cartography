@@ -205,3 +205,22 @@ Nothing is dispatched, published or installed yet.
   - industrial is OSM's lilac-pink, not our pale blue, so it parts from the earth by hue;
   - buildings are a warm tan with a darker outline;
   - the parking lot has a thin outline.
+
+## Night tertiary and rail (about 14:45)
+
+- **Sage's options** (renders in `/tmp/sage10-work/strips/nightforest-*`, off GitHub; also on the
+  owner's private study page).
+- **The owner, in Aspen's window:**
+  - Tertiary: "Dark grey #333333 (Recommended)".
+  - Rail: "Plain inversion (Recommended)".
+- **The spec:**
+  - **Tertiary centre at night is `#333333`.** It's a per-class rule on `roads_major` and
+    `roads_bridges_major`: day `#ffffff` (tertiary and tertiary_link) → `#333333` at night. The other
+    classes still invert, and the tertiary casing stays the inversion `#70685a`. This brings back the
+    owner's 09:20 choice, "App rule (Recommended)", for per-class road nights.
+  - **Night-checker band for it (Aspen's call):**
+    - forest: 1.7 to 2.3:1, and below the night footpath;
+    - grass and ground: at most the night footpath's figure.
+  - **Rail:** drop `roads_rail` from v4's night-layers, so it inverts to `#636c6f`.
+- **Trails** are the strongest line at night on forest, grass and ground with this set. Calculated by
+  Sage.
