@@ -383,3 +383,9 @@ Nothing is dispatched, published or installed yet.
   - With 0005, v3 phones would draw faint white hairline streets between z11 and z12 (2.85-3.23 % of
     pixels at Oregon City).
   - This only happens after the **R2 upload go**, so it goes to the owner before that go.
+- **The owner, told of the correction:** "Accept the hairlines (Recommended)". When the upload go is
+  given, v3 phones show faint streets at z11-12 until v4 ships. Sorrel's should-fix 1 is closed by
+  that decision. The upload itself is still its own go.
+- **Noted by Sorrel:** one pull_request CI run on #448's head (41172037381) is red on an unrelated,
+  likely flaky test (AvailabilityScreenCrowdedIconsSettingTest). The dispatched run on the same SHA
+  passed. Sorrel's second re-look covers it.
