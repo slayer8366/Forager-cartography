@@ -569,3 +569,15 @@ Nothing is dispatched, published or installed yet.
   - `sorrel-revert-tertiary` `ed167909bdcf7172f1f901290ba2b1b4abafea7d`
   - `sorrel-revert-rims` `96b9ef56e30192f749306f2e2a14040b70a666d4`
   Kept: `street-grid-pilot`, `street-v4-s22-debug`, and `street-v4-revert-sprite-choice` (Part 3, still in use).
+- **Willow, coder-07 part 3 (11:52):** sprite v6, on branches only, all green.
+  - **The art:** Forager-cartography `sprite-drafts-2026-10-31` at `2bdd3342`, pinned by
+    `fetch-assets.sh`. Keep or merge it.
+  - **The style:** Forager `street-v4-sprite-v6` at `b1a373f45`.
+    - v6 = v5 unchanged, plus the three patterns. v4 names v6, and `landuse_orchards_pattern` is
+      minzoom 13. v3 and sprite v5 are byte-identical.
+    - The app picks `night-sprite/v6` by the style's sprite.
+  - **The Worker:** branch `worker-sprite-v6` at `220094639`.
+  - Full CI is green, and the revert checks fail as expected. A 12th throwaway branch,
+    `street-v4-revert-sprite-choice`, waits for the owner's word.
+  - **The order:** the R2 upload of `sprites/v6/`, then the Worker deploy, then the merge into
+    `street-v4`. A v4 that names v6 before it's served loses all its icons, not just the patterns.
