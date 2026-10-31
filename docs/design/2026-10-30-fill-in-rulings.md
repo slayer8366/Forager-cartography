@@ -553,3 +553,19 @@ Nothing is dispatched, published or installed yet.
   throwaway branches". The creeks-under-water change is accepted. Willow deletes the 11 throwaway
   branches (the 10 earlier ones plus `street-v4-revert-orchard-rim`) and reports each one's last SHA.
   The orchard fill can't be judged until Sunday's tiles are on R2.
+- **Branches deleted (about 12:00 PDT).** Willow's session refused the delete ("Git Destructive"), and
+  Willow found only 6 of its own marked throwaways. The owner: "Yes, I delete them (Recommended)".
+  Aspen deleted 11 branches from Forager origin (`street-v4-fill-in` was already contained in
+  `street-v4`). Last SHAs, for restoring with `git push origin <sha>:refs/heads/<name>`:
+  - `street-v4-revert-fill` `f8aa85f401b08cd8925ab3400a800f36fd576ceb`
+  - `street-v4-revert-tables` `a3121c6e78adc8fd1024dea848d3f03e40a8a83b`
+  - `street-v4-revert-rail` `2d6353d0a2b2631f3201ccf56104ed1875eab1b8`
+  - `street-v4-revert-outline` `56cd4f1db2306bd6d9f5925aeb900dcf9097133b`
+  - `street-v4-revert-tertiary-band` `6e242017dfc5f658204b198925c4d3c09e8a8724`
+  - `street-v4-revert-minor-night` `3255e7c8f36281892e420dc69d78575af47aca03`
+  - `street-v4-revert-orchard-rim` `135abccc998ae69f2d3b84f287a64ec3a5d6150b`
+  - `street-v4-fill-in` `55ed979af2426d593290b5c9a7d25d55ac9ee197`
+  - `sorrel-revert-selector` `0b8eeb8eabb84e5360d5f993e36f4f2d420dce80`
+  - `sorrel-revert-tertiary` `ed167909bdcf7172f1f901290ba2b1b4abafea7d`
+  - `sorrel-revert-rims` `96b9ef56e30192f749306f2e2a14040b70a666d4`
+  Kept: `street-grid-pilot`, `street-v4-s22-debug`, and `street-v4-revert-sprite-choice` (Part 3, still in use).
