@@ -369,3 +369,17 @@ Nothing is dispatched, published or installed yet.
 - **The owner:** "From Sunday's run (Recommended)". The patch goes on `pi-build` as 0005, then Sorrel
   reviews it. If mergeable, Willow installs it before Sun 11-01 02:20 PST. R2 is a separate go.
   The dispatch is `prompts/preserved/2026-10-30-coder-05-street-grid-install.md`.
+
+## Sorrel on pi-35 (about 22:50)
+
+- **The review:** Forager `sorrel-pi35` at `1924a90dc`. Mergeable for install before Sunday. No
+  blockers.
+  - The merge into `pi-build` gives exactly the installed `288ce80cf` tree plus 0005.
+  - Sorrel's own New Jersey build puts the worst Hudson z10 tile at about 275 KB, under 500 KB.
+- **Install go:** the owner's "From Sunday's run (Recommended)" was conditional on this verdict, so
+  Willow installs now, folding in Sorrel's should-fix 2 (the README count).
+- **Correction to Aspen's option text.** "phones see no change until v4 ships" was not exact.
+  - v3's `roads_minor` has no minzoom; its width ramps from 0 at z11 to 0.5 at z12.5.
+  - With 0005, v3 phones would draw faint white hairline streets between z11 and z12 (2.85-3.23 % of
+    pixels at Oregon City).
+  - This only happens after the **R2 upload go**, so it goes to the owner before that go.
