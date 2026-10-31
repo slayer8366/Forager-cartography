@@ -478,3 +478,6 @@ Nothing is dispatched, published or installed yet.
 - **Dispatched:** Willow, coder-06 (build patch 0006, Sorrel's review, install by Sat 22:00 PDT). Sage,
   sage-10 (the fill, and whether to add a pattern). The v4 layer goes on #448 after the owner rules on
   Sage's design. No R2.
+- **The owner, on the rush:** "I'm not in a rush, but it's such a small change that if anything goes
+  wrong, we can trace it easily still". So Sunday is a target, not a deadline. Willow and Sorrel don't
+  cut any steps to make it; if it doesn't fit comfortably, it waits for the next run.
