@@ -549,3 +549,7 @@ Nothing is dispatched, published or installed yet.
   - Willow builds v6 on #448 (the sprite, v4 naming v6, the night v6 asset, the app choosing its
     night sprite by style) and the Worker change on a branch.
   - The Worker deploy and the R2 upload are each their own go.
+- **The owner, after the S22 check of APK `db41957a7` (11:45 PDT):** "Creeks look good, delete the
+  throwaway branches". The creeks-under-water change is accepted. Willow deletes the 11 throwaway
+  branches (the 10 earlier ones plus `street-v4-revert-orchard-rim`) and reports each one's last SHA.
+  The orchard fill can't be judged until Sunday's tiles are on R2.
