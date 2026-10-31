@@ -581,3 +581,7 @@ Nothing is dispatched, published or installed yet.
     `street-v4-revert-sprite-choice`, waits for the owner's word.
   - **The order:** the R2 upload of `sprites/v6/`, then the Worker deploy, then the merge into
     `street-v4`. A v4 that names v6 before it's served loses all its icons, not just the patterns.
+- **The owner:** "Sorrel reviews first (Recommended)". Then, separate gos for the R2 upload, the
+  Worker deploy and the merge. Also: "Yes, both". The art branch is merged into Forager-cartography
+  main (the pinned `2bdd3342` is now in main's history), and `street-v4-revert-sprite-choice` is
+  deleted once Sorrel is done with it.
