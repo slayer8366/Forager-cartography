@@ -481,3 +481,7 @@ Nothing is dispatched, published or installed yet.
 - **The owner, on the rush:** "I'm not in a rush, but it's such a small change that if anything goes
   wrong, we can trace it easily still". So Sunday is a target, not a deadline. Willow and Sorrel don't
   cut any steps to make it; if it doesn't fit comfortably, it waits for the next run.
+- **Willow (09:27):** `pi-36-orchard-kinds` at `4decb59ea`, all green. Kind stays farmland, with
+  `kind_detail` orchard / plant_nursery / vineyard. Today's phones (v1-v3, light) draw no landuse
+  farmland, so they show no change. v4 newly draws nurseries and vineyards as farmland until Sage's
+  layer. The archive is +0.14 %. Sorrel is dispatched for review.
