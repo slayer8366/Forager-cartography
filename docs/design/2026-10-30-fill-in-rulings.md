@@ -317,3 +317,44 @@ Nothing is dispatched, published or installed yet.
       faint grey texture.
   - **Sent to Sage,** folded into the z10-z12 minor-road ask: faint or no road casings at low zoom,
     thinner roads at z9-z12, and OSM Carto's low-zoom road colours where Carto has them.
+
+## Low-zoom roads, night borders, notices route (about 21:45)
+
+- **Sage's sage-11 specs** (renders in `/tmp/sage11-work/strips/`, off GitHub; also on the owner's
+  study page; night-edge tables in `/tmp/sage11-work/night-edges.json`).
+- **The owner, in Aspen's window:**
+  - Low-zoom roads: "A: OSM's treatment (Recommended)".
+  - Night borders: "Darker rims (Recommended)".
+- **Option A, low-zoom roads:**
+  - **Casings:** off below z11. Early casings 0 at 10.9, 0.3 at z11, 0.5 at z12. Late and bridge
+    casings as Sage specified.
+  - **Major widths by class:** trunk / primary / secondary / tertiary / other at z8 0.9/0.9/0.5/0/0.5,
+    z9 1.1/1.1/0.7/0.4/0.7, z10 1.3/1.3/0.9/0.6/0.9, z11 1.6/1.6/1.2/0.9/1.2, z12 1.9/1.9/1.7/1.5/1.7.
+    The ruled z15 and z18 values follow.
+  - **Motorway widths:** 0.8 at z6, 1.0 at z8, 1.3 at z9, 1.7 at z10, 2.0 at z11, 2.4 at z12, 5 at
+    z15, 15 at z18.
+  - **Low-zoom colours,** cross-fading 10.5 → 11.5 into the ruled colours:
+    - motorway `#e66e89` (Carto's own), with casing `#c24e6b` fading 11.5 → 12.5 into `#dc2a67`;
+    - trunk `#eeab4f`, primary `#efc46c`, secondary `#ecd58c`, tertiary `#bdb7ad`, other `#efc46c`.
+  - **roads_minor:**
+    - width 0.4 at z10, 0.6 at z11, 0.8 at z12, 2 at z15, 11 at z18;
+    - colour `#c4beb4` until 11.5, then `#ffffff` by z12;
+    - opacity 0.7 at z10, 1 at z11;
+    - casing width 0 at 11.5, 0.5 at z12.
+  - **Night:**
+    - the low-zoom colours invert;
+    - `roads_minor` gets `{"#ffffff": "#333333"}` in night-line-colours, with the tertiary band.
+- **Darker rims at night:**
+  - per-kind night edges for `landuse_edges` in night-line-colours, keyed by the day edge, taken from
+    Sage's REC table;
+  - recorded, not gated;
+  - water edges stay off at night.
+- **To check:** Sage reads v4 at `e9be0bcdd` as drawing settled-land edges from z13. Willow's report
+  says z14, through an opacity step. Willow confirms which.
+- **Sorrel's should-fix 3** is done: `307d3c2ac`, CI 41168327133.
+- **coder-04's premise was wrong** (found by Willow). map-build has no upload step, and
+  `routing/manifest.json` is staged by hand for each run.
+  - **The owner:** "A: commit an upload script (Recommended)".
+  - map-build writes `NOTICE` and stages the R2 manifest itself.
+  - A tested `upload-routing.sh` sends the squares, names1, `NOTICE`, then the manifest last. Each
+    upload still needs the owner's go.
