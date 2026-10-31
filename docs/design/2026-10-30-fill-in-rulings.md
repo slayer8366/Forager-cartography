@@ -509,3 +509,8 @@ Nothing is dispatched, published or installed yet.
       `forager:night-line-colours`.
   - The three patterns are new sprite items. They need the Worker's sprite and the app's bundled night
     sprite. Whether v5 gains them or v6 is cut goes to Willow for a proposal, then to the owner.
+- **Willow (10:21):** merged the reviewed head unchanged into `pi-build` as `de30a84ee` and pushed it.
+  The `/opt` install was refused by Willow's session permissions ("Modify Shared Resources"), so
+  nothing in `/opt` changed: `COMMIT` is still `a5bcb0780`. Without an install, Sunday runs without
+  0006. Taken to the owner: allow it in Willow's session, or run the three steps themselves. Willow
+  starts coder-07 part 1 (#448 only) meanwhile.
