@@ -308,3 +308,12 @@ Nothing is dispatched, published or installed yet.
   night against 1.65:1 by day): "Faint at night too (Recommended)". This goes to Sage for night edge
   colours.
 - **Also to Sage:** a minor-road style for z10-z11, by day and night.
+- **The owner, with a v4 and OSM pair of inner Portland at about z10.5 (21:15):** "When zoomed out,
+  the streets are more noise than signal. OSM fixed this by making their borders faint".
+  - **Aspen's read of the pair:**
+    - v4 draws every main road with a dark amber casing, and tertiary roads with grey casings, so at
+      z10-z11 the network becomes a dense outlined mesh.
+    - OSM's roads at that zoom are thin lines with little or no casing, and the small streets are a
+      faint grey texture.
+  - **Sent to Sage,** folded into the z10-z12 minor-road ask: faint or no road casings at low zoom,
+    thinner roads at z9-z12, and OSM Carto's low-zoom road colours where Carto has them.
