@@ -282,3 +282,29 @@ Nothing is dispatched, published or installed yet.
   - **The owner:** "One step darker #ccc0b7 (Recommended)" (night `#493d34`, 1.083). This is the same
     remedy as -1733.
   - **Below z14:** tan `#d9d0c9` at 0.5 opacity.
+
+## Street grid, Sorrel's re-look, night edges (about 21:10)
+
+- **The Oregon pilot** (Willow, about 20:45; renders on the owner's study page; branch
+  `street-grid-pilot` at `3877c9558`):
+  - streets from z11: +0.40 % on Oregon;
+  - streets from z10: +0.68 % on Oregon, about +0.23 GB for US+Canada (inferred);
+  - largest tiles well under 500 KB.
+- **The owner, in Aspen's window:**
+  - "Zoom 10, with Sage styling";
+  - "Yes, measure California (Recommended)".
+- **The owner, in Willow's window:** "Z10 is good, whichever is the one OSM uses…" and "yes do a test
+  measurement".
+  - Willow read that Carto draws residential streets from its z12. In the app, OSM's 256 px raster
+    shows that from about map zoom 10.5, so z10 is the match.
+  - Willow is measuring **New York**, not California. Either covers the dense-city risk.
+  - **Installing the street-grid patch in the weekly build needs its own go.**
+- **Sorrel's re-look** (Forager `sorrel-street-v4` at `6ea1c9290`): PR #448 at `e9be0bcdd` is mergeable
+  as plumbing. No blockers.
+  - The new should-fix 3: the night-tertiary band test should read the app's table value, not a
+    hard-coded `0x333333`.
+  - Note: `pre-main` moved to `1ac67f12b` (PR #451, the Heights credits). No overlap.
+- **The owner, on Sorrel's note** that the inverted land edges read firmer at night (forest 3.50:1 at
+  night against 1.65:1 by day): "Faint at night too (Recommended)". This goes to Sage for night edge
+  colours.
+- **Also to Sage:** a minor-road style for z10-z11, by day and night.
