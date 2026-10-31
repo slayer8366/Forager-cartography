@@ -609,3 +609,12 @@ Nothing is dispatched, published or installed yet.
     the weekly schedule resumes from Sun 11-08.
 
   Handed to the owner.
+- **Sorrel on sprite v6 (12:20):** ready for the R2 upload, the Worker deploy and the merge, in that
+  order, with no blockers. The review is Forager `sorrel-sprite-v6` at `2d1d8a97c`.
+  - Sorrel's own build from the pinned art reproduced the committed sheets byte for byte.
+  - **Should-fix 1:** merge `worker-sprite-v6` (`220094639`, on `b493cffeb`) into `pre-main` first, and
+    deploy from the trunk. Today the code is identical either way.
+- **Deleted on the owner's earlier word:** `street-v4-revert-sprite-choice`, last SHA
+  `eed189bd1528e3ab403a9ddf36bcaae74b32ccea`.
+- **Step 1 (R2) is done** (above). Steps 2 (the Worker into `pre-main`, then the deploy) and 3 (the
+  merge into `street-v4`) are the owner's gos.
