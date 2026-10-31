@@ -443,3 +443,20 @@ Nothing is dispatched, published or installed yet.
   - **The spec:** move `water_stream` and `water_river` to just before `water` in v4. Nothing else
     moves. The water fill stays `#80deea`.
   - **The water colour change is withdrawn,** and Sage's knock-on ask is cancelled.
+
+## Creeks under water: built, S22 APK ready (Sat 10-31, 01:12 PDT)
+
+- **Willow's report:** `c2e06dff6` "Street v4: creeks under the water fill" on `street-v4` (#448).
+  - In `forager-fill-in.mjs`, `water_stream` and `water_river` now sit just before `water`. No other
+    layer moved and no colours changed.
+  - `check-street-night.mjs` block 10 asserts it. With the move taken out, block 10 fails, as it
+    should.
+  - check-street-night v4, check-street-trails v4 (101 layers), check-style and
+    build-sprite-v5 --check pass. v3 is byte-identical.
+- **Runs, all green:** the PR's own check on `c2e06dff6` (41182385860), full CI on `street-v4`
+  (41182397392), and the APK build (41182404373).
+- **The APK:** `street-v4-s22-debug` at `3d5c2698e`, digest `sha256:53560ab0…24be61`, from
+  <https://github.com/slayer8366/Forager/actions/runs/41182404373/artifacts/13035418501>.
+- **Next:** the owner checks it on the S22 at Goose Creek / the Clackamas and Abernethy Creek's pond.
+  After that check, and on the owner's word, the 10 throwaway branches are deleted. Nothing went to R2
+  and nothing was merged.
