@@ -622,3 +622,16 @@ Nothing is dispatched, published or installed yet.
   `pre-main`. The live Worker (built from `main`) picks it up at the next promotion from `pre-main` to
   `main`. Until then v6 answers 404, so step 3 (the merge into `street-v4`) waits for that promotion
   and a live check.
+- **The early build, on the owner's go ("I allow the commands in this session"), 12:31 PDT:**
+  - `forager-build.timer` stopped;
+  - one-shot `forager-build-timer-resume` at Sun 11-01 03:00 PST (11:00 UTC) touches the stamp and
+    starts the timer again, so the next weekly run is Sun 11-08;
+  - `forager-build-usca.service` started.
+  - **Inputs:** `us-261030`, `canada-261030`, `puerto-rico-261030` and `us-virgin-islands-261030`
+    (2026-10-30T21:24:51Z). The jar has 0005 and 0006.
+  - **Space:** the NVMe needs 157.1 GB of 162.7 GB free, so no large scratch on the NVMe during the
+    run. The card needs 42.6 of 79.8 GB.
+- **Worker v6:** `220094639` was branched from `street-v4`, so merging it would bring all of #448.
+  Willow cherry-picked only the two Worker commits onto `pre-main` as `worker-sprite-v6-pre-main`
+  (`fc77f196d`, `33fac3e39`). The +/- lines are identical to the reviewed change. Aspen said go: a PR
+  to `pre-main` with a merge commit once CI is green.
