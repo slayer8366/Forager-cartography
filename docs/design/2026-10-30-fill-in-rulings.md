@@ -403,3 +403,18 @@ Nothing is dispatched, published or installed yet.
   and unclassified (206,049 B, against 130,403 B without 0005).
 - **Rollback:** Willow's 10-30 23:10 report, steps 1-5 (`mv` the prev tree back, restore the jar).
 - **Not done:** R2. The upload is the owner's go after Sunday's run.
+
+## Sorrel's second re-look on #448 (about 23:10)
+
+- **The review:** Forager `sorrel-street-v4` at `106de157e`. #448 at `97a26e8c7` is mergeable as
+  plumbing once the PR's own pull_request check is green. No blockers.
+  - v4 equals every ruled value.
+  - v1-v3 and StreetWithTopoOver are unreachable by the new table.
+  - Trails are the strongest line at z13 forest, day and night.
+- **Should-fix 1:** the pull_request run 41172037381 is red on an unrelated, likely flaky test. Willow
+  re-runs the failed job.
+- **Should-fix 2:** three of the 13 "darker" night rims are lighter than their fills (school,
+  hospital, industrial).
+  - **Aspen:** this was stated in Sage's 21:25 spec. Those night fills are too dark to darken by 1.3
+    without going near-black, so they take a lighter rim of the same faintness. It's a deliberate
+    exception, but it wasn't on the owner's options page, so Aspen told the owner.
