@@ -656,3 +656,9 @@ Nothing is dispatched, published or installed yet.
   - **Knock-on, already accepted:** v3 phones show faint hairline streets at z11-12 ("Accept the
     hairlines").
   - Aspen checks in at Sun 11-01 04:00 PST (a scheduled message).
+- **Worker v6 on pre-main (Willow, 15:47):** PR #453 was merged with a merge commit after green runs.
+  - `pre-main` is at `b38c1d161`; its diff since `206464058` is the Worker's README, `index.ts` and the
+    test only (+25 -4). pre-main CI (41248471121) is green.
+  - `main` is untouched at `177215135`, so nothing is deployed. The live Worker serves v6 only after the
+    next promotion from `pre-main` to `main`, and step 3 waits for that.
+  - The superseded `worker-sprite-v6` (on `street-v4`) is still on origin, waiting for the owner's word.
