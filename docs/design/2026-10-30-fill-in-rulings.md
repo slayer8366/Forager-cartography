@@ -358,3 +358,14 @@ Nothing is dispatched, published or installed yet.
   - map-build writes `NOTICE` and stages the R2 manifest itself.
   - A tested `upload-routing.sh` sends the squares, names1, `NOTICE`, then the manifest last. Each
     upload still needs the owner's go.
+
+## Street grid into Sunday's run (about 22:20)
+
+- **The New York pilot** (Willow, 22:10): z10 adds 0.94 %. The largest z10 tile is 228,641 B
+  (Manhattan and Brooklyn), against the 500 KB limit. US+Canada would grow about 0.23-0.32 GB
+  (inferred). Build time shows no measurable change.
+- **Settled-land edges** are confirmed to start at z14, through the opacity step. Sage had read the
+  layer's minzoom.
+- **The owner:** "From Sunday's run (Recommended)". The patch goes on `pi-build` as 0005, then Sorrel
+  reviews it. If mergeable, Willow installs it before Sun 11-01 02:20 PST. R2 is a separate go.
+  The dispatch is `prompts/preserved/2026-10-30-coder-05-street-grid-install.md`.
