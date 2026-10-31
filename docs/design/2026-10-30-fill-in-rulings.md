@@ -618,3 +618,7 @@ Nothing is dispatched, published or installed yet.
   `eed189bd1528e3ab403a9ddf36bcaae74b32ccea`.
 - **Step 1 (R2) is done** (above). Steps 2 (the Worker into `pre-main`, then the deploy) and 3 (the
   merge into `street-v4`) are the owner's gos.
+- **The owner, on step 2:** "Merge into pre-main only". Willow merges `worker-sprite-v6` into
+  `pre-main`. The live Worker (built from `main`) picks it up at the next promotion from `pre-main` to
+  `main`. Until then v6 answers 404, so step 3 (the merge into `street-v4`) waits for that promotion
+  and a live check.
