@@ -389,3 +389,17 @@ Nothing is dispatched, published or installed yet.
 - **Noted by Sorrel:** one pull_request CI run on #448's head (41172037381) is red on an unrelated,
   likely flaky test (AvailabilityScreenCrowdedIconsSettingTest). The dispatched run on the same SHA
   passed. Sorrel's second re-look covers it.
+
+## pi-35 installed (Fri 10-30, 23:10 PDT)
+
+- **The merge:** `a5bcb0780` (`--no-ff`, `pi-35-street-grid` into `pi-build`). It brings `pi-build` up
+  to the installed pi-33 and pi-34, plus 0005.
+- **Installed:** `COMMIT` is `a5bcb0780`, and `map-build.prev` is `288ce80cf`.
+  - The jar sha256 is `8dd2a0f2…6cc5b`. The prior jar was backed up at
+    `/opt/forager-build/basemap.prev-20261030/` (`1d892172…`).
+  - Aspen read this back at about 23:15: `COMMIT`, prev, the jar sha prefix, 0005 in `pins.env`, the
+    timer at Sun 11-01 02:20:42 PST, and the service inactive.
+- **The proof:** the installed jar on Oregon. Inner Portland 10/163/366 holds `minor_road` residential
+  and unclassified (206,049 B, against 130,403 B without 0005).
+- **Rollback:** Willow's 10-30 23:10 report, steps 1-5 (`mv` the prev tree back, restore the jar).
+- **Not done:** R2. The upload is the owner's go after Sunday's run.
