@@ -485,3 +485,27 @@ Nothing is dispatched, published or installed yet.
   `kind_detail` orchard / plant_nursery / vineyard. Today's phones (v1-v3, light) draw no landuse
   farmland, so they show no change. v4 newly draws nurseries and vineyards as farmland until Sage's
   layer. The archive is +0.14 %. Sorrel is dispatched for review.
+- **Sorrel (09:40):** `pi-36-orchard-kinds` at `4decb59ea` is mergeable for install before Sunday's
+  run, with no blockers. The review is Forager `sorrel-pi36-orchard-kinds` at `9395e50c5`.
+  - Should-fix 1, for the next pass rather than before Sunday: a null guard. `Set.of(...).contains(null)`
+    would throw if a polygon without `landuse` ever reached it. That can't happen today.
+  - Also: v4 at `c2e06dff6` draws nurseries and vineyards with the farmland edge from z13 as well as the
+    fill.
+  - The install is covered by the owner's "Rush for Sunday" go. Willow installs the reviewed head
+    unchanged, by 22:00 PDT.
+- **Sage's design (sage-10, 09:25):** one shared fill with a pattern per kind from z13. The owner saw
+  the renders' description (the strips at `/tmp/sage13-work/strips/` couldn't be attached) and ruled:
+  - **"Fill + pattern per kind (Recommended)",** with **fill `#c8dd98`** and **"Standard night
+    (Recommended)"** (the plain night inversion, `#495e19`, no exception).
+  - **The spec:**
+    - **Fill layer** after `landuse_settled`, matching kind farmland with `kind_detail` orchard /
+      plant_nursery / vineyard. No minzoom; opacity 0.6 at z6, 1 at z9.
+    - **Pattern layer** directly after it, minzoom 13. `fill-pattern` matches `kind_detail`:
+      - orchard: `orchard_dots`, round dots r 2.4 px on an offset 24 px grid;
+      - vineyard: `vineyard_rows`, bars 1.2 x 5 px in rows on a 16 px cell;
+      - plant_nursery: `nursery_dots`, dots r 1.2 px on an offset 12 px grid.
+      - Ink `#8ea65c` by day, the plain inversion `#829a50` by night.
+    - **Edges:** add the three to `landuse_edges`, day `#b0c286` and night `#3a4b14` in
+      `forager:night-line-colours`.
+  - The three patterns are new sprite items. They need the Worker's sprite and the app's bundled night
+    sprite. Whether v5 gains them or v6 is cut goes to Willow for a proposal, then to the owner.
