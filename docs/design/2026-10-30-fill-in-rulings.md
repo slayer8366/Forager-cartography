@@ -418,3 +418,20 @@ Nothing is dispatched, published or installed yet.
   - **Aspen:** this was stated in Sage's 21:25 spec. Those night fills are too dark to darken by 1.3
     without going near-black, so they take a lighter rim of the same faintness. It's a deliberate
     exception, but it wasn't on the owner's options page, so Aspen told the owner.
+
+## Water fill to the creek colour (Sat 10-31, about 00:00)
+
+- **The owner, with S22 screenshots of Goose Creek / the Clackamas and of Abernethy Creek's pond:**
+  "the creeks running into bodies of water looks awkward. Can you make the bodies of water the darker
+  creek color?"
+- **What the screenshots show:** the stream line (`#3fa0c8`) runs on through the pale water fill
+  (`#80deea`) as a visible darker centre line.
+- **The ruling:** the day water fill takes the creek colour `#3fa0c8`, so the stream lines disappear
+  into it. Night already matches (`#163f4b` for both, ruled 10-22).
+- **Sent to Sage** for the knock-on values:
+  - `water_edges` day edge;
+  - the river line colour (`water_river` `#80deea`);
+  - water label contrast (`#1f4d86` on `#3fa0c8`);
+  - wetland tufts `#3fa0c8`, the same colour as the new water.
+
+  Then Willow adds it to #448.
