@@ -73,3 +73,17 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - Still owed when world routing ships: a credit for the heights' source (CGIAR-CSI SRTM v4.1) in the
     app's Heights credits, beside the 3DEP and NRCan rows, worded from CGIAR's own terms.
   - If Forager ever becomes commercial, this needs looking at again.
+- **Wi-Fi diagnosis (Aspen, about 16:55):** wlan0 scans see only channel 11 (Deschutes, b0490 and a
+  hidden one), and the home network isn't heard. rfkill is clear and the region is US.
+  - Toggling the radio and reloading `brcmfmac` didn't help.
+  - Inferred: Wi-Fi/Bluetooth coexistence on the shared chip while the tether carries traffic.
+  - **The owner:** "restart after the build finishes".
+- **Timer, so a reboot can't start a second run:** `forager-build.timer` is now **disabled** (not just
+  stopped). The earlier resume one-shot is cancelled. `forager-build-timer-resume2` at Sun 11-01
+  11:00 UTC touches the stamp and runs `systemctl enable --now forager-build.timer`.
+  - That one-shot is transient, so it's lost on a reboot.
+- **After the reboot** (by Aspen, or by the owner if Aspen's session isn't back):
+  1. `sudo touch /var/lib/systemd/timers/stamp-forager-build.timer && sudo systemctl enable --now forager-build.timer`.
+     The next run is then Sun 11-08.
+  2. `cd /mnt/archive/aspen-upload-next && setsid nohup ./upload-after-build.sh >> nohup.out 2>&1 < /dev/null &`.
+     It checks the run finished OK, waits for Wi-Fi, then uploads.
