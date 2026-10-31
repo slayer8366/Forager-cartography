@@ -460,3 +460,21 @@ Nothing is dispatched, published or installed yet.
 - **Next:** the owner checks it on the S22 at Goose Creek / the Clackamas and Abernethy Creek's pond.
   After that check, and on the owner's word, the 10 throwaway branches are deleted. Nothing went to R2
   and nothing was merged.
+
+## Orchards, plant nurseries and vineyards filled (Sat 10-31, about 09:00 PDT)
+
+- **The owner, with S22 screenshots near South Haines / South Bremer Road and Parrott Creek, OSM layer
+  beside Street v4:** "We seem to be missing some grassland areas, or whatever this green represents.
+  Can we get those filled too?"
+- **Aspen read the OSM data** (`us-261026.osm.pbf` on the Pi): 3 of 4 test points in the big dotted area
+  are `landuse=orchard` (the 4th is farmland). In the Canby-Oregon City box (45.17-45.30 N,
+  122.55-122.72 W) there are 45 orchards, 22 plant nurseries and 8 vineyards.
+- **Why v4 can't draw them (read from the basemap `Landuse.java` at pi-35):** `orchard` (and `farmyard`)
+  are written as kind `farmland`. `plant_nursery` and `vineyard` match no rule and aren't written at all.
+  So it's a tile build change first, then a style layer.
+- **The owner:** "Orchards, Plant nurseries, Vineyards", and "Rush for Sunday". The option read:
+  "Willow patches and installs today before 02:20 PST. Less review time on a build that's already been
+  checked."
+- **Dispatched:** Willow, coder-06 (build patch 0006, Sorrel's review, install by Sat 22:00 PDT). Sage,
+  sage-10 (the fill, and whether to add a pattern). The v4 layer goes on #448 after the owner rules on
+  Sage's design. No R2.
