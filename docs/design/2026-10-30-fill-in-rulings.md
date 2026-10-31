@@ -585,3 +585,27 @@ Nothing is dispatched, published or installed yet.
   Worker deploy and the merge. Also: "Yes, both". The art branch is merged into Forager-cartography
   main (the pinned `2bdd3342` is now in main's history), and `street-v4-revert-sprite-choice` is
   deleted once Sorrel is done with it.
+
+## Sprite v6 on R2, and the early build (Sat 10-31, about 12:15 PDT)
+
+- **The owner:** "Let's upload what we need to R2 and then get the build going early".
+- **Uploaded by Aspen, 12:14:**
+  - `r2:forager-maps/sprites/v6/` from Forager `street-v4-sprite-v6` `b1a373f45`, using
+    `rclone copyto` with explicit content types.
+  - Read back with `rclone cat | sha256sum`, all four equal the build:
+    - `light.json` `c1f9b912…`, 6,682 B;
+    - `light.png` `220679a6…`, 37,357 B;
+    - `light@2x.json` `64ad928a…`, 6,716 B;
+    - `light@2x.png` `428573d1…`, 67,331 B.
+  - `sprites/v5/` is untouched (4 objects).
+  - Nothing reads `sprites/v6` until the Worker deploy, which waits on Sorrel's review and is its own
+    go.
+- **The tile archive** can't go to R2 until the run has built it.
+- **The early start, not done:** Aspen's session refused it (auto-mode classifier). The plan was:
+  - stop `forager-build.timer`, so a run started about 12:15 PDT (about 15 h) doesn't finish before
+    02:20 PST and trigger a second run;
+  - start `forager-build-usca.service`;
+  - schedule a one-shot at Sun 11-01 11:00 UTC to touch the timer's stamp and start the timer again, so
+    the weekly schedule resumes from Sun 11-08.
+
+  Handed to the owner.
