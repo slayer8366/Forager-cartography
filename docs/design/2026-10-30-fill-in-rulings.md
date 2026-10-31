@@ -514,3 +514,18 @@ Nothing is dispatched, published or installed yet.
   nothing in `/opt` changed: `COMMIT` is still `a5bcb0780`. Without an install, Sunday runs without
   0006. Taken to the owner: allow it in Willow's session, or run the three steps themselves. Willow
   starts coder-07 part 1 (#448 only) meanwhile.
+
+## pi-36 installed (Sat 10-31, 10:28 PDT)
+
+- **The owner, in Willow's window:** "Go on the modified shared resources".
+- **Installed:** `COMMIT` is `de30a84ee` (the `--no-ff` merge of the reviewed `4decb59ea`), and
+  `map-build.prev` is `a5bcb0780`.
+  - The jar sha256 is `d3210b86…aae37f`: 512 tests, 0 failures, and the orchard-kind gate shows 6
+    cases.
+  - The prior jar is backed up at `/opt/forager-build/basemap.prev-20261031/` (`8dd2a0f2…`).
+  - Aspen read this back at about 10:35: `COMMIT`, both jar sha prefixes, 0006 in `pins.env`, and the
+    timer at Sun 11-01 02:20:42 PST.
+- **Rollback:** Willow's 10:28 report. Move `map-build.prev` back, then restore the jar from
+  `basemap.prev-20261031`.
+- **Not done:** R2, which is the owner's go after Sunday's run. Sorrel's should-fix 1 (the null guard)
+  goes in the next pass.
