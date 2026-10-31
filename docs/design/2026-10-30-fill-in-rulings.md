@@ -529,3 +529,23 @@ Nothing is dispatched, published or installed yet.
   `basemap.prev-20261031`.
 - **Not done:** R2, which is the owner's go after Sunday's run. Sorrel's should-fix 1 (the null guard)
   goes in the next pass.
+
+## Orchard fill on #448, and sprite v6 for the patterns (Sat 10-31, about 10:45 PDT)
+
+- **Willow, coder-07 part 1:** `11c31a9e0` on `street-v4`.
+  - `landuse_orchards` (`#c8dd98`, night `#495e19`) and the edges (`#b0c286`, night `#3a4b14`), as
+    ruled.
+  - check-street-night block 11 covers them, and its revert check fails 4 ways. v3 is byte-identical.
+  - CI on the PR check and full CI is green. No patterns yet.
+- **Willow, part 2, the sprite proposal:** cut **v6** = v5 unchanged, plus `orchard_dots`,
+  `vineyard_rows` and `nursery_dots`. Only v4 names v6.
+  - Adding to v5 in place would change `forager-street-v3.json`, because v3's metadata is written from
+    v5's index. It would also break the "a new set gets a new path" rule.
+  - Willow observed what a missing pattern image does: it draws nothing, and the plain fill shows. So
+    v4 can ship before v6 is on R2.
+- **The owner:** "New icon set v6 (Recommended)".
+- **Next:**
+  - Sage makes the production pattern art from the sage-10 spec.
+  - Willow builds v6 on #448 (the sprite, v4 naming v6, the night v6 asset, the app choosing its
+    night sprite by style) and the Worker change on a branch.
+  - The Worker deploy and the R2 upload are each their own go.
