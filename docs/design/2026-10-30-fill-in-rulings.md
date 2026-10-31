@@ -435,3 +435,11 @@ Nothing is dispatched, published or installed yet.
   - wetland tufts `#3fa0c8`, the same colour as the new water.
 
   Then Willow adds it to #448.
+- **Superseded the same night.** The owner offered: "Or have the creeks run under the bodies of water
+  if that's possible. It seems to be drawn on top".
+  - **Aspen read v4:** `water` (fill) is layer 19, `water_stream` 20 and `water_river` 21, so the lines
+    are drawn above the fill.
+  - **The owner:** "Creeks under water (Recommended)".
+  - **The spec:** move `water_stream` and `water_river` to just before `water` in v4. Nothing else
+    moves. The water fill stays `#80deea`.
+  - **The water colour change is withdrawn,** and Sage's knock-on ask is cancelled.
