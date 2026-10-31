@@ -635,3 +635,24 @@ Nothing is dispatched, published or installed yet.
   Willow cherry-picked only the two Worker commits onto `pre-main` as `worker-sprite-v6-pre-main`
   (`fc77f196d`, `33fac3e39`). The +/- lines are identical to the reviewed change. Aspen said go: a PR
   to `pre-main` with a merge commit once CI is green.
+- **The owner:** "Make sure everything we need to upload to R2 is uploaded also".
+  - **What's needed after the run:**
+    - the routing set (segments4, names1, then `routing/manifest.json`);
+    - the tile archive as `us.pmtiles`. The live one is still the 10-21 upload; 10-28's tiles were never
+      uploaded.
+    - Sprite v6 is already up.
+  - **Set up by Aspen at 13:34 PDT:** `/mnt/archive/aspen-upload-next/upload-after-build.sh`, running
+    detached. Copies are in `docs/audits/2026-10-31-upload-files/`.
+    - It waits for `usca-20261031T193102Z` to finish OK with no warnings. On a failed run or any
+      warning, it stops with nothing uploaded.
+    - Then the routing set: upload, read back, counts, then the manifest last, as on 10-28.
+    - Then `us.pmtiles`: the sha against the build manifest first; size, md5 and first MiB checked after.
+  - **The manifest:** `mk-routing-manifest.py` derives it from the build's `manifest.json`. On the
+    261026 output it reproduces the 10-28 hand-staged manifest byte for byte.
+  - **Rollback:**
+    - routing: `manifest-before.json` in that folder;
+    - tiles: the live file's copy at
+      `/mnt/storage/rollback/usca-20261017T202051Z-usca-20261021T111429Z/`.
+  - **Knock-on, already accepted:** v3 phones show faint hairline streets at z11-12 ("Accept the
+    hairlines").
+  - Aspen checks in at Sun 11-01 04:00 PST (a scheduled message).
