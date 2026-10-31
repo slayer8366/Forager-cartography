@@ -10,6 +10,13 @@ RUN=usca-20261031T193102Z
 U=/mnt/archive/aspen-upload-next; L=$U/upload.log; ST=/srv/forager-build/status-usca.json
 log() { echo "$(TZ=America/Los_Angeles date '+%F %T %Z') $*" | tee -a $L; }
 die() { log "STOP: $*"; exit 1; }
+
+# Upload only over Wi-Fi: never push tens of GB through the phone/tablet tether (bnep0).
+wait_wifi() {
+  while ! ip route show default | head -1 | grep -q 'dev wlan0'; do
+    log "waiting for Wi-Fi (default route: $(ip route show default | head -1))"; sleep 600
+  done
+}
 st() { python3 -c "import json;d=json.load(open('$ST'));print(d.get('$1') or '')"; }
 
 log "waiting for $RUN"
@@ -35,6 +42,7 @@ log "manifest: files $nf names $nn; local rd5 $a fnm $b"
 [[ $nf == "$a" && $nn == "$b" && $nf -gt 150 ]] || die "manifest and output disagree"
 
 # 1. routing
+wait_wifi
 D=r2:forager-maps/routing/$RUN
 rclone cat r2:forager-maps/routing/manifest.json > $U/manifest-before.json
 log "routing before: $(rclone lsf r2:forager-maps/routing/ | tr '\n' ' ')"
@@ -53,6 +61,7 @@ log "manifest sha local $a r2 $b"; [[ $a == "$b" ]] || die "manifest mismatch"
 log "routing live: $RUN"
 
 # 2. tiles
+wait_wifi
 P="$O/forager-usca.pmtiles"
 want=$(python3 -c "import json;o=json.load(open('$O/manifest.json'));print([x['sha256'] for x in o['outputs'] if x['name']=='forager-usca.pmtiles'][0])")
 have=$(sha256sum "$P" | cut -c1-64)
