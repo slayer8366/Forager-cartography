@@ -68,3 +68,8 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
 - **The upload watcher now waits for Wi-Fi** (default route via wlan0) before the routing upload and
   again before the tiles, so nothing goes through the tablet's data. It was restarted at 16:30 with the
   guard.
+- **The owner, on the SRTM flag:** "We aren't using it commercially." So brouter.de's world squares
+  can be used, with the SRTM heights in them, on non-commercial terms.
+  - Still owed when world routing ships: a credit for the heights' source (CGIAR-CSI SRTM v4.1) in the
+    app's Heights credits, beside the 3DEP and NRCan rows, worded from CGIAR's own terms.
+  - If Forager ever becomes commercial, this needs looking at again.
