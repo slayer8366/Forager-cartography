@@ -268,3 +268,7 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
     probe). It should be removed once the deploy is done; that goes to the owner.
 - Willow opens the PR to `pre-main`. **The deploy (wrangler) is waiting on the owner's choice:** Rowan,
   the owner, or an API token for the Pi.
+- **The owner, on who deploys the Worker:** "Wait on this." The deploy is on hold, so the relief R2
+  upload (which must follow it) waits too.
+  - The relief build (after tonight's run) and the #448 style work go ahead.
+  - **The stray tile:** "Yes, delete it (Recommended)", to be done after the deploy.
