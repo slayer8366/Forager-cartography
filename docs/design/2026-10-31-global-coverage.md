@@ -327,3 +327,6 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - **Risk (Willow):** Workers Builds redeploys `main`'s Worker folder on every push to `main`, and that
     folder is older than live. **Until #456 lands, nothing may be merged to `main`.** Any push would drop
     street-v3 and official trails.
+- **The owner:** "I'll leave the merging to you for the time being. Let Rowan know also". Aspen merges for
+  now. Rowan has been told by `prompts/aspen/2026-11-01-05-aspen-to-rowan-main-merges-held.md`
+  (records-after-173 `deaa04b7d`) and a direct message: no merges to `main` until #456 is live.
