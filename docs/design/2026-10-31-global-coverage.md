@@ -252,3 +252,9 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
     fix merges. That includes #453's v6 route, which is harmless: the files are on R2, and no style names
     v6 yet. It supersedes the earlier "pre-main only" for v6.
   - Who runs wrangler (needs a Cloudflare login) is settled before the deploy.
+- **Wrangler on the Pi (Willow, 11:55):** 4.124.0 is installed but **not logged in** (no auth, no
+  `CLOUDFLARE_API_TOKEN`), so the live version can't be read from the Pi. The `main` branch was dropped,
+  never pushed.
+  - **The deploy needs** Rowan's session (if it still has the login), the owner's machine, or an API
+    token with Workers edit rights, made by the owner for the Pi. Asked of the owner when the fix is on
+    `pre-main`.
