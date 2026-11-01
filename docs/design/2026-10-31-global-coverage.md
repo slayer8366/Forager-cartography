@@ -258,3 +258,13 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - **The deploy needs** Rowan's session (if it still has the login), the owner's machine, or an API
     token with Workers edit rights, made by the owner for the Pi. Asked of the owner when the fix is on
     `pre-main`.
+- **Sorrel (12:35):** `worker-overflow-street-only` (`f8fa10db2`) is correct, with no blockers. A
+  `pre-main` deploy changes nothing else live except the v6 route. The review is Forager
+  `sorrel-worker-overflow` at `3baa5bf16`.
+  - Sorrel's half-revert checks each fail exactly one test.
+  - **The bug is live today for `world-south`:** it advertises 15, and a z9 request returned a Protomaps
+    vector tile through the overflow.
+  - R2 has one stray object, `overflow/world-south/9/81/183.mvt` (219,298 B, 10:54 PST, Sorrel's own
+    probe). It should be removed once the deploy is done; that goes to the owner.
+- Willow opens the PR to `pre-main`. **The deploy (wrangler) is waiting on the owner's choice:** Rowan,
+  the owner, or an API token for the Pi.
