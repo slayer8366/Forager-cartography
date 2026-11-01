@@ -330,3 +330,16 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
 - **The owner:** "I'll leave the merging to you for the time being. Let Rowan know also". Aspen merges for
   now. Rowan has been told by `prompts/aspen/2026-11-01-05-aspen-to-rowan-main-merges-held.md`
   (records-after-173 `deaa04b7d`) and a direct message: no merges to `main` until #456 is live.
+- **The owner noticed #448's app still loads v3:** `STREET_STYLE_URL` is the Worker's `street-v3.json`,
+  and the Worker serves no `street-v4.json` (404). v4 has only shown in S22 debug builds.
+  - **The owner:** "Yes, queue it (Recommended)". After #456 is live, in order, each with Sorrel's review
+    and merged by Aspen:
+    1. v6 into #448;
+    2. #448 into `pre-main`;
+    3. a `worker/*` release serving `/style/street-v4.json`;
+    4. the app-switch PR to v4.
+- **Sorrel on #457 (13:45):** mergeable. 67/67 tests on `pre-main`, 65 plus 2 skipped on a folder-only
+  `main`; the guard was checked on proper and broken releases.
+  - **Should-fix 1:** guard PRs to `main` from non-`worker/*` branches that touch the folder. That's a
+    follow-up.
+  - **Aspen merged #457:** `pre-main` is at `08c1c3363`. Willow refreshes #456.
