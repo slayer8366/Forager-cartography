@@ -190,3 +190,17 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
     owner judges strength on the phone.
 - **Aspen's session container restarted (about 09:30).** The WebP encode stopped at 142 of 156 tiles.
   The PNG set, the pmtiles and the hosted branch are complete.
+- **0007 installed (Willow, 09:42 PST)**, on the owner's "Go on the modified shared resources" in
+  Willow's window.
+  - `COMMIT` is `53a728341`, and `map-build.prev` is `de30a84ee`. `USCA_PLANETILER_XMX=4608m`.
+  - The jar sha256 is `25e5b8db…773a83`: 513 tests, 0 failures, BarriersTest 9. The prior jar is backed
+    up at `basemap.prev-20261101/` (`d3210b86…`).
+  - Aspen read all of this back at 09:50.
+- **Space freed by Aspen**, on the owner's "Yes, delete both and rerun":
+  - deleted `failed-usca/latest/out/forager-usca.pmtiles` (24.0 GB, partial) and
+    `~/scratch/willow-pilot`, `willow-heap` and `willow-grid` (Willow's session was refused, "Irreversible
+    Local Destruction");
+  - kept the failed run's log, FAILED.txt, metrics and versions.
+  - `/` now has 165.0 GB free (the build needs 157.1).
+- **The rerun is released** (`--local 261030`). The hill shading's Pi work is done, and its APK builds in
+  CI.
