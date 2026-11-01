@@ -204,3 +204,12 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - `/` now has 165.0 GB free (the build needs 157.1).
 - **The rerun is released** (`--local 261030`). The hill shading's Pi work is done, and its APK builds in
   CI.
+- **The rerun started at 09:43 PST as `usca-20261101T174337Z`.** Willow's session was refused, so Aspen
+  started it under the owner's earlier "I allow the commands in this session" and today's "Rerun as
+  soon as installed".
+  - It runs as a transient unit, `forager-build-usca-rerun-261030`, with every setting of
+    `forager-build-usca.service`, plus `build-usca.sh --local 261030`.
+  - Inputs: local, 0 to download. NVMe: 165.0 GB free against 157.1 needed.
+  - `forager-build.timer` is untouched (next run Sun 11-08); the script's flock prevents overlapping
+    runs.
+- **The upload watcher was restarted for this run** (09:44): Wi-Fi only, routing then `us.pmtiles`.

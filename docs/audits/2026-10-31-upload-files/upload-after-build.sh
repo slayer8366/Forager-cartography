@@ -6,7 +6,7 @@
 #      /mnt/storage/rollback/usca-20261017T202051Z-usca-20261021T111429Z/forager-usca.pmtiles).
 # Stops at the first mismatch. Never sends the manifest after a failed read-back.
 set -euo pipefail
-RUN=usca-20261031T193102Z
+RUN=usca-20261101T174337Z
 U=/mnt/archive/aspen-upload-next; L=$U/upload.log; ST=/srv/forager-build/status-usca.json
 log() { echo "$(TZ=America/Los_Angeles date '+%F %T %Z') $*" | tee -a $L; }
 die() { log "STOP: $*"; exit 1; }
