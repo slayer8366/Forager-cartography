@@ -87,3 +87,8 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
      The next run is then Sun 11-08.
   2. `cd /mnt/archive/aspen-upload-next && setsid nohup ./upload-after-build.sh >> nohup.out 2>&1 < /dev/null &`.
      It checks the run finished OK, waits for Wi-Fi, then uploads.
+- **Wi-Fi back (about 21:30 PDT):** wlan0 has 10.0.0.115 on Virusdownloader, and the default route is
+  via wlan0 (metric 600, ahead of bnep0's 750). **The owner:** "skip the restart then".
+  - The watcher uploads over Wi-Fi after the build.
+  - `forager-build-timer-resume2` still re-enables the weekly timer at Sun 11-01 03:00 PST, so the
+    after-reboot steps above aren't needed.
