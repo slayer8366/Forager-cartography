@@ -310,3 +310,12 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - **PR #456** (`worker/overflow-street-only` -> `main`, `4fa944c01`) is open, with CI running.
   - **The owner, on the Heights credits wording:** "Leave as is. Full Topo will likely need it also." The
     current rows stay, and the wording gets revisited with own Topo.
+- **#456's Worker job fails on `main`** (run 41349304735): `test/worker.test.mjs` imports
+  `map-style/overrides/forager-reference.mjs` and hashes `map-style` files outside the folder, and
+  `main`'s `map-style` is behind.
+  - **Aspen, within the owner's go and "modular" ask:** option (a). Make the Worker's tests
+    self-contained on `pre-main`: a reference-names copy with a cross-check, and the cross-folder
+    assertions in their own test file, run only when `map-style` exists. Fold in the `worker/*` CI guard
+    and the README.
+  - Then Sorrel reviews, Aspen merges, and #456 is refreshed. #456 stays unmerged until then.
+- **#448** at `a578ecd56`: every PR check passes, and it's mergeable. The merge is the owner's call.
