@@ -343,3 +343,17 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - **Should-fix 1:** guard PRs to `main` from non-`worker/*` branches that touch the folder. That's a
     follow-up.
   - **Aspen merged #457:** `pre-main` is at `08c1c3363`. Willow refreshes #456.
+- **Sorrel confirmed #456 (14:05):** the folder tree is identical to `pre-main` `08c1c3363` (tree
+  `28896dee`), confined to the folder. The live effect is v6 served plus the overflow fix.
+- **Aspen merged #456 into `main` at about 14:30 PST: `33d2caa22`.** Cloudflare Workers Builds deployed it
+  within about 45 s; v6 went from 404 to 200.
+- **Aspen's live check after the deploy:**
+  - Unchanged and answering 200: street-v3, reference-trails, reference-trails-manifest, street-v2,
+    sprites v5, `us.json`.
+  - The served street-v3 is JSON-equal to the bundled copy.
+  - `us` maxzoom 15; a Portland z12 tile answers 200 (102,850 B).
+  - **The fix is live:** `world-south.json` advertises maxzoom 8, and a z9 request answers 204.
+  - Sprite v6's four files match the build sums (`c1f9b912`, `220679a6`, `64ad928a`, `428573d1`).
+- **The stray tile is deleted** (`overflow/world-south/9/81/183.mvt`, on the owner's "Yes, delete it");
+  `overflow/world-south/` is now empty.
+- **`main` is safe for merges again.** Rowan has been told.
