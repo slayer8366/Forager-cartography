@@ -233,3 +233,10 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
     then the v4 merge.
   - The WebP encode stopped when Aspen's container restarted, so it's untested.
 - **Waiting for the owner's verdict on the trial.**
+- **The owner, on the trial:** "It's good. It actively defines the trail map from a street or topo map,
+  which is ideal. Let's keep this". Then "Go for all four, in order (Recommended)".
+  - The four steps: the tiles (after tonight's run and upload), the Worker fix (Sorrel, then deploy),
+    the R2 upload, and style, night and credits into #448.
+  - **Aspen's note:** `pre-main` is 330 commits ahead of `main`, so the Worker deploy is a Worker-only
+    PR to `main`, not a promotion. Sprite v6 stays on `pre-main` only, as ruled.
+  - `/mnt/storage/relief/` was made writable for the build. Dispatched: coder-11.
