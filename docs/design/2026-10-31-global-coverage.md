@@ -357,3 +357,10 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
 - **The stray tile is deleted** (`overflow/world-south/9/81/183.mvt`, on the owner's "Yes, delete it");
   `overflow/world-south/` is now empty.
 - **`main` is safe for merges again.** Rowan has been told.
+- **Sorrel (14:35):** #458 and #459 are mergeable.
+  - **Aspen merged #458** (the path-based Worker folder guard) into `pre-main`: `40e9e4d3b`.
+  - **Aspen merged #459** (v6 patterns into Street v4) into `street-v4`: `75bd32e17`. v4 now names sprite
+    v6, with the orchard patterns, the hill shading, and 104 layers. v3 and sprite v5 are byte-identical.
+- **Next, step (b):** a catch-up merge of `pre-main` into `street-v4`, then Sorrel reviews #448's delta
+  since `97a26e8c7`, then Aspen merges #448 into `pre-main`. Then (c), the Worker serving
+  `street-v4.json`, and (d), the app switch.
