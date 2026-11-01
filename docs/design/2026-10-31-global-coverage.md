@@ -140,3 +140,24 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   week was already at 4.0 of 4.2G post-GC.
   - Zram is optional; swap wouldn't have helped.
 - Sorrel is dispatched for review. The install, the -Xmx change and a rerun are each the owner's go.
+- **Sorrel (about 05:30 PST):** `pi-37-barrier-mark-fill` at `63a3649e5` is mergeable for install, with
+  no blockers. The review is Forager `sorrel-pi37-barrier-mark-fill` at `a497077be`.
+  - Sorrel confirmed the mechanism from the 0.10.2 sources. The clean build passes 513 tests, and the
+    revert check fails exactly the two shape assertions.
+  - **Should-fix 1:** the -Xmx change rides on the same branch, as its own commit, with the comment at
+    `pins.env:174-177` rewritten.
+  - **Should-fix 2 (for #439):** the fixture and text describe the mark as a point.
+  - **Heap:** 4.5g recommended. With the sessions open, 4 / 4.5 / 5g leave about 1.2 / 0.7 / 0.2 GB of
+    page cache. 5g only if the Pi runs the build alone.
+- **The owner:** "0007 + 4.5 GB (Recommended)" and "Rerun as soon as installed (Recommended)".
+  - Asked why it failed and whether it could be salvaged, Aspen read `failed-usca/latest`: one 24.0 GB
+    `forager-usca.pmtiles` written to 48 % with no directory, so it's unreadable ("never publishable").
+    Planetiler's 108 GB of intermediate features was removed on exit.
+  - What can be salvaged is the downloaded 261030 extracts on the card, so the rerun uses
+    `--local 261030` and skips the download.
+  - Then: "Yes, delete both and rerun (Recommended)". That means deleting the partial pmtiles (23 GB)
+    and Willow's pilot and test scratch (about 19 GB) to get the NVMe back to the 157.1 GB the build
+    needs (113 GB free at 07:10 PST). Willow pauses the South America pilot.
+- **Willow's renders** (São Paulo and Doha with v4 over the planet) are done, at
+  `~/scratch/willow-global/shots/`. They show nothing broken, with the expected gaps.
+  - **The global DEM:** Copernicus GLO-90, 71.1 GB, a free licence that allows commercial use.
