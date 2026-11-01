@@ -116,3 +116,27 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
 - **Wi-Fi** is up (the default route is via wlan0).
 - **Dispatched:** Willow, coder-09 (diagnose and fix the heap, with Sorrel's review). A rerun is the
   owner's go.
+- **Willow, coder-09 (06:45 PST): the cause is 0004, not 0005 or 0006.** This corrects Aspen's
+  inference above.
+  - 0004's per-tile corner mark is a **point**. Planetiler only deduplicates tiles made purely of fills
+    and edges, so no z15 tile dedupes, and every all-water, all-forest or all-farmland tile gets its
+    own entry in the heap-resident entry list (about 44 B each).
+  - Last week's run started before 0003 and 0004 were installed (10-28), so 10-31 was the first US +
+    Canada build with the mark.
+  - **Oregon measurements:**
+    - 0001-0003: 418,172 entries;
+    - 0001-0004: 613,976 (+46.8 %);
+    - 0005: +0;
+    - 0006: +3.
+  - Scaled to US + Canada: about +27.6M entries, about +1.2 GB of heap.
+- **The fix:** Forager `pi-37-barrier-mark-fill` at `63a3649e5`, patch **0007**.
+  - The mark becomes one fill polygon covering the tile, still on every z15 tile, so "fences checked"
+    still holds.
+  - Oregon is back to 418,177 entries, and the archive is about 5 % smaller.
+  - mvn 513 tests, 0 failures. The gate needs 9 BarriersTest cases; the revert check gives 8 and is
+    refused.
+  - The app's reader (#439, unmerged) keeps only lines, so the mark is ignored either way.
+- **Willow also recommends** raising `USCA_PLANETILER_XMX` from 4g to 5g (or 4.5g) for headroom: last
+  week was already at 4.0 of 4.2G post-GC.
+  - Zram is optional; swap wouldn't have helped.
+- Sorrel is dispatched for review. The install, the -Xmx change and a rerun are each the owner's go.
