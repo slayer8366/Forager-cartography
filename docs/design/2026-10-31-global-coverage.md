@@ -285,3 +285,15 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - Sorrel glances at it, then it merges, then Cloudflare deploys.
   - Aspen checks the live routes (street-v3/v2, reference-trails, sprites v4/v5/v6, a Street tile,
     world-south above z8 = 204), then deletes the stray world-south tile.
+- **The owner:** "We are close to merging to main anyway, but may as well get it modular to work around
+  these situations in the future".
+  - **Aspen's plan, no dashboard change needed:** the Worker ships on its own track, still deployed by
+    Workers Builds from `main`.
+    - A Worker release is a PR to `main` from a `worker/<topic>` branch whose diff is confined to
+      `server/pmtiles-worker`, its folder equal to `pre-main`'s.
+    - A CI guard fails a `worker/*` PR that touches anything else, and checks the folder against
+      `pre-main`.
+    - The README's deploy section says this, and that `main`'s Worker folder is always what's live.
+  - **Optional later** (the owner's dashboard, once): a dedicated production branch for the Worker
+    (e.g. `worker-live`) plus build watch paths, so app merges to `main` never redeploy the Worker.
+  - Willow does it after this deploy is live.
