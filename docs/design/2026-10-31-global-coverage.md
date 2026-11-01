@@ -92,3 +92,27 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - The watcher uploads over Wi-Fi after the build.
   - `forager-build-timer-resume2` still re-enables the weekly timer at Sun 11-01 03:00 PST, so the
     after-reboot steps above aren't needed.
+
+## The early run failed: Planetiler out of heap (Sun 11-01, read at 04:00 PST)
+
+- **`usca-20261031T193102Z` failed at stage `planetiler`** at 23:29 PDT, 10-31, after 8.4 h.
+  - `java.lang.OutOfMemoryError: Java heap space` in `WriteablePmtiles$DeduplicatingTileWriter.write`,
+    during the archive write.
+  - At the time: features 747M (48 %), tiles 213M, heap 4.2G/4.2G, GC 98 %; peak RSS 6.24 GB.
+  - The heap is `USCA_PLANETILER_XMX=4g` (`pins.env:178`).
+- **Last week's run (10-27) was already at the edge:** heap 3.9G/4.2G post-GC near its end, with 651M
+  tiles and 1.5B features in the end. This week's tiles carry 0005 (streets from z10) and 0006 (orchard
+  kinds) and filled the heap earlier.
+  - Inferred: 0005's extra z10-11 roads are the main growth. Willow's Oregon pilot measured the archive,
+    not the heap at US scale.
+- **Nothing was published or uploaded:**
+  - The build left the previous outputs untouched; this run's partial output is kept in
+    `/srv/forager-build/failed-usca/latest`.
+  - The watcher stopped at 23:31 ("STOP: the run failed …") before any upload.
+  - R2 still has the 10-21 `us.pmtiles` and routing `usca-20261027T221400Z`.
+- **The timer:** `forager-build-timer-resume2` fired at 03:00:06 PST. `forager-build.timer` is enabled
+  again, and its next run is Sun 11-08 02:08 PST. **That run will fail the same way unless the heap is
+  fixed.**
+- **Wi-Fi** is up (the default route is via wlan0).
+- **Dispatched:** Willow, coder-09 (diagnose and fix the heap, with Sorrel's review). A rerun is the
+  owner's go.
