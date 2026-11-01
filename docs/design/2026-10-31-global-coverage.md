@@ -161,3 +161,19 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
 - **Willow's renders** (São Paulo and Doha with v4 over the planet) are done, at
   `~/scratch/willow-global/shots/`. They show nothing broken, with the expected gaps.
   - **The global DEM:** Copernicus GLO-90, 71.1 GB, a free licence that allows commercial use.
+
+## Hill shading trial first (Sun 11-01)
+
+- **The owner:** "Do the hill shading first. That is due even sooner". Then "Quick trial, and prepare
+  for full rollout if I like it". The go is Rowan's RECORD -1926.
+- **Aspen built the tiles (09:07):** Terrarium raster-dem, 256 px PNG, z5-z11, for Mount Hood and the
+  Columbia Gorge (45-46 N, 123-121 W), from the 3″ grid.
+  - 156 tiles, 16.0 MB; `png256.pmtiles` is 15.9 MB. The highest reads 3,392 m (Hood is 3,429 m).
+  - Built in `/mnt/archive/aspen-hillshade-trial/`. The 512 px lossless WebP set is slow to encode and
+    still running.
+- **Hosted** on Forager throwaway branch `hillshade-trial-tiles` (raw URL returns 200 image/png).
+- **Sage (sage-11):** the hillshade look. **Willow (coder-10):** the throwaway APK, then the rollout
+  scope.
+- The rerun is on hold until the trial. The install is still waiting on the owner (Willow's session was
+  refused at `/opt`). `pi-build` is at `53a728341` (0007, plus `USCA_PLANETILER_XMX=4608m`: Java
+  refuses "4.5g").
