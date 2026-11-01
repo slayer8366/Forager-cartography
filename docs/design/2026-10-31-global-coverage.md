@@ -177,3 +177,16 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
 - The rerun is on hold until the trial. The install is still waiting on the owner (Willow's session was
   refused at `/opt`). `pi-build` is at `53a728341` (0007, plus `USCA_PLANETILER_XMX=4608m`: Java
   refuses "4.5g").
+- **Sage, sage-11:** the hillshade layer goes directly before `water_stream`.
+  - Illumination 335 with anchor "map"; day shadow `#4a3f33`, highlight white, accent
+    `rgba(74,63,51,0.5)`.
+  - **ALT** (recommended for the trial): exaggeration 9→0.28, 11→0.32, 13→0.24, 15→0.16, 17→0.10.
+    Night shadow 0.7, highlight `rgba(220,228,236,0.20)`, accent 0.35.
+  - **REC-faint** (the fallback): 0.18 / 0.22 / 0.16 / 0.10 / 0.06.
+  - Both are fainter than Topo's ruled values.
+  - The night tables can't carry hillshade (NightColour.kt walks only background, fill, line and symbol
+    colours), so the app needs its own night pair, as Topo ruling 7 said.
+  - The renders are at `/tmp/sage14-work/strips/`. Aspen sent ALT to Willow for the trial APK; the
+    owner judges strength on the phone.
+- **Aspen's session container restarted (about 09:30).** The WebP encode stopped at 142 of 156 tiles.
+  The PNG set, the pmtiles and the hosted branch are complete.
