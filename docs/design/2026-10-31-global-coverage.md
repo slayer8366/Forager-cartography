@@ -304,3 +304,9 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - `worker/overflow-street-only` (`4fa944c01`, on `main` `177215135`): its folder equals the new
     `pre-main`'s, with 0 files outside `server/pmtiles-worker` (Aspen checked).
   - Its PR to `main` follows. Aspen merges it after Sorrel's OK; Cloudflare then deploys from `main`.
+- **#448, hill shading (Willow, 13:00):** `00aaf7753`, then `a578ecd56`, which dropped the hillshade's
+  own credits rows to avoid duplicating `pre-main`'s Heights section (68b9a2120). A test merge into
+  `pre-main` is clean.
+  - **PR #456** (`worker/overflow-street-only` -> `main`, `4fa944c01`) is open, with CI running.
+  - **The owner, on the Heights credits wording:** "Leave as is. Full Topo will likely need it also." The
+    current rows stay, and the wording gets revisited with own Topo.
