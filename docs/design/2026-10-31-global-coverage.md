@@ -240,3 +240,15 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - **Aspen's note:** `pre-main` is 330 commits ahead of `main`, so the Worker deploy is a Worker-only
     PR to `main`, not a promotion. Sprite v6 stays on `pre-main` only, as ruled.
   - `/mnt/storage/relief/` was made writable for the build. Dispatched: coder-11.
+- **Correction (Willow, 11:20):** the live Worker is **not** built from `main`. It serves `street-v3`,
+  `reference-trails` and sprite v5, which only `pre-main` has.
+  - It was deployed by hand with wrangler from `pre-main` (the v5 audit: Rowan, from `8b6f3572f`). A
+    `main`-based deploy would drop street-v3 from every phone, so Aspen's "Worker-only PR to main" is
+    withdrawn.
+  - **The Worker fix:** `worker-overflow-street-only` (`0e3306d3d` tests first, then `f8fa10db2`), on
+    `pre-main` `9ef5c9385`. Overflow and maxzoom advertising apply to `us` only; other archives answer
+    204 above their maxzoom. Tests-first and fix runs are green as expected.
+  - **The owner:** "pre-main as it stands (Recommended)". The deploy is wrangler from `pre-main` after the
+    fix merges. That includes #453's v6 route, which is harmless: the files are on R2, and no style names
+    v6 yet. It supersedes the earlier "pre-main only" for v6.
+  - Who runs wrangler (needs a Cloudflare login) is settled before the deploy.
