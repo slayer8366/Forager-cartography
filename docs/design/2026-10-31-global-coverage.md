@@ -297,3 +297,10 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - **Optional later** (the owner's dashboard, once): a dedicated production branch for the Worker
     (e.g. `worker-live`) plus build watch paths, so app merges to `main` never redeploy the Worker.
   - Willow does it after this deploy is live.
+- **The merges:** Willow's session refused `gh pr merge 455` ("Merge Without Review"). The owner chose
+  "Aspen merges both (Recommended)".
+  - **Aspen merged #455 into `pre-main`** with a merge commit, `b535bc025`, matched to the reviewed head
+    `f8fa10db2`, with all 6 checks green.
+  - `worker/overflow-street-only` (`4fa944c01`, on `main` `177215135`): its folder equals the new
+    `pre-main`'s, with 0 files outside `server/pmtiles-worker` (Aspen checked).
+  - Its PR to `main` follows. Aspen merges it after Sorrel's OK; Cloudflare then deploys from `main`.
