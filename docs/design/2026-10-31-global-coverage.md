@@ -319,3 +319,11 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
     and the README.
   - Then Sorrel reviews, Aspen merges, and #456 is refreshed. #456 stays unmerged until then.
 - **#448** at `a578ecd56`: every PR check passes, and it's mergeable. The merge is the owner's call.
+- **The owner:** "I approve of your plan. Go".
+- **PR #457** (`worker-self-contained-tests` -> `pre-main`; `d98d3980e` tests first, then `a43a41a05`)
+  is green. It has the self-contained Worker tests, the cross-folder tests that skip on a folder-only
+  `main`, and `tools/check-release.sh` with `worker-release.yml` (the `worker/*` guard), plus the README.
+  Sorrel is dispatched.
+  - **Risk (Willow):** Workers Builds redeploys `main`'s Worker folder on every push to `main`, and that
+    folder is older than live. **Until #456 lands, nothing may be merged to `main`.** Any push would drop
+    street-v3 and official trails.
