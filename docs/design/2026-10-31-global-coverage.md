@@ -272,3 +272,16 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   upload (which must follow it) waits too.
   - The relief build (after tonight's run) and the #448 style work go ahead.
   - **The stray tile:** "Yes, delete it (Recommended)", to be done after the deploy.
+- **The owner:** "Find a way to deploy it. I did the API token already and I won't do it again". Aspen's
+  two searches for where the token lives (Pi config files, then the records and workflows) were refused
+  by Aspen's session as "Credential Exploration", so Aspen stopped.
+- **The owner:** "Workers deploy from Main so no need for it".
+  - **Aspen:** Cloudflare Workers Builds deploys from `main` (root `server/pmtiles-worker`), but `main`'s
+    Worker folder lacks street-v3 and reference-trails, which are live. Deploying `main` as it stands
+    would break every phone's Trail Map.
+- **The owner:** "Yes, Worker folder only (Recommended)".
+  - A PR to `main` that changes only `server/pmtiles-worker`, made equal to `pre-main`'s after the overflow
+    fix merges (the fix plus v6).
+  - Sorrel glances at it, then it merges, then Cloudflare deploys.
+  - Aspen checks the live routes (street-v3/v2, reference-trails, sprites v4/v5/v6, a Street tile,
+    world-south above z8 = 204), then deletes the stray world-south tile.
