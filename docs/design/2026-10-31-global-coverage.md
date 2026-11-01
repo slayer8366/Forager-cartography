@@ -213,3 +213,23 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - `forager-build.timer` is untouched (next run Sun 11-08); the script's flock prevents overlapping
     runs.
 - **The upload watcher was restarted for this run** (09:44): Wi-Fi only, routing then `us.pmtiles`.
+- **The hill shading trial APK (Willow, 10:30):** run 41332802392, artifact 13094875304, branch
+  `hillshade-trial-s22` at `cae711fff` (never merge).
+  - v4 with Sage's ALT. The style is fetched live, so the look can be changed with no new APK.
+  - The night pair comes from `HillshadeTrialNight.kt` (MapLibre 13.5.0 takes shadow and highlight as
+    colour arrays).
+- **The rollout scope (Willow, 10:40):**
+  - US + Canada z5-11 is 348,509 tiles (75 % of them at z11), about 22 GB (16-34 GB), 1-2.3 h on four
+    processes, about $0.33/month on R2.
+  - **The Worker needs a change first:** overflow and maxzoom advertising for the Street archive only,
+    or relief z12+ requests would pull vector tiles into R2. The style also gives the relief source an
+    inline tiles URL with maxzoom 11.
+  - **The app:** v4's dem source and hillshade layer through `forager-fill-in.mjs`. A
+    `forager:night-hillshade` night table replaces the trial's code. Credits rows for USGS 3DEP and NRCan
+    MRDEM.
+  - Relief joins offline downloads automatically (about 1.5-3 MB per region). Hide it under Topographical
+    (OpenTopoMap shades already).
+  - **The order:** the build (USB drive, outside the weekly run), then the Worker, then the R2 upload,
+    then the v4 merge.
+  - The WebP encode stopped when Aspen's container restarted, so it's untested.
+- **Waiting for the owner's verdict on the trial.**
