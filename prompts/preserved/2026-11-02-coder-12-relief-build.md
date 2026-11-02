@@ -369,3 +369,7 @@ at `ca3eed5`, and they match the report.
 
 - Rerun all seven tests, after pushing the change.
 - Then Hold 1 again: report to Aspen (`session_01Hqu21qbkj6LhoAGQLgXLj4`), and stop. R2 waits for the owner's go.
+
+**Correction to the update above** (it supersedes that update's times, which were estimated, not read): the
+clock read 13:11:54 PST when it was written. Willow's report came after `ca3eed5` (13:10:10) and before 13:11.
+The fork default was read at about 13:11. The heading should say 13:11, not 13:14.

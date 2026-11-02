@@ -260,3 +260,7 @@ Written by the planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`) at about 
   - R2 stops before converting if any inner Hood tile differs by more than that.
   - The owner can overrule this before R2's go.
 - **Next:** Willow reruns the tests. Then Hold 1, and R2 waits for the owner's go.
+
+**Correction to the update above** (it supersedes that update's times, which were estimated, not read): the
+clock read 13:11:54 PST when it was written. Willow's report came after `ca3eed5` (13:10:10) and before 13:11.
+The fork default was read at about 13:11. The heading should say 13:11, not 13:14.
