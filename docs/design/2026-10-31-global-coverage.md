@@ -382,3 +382,10 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
     (records-after-173): what on `pre-main` is ready, and the timing.
   - **The order:** the Worker v4 route, then the app switch PR, then the promotion, then the automatic
     Play build, then the owner's upload.
+- **Rowan's reply (-08):** what's ready to ship isn't known yet. `pre-main` (363 ahead) needs sorting
+  into ready / needs polish / must hide, and Rowan has asked the owner for a go on that.
+  - #449 and #440 aren't on `pre-main`.
+  - **The promotion gate:** CI, the UX auditor's report (a fresh session, on a different model), and the
+    owner's approval. Rowan's hold (-1933) stands until the owner lifts it.
+  - Aspen answered (-09): the trial is done, and #448 carries the rollout. The release go comes only after
+    the sort and the audit.
