@@ -103,3 +103,26 @@ Read live by the planner at 08:58 PST.
 - Step 2 (relief) still waits. Retrying the tile upload needs the owner's go (the rule above: on a STOP,
   report, don't retry by hand). A v2 rerun would re-check routing (copy skips identical files, read-back
   about 8 min, same manifest) and then upload the tiles again.
+
+## Update, 09:07 PST: the planner is resuming the tile upload (owner's go)
+
+- **The owner, about 09:00 PST:** "Go ahead and resume the upload where it left off". The planner runs
+  it, since Willow is offline.
+- **What R2 held (observed, ListParts):** the 04:14:29 multipart upload of `us.pmtiles` has parts 1-282,
+  no gaps, each 67,108,864 B (18,924,699,648 B, about 54%). The last part landed 04:47:41 PST. The file
+  needs 526 parts.
+- **The tool:** rclone can't resume a multipart upload, so the planner wrote
+  `/mnt/archive/aspen-upload-next/resume/resume.py` (boto3 in `~/.venvs/s3resume`, keys read from
+  rclone's `r2` remote). It hashes the local file (sha256 must match the build manifest; md5 for each
+  64 MiB part), requires every part on R2 to have the matching ETag, uploads the missing parts with
+  Content-MD5, completes only if all 526 parts match, then reads back the size, the multipart ETag
+  computed from the local parts, the md5 metadata and the first MiB. It uploads only while every R2
+  address routes via wlan0, and it logs STOP to `upload.log`.
+- **Checks before uploading (observed):** `--verify-only` at 09:02-09:07: sha256 `02f9f053…d054e`
+  matches the build manifest; all 282 parts on R2 match the local parts. The Wi-Fi test passed on the
+  real routes and refused a stub `ip` that answered `dev bnep0`.
+- The rollback copy of the live file is
+  `/mnt/storage/rollback/usca-20261017T202051Z-usca-20261021T111429Z/forager-usca.pmtiles`
+  (34,141,705,380 B, same size as the live `us.pmtiles`).
+- Started 09:07:33 PST, pid 305513 (`setsid nohup`). 244 parts (16.3 GB) to go, 4 at a time.
+- The `reference-trails.pmtiles` multipart from 10-27 is untouched; clearing it waits for the owner.
