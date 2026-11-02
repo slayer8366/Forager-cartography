@@ -152,3 +152,27 @@
   - give the branch and commit;
   - say plainly what you didn't check;
   - include a **Conventions** line: which neighbouring patches and scripts you followed.
+
+## Update, 14:28 PST: Z1 goes to Juniper; premise 1 corrected; no download needed
+
+- **Premise 1, corrected** (Willow, read 14:15-14:17):
+  - The installed map-build is Forager `53a728341` on origin/pi-build ("Merge pi-37-barrier-mark-fill"),
+    with patches 0001-0007 and a 4608m heap. `288ce80cf` has only 0001-0004.
+  - Z2's branch `osm-zooms-map-build` is cut from `53a728341`.
+  - The installed jar is `25e5b8db…` (11-01 09:40). `1d892172` is the rollback copy.
+- **Z1 is withdrawn.** The owner, about 14:25: "Ensure Juniper has the right dispatch:
+  prompts/preserved/2026-11-02-03-osm-zoom-levels.md".
+  - Juniper's session (`session_01Hqu21oansrXBVEfzvrbt17`, opened 14:24) does the comparison, under that
+    Forager dispatch, on origin/records-after-173 at `8f8426e38`.
+  - At about 14:27, Aspen sent Juniper:
+    - the file's location;
+    - the owner's words since 12:49, so first-appearance zooms only;
+    - the read facts for A1 and C1.
+  - Rowan is asked to add them to that dispatch as an amendment.
+  - Willow pushes any Z1 draft and stops Z1.
+- **Z2 starts from Juniper's C1 table,** on Aspen's word.
+- **The rebuild uses the 10-30 extracts already on the Pi** (`--local 261030`). No download is needed for the
+  zoom fix. The owner asked "Does a download need to happen for the zoom fix?", and Aspen answered no.
+  - The four 10-30 extracts were read at 14:2x, on the SD card, with their `.md5` files.
+- **The map build is stopped,** with nothing downloading (14:25). The partial `us-261101.osm.pbf.part`
+  (1,529,737,216 bytes) is kept in `/mnt/archive/forager-build/sources-osm/`.
