@@ -126,3 +126,22 @@ Read live by the planner at 08:58 PST.
   (34,141,705,380 B, same size as the live `us.pmtiles`).
 - Started 09:07:33 PST, pid 305513 (`setsid nohup`). 244 parts (16.3 GB) to go, 4 at a time.
 - The `reference-trails.pmtiles` multipart from 10-27 is untouched; clearing it waits for the owner.
+
+## Update, 10:29 PST: us.pmtiles is live (resumed upload); the upload step is done
+
+- **Slow, then restarted (observed):** from about 09:22 the rate fell from 9 to about 2 MB/s with no failed
+  parts and no Wi-Fi waits. At 10:06 `ss -ti` showed two of the four connections (both IPv4) at cwnd 1-2,
+  0.1-0.4 Mbit/s, with heavy retransmits, and one IPv6 connection at 13 Mbit/s. On the owner's "Try
+  restarting it", the planner stopped pid 305513 at 10:07:15 and started pid 309649 with
+  `--reuse-hashes` (reuses the 09:11 part hashes only if the file's size and mtime are unchanged; the
+  sha256 check against the build manifest still runs). R2 then held 477 parts, all matching. The new
+  connections started at about 4 MB/s; one reconnected over IPv4 and collapsed again (cwnd 1, 3,145
+  retransmits). Inferred, not proven: the IPv4 path is losing packets.
+- **Completed 10:29:36 PST (observed, upload.log):** all 526 parts matched before CompleteMultipartUpload.
+  Read back: size 35,256,335,758 on R2 and local; ETag `b8adb3d8…2143d3-526` on R2 equals the ETag
+  computed from the local part md5s; `rclone md5sum` `9d8621d2…efe8ea` equals the local whole-file md5;
+  first MiB sha256 `53f58222…da2634` matches. `rclone lsl` now reads `35256335758 2026-11-01 19:12:39`.
+- The `us.pmtiles` multipart is gone (completed). Only the 10-27 `reference-trails.pmtiles` one is left,
+  waiting for the owner.
+- Not checked: the map through the Worker or in the app.
+- **Step 2 (relief) can start**: the upload finished cleanly. Willow shows offline.
