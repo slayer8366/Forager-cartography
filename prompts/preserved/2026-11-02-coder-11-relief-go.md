@@ -57,3 +57,17 @@ unless this one changes it.
 
 Report to the planner after step 1 (the fix, the 20/20, the restart, then the upload result) and after
 step 2. Mark claims observed, read or inferred.
+
+## Update, about 03:40 PST: use v2; the go went to the real Willow session
+
+- Another planner session (since closed) had already written a fix, `upload-after-build-v2.sh`. Like
+  that session, the planner reviewed v2 against `upload-after-build.sh.v1-pipefail-bug`. Its Wi-Fi test
+  is `ip route get 1.1.1.1` with no pipe. It adds an ERR trap that logs STOP. It also adds `|| true` on
+  the two read-back display lines; the strict `rclone check -q || die` and the count check still guard
+  the manifest. A helper tested it: 20/20 under pipefail (the old test passed 6/20), and it refuses
+  bnep0, `wlan01` and an unreachable network.
+- **Step 1 now:** start v2, not an in-place edit (pid 221905 reads the live file by byte offset). Stop
+  221905, then confirm no `bash ./upload-after-build*` is left with `ps -o pid,cmd -C bash` (a bare
+  pgrep also matches wrapper 221900 and log watchers), then start v2 once.
+- **The owner:** "Tell Willow to go. She's waiting on you", then "Send it to Willow, I'll approve the
+  prompt". Sent to the Willow session at about 03:40 PST. The helper briefed as Willow stood down.
