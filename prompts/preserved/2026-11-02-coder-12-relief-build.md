@@ -318,3 +318,54 @@ the 12:28 update. Times are Pacific.
   the full test output, and the commit. Then stop.
 - If anything outside the test's own processes is signalled, or any session drops, stop at once and report.
 - Nothing else changes.
+
+## Update, 13:14 PST: Hold 1 came back 5 of 7; two test changes, then rerun
+
+Willow's Hold 1 report came in at about 13:12, from the 13:08:34-13:08:55 run on `willow-relief-build`.
+The fix is `595c5b9`, and the logs are `ca3eed5`. The planner read `r0-tests.log` and `r0-hood-vrt-diag.log`
+at `ca3eed5`, and they match the report.
+
+- **Passed:** tests 1, 2, 3, 5 and 7, and every safety part of test 4:
+  - three refusals, each sending nothing;
+  - one `kill(-28, SIGTERM)`;
+  - the sentinel stayed alive;
+  - and nothing outside the test was signalled (13:08:24 against 13:09:29).
+- **Test 4 failed on timing.** The stop landed after all 20 tiles were done, so resuming wasn't exercised.
+- **Test 6 failed on byte identity.**
+  - From the trial's two-cell VRT, `render()` gives 20 of 20 tiles byte-identical to the reference.
+  - From the 3,631-cell VRT, 4 tiles differ, each in 1 pixel of 65,536, by 1/256 m (one Terrarium step).
+  - The summit reads 3,391.582 m in both, the same as the reference.
+- **Workers are now forked, not spawned,** so `stop` can recognise them by their command line.
+  - The trial script used one process, and fork is Python's default here (read 13:13).
+  - Accepted. Inferred low risk: the parent holds no open dataset when it forks.
+
+### The planner's decisions (Willow's option A, both)
+
+1. **Test 4 gets a test-only delay.**
+   - With `RELIEF_TEST_CHUNK_DELAY=1`, each worker sleeps 1 s after each chunk commit.
+   - **The build's start line logs the delay's value.** R2 never sets it, and R2's log must show it off. If it
+     shows anything else, stop.
+   - **Pass:** the stop lands with 0 < tiles < 20, the restart does the rest, and each tile is written once.
+     Everything else in test 4 stays as it is.
+2. **Test 6 passes on two conditions:**
+   - from the trial's two-cell VRT, 20 of 20 tiles are byte-identical (this shows the render is the trial's);
+   - from the full VRT, every tile is within 1/256 m of the reference.
+   - It reports the count of differing pixels.
+   - This supersedes "should be byte-identical" in R2's Hood check. R2 reports, for the inner tiles, the count
+     identical and different, and the largest difference in metres.
+     - If any inner tile differs by more than 1/256 m, stop before converting and report.
+     - The edge tiles are reported, not judged.
+   - **Why the planner can decide this:** byte identity was the planner's inference, marked as such. The
+     owner's reference is the trial's look and its numbers. The numbers hold, and one 4 mm step in one pixel
+     doesn't show in the shading (inferred). The owner sees this before R2's go and can overrule it.
+
+### Also for R2
+
+- If two 10-minute log lines in a row show no new tiles, the build has stalled. Stop it with
+  `relief.py stop /mnt/storage/relief` and report.
+  - This guards against a forked worker hanging (inferred risk, not seen).
+
+### Then
+
+- Rerun all seven tests, after pushing the change.
+- Then Hold 1 again: report to Aspen (`session_01Hqu21qbkj6LhoAGQLgXLj4`), and stop. R2 waits for the owner's go.
