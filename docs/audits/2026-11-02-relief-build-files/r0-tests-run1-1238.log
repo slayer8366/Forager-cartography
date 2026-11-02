@@ -1,0 +1,21 @@
+2026-11-02 12:38:59 PST relief_tests.py in /tmp/coder12-r0-20261102T123859; relief.py at /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21n91pRtmjCx7ojEAv7/docs/audits/2026-11-02-relief-build-files
+
+enumerated: z5 103 z6 330 z7 1163 z8 4349 z9 16757 z10 65689 z11 260118 total 348509
+table:      z5 103 z6 330 z7 1163 z8 4349 z9 16757 z10 65689 z11 260118 total 348509
+==> 1 tile counts: PASS
+
+N52E179 z11 columns: [2042, 2043, 2044, 2045, 2046, 2047]
+tiles in the full list with x outside 0..2^z-1: 0
+tiles at x = 2^z-1 (from cells ending at 180 E): {5: 1, 6: 2, 7: 2, 8: 3, 9: 6, 10: 10, 11: 19}
+tiles at x = 0 (from cells starting at 180 W):   {5: 3, 6: 2, 7: 1, 8: 2, 9: 3, 10: 5, 11: 10}
+control, without the 1e-9: N52E179's last column would be 2048 (= 0 wrapped)
+==> 2 antimeridian: PASS
+
+   -86.0 m -> RGB (127, 170, 0) -> -86.000000 m, error 0.000000 m
+     0.0 m -> RGB (128, 0, 0) -> 0.000000 m, error 0.000000 m
+  3392.4 m -> RGB (141, 64, 102) -> 3392.398438 m, error 0.001563 m
+  6190.5 m -> RGB (152, 46, 128) -> 6190.500000 m, error 0.000000 m
+void (NaN) -> 0.000000 m
+control, B dropped: largest error 0.5000 m (must exceed 1/256 = 0.003906)
+==> 3 Terrarium round trip: PASS - largest error 0.001563 m
+

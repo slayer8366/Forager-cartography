@@ -3,11 +3,14 @@
 
   relief_tests.py [WORKDIR]    WORKDIR is a new folder under /tmp (default /tmp/coder12-r0-<time>); nothing is
                                written anywhere else. The hgt3 cells and the trial's tiles are only read.
+                               It re-runs itself under unshare -Urpf --mount-proc; no test runs outside that.
 
 1. tile counts: the enumeration from the cells equals the planner's table (dispatch premise 4)
 2. antimeridian: N52E179's z11 tiles have x >= 2040 and none wrap to x = 0 (control: without the 1e-9 one would)
 3. Terrarium round trip: -86, 0, 3392.4 and 6190.5 m decode within 1/256 m (control: dropping B fails)
-4. stop and resume: 20 z11 tiles, 2 workers, stopped with kill -TERM -<pgid> partway, restarted: each tile once
+4. stop and resume, inside a private PID namespace: relief.py stop refuses (no signal syscall, a sentinel lives)
+   for pgid 1, its own group and the sentinel's group; then 20 z11 tiles, 2 workers, stopped partway with
+   relief.py stop OUT (strace: only kill(-pgid, SIGTERM)), restarted: each tile once, the sentinel alive
 5. the count check catches a gap (positive control): one row dropped from a copy of a part file -> FAIL naming
    z11; and on a synthetic full set (every tile, empty PNG stubs): passes, then one z7 row dropped and one z9 tile
    duplicated -> FAIL naming z7 and z9
@@ -99,10 +102,70 @@ def run_build(out, only, log):
     return subprocess.Popen(cmd, stdout=open(log, "w"), stderr=subprocess.STDOUT)
 
 
+SIGCALLS = "kill,tkill,tgkill,rt_sigqueueinfo,rt_tgsigqueueinfo,pidfd_send_signal"
+
+
+def traced_stop(out, trace, prefix=()):
+    """relief.py stop OUT under strace, which records every signal-sending syscall (none is skipped; the namespace
+    is the guard). Returns (exit, output, the calls with their pid prefix dropped and spaces squeezed)."""
+    cmd = [*prefix, "strace", "-f", "-qq", "-e", f"trace={SIGCALLS}", "-e", "signal=none", "-o", trace,
+           sys.executable, f"{HERE}/relief.py", "stop", out]
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=180)
+    calls = []
+    for l in open(trace).read().splitlines():
+        w = l.split()
+        if w:
+            calls.append(" ".join(w[1:] if w[0].isdigit() else w))
+    return r.returncode, (r.stdout + r.stderr).strip(), calls
+
+
+def proc_stat(pid):
+    """(state, pgid) of pid from /proc, or None if it's gone."""
+    try:
+        f = open(f"/proc/{pid}/stat").read().rsplit(")", 1)[1].split()
+        return f[0], int(f[2])
+    except OSError:
+        return None
+
+
+def alive(pid):
+    st = proc_stat(pid)
+    return st is not None and st[0] != "Z"
+
+
 def t4_resume(work):
-    out = f"{work}/resume"; parts = f"{out}/parts"; only = f"{work}/twenty.txt"
-    os.makedirs(out)
+    name = "4 stop and resume"
+    nproc = sum(1 for d in os.listdir("/proc") if d.isdigit())
+    print(f"namespace: this runner is pid {os.getpid()}, /proc/1 is {open('/proc/1/comm').read().strip()!r},"
+          f" {nproc} processes visible, {NS_ENV}={os.environ.get(NS_ENV)}")
+    if os.getpid() != 1 or os.environ.get(NS_ENV) != "1":
+        return result(name, False, "not inside the private PID namespace: test 4 not run (dispatch 13:02)")
+    out = f"{work}/resume"; parts = f"{out}/parts"; only = f"{work}/twenty.txt"; ctl = f"{work}/stopctl"
+    os.makedirs(out); os.makedirs(ctl)
     open(only, "w").write("".join(f"{z}/{x}/{y}\n" for z, x, y in TWENTY))
+
+    # The sentinel: a process in its own group that no stop may touch.
+    sentinel = subprocess.Popen(["setsid", "sleep", "900"]); time.sleep(0.3)
+    st = proc_stat(sentinel.pid)
+    print(f"sentinel: pid {sentinel.pid}, state/pgid {st} (setsid sleep 900)")
+    ok_ctl = st is not None and st[1] == sentinel.pid
+
+    # Controls: stop must refuse, and make no signal syscall, for pgid 1, its own group, and the sentinel's group.
+    own = ["setsid", "sh", "-c", f'echo $$ > {ctl}/build.pgid && exec "$@"', "sh"]   # pgid = the stop's own group
+    for n, (label, value, prefix, why) in enumerate((
+            ("build.pgid holds 1", "1", (), "is not greater than 1"),
+            ("build.pgid holds the caller's own group", None, own, "this process's own group"),
+            ("build.pgid holds the sentinel's group", str(sentinel.pid), (), "aren't relief.py build")), 1):
+        if value is not None:
+            open(f"{ctl}/build.pgid", "w").write(value + "\n")
+        rc, text, calls = traced_stop(ctl, f"{work}/trace-control-{n}.txt", prefix)
+        got = open(f"{ctl}/build.pgid").read().strip()
+        ok = rc != 0 and "refusing, sending nothing" in text and why in text and not calls and alive(sentinel.pid)
+        print(f"control {n}, {label} ({got}): exit {rc}; signal syscalls {calls or 'none'};"
+              f" sentinel {'alive' if alive(sentinel.pid) else 'GONE'} -> {'ok' if ok else 'FAILED'}")
+        print("  " + text.replace("\n", "\n  "))
+        ok_ctl = ok_ctl and ok
+
     p = run_build(out, only, f"{work}/run1.log")
     pgid, t0 = None, time.time()
     while time.time() - t0 < 180 and p.poll() is None:
@@ -114,18 +177,26 @@ def t4_resume(work):
         if pgid and rows_now(parts) >= 1:
             break
         time.sleep(0.05)
-    n_at_kill = rows_now(parts)
+    n_at_stop = rows_now(parts)
     if p.poll() is not None or not pgid:
         print(open(f"{work}/run1.log").read())
-        return result("4 stop and resume", False, f"run 1 ended before the kill (exit {p.poll()}, pgid {pgid})")
-    print(f"run 1: pid {p.pid}, pgid {pgid}; {n_at_kill} tile(s) committed when stopping it with kill -TERM -{pgid}")
-    subprocess.run(["kill", "-TERM", f"-{pgid}"], check=True)
+        return result(name, False, f"run 1 ended before the stop (exit {p.poll()}, pgid {pgid})")
+    members = relief.group_members(pgid)
+    print(f"run 1: pid {p.pid}, pgid {pgid}; {n_at_stop} tile(s) committed; the group before the stop:")
+    for pid, state, argv in members:
+        print(f"  pid {pid} {state} {' '.join(argv)[:150]}")
+    rc_stop, text, calls = traced_stop(out, f"{work}/trace-stop.txt")
+    print(f"relief.py stop {out}: exit {rc_stop}; signal syscalls {calls}")
+    print("  " + text.replace("\n", "\n  "))
     rc1 = p.wait(60); time.sleep(1)
-    left = subprocess.run(["pgrep", "-g", str(pgid)], capture_output=True, text=True).stdout.split()
+    left = relief.group_members(pgid)
+    ok_stop = (rc_stop == 0 and calls == [f"kill(-{pgid}, SIGTERM) = 0"] and pgid == p.pid and not left
+               and alive(sentinel.pid))
     leftovers = sorted(os.listdir(parts))
-    after_kill = sum(len(relief.read_tiles(f)) for f in relief.mbtiles_files(parts))
-    print(f"run 1 exit {rc1}; processes left in the group: {left or 'none'}; files: {leftovers}")
-    print(f"tiles in the part files after the kill: {after_kill} of {len(TWENTY)}")
+    after_stop = sum(len(relief.read_tiles(f)) for f in relief.mbtiles_files(parts))
+    print(f"run 1 exit {rc1}; live processes left in the group: {left or 'none'}; sentinel"
+          f" {'alive' if alive(sentinel.pid) else 'GONE'}; files: {leftovers}")
+    print(f"tiles in the part files after the stop: {after_stop} of {len(TWENTY)}")
     print("run 1 log:\n  " + open(f"{work}/run1.log").read().strip().replace("\n", "\n  "))
     p2 = run_build(out, only, f"{work}/run2.log"); rc2 = p2.wait(600)
     print(f"run 2 exit {rc2}; log:\n  " + open(f"{work}/run2.log").read().strip().replace("\n", "\n  "))
@@ -134,10 +205,13 @@ def t4_resume(work):
     extra = [t for t in seen if t not in TWENTY]
     print(f"after run 2: {len(seen)} distinct tiles, {sum(seen.values())} rows; missing {missing}; extra {extra}")
     ok_check, _ = captured(relief.check, parts, TWENTY)
-    skipped = f"already in part files: {after_kill}; to do: {len(TWENTY) - after_kill}" in open(f"{work}/run2.log").read()
-    result("4 stop and resume", rc1 != 0 and not left and 0 < after_kill < len(TWENTY) and rc2 == 0 and once
-           and not missing and not extra and ok_check and skipped,
-           f"stopped at {after_kill}/20, restart did {len(TWENTY) - after_kill}, each tile once")
+    skipped = f"already in part files: {after_stop}; to do: {len(TWENTY) - after_stop}" in open(f"{work}/run2.log").read()
+    print(f"controls {'ok' if ok_ctl else 'FAILED'}; the real stop {'ok' if ok_stop else 'FAILED'}; sentinel"
+          f" {'alive' if alive(sentinel.pid) else 'GONE'} at the end")
+    result(name, ok_ctl and ok_stop and rc1 != 0 and 0 < after_stop < len(TWENTY) and rc2 == 0 and once
+           and not missing and not extra and ok_check and skipped and alive(sentinel.pid),
+           f"3 refusals sent nothing; stop sent only kill(-{pgid}, SIGTERM); stopped at {after_stop}/20, restart did"
+           f" {len(TWENTY) - after_stop}, each tile once; the sentinel lived")
 
 
 def t5_gap(work):
@@ -202,10 +276,21 @@ def t7_render(work):
     result("7 antimeridian render", ok, "the 180 E tiles take about as long as their neighbours")
 
 
+NS_ENV = "RELIEF_TESTS_IN_PIDNS"
+
+
 def main():
     work = sys.argv[1] if len(sys.argv) > 1 else time.strftime("/tmp/coder12-r0-%Y%m%dT%H%M%S")
     if not work.startswith("/tmp/"):
         sys.exit("the tests write only under /tmp")
+    if os.environ.get(NS_ENV) != "1":
+        # The whole run goes inside a private PID namespace (dispatch, update 13:02): there a wrong signal can
+        # reach only the test's own processes. No test runs outside it.
+        cmd = ["unshare", "-Urpf", "--mount-proc", sys.executable, "-u", os.path.abspath(__file__), work]
+        print(f"{time.strftime('%F %T %Z')} running inside a private PID namespace: {' '.join(cmd)}", flush=True)
+        r = subprocess.run(cmd, env={**os.environ, NS_ENV: "1"})
+        print(f"{time.strftime('%F %T %Z')} namespace run exit {r.returncode}", flush=True)
+        return r.returncode
     os.makedirs(work)
     print(f"{time.strftime('%F %T %Z')} relief_tests.py in {work}; relief.py at {HERE}\n", flush=True)
     t1_counts(); t2_antimeridian(); t3_terrarium(); t4_resume(work); t5_gap(work); t6_chain(work); t7_render(work)

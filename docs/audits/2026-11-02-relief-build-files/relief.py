@@ -11,13 +11,20 @@ bytes go into one MBTiles part file per worker (no loose PNG tree), and there is
   relief.py build  OUT [--procs 4] [--chunk 32] [--only FILE]
                    render into OUT/parts/part-K.mbtiles; a restart skips tiles already in a part file.
                    Start it under setsid: the process-group id goes in OUT/build.pgid, and
-                   kill -TERM -<pgid> stops it. Stops itself under 50G free or on under-voltage/throttling.
+                   relief.py stop OUT stops it. Stops itself under 50G free or on under-voltage/throttling.
+  relief.py stop   OUT                     SIGTERM to the build's process group (OUT/build.pgid) with os.killpg,
+                                           only if the group is > 1, isn't the caller's, and holds only
+                                           relief.py build processes; else it sends nothing and exits 1
   relief.py check  PARTS_DIR|FILE.mbtiles [--only FILE]   per-zoom count check; exit 1 on any gap
   relief.py merge  OUT [--only FILE]       check the parts, merge them into OUT/relief.mbtiles, check that
   relief.py verify OUT [--only FILE]       the R2 checks on OUT/relief.pmtiles (and the MBTiles' size)
 
 --only FILE limits the tiles to the z/x/y lines in FILE (the R0 tests). Terrarium: h = R*256 + G + B/256 - 32768
 (metres); voids and sea are 0 m, as in the trial. Deletes nothing.
+
+Never stop a build with /usr/bin/kill -TERM -<pgid>: on this Pi (procps-ng 4.0.2) it keeps only the first digit
+of the id, so -14750 becomes kill(-1), every process of the user (coder-12, 2026-11-02 12:39). By hand in bash:
+kill -TERM -- -<pgid>, never without --, never with sudo.
 """
 import argparse, collections, fcntl, glob, hashlib, io, math, multiprocessing as mp, os, re, signal
 import sqlite3, subprocess, sys, time
@@ -26,6 +33,7 @@ from osgeo import gdal
 from PIL import Image
 gdal.UseExceptions()
 os.environ["TZ"] = "America/Los_Angeles"; time.tzset()
+sys.stdout.reconfigure(line_buffering=True)    # every line reaches the log before a stop or a failure
 
 HGT ="/mnt/storage/elevation/hgt3"
 REF = "/mnt/archive/aspen-hillshade-trial/tiles/png256"   # the trial's tiles: the reference (premise 7)
@@ -198,7 +206,7 @@ def make_vrt(out, cs):
 def build(a):
     out = os.path.abspath(a.out); parts = f"{out}/parts"
     if os.getpgrp() != os.getpid():
-        sys.exit("start this under setsid, so that kill -TERM -<pgid> stops this build and nothing else")
+        sys.exit(f"start this under setsid, so that relief.py stop {a.out} stops this build and nothing else")
     if os.nice(0) < 10:
         os.nice(10 - os.nice(0))
     os.makedirs(parts, exist_ok=True)
@@ -225,8 +233,12 @@ def build(a):
     log(f"already in part files: {len(seen)}; to do: {len(todo)}")
     if not todo:
         log("nothing to do"); return 0
+    log(f"to stop it: {os.path.abspath(sys.argv[0])} stop {out}")
 
-    ctx = mp.get_context("spawn")
+    # Fork, not spawn: a forked worker keeps this process's command line (relief.py build ...), which is what
+    # stop checks before it signals the group. A spawned one runs "python3 -c from multiprocessing.spawn ...".
+    # No thread is running here yet (the queue's feeder thread starts at the first put, after the forks).
+    ctx = mp.get_context("fork")
     done = ctx.Array("q", 12)
     for z, c in per_zoom(seen).items():
         done[z] = c
@@ -281,6 +293,61 @@ def build(a):
     if left:
         log(f"workers finished but {left} tiles are not in the part files"); return 1
     log("done: every wanted tile is in a part file"); return 0
+
+
+# --- stop -------------------------------------------------------------------------------------------------------
+def group_members(pgid):
+    """[(pid, state, argv)] of the live processes in process group pgid (pgrep -g), zombies left out."""
+    r = subprocess.run(["pgrep", "-g", str(pgid)], capture_output=True, text=True)
+    out = []
+    for pid in r.stdout.split():
+        try:
+            state = open(f"/proc/{pid}/stat").read().rsplit(")", 1)[1].split()[0]
+            argv = open(f"/proc/{pid}/cmdline", "rb").read().split(b"\0")[:-1]
+        except OSError:
+            continue                                   # gone since pgrep listed it
+        if state != "Z":
+            out.append((int(pid), state, [v.decode(errors="replace") for v in argv]))
+    return out
+
+
+def is_build(argv):
+    """python3 [flags] .../relief.py build ...: the build and its forked workers, nothing else."""
+    if not argv or not os.path.basename(argv[0]).startswith("python"):
+        return False
+    i = next((i for i, v in enumerate(argv) if os.path.basename(v) == "relief.py"), None)
+    return i is not None and i + 1 < len(argv) and argv[i + 1] == "build"
+
+
+def stop_build(a):
+    """The one way to stop a build: os.killpg(pgid, SIGTERM), after three checks; on any doubt it sends nothing."""
+    out = os.path.abspath(a.out)
+    try:
+        pgid = int(open(f"{out}/build.pgid").read().strip())
+    except (OSError, ValueError) as e:
+        print(f"stop: refusing, sending nothing: can't read a pgid from {out}/build.pgid ({e})"); return 1
+    if pgid <= 1:
+        print(f"stop: refusing, sending nothing: pgid {pgid} is not greater than 1"); return 1
+    if pgid == os.getpgrp():
+        print(f"stop: refusing, sending nothing: pgid {pgid} is this process's own group"); return 1
+    members = group_members(pgid)
+    if not members:
+        print(f"stop: refusing, sending nothing: no live process in group {pgid}"); return 1
+    others = [m for m in members if not is_build(m[2])]
+    for pid, state, argv in members:
+        print(f"stop: group {pgid}: pid {pid} {state} {' '.join(argv)[:160]}")
+    if others:
+        print(f"stop: refusing, sending nothing: group {pgid} holds {len(others)} process(es) that aren't"
+              f" relief.py build, e.g. pid {others[0][0]} {' '.join(others[0][2])[:80]}"); return 1
+    print(f"stop: os.killpg({pgid}, SIGTERM) to {len(members)} relief.py build process(es)")
+    os.killpg(pgid, signal.SIGTERM)
+    t0 = time.time()
+    while time.time() - t0 < 60:
+        left = group_members(pgid)
+        if not left:
+            print(f"stop: group {pgid} is empty after {time.time() - t0:.1f} s"); return 0
+        time.sleep(0.2)
+    print(f"stop: group {pgid} still holds {[m[0] for m in left]} after 60 s; sent nothing more"); return 1
 
 
 # --- check ------------------------------------------------------------------------------------------------------
@@ -444,6 +511,7 @@ def main():
     c = sp.add_parser("check"); c.add_argument("path"); c.add_argument("--only")
     m = sp.add_parser("merge"); m.add_argument("out"); m.add_argument("--only")
     v = sp.add_parser("verify"); v.add_argument("out"); v.add_argument("--only")
+    s = sp.add_parser("stop"); s.add_argument("out")
     a = ap.parse_args()
     if a.cmd == "build" and not 1 <= a.procs <= 4:
         sys.exit("--procs is 1 to 4 (dispatch: up to 4 processes)")
@@ -457,6 +525,8 @@ def main():
         return 0 if check(a.path, scope(a.only)) else 1
     if a.cmd == "merge":
         return merge(a)
+    if a.cmd == "stop":
+        return stop_build(a)
     return verify(a)
 
 
