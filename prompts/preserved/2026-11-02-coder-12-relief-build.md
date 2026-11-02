@@ -390,3 +390,24 @@ The fork default was read at about 13:11. The heading should say 13:11, not 13:1
 
 **Correction to the update above** (it supersedes that update's heading): the clock read 13:13:51 PST when it
 was written, so the heading should say 13:13, not 13:16.
+
+## Update, 13:16 PST: 7 of 7 tests pass; R2 is running
+
+Read by the planner at 13:16:11 PST, unless marked.
+
+- **The tests:** the 13:14:11-13:14:33 run passed all seven (Willow's report). The run used `cbe49fd`, and the
+  log is `86f9114` on `willow-relief-build`.
+  - The planner read the log's seven `==> … PASS` lines.
+  - Test 4: the stop landed at 4 of 20 tiles, and the restart did 16, each written once.
+  - Test 6: from the two-cell VRT, 20 of 20 tiles are identical. From the full VRT, 16 are identical and 4 are
+    within 1/256 m. The summit reads 3,391.582 m.
+- **R2 started at 13:15:38 PST** (log 13:15:40). It runs from a pinned copy,
+  `~/scratch/coder12-49/86f9114/relief.py`, whose sha256 (`1c02851e…`) equals the branch's.
+  - The process group is 6179: the leader and 4 workers, all at nice 10, all `relief.py build`.
+  - The start line says "chunk delay off". The guards are armed: 50 GB free, throttling, and the stall rule.
+  - The Pi was at 60.4 °C with `throttled=0x0`. 158 GB free.
+- **The stop:** `python3 ~/scratch/coder12-49/86f9114/relief.py stop /mnt/storage/relief`.
+- **Next:**
+  - Willow's progress line, about 13:46;
+  - then Hold 2;
+  - then R3, which is Aspen's and needs the owner's go.
