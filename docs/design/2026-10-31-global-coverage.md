@@ -364,3 +364,12 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
 - **Next, step (b):** a catch-up merge of `pre-main` into `street-v4`, then Sorrel reviews #448's delta
   since `97a26e8c7`, then Aspen merges #448 into `pre-main`. Then (c), the Worker serving
   `street-v4.json`, and (d), the app switch.
+- **Sorrel's final review of #448** at `ae647aaf4` (sent 20:00): mergeable, with nothing new to fix.
+  - Each piece equals its ruling. Phones still load v3. The catch-up merge needed no hand resolution.
+  - **Carried to the switch PR:** pass `source.streetUri` for StreetWithTopoOver into the selector, and a
+    CI job for the map-style checkers.
+  - **Aspen merged #448 into `pre-main` at about 20:05 PST: `5679eabac`.** Step (c), the Worker serving
+    `street-v4.json`, is with Willow.
+- **The rerun cleared Planetiler:** the archive finished with 1.5B features, 651M tiles, heap 4.0G of 4.8G,
+  post-GC 3.9G, so no out-of-memory error, and 0007 plus 4608m worked. It's in `routing-bands` at
+  20:05.
