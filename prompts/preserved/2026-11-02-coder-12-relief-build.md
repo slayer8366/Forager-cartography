@@ -1,0 +1,196 @@
+# Dispatch 2026-11-02-coder-12: the relief build (US + Canada, z5-11)
+
+From the Pi planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`, named
+`bridge-cse-01hqu21pts9cgiaypwgrpufq-56` in ListAgents) to Willow Quadrat, Pi coder. Written 2026-11-02 at
+about 12:20 PST. Report times in Pacific time.
+
+This replaces step 2 of `2026-11-01-coder-11-hillshade-rollout.md` and of coder-11b
+(`2026-11-02-coder-11-relief-go.md`). The plan behind it is `docs/design/2026-11-02-relief-build-plan.md`
+(`dd89812`). Read both before starting; where they differ, this dispatch wins.
+
+## The go
+
+- **The owner, about 12:10 PST:** "The build is now uploaded to R2. Let's begin fresh plans for the relief
+  build".
+- **On who runs it, about 12:20 PST:** "Give me the dispatch and I'll hand it to Willow."
+- The owner handing you this file is the go for R0, R1 and R2 below. **R3 (the R2 upload) is not yours.**
+
+## Premises, read by the planner 12:11-12:18 PST (check them first)
+
+Confirm each one, or show where it's wrong, before writing anything. All of them were read live, except
+where marked.
+
+1. **The drive:** `findmnt /mnt/storage` shows `/dev/sda1 ext4 rw,noatime`, with 158 GB free.
+   `/mnt/storage` is `root:root 755`.
+2. **`/mnt/storage/relief/` does not exist.**
+   - coder-11b saw it, empty, at 08:58.
+   - The Pi rebooted at 10:55. Root changed `/mnt/storage` at 11:29, and nothing else on the drive changed
+     after 10:00.
+   - The journal has no entries for 11:28-11:31, and no sudo use in either boot names it.
+   - Cause unknown. Don't spend time on it; just make the folder (R0).
+3. **The heights:** `/mnt/storage/elevation/hgt3` holds 3,631 `.hgt` files plus `SHA256SUMS`, 9.8 GB.
+   - The cells span 17-84 N.
+   - 12 lie east of the antimeridian (N51E177-179, N52E172-175, N52E177-179, N53E172-173), so the longitudes run -180 to 180.
+4. **The tile list.** The planner computed the tiles that touch at least one cell, using the trial's
+   tile-y formula:
+
+   | z5 | z6 | z7 | z8 | z9 | z10 | z11 | total |
+   |---|---|---|---|---|---|---|---|
+   | 103 | 330 | 1,163 | 4,349 | 16,757 | 65,689 | 260,118 | 348,509 |
+
+   This matches your 11-01 scope. If your enumeration gives other numbers, say which one is right and why.
+5. **The tools:** GDAL 3.6.2, Pillow 9.4.0, numpy 1.24.2. `pmtiles` 1.31.2 at `/usr/local/bin/pmtiles`;
+   its `convert` has `--tmpdir`. `/usr/bin/time` isn't installed.
+6. **The Pi:** idle, 45.5 °C, `get_throttled=0x0`, 7.0 GiB of memory available. The weekly timer is next on
+   Sun 11-08 02:08 PST.
+7. **The trial script:** `/mnt/archive/aspen-hillshade-trial/make-relief.py`, plus its 256 px tiles in
+   `tiles/png256/` (z11 columns 324-335).
+   - It warps each tile from a VRT with `gdal.Warp(..., resampleAlg="bilinear", srcNodata=-32768,
+     dstNodata=nan)`.
+   - It writes Terrarium with non-finite values set to 0 m, and saves PNGs with `optimize=True`.
+8. **The live style:** v4's `dem` source asks for `/relief/{z}/{x}/{y}.png` (terrarium, 256, z5-11). The
+   Worker checks the archive's header tile type and answers 400 if it isn't png.
+
+## The work
+
+### R0. Before writing
+
+- Re-read premises 1, 3 and 6. Check that no `forager-build*` unit is running
+  (`systemctl list-units 'forager-build*'`).
+- Run `sha256sum -c --quiet SHA256SUMS` in `hgt3`. It must give 0 failures.
+- Make the folder: `sudo mkdir /mnt/storage/relief`, then `sudo chown bwann83:bwann83 /mnt/storage/relief`.
+  **If your session refuses the sudo, stop and report;** Aspen will make it. Don't write anywhere else
+  instead.
+- Push the script to a forager-cartography branch, `willow-relief-build`, under
+  `docs/audits/2026-11-02-relief-build-files/`. Push at each step, not only at the end (the owner's rule).
+
+### The script: generalise `make-relief.py`
+
+Keep the trial's sampling and encoding exactly, so the look matches what the owner approved on the S22.
+That means bilinear, the same `gdal.Warp` arguments, Terrarium with voids and sea at 0 m, and PNG
+`optimize=True`. Change only these:
+
+1. **Enumerate tiles from the cells, not a bounding box.** A -180..180 box would list the whole band. Each
+   Aleutian cell east of 180 gets its own tiles near x = 2^z - 1.
+2. **Use one VRT over all 3,631 cells.**
+3. **No loose PNG tree.** Write tile bytes into MBTiles: one part file per worker process, then merged into
+   `/mnt/storage/relief/relief.mbtiles`.
+   - A restart skips tiles already in a part file.
+   - Up to 4 processes, under `nice -n 10`.
+4. **No WebP pass.**
+5. **Metadata:**
+   - name `forager-relief`, format `png`, type `baselayer`;
+   - minzoom 5, maxzoom 11, bounds `-180,17,180,84`, encoding `terrarium`;
+   - attribution `Heights: USGS 3DEP; NRCan MRDEM`.
+6. **The checks below are part of the script** (or a sibling script in the same folder), not only done by
+   hand.
+
+**Tests that can fail** (run them before R1, and show the output):
+
+- **The tile counts:** the enumeration gives the table in premise 4, z5-z11.
+- **The antimeridian:** N52E179 gives z11 tiles with x ≥ 2,040, and none wrap to x = 0.
+- **Terrarium round trip:** -86 m, 0 m, 3,392.4 m and 6,190.5 m each decode to within 1/256 m.
+- **The count check catches a gap** (a positive control): drop one row from a copy of a part file, and the
+  per-zoom count check must fail, naming that zoom.
+
+### R1. The pilot (about 10-20 minutes)
+
+Build four z7 subtrees, each from z7 down to z11:
+
+- **Mount Hood:** the z7 tile holding 45.37 N, 121.70 W.
+- **The Arctic:** the Brooks Range, about 68 N, 150 W.
+- **The Aleutians:** east of 180, from N52E177-179 (N52E176 is absent).
+- **A flat-sea coast:** the Gulf of Maine, about 43.5 N, 69 W.
+
+Report these:
+
+- **Hood against the trial:**
+  - Hood's z11 tiles that lie wholly inside the trial area (45-46 N, 123-121 W) and don't touch its edge
+    should be byte-identical to the trial's `tiles/png256`. This is inferred: same data, same warp and
+    the same Pillow.
+  - Give the count identical / different. For any that differ, give the largest decoded height
+    difference in metres.
+  - The edge tiles will differ (the trial's VRT had only two cells). Say how many.
+- **Low zooms against `-r average`:** make 3 z7 tiles a second time with `resampleAlg="average"`, and report
+  the largest and median height difference.
+  - This is inferred, not checked: GDAL widens bilinear when shrinking, so the two should agree closely.
+  - **Don't switch to average.** Report the numbers. If they're far apart (low zooms aliased), stop and
+    report; that's an owner decision, because it changes the approved look.
+- **Seconds and bytes per tile at each zoom,** per area. Then project the full run.
+  - **If the projection is over 4 hours or over 40 GB, stop and report.**
+  - Otherwise go on to R2. Send the pilot numbers to Aspen when you start R2.
+
+### R2. The full build
+
+- **Start it detached:** `setsid nohup … &`, with the log at `/mnt/storage/relief/build.log`. Background
+  jobs die at 2 hours.
+  - Stamp the start and end with `date`.
+  - **If your session refuses the detached start, stop and report.** Aspen can start it from this dispatch.
+- Expected about 1-2.3 h and about 22 GB (16-34 GB), from your 11-01 scope. The pilot refines this.
+- **Merge, then convert:** `pmtiles convert --tmpdir /mnt/storage/relief/tmp relief.mbtiles relief.pmtiles`.
+- **Checks on the result:**
+  - **Per-zoom tile counts** in the MBTiles equal the table. Any gap is listed by z/x/y.
+  - **`pmtiles show relief.pmtiles`:** tile type png, minzoom 5, maxzoom 11, the attribution and the bounds.
+    Paste it into the report.
+  - **Heights decoded from `relief.pmtiles`** (with `pmtiles tile`, not the MBTiles):
+    - Hood's highest z11 pixel, about 3,390 m (the trial read 3,392);
+    - Denali's, near 6,190 m;
+    - Mount Logan's, near 5,959 m;
+    - a Gulf of Maine sea tile, 0;
+    - an Aleutian tile east of 180, which must be present.
+  - **The file:** the size and sha256 of `relief.pmtiles`, and the size of `relief.mbtiles`.
+  - **The load:** the peak temperature and `get_throttled` at the end.
+- **Keep `relief.mbtiles`** until Aspen has read the upload back.
+
+## Bounds (do not touch)
+
+- **R2:** no uploads, deletes or listings that change anything. The upload is Aspen's R3, with the owner's
+  go.
+- **The Worker:** **don't request any `/relief…` URL on the Worker.**
+  - The Worker caches the current "Archive not found" 404 for a day (observed at 12:13:
+    `cf-cache-status: HIT`, `max-age=86400`).
+  - Every probe before the upload leaves a URL blank for up to a day after it.
+- **`hgt3`, `bef3`, `hgt1-3dep`:** read only.
+- **On `/mnt/storage`:** nothing outside `relief/`. `rollback/` holds the only rollback copy of the live
+  map.
+- **Also leave alone:** `/opt/forager-build`, the weekly timer and units, and `us.pmtiles`, routing and the
+  sprites.
+- **The trial folder** `/mnt/archive/aspen-hillshade-trial/` is read only; it's the reference for the Hood
+  check.
+- **Approaches already rejected:**
+  - WebP: untested decode; the owner's plan says skip it.
+  - A loose tile tree: 348k files on the drive.
+  - Bounding-box enumeration: the antimeridian.
+  - Switching to average sampling: it changes the approved look.
+
+  If you think one of these is wrong, say why instead of building it.
+- **On any failed check, refusal or surprise:** stop and report. Don't work around it.
+
+## Report
+
+Send reports to Aspen with SendMessage (`bridge-cse-01hqu21pts9cgiaypwgrpufq-56`), at three points:
+
+1. after R0 and the tests;
+2. after the pilot (R1);
+3. after R2.
+
+In each report:
+
+- Mark each claim observed, read or inferred.
+- Give the branch and commit of the script.
+- Say plainly what you didn't check.
+- Include a **Conventions** line: which neighbouring scripts you followed (the trial script, the G7 cell
+  scripts in `docs/audits/2026-10-26-three-builds-files/`, `resume.py`), or "none checked".
+
+## For the phone, later (not yours; after Aspen's R3 upload)
+
+On the S22 with a v4 build:
+
+1. Open Mount Hood at about z11.
+   - Pass: the hill shading shows under the trails.
+   - If it's blank, note the time and whether that area was opened before the upload.
+2. Open a place not opened before the upload (for example Denali).
+   - Pass: the shading shows at once.
+3. Reopen any area that was blank in step 1 a day after the upload.
+   - Pass: it shows.
+   - Still blank means the phone's own cache, or the Worker's, is holding a 404. Report that.
