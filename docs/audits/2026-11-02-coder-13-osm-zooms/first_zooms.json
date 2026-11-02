@@ -1,0 +1,3798 @@
+{
+ "box": [
+  -122.66,
+  45.1,
+  -122.5,
+  45.2
+ ],
+ "pmtiles": "/srv/forager-build/out-usca/current/forager-usca.pmtiles",
+ "tiles_read": 313,
+ "rows": [
+  {
+   "layer": "barriers",
+   "kind": "",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "15": 210
+   },
+   "names": []
+  },
+  {
+   "layer": "barriers",
+   "kind": "fence",
+   "kind_detail": "",
+   "geom": "line",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "15": 20
+   },
+   "names": []
+  },
+  {
+   "layer": "boundaries",
+   "kind": "country",
+   "kind_detail": "2",
+   "geom": "line",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 28,
+    "1": 6,
+    "2": 3,
+    "3": 2,
+    "4": 2,
+    "5": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "boundaries",
+   "kind": "county",
+   "kind_detail": "6",
+   "geom": "line",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 1,
+    "9": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "boundaries",
+   "kind": "locality",
+   "kind_detail": "8",
+   "geom": "line",
+   "first": 10,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "10": 1,
+    "11": 1,
+    "12": 4,
+    "13": 6,
+    "14": 8,
+    "15": 18
+   },
+   "names": []
+  },
+  {
+   "layer": "boundaries",
+   "kind": "overlay_limit",
+   "kind_detail": "3",
+   "geom": "line",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "boundaries",
+   "kind": "region",
+   "kind_detail": "4",
+   "geom": "line",
+   "first": 1,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "boundaries",
+   "kind": "unrecognized_country",
+   "kind_detail": "3",
+   "geom": "line",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "buildings",
+   "kind": "address",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "15": 2761
+   },
+   "names": []
+  },
+  {
+   "layer": "buildings",
+   "kind": "building",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 11,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "11": 1,
+    "12": 7,
+    "13": 28,
+    "14": 84,
+    "15": 9095
+   },
+   "names": []
+  },
+  {
+   "layer": "earth",
+   "kind": "earth",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1,
+    "10": 1,
+    "11": 2,
+    "12": 6,
+    "13": 20,
+    "14": 64,
+    "15": 210
+   },
+   "names": []
+  },
+  {
+   "layer": "landcover",
+   "kind": "barren",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landcover",
+   "kind": "farmland",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landcover",
+   "kind": "forest",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landcover",
+   "kind": "glacier",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landcover",
+   "kind": "grassland",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landcover",
+   "kind": "scrub",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landcover",
+   "kind": "urban_area",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 1,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "aerodrome",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 6,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "6": 1,
+    "7": 2,
+    "8": 6,
+    "9": 5,
+    "10": 2,
+    "11": 2,
+    "12": 2,
+    "13": 2,
+    "14": 3,
+    "15": 3
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "bare_rock",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 3,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 6
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "cemetery",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 1,
+    "9": 8,
+    "10": 2,
+    "12": 4,
+    "13": 2,
+    "14": 1,
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "college",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 7,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "7": 1,
+    "8": 1,
+    "9": 4,
+    "10": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "commercial",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 2,
+    "9": 15,
+    "10": 2,
+    "12": 1,
+    "13": 2,
+    "14": 2,
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "dam",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 13,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "13": 1,
+    "14": 2,
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "farmland",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 3,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 89,
+    "8": 339,
+    "9": 471,
+    "10": 177,
+    "11": 112,
+    "12": 140,
+    "13": 174,
+    "14": 198,
+    "15": 295
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "farmland",
+   "kind_detail": "orchard",
+   "geom": "polygon",
+   "first": 6,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "6": 1,
+    "7": 7,
+    "8": 13,
+    "9": 118,
+    "10": 44,
+    "11": 23,
+    "12": 25,
+    "13": 32,
+    "14": 32,
+    "15": 42
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "farmland",
+   "kind_detail": "plant_nursery",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 18,
+    "9": 73,
+    "10": 32,
+    "11": 12,
+    "12": 15,
+    "13": 19,
+    "14": 20,
+    "15": 26
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "farmland",
+   "kind_detail": "vineyard",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 13,
+    "9": 22,
+    "10": 5,
+    "11": 2,
+    "12": 2,
+    "13": 2,
+    "14": 1,
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "forest",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 2,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 401,
+    "8": 772,
+    "9": 108,
+    "10": 89,
+    "11": 54,
+    "12": 58,
+    "13": 57,
+    "14": 61,
+    "15": 79
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "garden",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 11,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "11": 1,
+    "12": 5,
+    "13": 24,
+    "14": 92,
+    "15": 127
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "glacier",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 2,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "7": 13
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "golf_course",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 8,
+    "9": 33,
+    "10": 8,
+    "11": 1,
+    "12": 1,
+    "13": 1,
+    "14": 4,
+    "15": 4
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "grass",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 1,
+    "9": 4,
+    "10": 2,
+    "11": 2,
+    "12": 2,
+    "13": 3,
+    "14": 4,
+    "15": 3
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "grassland",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 4,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 12,
+    "8": 9,
+    "9": 6,
+    "10": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "hospital",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 9,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "9": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "industrial",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 6,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "6": 1,
+    "7": 1,
+    "8": 14,
+    "9": 92,
+    "10": 13,
+    "11": 14,
+    "12": 25,
+    "13": 22,
+    "14": 22,
+    "15": 29
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "meadow",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 4,
+    "9": 37,
+    "10": 12,
+    "11": 2,
+    "12": 3,
+    "13": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "military",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 2,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 2,
+    "8": 2,
+    "9": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "national_park",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 2,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "nature_reserve",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 2,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 86,
+    "8": 58,
+    "9": 84,
+    "10": 12,
+    "12": 2,
+    "13": 1,
+    "14": 1,
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "other",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 2,
+    "9": 5
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "park",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 2,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 3,
+    "8": 16,
+    "9": 26,
+    "10": 13,
+    "11": 5,
+    "12": 11,
+    "13": 15,
+    "14": 18,
+    "15": 20
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "pitch",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 10,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "10": 2,
+    "12": 21,
+    "13": 21,
+    "14": 31,
+    "15": 37
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "playground",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 13,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "13": 2,
+    "14": 2,
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "railway",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 1,
+    "9": 3,
+    "11": 1,
+    "12": 1,
+    "13": 1,
+    "14": 1,
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "recreation_ground",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 9,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "9": 1,
+    "10": 1,
+    "12": 1,
+    "13": 1,
+    "14": 2,
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "residential",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 6,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "6": 1,
+    "7": 12,
+    "8": 109,
+    "9": 692,
+    "10": 103,
+    "11": 21,
+    "12": 27,
+    "13": 29,
+    "14": 27,
+    "15": 37
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "runway",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 9,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "9": 1,
+    "10": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "sand",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 4,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "4": 1,
+    "5": 1,
+    "6": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "school",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 1,
+    "9": 11,
+    "10": 14,
+    "11": 10,
+    "12": 10,
+    "13": 12,
+    "14": 10,
+    "15": 11
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "scrub",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 4,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 10,
+    "8": 15,
+    "9": 15,
+    "10": 1,
+    "12": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "university",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 8,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "8": 1,
+    "9": 6
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "wetland",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 2,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 11,
+    "8": 12,
+    "9": 22,
+    "10": 3,
+    "11": 4,
+    "12": 4,
+    "13": 4,
+    "14": 7,
+    "15": 10
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "wood",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 2,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 277,
+    "8": 300,
+    "9": 399,
+    "10": 120,
+    "11": 57,
+    "12": 71,
+    "13": 96,
+    "14": 128,
+    "15": 181
+   },
+   "names": []
+  },
+  {
+   "layer": "landuse",
+   "kind": "zoo",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 7,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "7": 1,
+    "9": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "places",
+   "kind": "country",
+   "kind_detail": "country",
+   "geom": "point",
+   "first": 1,
+   "first_named": 1,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    2
+   ],
+   "counts": {
+    "1": 2,
+    "2": 2,
+    "3": 2
+   },
+   "names": [
+    "Canada",
+    "United States"
+   ]
+  },
+  {
+   "layer": "places",
+   "kind": "locality",
+   "kind_detail": "city",
+   "geom": "point",
+   "first": 1,
+   "first_named": 1,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    2
+   ],
+   "counts": {
+    "1": 5,
+    "2": 11,
+    "3": 16,
+    "4": 18,
+    "5": 37,
+    "6": 26,
+    "7": 12,
+    "8": 7,
+    "9": 6
+   },
+   "names": [
+    "Los Angeles",
+    "New York",
+    "Toronto"
+   ]
+  },
+  {
+   "layer": "places",
+   "kind": "locality",
+   "kind_detail": "hamlet",
+   "geom": "point",
+   "first": 12,
+   "first_named": 12,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "12": 24,
+    "13": 12,
+    "14": 7,
+    "15": 7
+   },
+   "names": [
+    "Liberal",
+    "Needy",
+    "Yoder"
+   ]
+  },
+  {
+   "layer": "places",
+   "kind": "locality",
+   "kind_detail": "town",
+   "geom": "point",
+   "first": 3,
+   "first_named": 3,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    4
+   ],
+   "counts": {
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 7,
+    "7": 47,
+    "8": 30,
+    "9": 20,
+    "10": 8,
+    "11": 1,
+    "12": 2,
+    "13": 1,
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Churchill",
+    "\u14c7\u1405\u152e\u1466"
+   ]
+  },
+  {
+   "layer": "places",
+   "kind": "locality",
+   "kind_detail": "village",
+   "geom": "point",
+   "first": 5,
+   "first_named": 5,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    6
+   ],
+   "counts": {
+    "5": 1,
+    "6": 1,
+    "10": 4
+   },
+   "names": [
+    "Beaver Creek"
+   ]
+  },
+  {
+   "layer": "places",
+   "kind": "macrohood",
+   "kind_detail": "quarter",
+   "geom": "point",
+   "first": 10,
+   "first_named": 10,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    11
+   ],
+   "counts": {
+    "10": 10
+   },
+   "names": [
+    "Robinwood",
+    "Sunset",
+    "Willamette"
+   ]
+  },
+  {
+   "layer": "places",
+   "kind": "region",
+   "kind_detail": "state",
+   "geom": "point",
+   "first": 3,
+   "first_named": 3,
+   "first_ref": 3,
+   "min_zoom_at_first": [
+    4
+   ],
+   "counts": {
+    "3": 37,
+    "4": 10,
+    "5": 5,
+    "6": 1
+   },
+   "names": [
+    "California",
+    "Ohio",
+    "Ontario"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "administrative",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 11,
+   "first_named": 11,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    12
+   ],
+   "counts": {
+    "11": 1,
+    "12": 2,
+    "13": 1,
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Molalla"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "aerodrome",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 12,
+   "first_named": 12,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "12": 1,
+    "13": 1,
+    "14": 1,
+    "15": 2
+   },
+   "names": [
+    "Skydive Oregon Airport"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "artwork",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 3
+   },
+   "names": [
+    "Molalla StoryWalk Downtown Route Start",
+    "Molalla StoryWalk Library Route Start",
+    "Molalla StoryWalk MRA Route Start"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "atm",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "bakery",
+   "kind_detail": "mexican",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Las Delicias"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "bank",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 2,
+    "15": 3
+   },
+   "names": [
+    "Columbia Bank",
+    "U.S. Bank"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "beauty",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Perfect Look"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "buffer_stop",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "bus_stop",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    18
+   ],
+   "counts": {
+    "15": 25
+   },
+   "names": [
+    "Hwy 213 & S Liberal Way",
+    "Liberal Country Store",
+    "W Main St & Hwy 213"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "cafe",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 2
+   },
+   "names": [
+    "Bobablastic",
+    "Cowboy Coffee"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "car_parts",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "O'Reilly Auto Parts"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "car_wash",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Molalla Car Wash"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "cemetery",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Larkins Cemetery"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "chemist",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 2,
+    "15": 2
+   },
+   "names": [
+    "Cutter's Hi-School"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "clinic",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "AIYANA Aesthetics"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "community_centre",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Molalla Adult Center"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "convenience",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 5,
+    "15": 7
+   },
+   "names": [
+    "Center Market",
+    "Fred's Food-O-Mart",
+    "Liberal Country Store"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "country_store",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Tractor Supply Company"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "crossing",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 150
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "dentist",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Aria Day Spa"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "department_store",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Bi-Mart"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "doityourself",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 2,
+    "15": 1
+   },
+   "names": [
+    "Ace Hardware"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "drinking_water",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "events_venue",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 2
+   },
+   "names": [
+    "Molalla Buckaroo Association"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "farmland",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 11,
+   "first_named": 11,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    12
+   ],
+   "counts": {
+    "11": 1,
+    "12": 1
+   },
+   "names": [
+    "Gribble Prairie"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "fast_food",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Chepita\u2019s Mexican Restaurant"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "fast_food",
+   "kind_detail": "burger",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 3
+   },
+   "names": [
+    "Big Burger Drive-In",
+    "McDonald's"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "fast_food",
+   "kind_detail": "pizza",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 2
+   },
+   "names": [
+    "Papa Murphy's"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "fast_food",
+   "kind_detail": "sandwich",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Subway"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "fast_food",
+   "kind_detail": "tex-mex",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 2
+   },
+   "names": [
+    "Taco Bell"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "fire_station",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Molalla Fire Department"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "fitness_centre",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Cutting Edge Fitness"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "forest",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 7,
+   "first_named": 7,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    8
+   ],
+   "counts": {
+    "7": 7,
+    "9": 1
+   },
+   "names": [
+    "Elochoman Block",
+    "Pe Ell South",
+    "Weyerhaeuser Parcel"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "fuel",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 4
+   },
+   "names": [
+    "Chevron",
+    "Molalla Gas & Grocery",
+    "Safeway"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "general",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Real Deal Grocery"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "golf_course",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 11,
+   "first_named": 11,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    12
+   ],
+   "counts": {
+    "11": 1,
+    "12": 1,
+    "13": 1,
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Arrowhead Golf Club"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "grave_yard",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 13,
+   "first_named": 13,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    14
+   ],
+   "counts": {
+    "13": 3,
+    "14": 3,
+    "15": 3
+   },
+   "names": [
+    "Adams Cemetery",
+    "Molalla Memorial Cemetery"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "hotel",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "The Prairie House Inn"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "ice_cream",
+   "kind_detail": "frozen_yogurt",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 2
+   },
+   "names": [
+    "All Mine Frozen Yogurt"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "industrial",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 11,
+   "first_named": 11,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    12
+   ],
+   "counts": {
+    "11": 2,
+    "12": 2,
+    "13": 2,
+    "14": 2,
+    "15": 2
+   },
+   "names": [
+    "Interfor Molalla Division",
+    "RSG Forest Products"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "information",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "laundry",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 2
+   },
+   "names": [
+    "Humdrum Laundry"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "level_crossing",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 7
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "library",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Molalla Public Library"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "military",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 7,
+   "first_named": 7,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    8
+   ],
+   "counts": {
+    "7": 1
+   },
+   "names": [
+    "Joint Base Lewis-McChord"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "mobile_phone",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 2
+   },
+   "names": [
+    "Verizon"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "motel",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Stagecoach"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "national_park",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 6,
+   "first_named": 6,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    7
+   ],
+   "counts": {
+    "6": 1
+   },
+   "names": [
+    "Lake Roosevelt National Recreation Area"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "nature_reserve",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 7,
+   "first_named": 7,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    8
+   ],
+   "counts": {
+    "7": 7,
+    "8": 3,
+    "9": 1,
+    "10": 1,
+    "12": 1,
+    "13": 1,
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Capitol State Forest",
+    "Clatsop State Forest",
+    "Tillamook State Forest"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "nursing_home",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Pheasant Pointe"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "park",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 7,
+   "first_named": 7,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    8
+   ],
+   "counts": {
+    "7": 1,
+    "12": 1,
+    "13": 4,
+    "14": 9,
+    "15": 13
+   },
+   "names": [
+    "Willapa Hills State Park Trail"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "parking",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 3,
+    "15": 3
+   },
+   "names": [
+    "Additional Bus Parking",
+    "Bus Parking Lot",
+    "Wagonwheel Park Parking Lot"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "pharmacy",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 3
+   },
+   "names": [
+    "Bi-Mart",
+    "Cutter's Hi-School"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "pitch",
+   "kind_detail": "equestrian",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 4,
+    "15": 2
+   },
+   "names": [
+    "Arena"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "pitch",
+   "kind_detail": "skateboard",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Molalla Skate Park"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "place_of_worship",
+   "kind_detail": "christian",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 13
+   },
+   "names": [
+    "Saint James Catholic Church"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "playground",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    17
+   ],
+   "counts": {
+    "15": 3
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "police",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Molalla Police Department"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "post_office",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Molalla Post Office"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "protected_area",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 7,
+   "first_named": 7,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    8
+   ],
+   "counts": {
+    "7": 1
+   },
+   "names": [
+    "Ahtanum State Forest"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "quarry",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 11,
+   "first_named": 11,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    12
+   ],
+   "counts": {
+    "11": 2,
+    "12": 2,
+    "13": 2,
+    "14": 1,
+    "15": 2
+   },
+   "names": [
+    "Molalla Quarry"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "religious",
+   "kind_detail": "christian",
+   "geom": "point",
+   "first": 13,
+   "first_named": 13,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    14
+   ],
+   "counts": {
+    "13": 1,
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Saint James Catholic Church"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "reservoir",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Kyllo Reservoir"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "residential",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 12,
+   "first_named": 12,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "12": 1,
+    "13": 4,
+    "14": 4,
+    "15": 3
+   },
+   "names": [
+    "South Big Rock Loop"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "restaurant",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 2
+   },
+   "names": [
+    "The Spot Again Inc."
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "restaurant",
+   "kind_detail": "american",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Cindy's Cafe & Catering"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "restaurant",
+   "kind_detail": "american;steak_house;burger",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 2,
+    "15": 1
+   },
+   "names": [
+    "Legends Bar and Grill"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "restaurant",
+   "kind_detail": "asian",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Thai yo Sushi"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "restaurant",
+   "kind_detail": "chinese",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Lam's Chinese Kitchen"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "restaurant",
+   "kind_detail": "diner",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Eugene's Hitchin Post"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "restaurant",
+   "kind_detail": "mexican",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "San Blas Mexican"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "restaurant",
+   "kind_detail": "pizza",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 3
+   },
+   "names": [
+    "Bear Creek Pizza and Pub",
+    "Figaro's Pizza",
+    "Sundowner Steak & Pizza House"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "restaurant",
+   "kind_detail": "regional",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 2
+   },
+   "names": [
+    "Lumber Jack Grill"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "school",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 12,
+   "first_named": 12,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "12": 2,
+    "13": 8,
+    "14": 7,
+    "15": 9
+   },
+   "names": [
+    "Molalla FFA",
+    "Molalla High School"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "social_facility",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 2,
+    "15": 1
+   },
+   "names": [
+    "Woodside Post Acute"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "sports_centre",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 12,
+   "first_named": 12,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "12": 2,
+    "13": 4,
+    "14": 2,
+    "15": 1
+   },
+   "names": [
+    "Molalla Buckaroo Rodeo"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "sports_centre",
+   "kind_detail": "swimming",
+   "geom": "point",
+   "first": 13,
+   "first_named": 13,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    14
+   ],
+   "counts": {
+    "13": 2,
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Molalla Aquatic Center"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "stadium",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 2,
+    "15": 1
+   },
+   "names": [
+    "Molalla Buckeroo Rodeo Association"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "stop",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 6
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "supermarket",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Safeway"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "switch",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 8
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "townhall",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "City Hall"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "track",
+   "kind_detail": "bmx",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 2
+   },
+   "names": [
+    "Molalla BMX"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "traffic_signals",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "tree",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 58
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "turning_circle",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 66
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "turning_loop",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 28
+   },
+   "names": []
+  },
+  {
+   "layer": "pois",
+   "kind": "tyres",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Les Schwab Tire Center"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "veterinary",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": [
+    "Hope Animal Hospital"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "water",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 12,
+   "first_named": 12,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "12": 2,
+    "13": 4,
+    "14": 3,
+    "15": 1
+   },
+   "names": [
+    "Hillside Reservoir",
+    "Teasel Creek Reservoir"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "weapons",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Wild Bill's Guns"
+   ]
+  },
+  {
+   "layer": "pois",
+   "kind": "weighbridge",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "aeroway",
+   "kind_detail": "runway",
+   "geom": "line",
+   "first": 9,
+   "first_named": null,
+   "first_ref": 9,
+   "min_zoom_at_first": [
+    10
+   ],
+   "counts": {
+    "9": 16,
+    "10": 5,
+    "11": 2,
+    "12": 2,
+    "13": 2,
+    "14": 2,
+    "15": 3
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "aeroway",
+   "kind_detail": "taxiway",
+   "geom": "line",
+   "first": 10,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    11
+   ],
+   "counts": {
+    "10": 1,
+    "11": 1,
+    "12": 2,
+    "13": 2,
+    "14": 2,
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "highway",
+   "kind_detail": "motorway",
+   "geom": "line",
+   "first": 3,
+   "first_named": null,
+   "first_ref": 7,
+   "min_zoom_at_first": [
+    4
+   ],
+   "counts": {
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2,
+    "7": 17,
+    "8": 13,
+    "9": 12
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "highway",
+   "kind_detail": "motorway_link",
+   "geom": "line",
+   "first": 3,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    4
+   ],
+   "counts": {
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2,
+    "7": 3,
+    "8": 3,
+    "9": 3
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "major_road",
+   "kind_detail": "primary",
+   "geom": "line",
+   "first": 6,
+   "first_named": 12,
+   "first_ref": 10,
+   "min_zoom_at_first": [
+    7
+   ],
+   "counts": {
+    "6": 1,
+    "7": 2,
+    "8": 2,
+    "9": 2,
+    "10": 5,
+    "11": 5,
+    "12": 27,
+    "13": 35,
+    "14": 36,
+    "15": 53
+   },
+   "names": [
+    "Kropf Road",
+    "South Highway 170",
+    "Woodburn-Estacada Highway"
+   ]
+  },
+  {
+   "layer": "roads",
+   "kind": "major_road",
+   "kind_detail": "primary_link",
+   "geom": "line",
+   "first": 7,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    8
+   ],
+   "counts": {
+    "7": 1,
+    "8": 1,
+    "9": 1,
+    "10": 1,
+    "11": 2,
+    "12": 1,
+    "13": 1,
+    "14": 1,
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "major_road",
+   "kind_detail": "secondary",
+   "geom": "line",
+   "first": 6,
+   "first_named": 12,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    7
+   ],
+   "counts": {
+    "6": 1,
+    "7": 1,
+    "9": 1,
+    "10": 1,
+    "11": 2,
+    "12": 16,
+    "13": 22,
+    "14": 29,
+    "15": 47
+   },
+   "names": [
+    "South Barnards Road",
+    "South Harms Road",
+    "South Macksburg Road"
+   ]
+  },
+  {
+   "layer": "roads",
+   "kind": "major_road",
+   "kind_detail": "secondary_link",
+   "geom": "line",
+   "first": 9,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    10
+   ],
+   "counts": {
+    "9": 1,
+    "12": 1,
+    "13": 2,
+    "14": 2,
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "major_road",
+   "kind_detail": "tertiary",
+   "geom": "line",
+   "first": 6,
+   "first_named": 13,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    7
+   ],
+   "counts": {
+    "6": 1,
+    "7": 1,
+    "9": 1,
+    "10": 1,
+    "11": 2,
+    "12": 10,
+    "13": 76,
+    "14": 106,
+    "15": 156
+   },
+   "names": [
+    "South Dryland Road",
+    "South Heinz Road",
+    "South Sconce Road"
+   ]
+  },
+  {
+   "layer": "roads",
+   "kind": "major_road",
+   "kind_detail": "tertiary_link",
+   "geom": "line",
+   "first": 9,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    10
+   ],
+   "counts": {
+    "9": 1,
+    "10": 1,
+    "11": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "major_road",
+   "kind_detail": "trunk",
+   "geom": "line",
+   "first": 6,
+   "first_named": null,
+   "first_ref": 8,
+   "min_zoom_at_first": [
+    7
+   ],
+   "counts": {
+    "6": 1,
+    "7": 2,
+    "8": 26,
+    "9": 20,
+    "10": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "major_road",
+   "kind_detail": "trunk_link",
+   "geom": "line",
+   "first": 6,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    7
+   ],
+   "counts": {
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "minor_road",
+   "kind_detail": "residential",
+   "geom": "line",
+   "first": 10,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "10": 1,
+    "11": 2,
+    "12": 8,
+    "13": 23,
+    "14": 384,
+    "15": 499
+   },
+   "names": [
+    "South Gribble Road",
+    "South Jackson Road",
+    "South Kaufman Road"
+   ]
+  },
+  {
+   "layer": "roads",
+   "kind": "minor_road",
+   "kind_detail": "road",
+   "geom": "line",
+   "first": 13,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "13": 1,
+    "14": 1,
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "minor_road",
+   "kind_detail": "service",
+   "geom": "line",
+   "first": 13,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    14
+   ],
+   "counts": {
+    "13": 30,
+    "14": 105,
+    "15": 463
+   },
+   "names": [
+    "Fountain Way",
+    "Industrial Way",
+    "South Barbara Way"
+   ]
+  },
+  {
+   "layer": "roads",
+   "kind": "minor_road",
+   "kind_detail": "unclassified",
+   "geom": "line",
+   "first": 10,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "10": 1,
+    "11": 2,
+    "12": 7,
+    "13": 9,
+    "14": 5,
+    "15": 15
+   },
+   "names": [
+    "Center Avenue",
+    "South Gibson Road"
+   ]
+  },
+  {
+   "layer": "roads",
+   "kind": "other",
+   "kind_detail": "living_street",
+   "geom": "line",
+   "first": 14,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 29,
+    "15": 52
+   },
+   "names": [
+    "South Frap Lane",
+    "South Holmes Road",
+    "South Shandell Road"
+   ]
+  },
+  {
+   "layer": "roads",
+   "kind": "path",
+   "kind_detail": "crossing",
+   "geom": "line",
+   "first": 14,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "path",
+   "kind_detail": "driveway",
+   "geom": "line",
+   "first": 12,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "12": 1,
+    "13": 1,
+    "14": 1,
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "path",
+   "kind_detail": "footway",
+   "geom": "line",
+   "first": 13,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    14
+   ],
+   "counts": {
+    "13": 9,
+    "14": 12,
+    "15": 15
+   },
+   "names": [
+    "Molalla StoryWalk Downtown Route",
+    "Molalla StoryWalk Library Route",
+    "Molalla StoryWalk MRA Route"
+   ]
+  },
+  {
+   "layer": "roads",
+   "kind": "path",
+   "kind_detail": "path",
+   "geom": "line",
+   "first": 12,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    14
+   ],
+   "counts": {
+    "12": 2,
+    "13": 2,
+    "14": 2,
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "path",
+   "kind_detail": "sidewalk",
+   "geom": "line",
+   "first": 14,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 1,
+    "15": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "path",
+   "kind_detail": "track",
+   "geom": "line",
+   "first": 11,
+   "first_named": 14,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    13
+   ],
+   "counts": {
+    "11": 4,
+    "12": 8,
+    "13": 22,
+    "14": 46,
+    "15": 66
+   },
+   "names": [
+    "South Molalla Forest Road",
+    "South Twin Rocks Road",
+    "Zentara Road"
+   ]
+  },
+  {
+   "layer": "roads",
+   "kind": "rail",
+   "kind_detail": "miniature",
+   "geom": "line",
+   "first": 14,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    15
+   ],
+   "counts": {
+    "14": 2,
+    "15": 2
+   },
+   "names": []
+  },
+  {
+   "layer": "roads",
+   "kind": "rail",
+   "kind_detail": "rail",
+   "geom": "line",
+   "first": 11,
+   "first_named": 12,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    12
+   ],
+   "counts": {
+    "11": 2,
+    "12": 3,
+    "13": 4,
+    "14": 7,
+    "15": 10
+   },
+   "names": [
+    "Molalla Western Railroad"
+   ]
+  },
+  {
+   "layer": "water",
+   "kind": "ditch",
+   "kind_detail": "",
+   "geom": "line",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 24
+   },
+   "names": []
+  },
+  {
+   "layer": "water",
+   "kind": "drain",
+   "kind_detail": "",
+   "geom": "line",
+   "first": 15,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 3
+   },
+   "names": []
+  },
+  {
+   "layer": "water",
+   "kind": "lake",
+   "kind_detail": "",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 1
+   },
+   "names": [
+    "Kyllo Reservoir"
+   ]
+  },
+  {
+   "layer": "water",
+   "kind": "lake",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 1,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "water",
+   "kind": "ocean",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 0,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "water",
+   "kind": "reef",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 6,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1
+   },
+   "names": []
+  },
+  {
+   "layer": "water",
+   "kind": "river",
+   "kind_detail": "",
+   "geom": "line",
+   "first": 9,
+   "first_named": 9,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    10
+   ],
+   "counts": {
+    "9": 18,
+    "10": 7,
+    "11": 5,
+    "12": 7,
+    "13": 9,
+    "14": 18,
+    "15": 29
+   },
+   "names": [
+    "Oswego Creek",
+    "Tualatin River",
+    "Willamette River"
+   ]
+  },
+  {
+   "layer": "water",
+   "kind": "stream",
+   "kind_detail": "",
+   "geom": "line",
+   "first": 13,
+   "first_named": 13,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    14
+   ],
+   "counts": {
+    "13": 84,
+    "14": 193,
+    "15": 297
+   },
+   "names": [
+    "Creamery Creek",
+    "Gribble Creek",
+    "Wheeler Creek"
+   ]
+  },
+  {
+   "layer": "water",
+   "kind": "swimming_pool",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 14,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "14": 14,
+    "15": 24
+   },
+   "names": []
+  },
+  {
+   "layer": "water",
+   "kind": "water",
+   "kind_detail": "",
+   "geom": "polygon",
+   "first": 6,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1,
+    "10": 1,
+    "11": 2,
+    "12": 6,
+    "13": 10,
+    "14": 13,
+    "15": 13
+   },
+   "names": []
+  },
+  {
+   "layer": "water",
+   "kind": "water",
+   "kind_detail": "basin",
+   "geom": "polygon",
+   "first": 9,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "9": 1,
+    "11": 1,
+    "12": 1,
+    "13": 2,
+    "14": 3,
+    "15": 3
+   },
+   "names": []
+  },
+  {
+   "layer": "water",
+   "kind": "water",
+   "kind_detail": "lake",
+   "geom": "point",
+   "first": 15,
+   "first_named": 15,
+   "first_ref": null,
+   "min_zoom_at_first": [
+    16
+   ],
+   "counts": {
+    "15": 8
+   },
+   "names": [
+    "C C Porter Dam",
+    "Hillside Reservoir",
+    "Teasel Creek Reservoir"
+   ]
+  },
+  {
+   "layer": "water",
+   "kind": "water",
+   "kind_detail": "lake",
+   "geom": "polygon",
+   "first": 6,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1,
+    "10": 1,
+    "11": 2,
+    "12": 6,
+    "13": 20,
+    "14": 48,
+    "15": 72
+   },
+   "names": []
+  },
+  {
+   "layer": "water",
+   "kind": "water",
+   "kind_detail": "river",
+   "geom": "polygon",
+   "first": 6,
+   "first_named": null,
+   "first_ref": null,
+   "min_zoom_at_first": [],
+   "counts": {
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1,
+    "10": 1
+   },
+   "names": []
+  }
+ ]
+}

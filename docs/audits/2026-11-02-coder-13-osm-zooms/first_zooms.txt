@@ -1,0 +1,195 @@
+box -122.66,45.1,-122.5,45.2; 313 tiles read from /srv/forager-build/out-usca/current/forager-usca.pmtiles
+layer      kind                   kind_detail          geom    first named ref  min_zoom@first  counts z:n
+barriers                                               polygon    15  None None  []              15:210
+barriers   fence                                       line       15  None None  []              15:20
+boundaries country                2                    line        0  None None  []              0:28 1:6 2:3 3:2 4:2 5:2
+boundaries county                 6                    line        8  None None  []              8:1 9:1
+boundaries locality               8                    line       10  None None  []              10:1 11:1 12:4 13:6 14:8 15:18
+boundaries overlay_limit          3                    line        0  None None  []              0:2
+boundaries region                 4                    line        1  None None  []              1:1 2:1 3:1 4:1 5:1 6:1 7:1 8:1
+boundaries unrecognized_country   3                    line        0  None None  []              0:1
+buildings  address                                     point      15  None None  []              15:2761
+buildings  building                                    polygon    11  None None  []              11:1 12:7 13:28 14:84 15:9095
+earth      earth                                       polygon     0  None None  []              0:1 1:1 2:1 3:1 4:1 5:1 6:1 7:1
+landcover  barren                                      polygon     0  None None  []              0:1 1:1 2:1 3:1 4:1 5:1
+landcover  farmland                                    polygon     0  None None  []              0:1 1:1 2:1 3:1 4:1 5:1 6:1 7:1
+landcover  forest                                      polygon     0  None None  []              0:1 1:1 2:1 3:1 4:1 5:1 6:1 7:1
+landcover  glacier                                     polygon     0  None None  []              0:1 1:1 2:1 3:1 4:1 5:1 6:1 7:1
+landcover  grassland                                   polygon     0  None None  []              0:1 1:1 2:1 3:1 4:1 5:1 6:1 7:1
+landcover  scrub                                       polygon     0  None None  []              0:1 1:1 2:1 3:1 4:1 5:1
+landcover  urban_area                                  polygon     1  None None  []              1:1 2:1 3:1 4:1 5:1 6:1
+landuse    aerodrome                                   polygon     6  None None  []              6:1 7:2 8:6 9:5 10:2 11:2 12:2 13:2
+landuse    bare_rock                                   polygon     3  None None  []              3:1 4:1 5:1 6:1 7:6
+landuse    cemetery                                    polygon     8  None None  []              8:1 9:8 10:2 12:4 13:2 14:1 15:1
+landuse    college                                     polygon     7  None None  []              7:1 8:1 9:4 10:1
+landuse    commercial                                  polygon     8  None None  []              8:2 9:15 10:2 12:1 13:2 14:2 15:2
+landuse    dam                                         polygon    13  None None  []              13:1 14:2 15:2
+landuse    farmland                                    polygon     3  None None  []              3:1 4:1 5:1 6:1 7:89 8:339 9:471 10:177
+landuse    farmland               orchard              polygon     6  None None  []              6:1 7:7 8:13 9:118 10:44 11:23 12:25 13:32
+landuse    farmland               plant_nursery        polygon     8  None None  []              8:18 9:73 10:32 11:12 12:15 13:19 14:20 15:26
+landuse    farmland               vineyard             polygon     8  None None  []              8:13 9:22 10:5 11:2 12:2 13:2 14:1 15:1
+landuse    forest                                      polygon     2  None None  []              2:1 3:1 4:1 5:1 6:1 7:401 8:772 9:108
+landuse    garden                                      polygon    11  None None  []              11:1 12:5 13:24 14:92 15:127
+landuse    glacier                                     polygon     2  None None  []              2:1 3:1 4:1 7:13
+landuse    golf_course                                 polygon     8  None None  []              8:8 9:33 10:8 11:1 12:1 13:1 14:4 15:4
+landuse    grass                                       polygon     8  None None  []              8:1 9:4 10:2 11:2 12:2 13:3 14:4 15:3
+landuse    grassland                                   polygon     4  None None  []              4:1 5:1 6:1 7:12 8:9 9:6 10:2
+landuse    hospital                                    polygon     9  None None  []              9:1
+landuse    industrial                                  polygon     6  None None  []              6:1 7:1 8:14 9:92 10:13 11:14 12:25 13:22
+landuse    meadow                                      polygon     8  None None  []              8:4 9:37 10:12 11:2 12:3 13:1
+landuse    military                                    polygon     2  None None  []              2:1 3:1 4:1 5:1 6:1 7:2 8:2 9:2
+landuse    national_park                               polygon     2  None None  []              2:1 3:1 4:1 5:1 6:1
+landuse    nature_reserve                              polygon     2  None None  []              2:1 3:1 4:1 5:1 6:1 7:86 8:58 9:84
+landuse    other                                       polygon     8  None None  []              8:2 9:5
+landuse    park                                        polygon     2  None None  []              2:1 3:1 4:1 5:1 6:1 7:3 8:16 9:26
+landuse    pitch                                       polygon    10  None None  []              10:2 12:21 13:21 14:31 15:37
+landuse    playground                                  polygon    13  None None  []              13:2 14:2 15:2
+landuse    railway                                     polygon     8  None None  []              8:1 9:3 11:1 12:1 13:1 14:1 15:2
+landuse    recreation_ground                           polygon     9  None None  []              9:1 10:1 12:1 13:1 14:2 15:2
+landuse    residential                                 polygon     6  None None  []              6:1 7:12 8:109 9:692 10:103 11:21 12:27 13:29
+landuse    runway                                      polygon     9  None None  []              9:1 10:1
+landuse    sand                                        polygon     4  None None  []              4:1 5:1 6:1
+landuse    school                                      polygon     8  None None  []              8:1 9:11 10:14 11:10 12:10 13:12 14:10 15:11
+landuse    scrub                                       polygon     4  None None  []              4:1 5:1 6:1 7:10 8:15 9:15 10:1 12:1
+landuse    university                                  polygon     8  None None  []              8:1 9:6
+landuse    wetland                                     polygon     2  None None  []              2:1 3:1 4:1 5:1 6:1 7:11 8:12 9:22
+landuse    wood                                        polygon     2  None None  []              2:1 3:1 4:1 5:1 6:1 7:277 8:300 9:399
+landuse    zoo                                         polygon     7  None None  []              7:1 9:1
+places     country                country              point       1     1 None  [2]             1:2 2:2 3:2
+places     locality               city                 point       1     1 None  [2]             1:5 2:11 3:16 4:18 5:37 6:26 7:12 8:7
+places     locality               hamlet               point      12    12 None  [13]            12:24 13:12 14:7 15:7
+places     locality               town                 point       3     3 None  [4]             3:2 4:1 5:2 6:7 7:47 8:30 9:20 10:8
+places     locality               village              point       5     5 None  [6]             5:1 6:1 10:4
+places     macrohood              quarter              point      10    10 None  [11]            10:10
+places     region                 state                point       3     3    3  [4]             3:37 4:10 5:5 6:1
+pois       administrative                              point      11    11 None  [12]            11:1 12:2 13:1 14:1 15:1
+pois       aerodrome                                   point      12    12 None  [13]            12:1 13:1 14:1 15:2
+pois       artwork                                     point      15    15 None  [17]            15:3
+pois       atm                                         point      15  None None  [17]            15:2
+pois       bakery                 mexican              point      15    15 None  [17]            15:1
+pois       bank                                        point      14    14 None  [15]            14:2 15:3
+pois       beauty                                      point      15    15 None  [17]            15:1
+pois       buffer_stop                                 point      15  None None  [16]            15:1
+pois       bus_stop                                    point      15    15 None  [18]            15:25
+pois       cafe                                        point      15    15 None  [16]            15:2
+pois       car_parts                                   point      15    15 None  [17]            15:1
+pois       car_wash                                    point      15    15 None  [17]            15:1
+pois       cemetery                                    point      14    14 None  [15]            14:1 15:1
+pois       chemist                                     point      14    14 None  [15]            14:2 15:2
+pois       clinic                                      point      15    15 None  [17]            15:1
+pois       community_centre                            point      14    14 None  [15]            14:1 15:1
+pois       convenience                                 point      14    14 None  [15]            14:5 15:7
+pois       country_store                               point      14    14 None  [15]            14:1 15:1
+pois       crossing                                    point      15  None None  [16]            15:150
+pois       dentist                                     point      15    15 None  [17]            15:1
+pois       department_store                            point      14    14 None  [15]            14:1 15:1
+pois       doityourself                                point      14    14 None  [15]            14:2 15:1
+pois       drinking_water                              point      15  None None  [17]            15:1
+pois       events_venue                                point      15    15 None  [16]            15:2
+pois       farmland                                    point      11    11 None  [12]            11:1 12:1
+pois       fast_food                                   point      15    15 None  [16]            15:1
+pois       fast_food              burger               point      15    15 None  [16]            15:3
+pois       fast_food              pizza                point      15    15 None  [16]            15:2
+pois       fast_food              sandwich             point      15    15 None  [16]            15:1
+pois       fast_food              tex-mex              point      15    15 None  [16]            15:2
+pois       fire_station                                point      14    14 None  [15]            14:1 15:1
+pois       fitness_centre                              point      15    15 None  [16]            15:1
+pois       forest                                      point       7     7 None  [8]             7:7 9:1
+pois       fuel                                        point      15    15 None  [16]            15:4
+pois       general                                     point      14    14 None  [15]            14:1 15:1
+pois       golf_course                                 point      11    11 None  [12]            11:1 12:1 13:1 14:1 15:1
+pois       grave_yard                                  point      13    13 None  [14]            13:3 14:3 15:3
+pois       hotel                                       point      15    15 None  [16]            15:1
+pois       ice_cream              frozen_yogurt        point      15    15 None  [16]            15:2
+pois       industrial                                  point      11    11 None  [12]            11:2 12:2 13:2 14:2 15:2
+pois       information                                 point      15  None None  [17]            15:1
+pois       laundry                                     point      15    15 None  [16]            15:2
+pois       level_crossing                              point      15  None None  [16]            15:7
+pois       library                                     point      14    14 None  [15]            14:1 15:1
+pois       military                                    point       7     7 None  [8]             7:1
+pois       mobile_phone                                point      15    15 None  [17]            15:2
+pois       motel                                       point      14    14 None  [15]            14:1 15:1
+pois       national_park                               point       6     6 None  [7]             6:1
+pois       nature_reserve                              point       7     7 None  [8]             7:7 8:3 9:1 10:1 12:1 13:1 14:1 15:1
+pois       nursing_home                                point      14    14 None  [15]            14:1 15:1
+pois       park                                        point       7     7 None  [8]             7:1 12:1 13:4 14:9 15:13
+pois       parking                                     point      14    14 None  [15]            14:3 15:3
+pois       pharmacy                                    point      15    15 None  [16]            15:3
+pois       pitch                  equestrian           point      14    14 None  [15]            14:4 15:2
+pois       pitch                  skateboard           point      15    15 None  [17]            15:1
+pois       place_of_worship       christian            point      14    14 None  [15]            14:1 15:13
+pois       playground                                  point      15  None None  [17]            15:3
+pois       police                                      point      14    14 None  [15]            14:1 15:1
+pois       post_office                                 point      14    14 None  [15]            14:1 15:1
+pois       protected_area                              point       7     7 None  [8]             7:1
+pois       quarry                                      point      11    11 None  [12]            11:2 12:2 13:2 14:1 15:2
+pois       religious              christian            point      13    13 None  [14]            13:1 14:1 15:1
+pois       reservoir                                   point      15    15 None  [16]            15:1
+pois       residential                                 point      12    12 None  [13]            12:1 13:4 14:4 15:3
+pois       restaurant                                  point      14    14 None  [15]            14:1 15:2
+pois       restaurant             american             point      15    15 None  [16]            15:1
+pois       restaurant             american;steak_house point      14    14 None  [15]            14:2 15:1
+pois       restaurant             asian                point      15    15 None  [16]            15:1
+pois       restaurant             chinese              point      15    15 None  [16]            15:1
+pois       restaurant             diner                point      15    15 None  [16]            15:1
+pois       restaurant             mexican              point      15    15 None  [16]            15:1
+pois       restaurant             pizza                point      15    15 None  [16]            15:3
+pois       restaurant             regional             point      15    15 None  [16]            15:2
+pois       school                                      point      12    12 None  [13]            12:2 13:8 14:7 15:9
+pois       social_facility                             point      14    14 None  [15]            14:2 15:1
+pois       sports_centre                               point      12    12 None  [13]            12:2 13:4 14:2 15:1
+pois       sports_centre          swimming             point      13    13 None  [14]            13:2 14:1 15:1
+pois       stadium                                     point      14    14 None  [15]            14:2 15:1
+pois       stop                                        point      15  None None  [16]            15:6
+pois       supermarket                                 point      14    14 None  [15]            14:1 15:1
+pois       switch                                      point      15  None None  [16]            15:8
+pois       townhall                                    point      14    14 None  [15]            14:1 15:1
+pois       track                  bmx                  point      14    14 None  [15]            14:1 15:2
+pois       traffic_signals                             point      15  None None  [16]            15:2
+pois       tree                                        point      15  None None  [16]            15:58
+pois       turning_circle                              point      15  None None  [16]            15:66
+pois       turning_loop                                point      15  None None  [16]            15:28
+pois       tyres                                       point      14    14 None  [15]            14:1 15:1
+pois       veterinary                                  point      14    14 None  [15]            14:1 15:1
+pois       water                                       point      12    12 None  [13]            12:2 13:4 14:3 15:1
+pois       weapons                                     point      15    15 None  [16]            15:1
+pois       weighbridge                                 point      15  None None  [16]            15:1
+roads      aeroway                runway               line        9  None    9  [10]            9:16 10:5 11:2 12:2 13:2 14:2 15:3
+roads      aeroway                taxiway              line       10  None None  [11]            10:1 11:1 12:2 13:2 14:2 15:2
+roads      highway                motorway             line        3  None    7  [4]             3:1 4:1 5:1 6:2 7:17 8:13 9:12
+roads      highway                motorway_link        line        3  None None  [4]             3:1 4:1 5:1 6:2 7:3 8:3 9:3
+roads      major_road             primary              line        6    12   10  [7]             6:1 7:2 8:2 9:2 10:5 11:5 12:27 13:35
+roads      major_road             primary_link         line        7  None None  [8]             7:1 8:1 9:1 10:1 11:2 12:1 13:1 14:1
+roads      major_road             secondary            line        6    12 None  [7]             6:1 7:1 9:1 10:1 11:2 12:16 13:22 14:29
+roads      major_road             secondary_link       line        9  None None  [10]            9:1 12:1 13:2 14:2 15:2
+roads      major_road             tertiary             line        6    13 None  [7]             6:1 7:1 9:1 10:1 11:2 12:10 13:76 14:106
+roads      major_road             tertiary_link        line        9  None None  [10]            9:1 10:1 11:1
+roads      major_road             trunk                line        6  None    8  [7]             6:1 7:2 8:26 9:20 10:2
+roads      major_road             trunk_link           line        6  None None  [7]             6:1 7:1 8:1 9:1
+roads      minor_road             residential          line       10    14 None  [13]            10:1 11:2 12:8 13:23 14:384 15:499
+roads      minor_road             road                 line       13  None None  [13]            13:1 14:1 15:1
+roads      minor_road             service              line       13    14 None  [14]            13:30 14:105 15:463
+roads      minor_road             unclassified         line       10    14 None  [13]            10:1 11:2 12:7 13:9 14:5 15:15
+roads      other                  living_street        line       14    14 None  [15]            14:29 15:52
+roads      path                   crossing             line       14  None None  [15]            14:1 15:1
+roads      path                   driveway             line       12  None None  [13]            12:1 13:1 14:1 15:1
+roads      path                   footway              line       13    14 None  [14]            13:9 14:12 15:15
+roads      path                   path                 line       12  None None  [14]            12:2 13:2 14:2 15:2
+roads      path                   sidewalk             line       14  None None  [15]            14:1 15:1
+roads      path                   track                line       11    14 None  [13]            11:4 12:8 13:22 14:46 15:66
+roads      rail                   miniature            line       14  None None  [15]            14:2 15:2
+roads      rail                   rail                 line       11    12 None  [12]            11:2 12:3 13:4 14:7 15:10
+water      ditch                                       line       15  None None  [16]            15:24
+water      drain                                       line       15  None None  [16]            15:3
+water      lake                                        point      15    15 None  [16]            15:1
+water      lake                                        polygon     1  None None  []              1:1 2:1 3:1 4:1 5:1
+water      ocean                                       polygon     0  None None  []              0:1 1:1 2:1 3:1 4:1 5:1 6:1 7:1
+water      reef                                        polygon     6  None None  []              6:1 7:1 8:1 9:1
+water      river                                       line        9     9 None  [10]            9:18 10:7 11:5 12:7 13:9 14:18 15:29
+water      stream                                      line       13    13 None  [14]            13:84 14:193 15:297
+water      swimming_pool                               polygon    14  None None  []              14:14 15:24
+water      water                                       polygon     6  None None  []              6:1 7:1 8:1 9:1 10:1 11:2 12:6 13:10
+water      water                  basin                polygon     9  None None  []              9:1 11:1 12:1 13:2 14:3 15:3
+water      water                  lake                 point      15    15 None  [16]            15:8
+water      water                  lake                 polygon     6  None None  []              6:1 7:1 8:1 9:1 10:1 11:2 12:6 13:20
+water      water                  river                polygon     6  None None  []              6:1 7:1 8:1 9:1 10:1
