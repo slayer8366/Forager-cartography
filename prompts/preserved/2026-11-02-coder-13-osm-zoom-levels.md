@@ -176,3 +176,6 @@
   - The four 10-30 extracts were read at 14:2x, on the SD card, with their `.md5` files.
 - **The map build is stopped,** with nothing downloading (14:25). The partial `us-261101.osm.pbf.part`
   (1,529,737,216 bytes) is kept in `/mnt/archive/forager-build/sources-osm/`.
+
+**Correction to the update above:** the clock read 14:26:41 PST when it was written, so the heading should say
+14:26. The message to Juniper went at about 14:26, not 14:27. This supersedes the update's times.
