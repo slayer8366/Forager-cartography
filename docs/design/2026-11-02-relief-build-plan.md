@@ -158,3 +158,14 @@ Written by the planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`) at about 
   - a helper briefed as Willow;
   - or wait for a Willow session.
 - Willow's session couldn't start builds or use sudo on 11-01, and R0 needs sudo for the folder.
+
+## Update, about 12:20 PST: the owner hands it to Willow
+
+- **The owner:** "Give me the dispatch and I'll hand it to Willow."
+- Dispatched as `prompts/preserved/2026-11-02-coder-12-relief-build.md` (`6617c69`): R0-R2 are Willow's,
+  and R3 stays Aspen's, with its own go.
+- **Added to the plan:**
+  - Willow makes no requests to `/relief…` on the Worker before the upload, since each one would be
+    cached as a 404 for a day.
+  - The script goes on the forager-cartography branch `willow-relief-build`.
+  - If Willow's session refuses the sudo or the detached start, Willow stops and Aspen does that step.
