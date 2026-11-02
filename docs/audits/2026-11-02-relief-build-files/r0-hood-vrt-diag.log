@@ -1,0 +1,16 @@
+2026-11-02 13:10 PST, Willow (coder-12). Test 6 found 4 of the 20 Hood z11 tiles not byte-identical to the
+reference, so the same 20 tiles were rendered with relief.render() from two VRTs and compared with
+/mnt/archive/aspen-hillshade-trial/tiles/png256 (work files in /tmp/coder12-diag):
+  - the trial's two cells (N45W123, N45W122), as make-relief.py built its VRT;
+  - all 3,631 cells, as the build does.
+
+11/330/732: 2-cell VRT identical; 3631-cell VRT differs in 1 of 65536 px, max 0.0039 m
+11/330/734: 2-cell VRT identical; 3631-cell VRT differs in 1 of 65536 px, max 0.0039 m
+11/331/734: 2-cell VRT identical; 3631-cell VRT differs in 1 of 65536 px, max 0.0039 m
+11/333/733: 2-cell VRT identical; 3631-cell VRT differs in 1 of 65536 px, max 0.0039 m
+byte-identical to the reference: 2-cell VRT 20/20, 3631-cell VRT 16/20
+
+Observed: with the trial's VRT, relief.py's render() gives the trial's bytes exactly. With the full VRT, 4 tiles
+differ in one pixel each, by 0.0039 m = 1/256 m, one Terrarium step.
+Inferred, not checked: floating-point rounding in the warp differs with the VRT's extent, so one value lands
+on the other side of a 1/256 m step.
