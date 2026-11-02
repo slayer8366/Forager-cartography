@@ -302,3 +302,27 @@ Read by the planner at 13:16:11 PST, unless marked.
   - Willow's progress line, about 13:46;
   - then Hold 2;
   - then R3, which is Aspen's and needs the owner's go.
+
+## Update, 13:48 PST: R2's 30-minute line; the parts may be deleted before the convert
+
+- **The progress line** (Willow, 13:45:42; the planner read `build.log` at 13:47:44, and it matches):
+  - 58,560 of 348,509 tiles. z5-z9 are done, and z10 is at 35,858.
+  - 32.5 tiles/s overall, and 40.9/s in the last 10 minutes.
+  - 152.6 GB free; peak 68.1 °C; `throttled=0x0`.
+  - The parts take 5.2 GB.
+- **Willow's projection** (inferred):
+  - finish about 15:45 PST (15:35-16:25), so 2.3-3.1 h in all;
+  - parts about 30 GB (25-36). That's over the plan's 22 GB but under the dispatch's 40 GB line.
+- **Willow's question:** at the convert's peak, the parts, `relief.mbtiles`, the convert's temp file and
+  `relief.pmtiles` would all be on `/mnt/storage`. Free space would fall to about 39 GB, or about 13 GB at the
+  top of the range, which is under the 50 GB floor.
+- **The planner's decision:** Willow's option A. Willow may `rm -r /mnt/storage/relief/parts`, and nothing
+  else, once all of these pass, in order:
+  1. the merged `relief.mbtiles` passes the per-zoom count check;
+  2. one digest over all the tile hashes, sorted by z/x/y, is equal for the merged file and for the parts;
+  3. the Hood check passes.
+  - Then the free-space check (free minus 2 × `relief.mbtiles` ≥ 50 GB), and then the convert.
+  - Rejected:
+    - B, the temp file on the NVMe (the plan keeps big files off it);
+    - C, stopping after the merge.
+  - `relief.mbtiles`, `relief.vrt` and `build.log` are kept.
