@@ -395,3 +395,12 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - **Aspen merged #460 into `pre-main`: `13bcd0ebf`.** The `worker/*` release to `main` comes next.
 - **Rowan's hold on `pre-main` merges** (the owner's word in Rowan's window) still stands. The owner
   said they'd tell Rowan when it's safe.
+- **Sorrel confirmed #461** (the folder tree is identical to `pre-main` `13bcd0ebf`, the diff is confined
+  to it, and the live effect is the v4 route only).
+  - **Should-fix:** the two guard workflows exist on `pre-main` only, so neither ran on #461. They need a
+    small PR to `main` of their own, or the promotion.
+- **Aspen merged #461 into `main` at about 20:55 PST: `0a819b3d6`.** It was live in about 45 s.
+  - `/style/street-v4.json` answers 200, JSON-equal to the bundled copy: 104 layers, sprite v6.
+  - v3 is still JSON-equal; v2, reference-trails and its manifest, sprites v5/v6 and `us.json` all answer
+    200.
+- **Next:** step (d), the app switch PR to `pre-main`, with Sorrel's two carried fixes.
