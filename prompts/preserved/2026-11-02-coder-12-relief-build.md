@@ -486,3 +486,28 @@ Read by the planner at 13:16:11 PST, unless marked.
 - **Willow takes the remaining coder-12 steps,** through Hold 2, as filed. The deletion of the parts still needs
   the conditions of the 13:48 update.
 - **No coder-13 test build runs while R2 runs.**
+
+## Correction, 14:19 PST: Aspen's 13:59 start of the map build did run; stopped at 14:18:52 on the owner's word
+
+This supersedes "Nothing was started" in the 14:01 update.
+
+- **What happened** (observed, sudo log and `systemctl status`):
+  - Aspen's command `sudo -n systemctl start --no-block forager-build-usca.service` ran at 13:59:35.
+  - The owner's interruption came after it, during the command's `sleep`.
+  - So the map build ran from 13:59:35, as run `usca-20261102T215936Z`, in its fetch-extracts stage.
+  - It had downloaded 1.47 of 12.24 GB of `us-261101.osm.pbf` over Wi-Fi.
+- **How it was found:** Willow, in coder-13's premise 5, read at 14:15-14:17. Aspen had told the owner, Rowan
+  and this record that nothing had started. That was wrong. It came from reading the rejected tool call as not
+  run, without checking the unit.
+- **The owner's choice,** through the question tool at about 14:18: "Stop it now". The other choices were
+  download only, or leave it running.
+- **Aspen stopped it at 14:18:52** with `sudo -n systemctl stop forager-build-usca.service` (observed):
+  - The log says "run failed with exit 143; previous outputs untouched; this run's outputs kept in
+    /srv/forager-build/failed-usca/latest".
+  - `out-usca/current` is still `20261030T212451Z`, and `last_success` is still `usca-20261101T174337Z`.
+  - `status-usca.json` now reads state failed, stage fetch-extracts.
+  - The partial download is kept: `sources/osm/us-261101.osm.pbf.part`, 1,529,737,216 bytes.
+  - No forager-build processes are running.
+  - The weekly timer is still armed for Sun 11-08.
+- **The rule for Aspen from here:** after any rejected or interrupted command, read the system's state before
+  saying whether it ran.
