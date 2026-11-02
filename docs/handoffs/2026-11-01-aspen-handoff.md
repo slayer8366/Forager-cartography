@@ -107,10 +107,14 @@ last sections first). Dispatches are in `prompts/preserved/`.
 ## Update, about 23:00 PST (next Aspen)
 
 - **Throwaway branches deleted on the owner's word ("Delete the throwaway branches").**
-  - The five were already gone from GitHub (`git ls-remote` over HTTPS, `slayer8366/Forager`).
+  - Willow (new session) deleted them and 4 more from origin at 22:35 PST (SHAs in
+    `~/scratch/willow-deleted-branches-20261101.txt`); confirmed gone with `git ls-remote` over HTTPS.
   - Removed what was left on the Pi: the clean worktrees `coder10-trial`, `coder11-revert`,
     `coder11-appswitch-revert` and `coder07-worker`, the local branches, and the stale tracking refs.
   - The last SHAs, in case they're ever wanted: `hillshade-trial-s22` cae711fff, `hillshade-trial-tiles`
     a0088b496, `street-v4-revert-hillshade-night` e71acecd8, `app-switch-revert-check` 0c684805a,
     `worker-sprite-v6` 220094639.
   - Kept `worker-sprite-v6-pre-main` (PR #453's head, merged; not on the list).
+- **PR #464** (Willow, Sorrel's S-1: `streetNightTablesForSource`, head eafc26a5e -> `pre-main`) waits on
+  Sorrel. Sorrel's session `session_019DQwod3PaWQYeR9FJLNn1m` is gone (send_message: not found); the owner
+  needs to start a new Sorrel.
