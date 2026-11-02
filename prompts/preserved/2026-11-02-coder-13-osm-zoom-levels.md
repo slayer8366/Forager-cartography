@@ -315,3 +315,21 @@ This supersedes "cut from origin/main" in Z2's Style item.
   - main's `street-style-v4.json` came by the folder-only Worker release `328a1388f`.
 - **Planner's word:** cut `osm-zooms-style` from origin/pre-main `04746d8f0`. Add `forager-street-v5.json`, wired
   to nothing. No push to main or pre-main.
+
+## Update, 15:58 PST: the offline style's zooms go in a new file
+
+This supersedes "match the zooms … in offline-style.json" in the Juniper update.
+
+- **Willow's flag:** pre-main's `index.ts:372-378` says "/style/offline.json is untouched for the same reason
+  (-1294)". MapLibre keys a downloaded pack by its style URL.
+  - `worker.test.mjs:204-208` would pass an edit in place, but the edit would change what every older pack's
+    URL means.
+- **Planner's word:** the offline zooms go in a new `map-style/forager-offline-v2.json`, wired to nothing, like v5.
+  `offline-style.json` stays byte for byte.
+  - Whether each ships as a new file or in place is decided with the owner at the merge.
+- **Willow's mapping, accepted:**
+  - the offline style's 57 layers take v5's zooms;
+  - `landuse_park` and `roads_other` are split by kind;
+  - `water_stream` goes from 14 to 10.5 and 11.5;
+  - no labels are added.
+- **Relief:** the merge was at about 3 of 25 GB at 15:56 (Willow).
