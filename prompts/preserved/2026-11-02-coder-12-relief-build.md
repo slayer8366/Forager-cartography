@@ -435,3 +435,27 @@ Read by the planner at 13:16:11 PST, unless marked.
     - B, the temp file on the NVMe (the plan keeps big files off it);
     - C, stopping after the merge.
   - `relief.mbtiles`, `relief.vrt` and `build.log` are kept.
+
+## Update, 14:02 PST: R2 stopped on the owner's word; the relief build waits for the map build
+
+- **The owner, to Aspen, about 14:00 PST, verbatim:**
+  - "I want the zoom levels fixed. So if the map needs to be rebuilt, then start now"
+  - "Stop the relief build"
+  - "Nothing happens until the map build is finished"
+  - "Stop the relief build since it'll need to restart anyway"
+- **Just before that, the owner rejected Aspen's start of `forager-build-usca.service`.** Nothing was started.
+  - Inferred: a plain rebuild wouldn't hold the zoom fixes, which aren't written yet.
+- **Aspen stopped R2 at 14:00:31** with `python3 ~/scratch/coder12-49/86f9114/relief.py stop /mnt/storage/relief`
+  (observed):
+  - exit 0, `os.killpg(6179, SIGTERM)` to 5 `relief.py` processes, and the group was empty after 0.2 s;
+  - the log says "stopped; part files hold 106560 of 348509 tiles; a restart resumes";
+  - z5-z10 are complete (the 13:55:43 line), and z11 had started;
+  - the parts take 7.8 GB, with 150 GB free.
+- **Willow was told to hold** (14:01): no restart, merge, convert or delete. Everything in
+  `/mnt/storage/relief/` stays.
+- **On "it'll need to restart anyway":**
+  - The part files resume, as test 4 showed.
+  - Willow's projection had about 1.4 h of z11 work left at 40 tiles/s (inferred).
+  - **Not checked:** whether the owner means restarting from zero. Ask before the restart.
+- **The relief build waits until the map build is finished.** A restart needs the owner's go, relayed by
+  Aspen. R3 waits too.
