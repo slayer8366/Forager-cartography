@@ -195,3 +195,22 @@
 - **The owner also said "Resume rt the relief build".** It was already running, resumed at 14:16:10
   (pgid 10404). At 14:26:11: 135,328 of 348,509 tiles, 47.9/s, 147.1 GB free, 65.3 °C, `throttled=0x0`.
   Nothing was changed.
+
+## Correction, 14:31 PST: the reference is openstreetmap-carto v6.1.0, not v5.9.0
+
+This supersedes "`v5.9.0` was the newest `v5*` tag" under "What this is", and wherever this dispatch or Aspen's
+messages name v5.9.0.
+
+- **Found by Juniper** (message 14:33 by its clock). **Checked by Aspen at 14:30:58:**
+  - OSMF's openstreetmap/chef `roles/tile.rb:104` on master reads `:revision => "v6.1.0"`, with the repository
+    gravitystorm/openstreetmap-carto;
+  - `git ls-remote` lists tags v6.0.0 and v6.1.0, and v6.1.0 is commit `0e52579`.
+  - Juniper also read chef `e2b54e4`, "Update to osm-carto v6.1.0" (2026-09-11). Aspen didn't read it.
+- **Aspen's error:** the 14:13 lookup listed only `v5*` tags, so it couldn't see v6.
+  - The reference is the release that tile.openstreetmap.org actually runs, read from OSMF's own
+    configuration, not the newest tag.
+- **Effect:** none written yet.
+  - Willow's Z1 draft (`3e1304b`) has no OSM column.
+  - Juniper reads v6.1.0.
+- **Also read by Juniper:** patches 0001-0007 from `53a728341` apply cleanly, in order, onto basemaps
+  `ca93fc06`.
