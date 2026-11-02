@@ -10,11 +10,14 @@
 3. Terrarium round trip: -86, 0, 3392.4 and 6190.5 m decode within 1/256 m (control: dropping B fails)
 4. stop and resume, inside a private PID namespace: relief.py stop refuses (no signal syscall, a sentinel lives)
    for pgid 1, its own group and the sentinel's group; then 20 z11 tiles, 2 workers, stopped partway with
-   relief.py stop OUT (strace: only kill(-pgid, SIGTERM)), restarted: each tile once, the sentinel alive
+   relief.py stop OUT (strace: only kill(-pgid, SIGTERM)), restarted: each tile once, the sentinel alive.
+   Run 1 has RELIEF_TEST_CHUNK_DELAY=1 (1 s after each chunk), so the stop lands partway; run 2 has it off
 5. the count check catches a gap (positive control): one row dropped from a copy of a part file -> FAIL naming
    z11; and on a synthetic full set (every tile, empty PNG stubs): passes, then one z7 row dropped and one z9 tile
    duplicated -> FAIL naming z7 and z9
-6. the chain on the same 20 tiles: merge, pmtiles convert, verify (Hood against the trial's tiles; the summit)
+6. the chain on the same 20 tiles: merge, hood (before converting), pmtiles convert, verify. Hood passes if the
+   trial's two-cell VRT gives 20/20 byte-identical and the full VRT every tile within 1/256 m (control: a tile
+   0.01 m off is rejected); the summit equals the reference's 3391.582 m
 7. antimeridian render: the tiles at 180 E (z11 x 2047, z5 x 31) render in about the time of their neighbours
 """
 import argparse, collections, contextlib, io, os, shutil, sqlite3, subprocess, sys, time
@@ -96,10 +99,13 @@ def rows_now(parts):
     return n
 
 
-def run_build(out, only, log):
+def run_build(out, only, log, delay=None):
     cmd = ["setsid", "nohup", sys.executable, f"{HERE}/relief.py", "build", out, "--procs", "2", "--chunk", "2",
            "--only", only]
-    return subprocess.Popen(cmd, stdout=open(log, "w"), stderr=subprocess.STDOUT)
+    env = {k: v for k, v in os.environ.items() if k != "RELIEF_TEST_CHUNK_DELAY"}
+    if delay:
+        env["RELIEF_TEST_CHUNK_DELAY"] = delay       # 1 s after each chunk, so the stop lands partway (planner, 13:14)
+    return subprocess.Popen(cmd, stdout=open(log, "w"), stderr=subprocess.STDOUT, env=env)
 
 
 SIGCALLS = "kill,tkill,tgkill,rt_sigqueueinfo,rt_tgsigqueueinfo,pidfd_send_signal"
@@ -166,7 +172,7 @@ def t4_resume(work):
         print("  " + text.replace("\n", "\n  "))
         ok_ctl = ok_ctl and ok
 
-    p = run_build(out, only, f"{work}/run1.log")
+    p = run_build(out, only, f"{work}/run1.log", delay="1")
     pgid, t0 = None, time.time()
     while time.time() - t0 < 180 and p.poll() is None:
         if pgid is None:
@@ -205,11 +211,15 @@ def t4_resume(work):
     extra = [t for t in seen if t not in TWENTY]
     print(f"after run 2: {len(seen)} distinct tiles, {sum(seen.values())} rows; missing {missing}; extra {extra}")
     ok_check, _ = captured(relief.check, parts, TWENTY)
-    skipped = f"already in part files: {after_stop}; to do: {len(TWENTY) - after_stop}" in open(f"{work}/run2.log").read()
+    log1, log2 = open(f"{work}/run1.log").read(), open(f"{work}/run2.log").read()
+    skipped = f"already in part files: {after_stop}; to do: {len(TWENTY) - after_stop}" in log2
+    delays = "chunk delay 1 s (test only)" in log1 and "chunk delay off" in log2
+    print(f"start lines: run 1 {'shows' if 'chunk delay 1 s (test only)' in log1 else 'does NOT show'} the 1 s test"
+          f" delay; run 2 {'shows' if 'chunk delay off' in log2 else 'does NOT show'} it off")
     print(f"controls {'ok' if ok_ctl else 'FAILED'}; the real stop {'ok' if ok_stop else 'FAILED'}; sentinel"
           f" {'alive' if alive(sentinel.pid) else 'GONE'} at the end")
     result(name, ok_ctl and ok_stop and rc1 != 0 and 0 < after_stop < len(TWENTY) and rc2 == 0 and once
-           and not missing and not extra and ok_check and skipped and alive(sentinel.pid),
+           and not missing and not extra and ok_check and skipped and delays and alive(sentinel.pid),
            f"3 refusals sent nothing; stop sent only kill(-{pgid}, SIGTERM); stopped at {after_stop}/20, restart did"
            f" {len(TWENTY) - after_stop}, each tile once; the sentinel lived")
 
@@ -245,11 +255,15 @@ def t5_gap(work):
 
 
 def t6_chain(work):
+    name = "6 merge, convert, verify (20 tiles)"
     out = f"{work}/resume"; only = f"{work}/twenty.txt"
     try:
         rc, _ = captured(relief.merge, argparse.Namespace(out=out, only=only))
     except SystemExit as e:
-        return result("6 merge, convert, verify (20 tiles)", False, f"merge stopped: {e}")
+        return result(name, False, f"merge stopped: {e}")
+    hd = subprocess.run([sys.executable, f"{HERE}/relief.py", "hood", out, "--only", only], capture_output=True, text=True)
+    print(f"relief.py hood (on relief.mbtiles, before converting): exit {hd.returncode}\n  "
+          + (hd.stdout + hd.stderr).strip().replace("\n", "\n  "))
     os.makedirs(f"{out}/tmp")
     cv = subprocess.run(["pmtiles", "convert", "--tmpdir", f"{out}/tmp", f"{out}/relief.mbtiles", f"{out}/relief.pmtiles"],
                         capture_output=True, text=True)
@@ -257,10 +271,33 @@ def t6_chain(work):
     db = sqlite3.connect(f"{out}/relief.mbtiles"); md = dict(db.execute("select name, value from metadata")); db.close()
     print("metadata:", md)
     _, text = captured(relief.verify, argparse.Namespace(out=out, only=only))
-    m, where, found = relief.highest(f"{out}/relief.pmtiles", 11, 45.3735, -121.6959)
-    ok = (rc == 0 and cv.returncode == 0 and md == relief.METADATA and "tile type: png" in text
-          and "wholly inside the trial area: 20; byte-identical 20, different 0, missing 0" in text and abs(m - 3391.582) < 0.01)
-    result("6 merge, convert, verify (20 tiles)", ok, f"Hood summit {m:.3f} m in {where}; the reference reads 3391.582 m")
+    pmt = f"{out}/relief.pmtiles"
+    same, diff, missing, worst, px = relief.hood_vs_reference(lambda z, x, y: relief.pm_tile(pmt, z, x, y),
+                                                              set(TWENTY))["wholly inside"]
+    within = missing == 0 and same + diff == len(TWENTY) and worst <= relief.STEP + 1e-9
+    print(f"full VRT, from relief.pmtiles: {same} byte-identical, {diff} different ({px} pixels), missing {missing};"
+          f" largest {worst:.4f} m -> {'within' if within else 'NOT within'} 1/256 m")
+
+    # The trial's own two cells: the render must give the trial's bytes exactly.
+    os.makedirs(f"{work}/two")
+    v2 = gdal.Open(relief.make_vrt(f"{work}/two", relief.cells(["N45W123", "N45W122"])))
+    two_same = sum(relief.render(v2, z, x, y) == open(f"{relief.REF}/{z}/{x}/{y}.png", "rb").read() for z, x, y in TWENTY)
+    print(f"trial's two-cell VRT: {two_same} of {len(TWENTY)} byte-identical to the reference")
+
+    # Control: the same comparison must reject a tile 0.01 m off (more than one step).
+    ref = open(f"{relief.REF}/11/331/733.png", "rb").read()
+    img = relief.Image.fromarray(relief.terrarium(relief.decode(ref) + 0.01), "RGB"); buf = io.BytesIO()
+    img.save(buf, "PNG", optimize=True)
+    c_ident, c_px, c_d = relief.tile_diff(buf.getvalue(), ref)
+    rejects = not c_ident and c_d > relief.STEP
+    print(f"control, 11/331/733 + 0.01 m: {c_px} pixels differ, largest {c_d:.4f} m ->"
+          f" {'rejected' if rejects else 'NOT rejected'} by the 1/256 m rule")
+
+    m, where, found = relief.highest(pmt, 11, 45.3735, -121.6959)
+    ok = (rc == 0 and hd.returncode == 0 and cv.returncode == 0 and md == relief.METADATA and "tile type: png" in text
+          and within and two_same == len(TWENTY) and rejects and abs(m - 3391.582) < 0.01)
+    result(name, ok, f"two-cell VRT {two_same}/20 identical; full VRT {same} identical, {diff} within 1/256 m"
+                     f" ({px} px); Hood summit {m:.3f} m in {where}, the reference reads 3391.582 m")
 
 
 def t7_render(work):

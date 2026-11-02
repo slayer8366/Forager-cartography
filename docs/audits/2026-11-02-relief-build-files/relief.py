@@ -17,6 +17,7 @@ bytes go into one MBTiles part file per worker (no loose PNG tree), and there is
                                            relief.py build processes; else it sends nothing and exits 1
   relief.py check  PARTS_DIR|FILE.mbtiles [--only FILE]   per-zoom count check; exit 1 on any gap
   relief.py merge  OUT [--only FILE]       check the parts, merge them into OUT/relief.mbtiles, check that
+  relief.py hood   OUT [--only FILE]       Hood against the trial's tiles, on OUT/relief.mbtiles (before converting)
   relief.py verify OUT [--only FILE]       the R2 checks on OUT/relief.pmtiles (and the MBTiles' size)
 
 --only FILE limits the tiles to the z/x/y lines in FILE (the R0 tests). Terrarium: h = R*256 + G + B/256 - 32768
@@ -147,7 +148,7 @@ def read_tiles(path, heads=False):
     return rows
 
 
-def worker(k, parts, vrt_path, q, done):
+def worker(k, parts, vrt_path, q, done, delay):
     signal.signal(signal.SIGTERM, signal.SIG_DFL)
     vrt = gdal.Open(vrt_path)
     db = open_part(f"{parts}/part-{k}.mbtiles")
@@ -161,6 +162,8 @@ def worker(k, parts, vrt_path, q, done):
         with done.get_lock():
             for z, _, _ in chunk:
                 done[z] += 1
+        if delay:
+            time.sleep(delay)                          # RELIEF_TEST_CHUNK_DELAY: the R0 stop test only
     db.execute("pragma wal_checkpoint(truncate)")
     db.execute("pragma journal_mode=delete")
     db.close()
@@ -207,6 +210,9 @@ def build(a):
     out = os.path.abspath(a.out); parts = f"{out}/parts"
     if os.getpgrp() != os.getpid():
         sys.exit(f"start this under setsid, so that relief.py stop {a.out} stops this build and nothing else")
+    delay = float(os.environ.get("RELIEF_TEST_CHUNK_DELAY") or 0)
+    if delay and not out.startswith("/tmp/"):
+        sys.exit(f"RELIEF_TEST_CHUNK_DELAY={delay:g} is for the R0 tests under /tmp only, not {out}")
     if os.nice(0) < 10:
         os.nice(10 - os.nice(0))
     os.makedirs(parts, exist_ok=True)
@@ -228,7 +234,8 @@ def build(a):
     vrt_path = make_vrt(out, cs)
     exp = per_zoom(want)
     log(f"start: pid {os.getpid()} pgid {os.getpgrp()} nice {os.nice(0)}; GDAL {gdal.__version__}, numpy {np.__version__},"
-        f" Pillow {Image.__version__}; {len(cs)} cells; procs {a.procs}, chunk {a.chunk}")
+        f" Pillow {Image.__version__}; {len(cs)} cells; procs {a.procs}, chunk {a.chunk};"
+        f" chunk delay {f'{delay:g} s (test only)' if delay else 'off'}")
     log("tiles wanted:", " ".join(f"z{z} {exp[z]}" for z in ZOOMS), f"total {len(want)}")
     log(f"already in part files: {len(seen)}; to do: {len(todo)}")
     if not todo:
@@ -243,7 +250,7 @@ def build(a):
     for z, c in per_zoom(seen).items():
         done[z] = c
     q = ctx.Queue()
-    procs = [ctx.Process(target=worker, args=(k, parts, vrt_path, q, done), name=f"relief-{k}") for k in range(a.procs)]
+    procs = [ctx.Process(target=worker, args=(k, parts, vrt_path, q, done, delay), name=f"relief-{k}") for k in range(a.procs)]
     for p in procs:
         p.start()
 
@@ -264,12 +271,14 @@ def build(a):
         q.put(None)
 
     t0 = time.time(); n0 = len(seen); thr0 = throttled(); peak = temp_c(); last_guard = last_log = 0.0
+    n_logged, stalls = None, 0
     def line(t, thr):
         n = sum(done[z] for z in ZOOMS); dt = time.time() - t0
         return (" ".join(f"z{z} {done[z]}/{exp[z]}" for z in ZOOMS) + f"; total {n}/{len(want)}; this run {n - n0}"
                 f" in {dt:.0f} s ({(n - n0) / max(dt, 1):.1f}/s); free {gib(free_bytes(out))}; {t:.1f}'C"
                 f" (peak {peak:.1f}'C); throttled={thr:#x}")
-    log(f"guards: stop under {gib(MIN_FREE)} free, or on get_throttled bit 0 or 2 (or bit 16 or 18 newly set);"
+    log(f"guards: stop under {gib(MIN_FREE)} free, or on get_throttled bit 0 or 2 (or bit 16 or 18 newly set),"
+        f" or after two {LOG_EVERY // 60}-minute lines in a row with no new tiles;"
         f" now free {gib(free_bytes(out))}, throttled={thr0:#x}, {peak:.1f}'C")
     while True:
         bad = [p for p in procs if p.exitcode not in (None, 0)]
@@ -287,6 +296,10 @@ def build(a):
                 log(line(t, thr)); stop(f"get_throttled={thr:#x} (under-voltage or throttling)", 2)
             if now - last_log >= LOG_EVERY:
                 last_log = now; log(line(t, thr))
+                n = sum(done[z] for z in ZOOMS)
+                stalls = stalls + 1 if n == n_logged else 0; n_logged = n
+                if stalls >= 2:
+                    stop(f"stalled: two {LOG_EVERY // 60}-minute lines in a row with no new tiles ({n} done)", 3)
         time.sleep(1)
     log(line(temp_c(), throttled()))
     left = len(want) - sum(done[z] for z in ZOOMS)
@@ -440,9 +453,31 @@ def highest(pmt, z, lat, lon):
     return best[0], best[1], found
 
 
-def hood_vs_reference(pmt, want=None):
-    """Hood's z11 tiles against the trial's: those wholly inside 45-46 N, 123-121 W and off its edge should be
-    byte-identical (inferred). Prints counts and the largest decoded difference; returns (identical, different)."""
+STEP = 1 / 256                 # one Terrarium step, in metres
+
+
+def tile_diff(b, ref):
+    """(byte-identical, differing pixels, largest decoded difference in m) of tile bytes b against ref."""
+    if b == ref:
+        return True, 0, 0.0
+    d = np.abs(decode(b) - decode(ref))
+    return False, int((d > 0).sum()), float(d.max())
+
+
+def mb_tile(mbt):
+    """A z/x/y -> PNG bytes getter on an MBTiles (y in XYZ), like pm_tile on a PMTiles."""
+    db = sqlite3.connect(f"file:{mbt}?mode=ro", uri=True)
+    def get(z, x, y):
+        r = db.execute("select tile_data from tiles where zoom_level=? and tile_column=? and tile_row=?",
+                       (z, x, (2**z-1)-y)).fetchone()
+        return r[0] if r else None
+    return get
+
+
+def hood_vs_reference(get, want=None):
+    """Hood's z11 tiles against the trial's. Inner tiles (wholly inside 45-46 N, 123-121 W) must each be within one
+    Terrarium step (1/256 m) of the reference (planner, 13:14); edge tiles are reported, not judged. Prints the
+    counts; returns {label: (identical, different, missing, largest difference m, differing pixels)}."""
     inner, edge = [], []
     for p in sorted(glob.glob(f"{REF}/11/*/*.png")):
         x, y = int(p.split("/")[-2]), int(p.split("/")[-1][:-4])
@@ -452,28 +487,39 @@ def hood_vs_reference(pmt, want=None):
         (inner if REF_W < w and e < REF_E and REF_S < s and n < REF_N else edge).append((x, y, p))
     res = {}
     for label, ts in (("wholly inside", inner), ("on the edge of", edge)):
-        same = diff = missing = 0; worst = (0.0, None)
+        same = diff = missing = px = 0; worst = (0.0, None)
         for x, y, p in ts:
-            b = pm_tile(pmt, 11, x, y)
+            b = get(11, x, y)
             if b is None:
                 missing += 1; continue
-            ref = open(p, "rb").read()
-            if b == ref:
+            ident, npx, d = tile_diff(b, open(p, "rb").read())
+            if ident:
                 same += 1; continue
-            diff += 1; d = float(np.abs(decode(b) - decode(ref)).max())
+            diff += 1; px += npx
             if d >= worst[0]:
                 worst = (d, f"11/{x}/{y}")
         print(f"Hood z11 tiles {label} the trial area: {len(ts)}; byte-identical {same}, different {diff},"
-              f" missing {missing}" + (f"; largest decoded difference {worst[0]:.4f} m in {worst[1]}" if diff else ""))
-        res[label] = (same, diff, missing)
+              f" missing {missing}" + (f"; {px} differing pixels in all, largest decoded difference"
+                                       f" {worst[0]:.4f} m in {worst[1]}" if diff else ""))
+        res[label] = (same, diff, missing, worst[0], px)
     return res
+
+
+def hood(a):
+    """R2's Hood check on OUT/relief.mbtiles, before converting: exit 1 if an inner tile is missing or is more than
+    1/256 m off."""
+    out = os.path.abspath(a.out); want = set(scope(a.only)) if a.only else None
+    same, diff, missing, worst, _ = hood_vs_reference(mb_tile(f"{out}/relief.mbtiles"), want)["wholly inside"]
+    ok = missing == 0 and same + diff > 0 and worst <= STEP + 1e-9
+    print(f"Hood check (inner tiles within {STEP} m, none missing): {'PASS' if ok else 'FAIL: do not convert'}")
+    return 0 if ok else 1
 
 
 def verify(a):
     out = os.path.abspath(a.out); pmt = f"{out}/relief.pmtiles"; mbt = f"{out}/relief.mbtiles"
     want = set(scope(a.only)) if a.only else None
     print(subprocess.run(["pmtiles", "show", pmt], capture_output=True, text=True, check=True).stdout)
-    res = hood_vs_reference(pmt, want)
+    hood_vs_reference(lambda z, x, y: pm_tile(pmt, z, x, y), want)
     for name, lat, lon, near in (("Mount Hood", 45.3735, -121.6959, "about 3,390 m (the trial read 3,392)"),
                                  ("Denali", 63.0692, -151.0070, "near 6,190 m"),
                                  ("Mount Logan", 60.5672, -140.4053, "near 5,959 m")):
@@ -512,6 +558,7 @@ def main():
     m = sp.add_parser("merge"); m.add_argument("out"); m.add_argument("--only")
     v = sp.add_parser("verify"); v.add_argument("out"); v.add_argument("--only")
     s = sp.add_parser("stop"); s.add_argument("out")
+    h = sp.add_parser("hood"); h.add_argument("out"); h.add_argument("--only")
     a = ap.parse_args()
     if a.cmd == "build" and not 1 <= a.procs <= 4:
         sys.exit("--procs is 1 to 4 (dispatch: up to 4 processes)")
@@ -520,13 +567,15 @@ def main():
         print(" ".join(f"z{z} {c[z]}" for z in ZOOMS), f"total {len(ts)}")
         return 0
     if a.cmd == "build":
-        return build(a)
+        rc = build(a); log(f"end: build exit {rc}"); return rc
     if a.cmd == "check":
         return 0 if check(a.path, scope(a.only)) else 1
     if a.cmd == "merge":
         return merge(a)
     if a.cmd == "stop":
         return stop_build(a)
+    if a.cmd == "hood":
+        return hood(a)
     return verify(a)
 
 
