@@ -404,3 +404,13 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
   - v3 is still JSON-equal; v2, reference-trails and its manifest, sprites v5/v6 and `us.json` all answer
     200.
 - **Next:** step (d), the app switch PR to `pre-main`, with Sorrel's two carried fixes.
+- **Step (d), the app switch: PR #462** (`app-switch-street-v4` -> `pre-main`; `9209e5c7c` tests first,
+  then `2d939a19b`).
+  - `STREET_STYLE_URL` -> v4, with v3 kept as `STREET_STYLE_V3_URL`.
+  - Sorrel's carried fixes: `streetUriOf` for StreetWithTopoOver, and a CI map-style checker job.
+  - The revert check fails 5 of 37; full CI is green. Throwaway `app-switch-revert-check` waits for the
+    owner's word.
+  - The guard workflows for `main` (`ci/worker-guards-to-main`, `51541c286`) go up as their own PR.
+  - Sorrel is reviewing both.
+  - Willow's note: new v4 offline downloads include relief, which answers 404 until it's uploaded. Relief
+    goes up Monday, before any release.
