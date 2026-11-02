@@ -82,3 +82,24 @@ step 2. Mark claims observed, read or inferred.
 - The 03:40 go above was sent to a Willow socket that has since closed. A HOLD was queued to Willow
   [a49a3d] (offline) at about 03:38. v2 stays on disk for the next run.
 - Step 2 (relief) still waits for a clean upload.
+
+## Update, 08:58 PST: routing is live; the tile upload failed at 05:30; nothing is running
+
+Read live by the planner at 08:58 PST.
+
+- **Routing (observed, upload.log):** at 03:50:28 PST `usca-20261101T174337Z` went live: 187 segments4 + 187
+  names1 read back with 0 differences, manifest sha256 `42f4ca89…8916e` matched on R2.
+- **Tiles (observed):** the upload of `us.pmtiles` (35,256,335,758 B) started 04:13:10. At 05:30:09 rclone
+  failed: a DNS lookup of the R2 host timed out against the IPv6 resolver (`[2001:558:feed::1]:53`,
+  i/o timeout). With `--retries 1` that ended the copy, and v1 exited at the next `set -e` without
+  logging STOP. The journal shows wlan0 losing its IPv6 lease at 05:32:43 (inferred: an IPv6 Wi-Fi blip).
+- **The live map is untouched (observed):** `rclone lsl r2:forager-maps/us.pmtiles` reads
+  `34141705380 2026-10-21 12:54:52`, the 10-21 file. A multipart upload only replaces the object when it
+  completes.
+- **Left on R2 (observed):** an unfinished multipart upload for `us.pmtiles`, started 12:14:29Z
+  (04:14:29 PST), and an older one for `reference-trails.pmtiles` from 10-27. rclone can't resume them.
+- No uploader or relief process is running. `/mnt/storage/relief/` is empty; `/mnt/storage` is
+  `/dev/sda1 rw`, 158 GB free. Willow shows offline.
+- Step 2 (relief) still waits. Retrying the tile upload needs the owner's go (the rule above: on a STOP,
+  report, don't retry by hand). A v2 rerun would re-check routing (copy skips identical files, read-back
+  about 8 min, same manifest) and then upload the tiles again.
