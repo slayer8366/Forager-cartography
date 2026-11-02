@@ -15,6 +15,9 @@ This replaces step 2 of `2026-11-01-coder-11-hillshade-rollout.md` and of coder-
 - **On who runs it, about 12:17 PST:** "Give me the dispatch and I'll hand it to Willow."
 - **Then, about 12:20 PST:** "This is the first time doing this so let's be careful with execution".
 - **Then, about 12:22 PST:** "No trial run, all trials that ran were good."
+- **Then, about 12:25 PST:** "Use the data from the last trial of mt hood. that stands as current".
+  - The planner reads this as: the 11-01 Hood trial is the current reference, for the look and for the
+    numbers. See premise 7.
 - **So there is no pilot, and the go is in two parts:**
   - **The go for R0 and the tests** is the owner handing you this file.
   - **Hold 1:** after R0 and the tests, report and stop. R2 (the full build) waits for the owner's go,
@@ -54,8 +57,20 @@ where marked.
    its `convert` has `--tmpdir`. `/usr/bin/time` isn't installed.
 6. **The Pi:** idle, 45.5 °C, `get_throttled=0x0`, 7.0 GiB of memory available. The weekly timer is next on
    Sun 11-08 02:08 PST.
-7. **The trial script:** `/mnt/archive/aspen-hillshade-trial/make-relief.py`, plus its 256 px tiles in
-   `tiles/png256/` (z11 columns 324-335).
+7. **The trial script and the reference:** `/mnt/archive/aspen-hillshade-trial/make-relief.py`, plus its
+   256 px tiles in `tiles/png256/` (z11 columns 324-335).
+   - **This is the last Mount Hood trial, and the owner's current reference.** The planner checked at
+     12:25: all 156 local tiles are byte-identical to the tiles the S22 trial loaded, which are Forager
+     commit `a0088b496` (the `hillshade-trial-tiles` branch is deleted, but the commit is in `~/Forager`).
+   - **Its numbers stand as current:**
+     - 156 tiles, 16.0 MB;
+     - `png256.pmtiles` 15.9 MB;
+     - highest point 3,392 m (Hood is 3,429 m).
+   - **Not the reference:**
+     - `~/scratch/willow-relief/` holds your coder-10 sizing samples (kansas, coast; PNG only).
+     - `/mnt/archive/willow-relief/test/` is empty and was made today at 11:08 PST.
+     - If a session of yours made that folder, or removed `/mnt/storage/relief/`, say so in the R0
+       report.
    - It warps each tile from a VRT with `gdal.Warp(..., resampleAlg="bilinear", srcNodata=-32768,
      dstNodata=nan)`.
    - It writes Terrarium with non-finite values set to 0 m, and saves PNGs with `optimize=True`.
@@ -143,7 +158,8 @@ the owner's go, which Aspen relays.
   - **Per-zoom tile counts** in the MBTiles equal the table. Any gap is listed by z/x/y.
   - **`pmtiles show relief.pmtiles`:** tile type png, minzoom 5, maxzoom 11, the attribution and the bounds.
     Paste it into the report.
-  - **Hood against the trial,** using the trial's tiles in `/mnt/archive/aspen-hillshade-trial/tiles/png256/`:
+  - **Hood against the reference** (premise 7), using the trial's tiles in
+    `/mnt/archive/aspen-hillshade-trial/tiles/png256/`:
     - Hood's z11 tiles that lie wholly inside the trial area (45-46 N, 123-121 W) and don't touch its edge
       should be byte-identical to the trial's. This is inferred: same data, same warp and the same Pillow.
     - Give the count identical / different. For any that differ, give the largest decoded height

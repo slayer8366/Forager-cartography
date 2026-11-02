@@ -201,3 +201,16 @@ Written by the planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`) at about 
   - The owner's "Give me the dispatch" came at about 12:17, and the dispatch was pushed at 12:18:52.
   - "Let's be careful with execution" came at about 12:20, and the holds were pushed at 12:20:47. That
     update's heading says about 12:35, which is wrong.
+
+## Update, about 12:26 PST: the last Hood trial is the reference
+
+- **The owner, about 12:25 PST:** "Use the data from the last trial of mt hood. that stands as current".
+- **The planner checked (observed, 12:25):**
+  - the 156 tiles in `/mnt/archive/aspen-hillshade-trial/tiles/png256/` are byte-identical (git blob
+    hashes) to Forager `a0088b496`, the tiles the S22 trial loaded;
+  - its numbers stand: 156 tiles, 16.0 MB, highest point 3,392 m.
+- **coder-12 names this set as the reference** for the look and for R2's Hood check (premise 7).
+- **Found while checking, not part of the reference:**
+  - `~/scratch/willow-relief/`: Willow's coder-10 sizing samples, kansas and coast.
+  - `/mnt/archive/willow-relief/test/`: empty, made today at 11:08 PST.
+  - Willow is asked in R0 whether a session of theirs made that folder or removed `/mnt/storage/relief/`.
