@@ -169,3 +169,18 @@ Written by the planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`) at about 
     cached as a 404 for a day.
   - The script goes on the forager-cartography branch `willow-relief-build`.
   - If Willow's session refuses the sudo or the detached start, Willow stops and Aspen does that step.
+
+## Update, about 12:35 PST: a hold after each step
+
+- **The owner:** "This is the first time doing this so let's be careful with execution".
+- **coder-12 is now step by step** (`f259fd5`):
+  - Hold 1 comes after R0 and the tests; R1 then needs Aspen's go.
+  - Hold 2 comes after the pilot; R2 then needs the owner's go.
+  - Hold 3 comes after R2.
+- **Also added:**
+  - the pilot goes in its own folder;
+  - a safe stop, by process-group id, with resuming shown;
+  - a progress line in the log every 10 minutes;
+  - the build stops itself under 50 GB free or on under-voltage or throttling;
+  - a count check before merging;
+  - no deletes without Aspen's word.
