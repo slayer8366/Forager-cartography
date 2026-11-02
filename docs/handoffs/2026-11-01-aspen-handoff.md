@@ -118,3 +118,6 @@ last sections first). Dispatches are in `prompts/preserved/`.
 - **PR #464** (Willow, Sorrel's S-1: `streetNightTablesForSource`, head eafc26a5e -> `pre-main`) waits on
   Sorrel. Sorrel's session `session_019DQwod3PaWQYeR9FJLNn1m` is gone (send_message: not found); the owner
   needs to start a new Sorrel.
+- **New Sorrel**, started by Aspen on the owner's word ("Go ahead and start a Sorrel session yourself"):
+  `session_01Hqu21obr8SqgUyvBhiTw6o`, dispatch `prompts/preserved/2026-11-01-sorrel-464-night-tables.md`.
+  This Aspen is `session_01Hqu21ntTjr3Lo2Pf81mxzk`.
