@@ -71,3 +71,14 @@ step 2. Mark claims observed, read or inferred.
   pgrep also matches wrapper 221900 and log watchers), then start v2 once.
 - **The owner:** "Tell Willow to go. She's waiting on you", then "Send it to Willow, I'll approve the
   prompt". Sent to the Willow session at about 03:40 PST. The helper briefed as Willow stood down.
+
+## Update, 03:37 PST: HOLD, the old uploader got through on its own
+
+- At 03:30:18 the old script's flaky Wi-Fi check passed and pid 221905 began uploading: upload.log reads
+  "routing before: …", then "upload segments4". 221905 was still alive at 03:36:42.
+- **So step 1 is now watch-only.** Don't stop 221905 and don't start v2: killing it would cut the upload
+  partway through. v1 still never sends the manifest after a failed read-back (pipefail + set -e abort);
+  it just doesn't log STOP. Its second Wi-Fi check, before the tiles, may wait a few rounds on the flake.
+- The 03:40 go above was sent to a Willow socket that has since closed. A HOLD was queued to Willow
+  [a49a3d] (offline) at about 03:38. v2 stays on disk for the next run.
+- Step 2 (relief) still waits for a clean upload.
