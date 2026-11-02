@@ -91,3 +91,15 @@ last sections first). Dispatches are in `prompts/preserved/`.
 - **Rowan** (app planner): `session_019DQwod2KaJbvEBsgRtumiq`, and files in Forager `records-after-173`
   `prompts/aspen/`. The last is -09 (Aspen).
 - Send messages with `mcp__claude-code-remote__send_message`.
+
+## Update, about 22:15 PST
+
+- **Sorrel: #462 mergeable** (`sorrel-app-street-v4` at `9577c3255`).
+  - **Aspen merged #462 into `pre-main`: `2bc8913f4`.** The app now loads Street v4.
+- **Aspen merged #463 into `main`: `8d0eefdbc`** (the guard workflows; a no-op Worker redeploy).
+- **Follow-ups for Willow:**
+  - Sorrel's S-1: a test that the night pass really uses `streetUriOf`, or a pure
+    `nightTablesFor(source)`.
+  - N-2: relief must be on R2 before any APK with v4 reaches phones, or regions downloaded earlier lack
+    relief until re-downloaded.
+- Items 2 and 3 above are done.
