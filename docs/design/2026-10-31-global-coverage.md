@@ -373,3 +373,12 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
 - **The rerun cleared Planetiler:** the archive finished with 1.5B features, 651M tiles, heap 4.0G of 4.8G,
   post-GC 3.9G, so no out-of-memory error, and 0007 plus 4608m worked. It's in `routing-bands` at
   20:05.
+- **Release path (the owner):** "Current play release doesn't have trail maps, so this will all be very
+  new." "I think Main does automatic Play build releases so all I have to do is upload it to Play once
+  it lands".
+  - Asked whether Aspen should line up the promotion with Rowan and bring one release go: **"Yes
+    please"**.
+  - Rowan has been asked by `prompts/aspen/2026-11-01-07-aspen-to-rowan-release-promotion.md`
+    (records-after-173): what on `pre-main` is ready, and the timing.
+  - **The order:** the Worker v4 route, then the app switch PR, then the promotion, then the automatic
+    Play build, then the owner's upload.
