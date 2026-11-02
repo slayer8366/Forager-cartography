@@ -214,3 +214,26 @@ messages name v5.9.0.
   - Juniper reads v6.1.0.
 - **Also read by Juniper:** patches 0001-0007 from `53a728341` apply cleanly, in order, onto basemaps
   `ca93fc06`.
+
+## Decision, 14:36 PST: match where things first appear in the app, carto's zoom N becomes camera zoom N − 1.5
+
+- **Juniper's finding** (Forager `osm-zoom-levels` `7aadcbd23`, section A1b; message 14:52 by its clock):
+  - The app's OpenStreetMap map is a 256 px raster source.
+  - MapLibre Native picks a raster tile level as round(zoom + log2(512/256)). So carto's tile level N first
+    shows at camera zoom N − 1.5, and reaches its own pixel scale at N − 1.
+  - Our vector source uses 512 px and floor, so a style minzoom is a camera zoom.
+- **Checked by Aspen:**
+  - the app's raster source has `"tileSize": 256` (`BasemapStyles.kt`, pre-main `04746d8f0`, about line 210);
+  - v4's `protomaps` source sets no `tileSize`, so it gets the 512 default (main `8d0eefdbc`).
+  - MapLibre's rounding for raster versus floor for vector is Juniper's reading of the MapLibre source,
+    consistent with how MapLibre is known to behave. Aspen didn't re-read the MapLibre source.
+- **The planner's decision:** match first appearance, at camera zoom **N − 1.5**.
+  - The owner's words: "the zoom levels that objects, icons, names, etc begin appearing on the map when
+    zooming in".
+  - The alternative, N − 1 (OSM's tile at its full scale), is the owner's to choose instead. Their look at the
+    renders comes before any merge.
+- **What it means for Z2:**
+  - A carto rule `[zoom >= N]` becomes a style minzoom of N − 1.5. Fractional minzooms are valid in MapLibre.
+  - The feature has to be in our tiles from level N − 2.
+  - Rules that depend on size or tags shift the same way.
+  - The tests check first appearance at camera N − 1.5. The renders show both maps at the same camera zooms.
