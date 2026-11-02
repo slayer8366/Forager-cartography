@@ -290,3 +290,15 @@ messages name v5.9.0.
    - Include the owner's Molalla views, and one zoom either side.
 9. **Timing:** writing the code can start now. **No test build runs until coder-12's convert has finished** and
    Willow has reported Hold 2.
+
+## Update, 14:55 PST: Juniper's report complete; the two points it left open
+
+- **Juniper's report:** complete at `53c5d6801`. It recorded Aspen's answers at `026c7748f` (Forager
+  `osm-zoom-levels`).
+- **v1 (and v2, v3): frozen, not changed.**
+  - They're served only for regions downloaded against them (`StreetStyle.kt`: a style URL "never changes
+    meaning").
+  - v1's z14 streams stay as they are.
+- **The offline style's missing labels:** not added in this fix. Adding labels is new content, not a zoom.
+  - It goes on the owner's list with the B2 items. Its existing layers' zooms are matched, like v4's.
+- **Z2's scope is unchanged:** the new v5 content, plus the offline style's existing layers, plus patch 0008.
