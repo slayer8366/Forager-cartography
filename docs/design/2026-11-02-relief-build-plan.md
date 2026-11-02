@@ -184,3 +184,20 @@ Written by the planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`) at about 
   - the build stops itself under 50 GB free or on under-voltage or throttling;
   - a count check before merging;
   - no deletes without Aspen's word.
+
+## Update, about 12:23 PST: no pilot; and a correction to the times above
+
+- **The owner, about 12:22 PST:** "No trial run, all trials that ran were good."
+- **coder-12 now has no R1 pilot,** and two holds:
+  - Hold 1 comes after R0 and the tests. R2 then needs the owner's go, relayed by Aspen.
+  - Hold 2 comes after R2.
+- **Hood against the trial** moves into R2's checks on the built archive.
+- **The low-zoom `-r average` comparison is dropped.**
+- **The stop-and-resume proof** is now a 20-tile test in `/tmp`, part of R0's tests, not a map trial.
+- **R2's 30-minute progress line** now carries the projection. Over 4 h or 40 GB is reported, and the run
+  continues.
+- **Correction** (this supersedes the times in the two updates above, which were estimated, not read from
+  the clock; read from the commit times):
+  - The owner's "Give me the dispatch" came at about 12:17, and the dispatch was pushed at 12:18:52.
+  - "Let's be careful with execution" came at about 12:20, and the holds were pushed at 12:20:47. That
+    update's heading says about 12:35, which is wrong.
