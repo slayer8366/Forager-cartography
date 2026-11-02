@@ -241,3 +241,80 @@ On the S22 with a v4 build:
   (observed, list_events). The handoff named the old address too.
 - **Aspen told Willow the new address with SendMessage at 12:28 PST.** It was delivered and hadn't been read yet.
 - Nothing else changes.
+
+## Update, 13:02 PST: test 4's kill went to every process; fix the stop, then finish R0
+
+This supersedes "A safe stop" in R2, the stop-and-resume test's wording in R0, and the report address in
+the 12:28 update. Times are Pacific.
+
+### What happened (observed by the planner, 12:57-13:00, unless marked)
+
+- **12:38:58:** Willow's first session (`n91p…-6d`) ran `relief_tests.py` (branch `willow-relief-build`,
+  `8e97da7`). Its log shows tests 1-3 passed. Test 4 never printed anything.
+- **Test 4 stops the build with `subprocess.run(["kill", "-TERM", f"-{pgid}"])`.** That runs
+  `/usr/bin/kill` from procps-ng 4.0.2.
+  - On this Pi, that binary keeps only the first digit of a negative id. `kill -TERM -14750` makes the
+    syscall `kill(-1, SIGTERM)`, and `kill -TERM -3113` makes `kill(-3, SIGTERM)`.
+  - The planner traced this under `strace -e inject=kill:retval=0`, so no signal was delivered.
+  - Willow's second session found the same thing independently, inside a private PID namespace.
+- **12:39:05:** every `bwann83` process got SIGTERM: the desktop login (lightdm session 1), the user manager,
+  and the Remote Control sessions. Willow's session shows `computer_unreachable` at 12:40:10.
+  - Inferred: the build's process-group id began with 1 (the greeter that started at 12:39:06 got pid 14808),
+    so the kill went to -1.
+- **12:53:02:** logind powered the Pi off; it was back at 12:53:27.
+  - Inferred: the owner power-cycled it. The test's `/tmp` folder was cleared at boot.
+- **Nothing on the drives changed.** `/mnt/storage/relief/` is still empty (made 12:33:05), and no build ran.
+  At 12:59: `/dev/sda1` rw with 158 GB free, 46.6 °C, `throttled=0x0`.
+- **These forms make the right syscall, `kill(-N, SIGTERM)`:**
+  - bash's builtin `kill` and dash's;
+  - `/usr/bin/kill -TERM -- -N`;
+  - `os.killpg(N, signal.SIGTERM)`.
+- **Inferred (Willow):** `sudo kill -TERM -<pgid>` would use `/usr/bin/kill` as root, and `kill(-1)` from root
+  reaches every process on the Pi.
+
+### Sessions now
+
+- **Aspen:** `session_01Hqu21qbkj6LhoAGQLgXLj4`, named `bridge-cse-01hqu21qbkj6lhoagqlgxlj4-77` in ListAgents.
+  It opened at 12:55 with the owner's "Go". The 12:28 address (`r2or…-c2`) is archived.
+- **Willow:** `session_01Hqu21r21FGQXWzLeRtR3yv` (`…-49`), opened at 12:56. Aspen sent it a HOLD at 13:00.
+  - Willow confirmed at about 13:03: it has run no tests, written nothing, and sent no signals.
+- **The owner's "Go" (12:55):** the planner reads it as "carry on with coder-12 from where it stopped",
+  which is R0 and its tests.
+  - **It is not the go for R2.** Hold 1 never happened, so R2 still waits for the owner's go after Hold 1.
+
+### The fix, before any test runs again
+
+1. **One way to stop a build: `relief.py stop OUT`.**
+   - It reads `OUT/build.pgid`. It sends nothing, and exits non-zero, unless all of these hold:
+     - the pgid is greater than 1;
+     - it isn't the caller's own process group;
+     - every process in that group (`pgrep -g`) is a `relief.py` process, checked by its command line.
+   - Then it calls `os.killpg(pgid, signal.SIGTERM)`.
+   - Test 4 stops its build through this same code.
+   - Nothing calls `/usr/bin/kill`, and nothing runs under `sudo`.
+2. **Test 4 runs inside `unshare -Urpf --mount-proc`.** There a wrong signal can reach only the test's own
+   processes.
+   - The planner checked at 13:00: inside the namespace, 4 processes were visible, and `kill(-1, 0)` reached
+     only those, while the shell outside stayed alive.
+   - If `unshare` is refused, or the build can't run inside it (for example, `vcgencmd` fails), stop and
+     report. Don't run test 4 outside the namespace.
+3. **Controls that can fail** (in the tests, inside the namespace):
+   - `stop` must refuse, and send nothing, when `build.pgid` holds 1, the caller's own group, or a group
+     holding a non-relief process (a `setsid sleep` sentinel). After each refusal the sentinel must still be
+     alive.
+   - The real stop: a sentinel in another process group must still be alive after the build's group is
+     stopped.
+4. **Flush every print** (`flush=True`, or `python3 -u`), so a log always shows its last line before a
+   failure.
+5. **Wording:** wherever the script, the tests or the log say `kill -TERM -<pgid>`, they now say
+   `relief.py stop OUT`.
+   - For R2, the safe stop is `relief.py stop /mnt/storage/relief`.
+   - By hand in bash, it's `kill -TERM -- -<pgid>`. Never without `--`, and never with `sudo`.
+6. **Then rerun all seven tests from the start**, and push the fix before the run (the owner's rule).
+
+### Then
+
+- **Hold 1, as before.** Report to Aspen at the address above: the R0 readings (your 13:03 ones are fine),
+  the full test output, and the commit. Then stop.
+- If anything outside the test's own processes is signalled, or any session drops, stop at once and report.
+- Nothing else changes.

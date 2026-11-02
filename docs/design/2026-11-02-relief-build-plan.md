@@ -227,3 +227,21 @@ Written by the planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`) at about 
 - **Willow was given the new address** at 12:28, and the dispatch carries an update
   that supersedes its report address.
 - **Next:** Willow's Hold 1 report (R0 and the tests). R2 waits for the owner's go.
+
+## Update, 13:02 PST: R0's stop test signalled every process; fixed before rerunning
+
+- **What happened** (observed; details in coder-12's 13:02 update):
+  - At 12:39:05, R0's stop-and-resume test ran `/usr/bin/kill -TERM -<pgid>`.
+  - On this Pi, procps-ng 4.0.2 keeps only the first digit of that id, so the call became `kill(-1, SIGTERM)`.
+  - It ended every `bwann83` process: the desktop login and the Willow and Aspen sessions.
+  - The Pi was powered off at 12:53:02 and was back at 12:53:27.
+  - No build ran, and nothing on the drives changed.
+- **The fix, in coder-12:**
+  - a guarded `relief.py stop OUT`, using `os.killpg`;
+  - test 4 run inside a private PID namespace;
+  - controls showing that the stop refuses a wrong group and leaves a sentinel alive;
+  - flushed logs;
+  - for R2, the safe stop is `relief.py stop /mnt/storage/relief`, or `kill -TERM -- -<pgid>` by hand.
+- **Sessions:** Aspen is now `session_01Hqu21qbkj6LhoAGQLgXLj4` (opened 12:55 with the owner's "Go"), and Willow is
+  `session_01Hqu21r21FGQXWzLeRtR3yv` (opened 12:56).
+- **The owner's "Go"** is read as "finish R0". R2 still needs the owner's go after Hold 1.
