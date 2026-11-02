@@ -179,3 +179,19 @@
 
 **Correction to the update above:** the clock read 14:26:41 PST when it was written, so the heading should say
 14:26. The message to Juniper went at about 14:26, not 14:27. This supersedes the update's times.
+
+## Update, 14:27 PST: the unneeded 11-01 download deleted (owner)
+
+- **The owner, about 14:27:** "Delete the downloaded data that we don't need".
+- **Aspen removed two files at 14:27:36** with `sudo -u forager-build rm` (observed). They came from the 13:59
+  run, which was stopped:
+  - `/mnt/archive/forager-build/sources-osm/us-261101.osm.pbf.part` (1,529,737,216 bytes);
+  - `/srv/forager-build/sources/osm/us-261101.osm.pbf.md5` (52 bytes).
+  - The SD card went from 73 to 75 GB free.
+- **Kept:**
+  - the four 10-30 extracts and their `.md5` files, which the zoom-fix rebuild uses;
+  - `logs/usca-20261101T174337Z.log`, the live map's build log;
+  - `failed-usca/latest`, the stopped run's log.
+- **The owner also said "Resume rt the relief build".** It was already running, resumed at 14:16:10
+  (pgid 10404). At 14:26:11: 135,328 of 348,509 tiles, 47.9/s, 147.1 GB free, 65.3 °C, `throttled=0x0`.
+  Nothing was changed.
