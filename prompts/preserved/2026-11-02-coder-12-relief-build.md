@@ -387,3 +387,6 @@ The fork default was read at about 13:11. The heading should say 13:11, not 13:1
   - test 6 has a control that must reject a 0.01 m offset.
 - **The holds now:** no Hold 1 stop before R2. The 30-minute progress line and Hold 2 stay. R3 is still
   Aspen's, with its own go.
+
+**Correction to the update above** (it supersedes that update's heading): the clock read 13:13:51 PST when it
+was written, so the heading should say 13:13, not 13:16.
