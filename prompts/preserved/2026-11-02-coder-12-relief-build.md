@@ -13,7 +13,16 @@ This replaces step 2 of `2026-11-01-coder-11-hillshade-rollout.md` and of coder-
 - **The owner, about 12:10 PST:** "The build is now uploaded to R2. Let's begin fresh plans for the relief
   build".
 - **On who runs it, about 12:20 PST:** "Give me the dispatch and I'll hand it to Willow."
-- The owner handing you this file is the go for R0, R1 and R2 below. **R3 (the R2 upload) is not yours.**
+- **Then, about 12:30 PST:** "This is the first time doing this so let's be careful with execution".
+- **So the go is step by step.** The owner handing you this file is the go for R0 and the tests only.
+  - **Hold 1:** after R0 and the tests, report and stop. R1 waits for Aspen's go.
+  - **Hold 2:** after the pilot (R1), report and stop. R2 waits for the owner's go, which Aspen relays to
+    you.
+  - **Hold 3:** after R2, report and stop.
+  - If no go arrives, keep waiting; don't move on.
+- **R3 (the R2 upload) is not yours.**
+- These holds replace the 12:20 version of this file (`6617c69`), which went from the pilot straight on
+  to R2.
 
 ## Premises, read by the planner 12:11-12:18 PST (check them first)
 
@@ -93,9 +102,13 @@ That means bilinear, the same `gdal.Warp` arguments, Terrarium with voids and se
 - **The count check catches a gap** (a positive control): drop one row from a copy of a part file, and the
   per-zoom count check must fail, naming that zoom.
 
+**Hold 1.** Send Aspen the R0 readings, the test output and the script's commit, then stop. R1 waits for
+Aspen's go.
+
 ### R1. The pilot (about 10-20 minutes)
 
-Build four z7 subtrees, each from z7 down to z11:
+Build four z7 subtrees, each from z7 down to z11, into `/mnt/storage/relief/pilot/`. Keep the pilot
+apart from the full build.
 
 - **Mount Hood:** the z7 tile holding 45.37 N, 121.70 W.
 - **The Arctic:** the Brooks Range, about 68 N, 150 W.
@@ -117,16 +130,35 @@ Report these:
   - **Don't switch to average.** Report the numbers. If they're far apart (low zooms aliased), stop and
     report; that's an owner decision, because it changes the approved look.
 - **Seconds and bytes per tile at each zoom,** per area. Then project the full run.
-  - **If the projection is over 4 hours or over 40 GB, stop and report.**
-  - Otherwise go on to R2. Send the pilot numbers to Aspen when you start R2.
+  - Flag it in the report if the projection is over 4 hours or over 40 GB.
+- **Hold 2.** Send Aspen the pilot numbers and the projection, then stop. R2 waits for the owner's go,
+  which Aspen relays.
 
-### R2. The full build
+### R2. The full build (only on the go relayed after Hold 2)
 
+- **Where things go:** the full build's part files go in `/mnt/storage/relief/parts/`. The merged
+  `relief.mbtiles` and `relief.pmtiles` go in `/mnt/storage/relief/`.
+- **A safe stop:**
+  - Write the build's process-group id to `/mnt/storage/relief/build.pgid`.
+  - `kill -TERM -<pgid>` stops it, and the part files resume on restart.
+  - Show in the R0 report, on the pilot or a small run, that a stopped run resumes without redoing or
+    losing tiles.
+- **Every 10 minutes the log records:**
+  - tiles done per zoom;
+  - free space on `/mnt/storage`;
+  - the temperature and `get_throttled`.
+- **The build stops itself, and you report, if:**
+  - free space on `/mnt/storage` falls under 50 GB;
+  - or `get_throttled` shows under-voltage or throttling (bits 0 or 2).
 - **Start it detached:** `setsid nohup … &`, with the log at `/mnt/storage/relief/build.log`. Background
   jobs die at 2 hours.
   - Stamp the start and end with `date`.
   - **If your session refuses the detached start, stop and report.** Aspen can start it from this dispatch.
 - Expected about 1-2.3 h and about 22 GB (16-34 GB), from your 11-01 scope. The pilot refines this.
+- **About 30 minutes after the start,** send Aspen one progress line: tiles done, the rate, free space and
+  the temperature.
+- **Before merging, run the count check on the part files.** If anything is missing, don't merge or
+  convert; report it.
 - **Merge, then convert:** `pmtiles convert --tmpdir /mnt/storage/relief/tmp relief.mbtiles relief.pmtiles`.
 - **Checks on the result:**
   - **Per-zoom tile counts** in the MBTiles equal the table. Any gap is listed by z/x/y.
@@ -141,6 +173,7 @@ Report these:
   - **The file:** the size and sha256 of `relief.pmtiles`, and the size of `relief.mbtiles`.
   - **The load:** the peak temperature and `get_throttled` at the end.
 - **Keep `relief.mbtiles`** until Aspen has read the upload back.
+- **Hold 3.** Report, then stop.
 
 ## Bounds (do not touch)
 
@@ -151,6 +184,8 @@ Report these:
     `cf-cache-status: HIT`, `max-age=86400`).
   - Every probe before the upload leaves a URL blank for up to a day after it.
 - **`hgt3`, `bef3`, `hgt1-3dep`:** read only.
+- **Deleting:** nothing, even inside `relief/`, without Aspen's word. That includes the pilot and the part
+  files.
 - **On `/mnt/storage`:** nothing outside `relief/`. `rollback/` holds the only rollback copy of the live
   map.
 - **Also leave alone:** `/opt/forager-build`, the weekly timer and units, and `us.pmtiles`, routing and the
