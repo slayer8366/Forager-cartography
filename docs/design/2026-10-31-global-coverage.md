@@ -389,3 +389,9 @@ Dispatched: `prompts/preserved/2026-10-31-coder-08-global-scope.md`.
     owner's approval. Rowan's hold (-1933) stands until the owner lifts it.
   - Aspen answered (-09): the trial is done, and #448 carries the rollout. The release go comes only after
     the sort and the audit.
+- **Sorrel on #460:** mergeable, nothing to fix. The bundled v4 is byte-identical to map-style's
+  (sha256 `6ce7271e…`), 71/71 tests, and revert checks fail as expected. Note for later: check that
+  relief.pmtiles's header tile type is PNG.
+  - **Aspen merged #460 into `pre-main`: `13bcd0ebf`.** The `worker/*` release to `main` comes next.
+- **Rowan's hold on `pre-main` merges** (the owner's word in Rowan's window) still stands. The owner
+  said they'd tell Rowan when it's safe.
