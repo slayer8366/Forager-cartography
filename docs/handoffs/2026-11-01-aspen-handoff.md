@@ -121,3 +121,5 @@ last sections first). Dispatches are in `prompts/preserved/`.
 - **New Sorrel**, started by Aspen on the owner's word ("Go ahead and start a Sorrel session yourself"):
   `session_01Hqu21obr8SqgUyvBhiTw6o`, dispatch `prompts/preserved/2026-11-01-sorrel-464-night-tables.md`.
   This Aspen is `session_01Hqu21ntTjr3Lo2Pf81mxzk`.
+- **The owner pre-approved #464:** "Go ahead and merge 464 when Sorrel says ok". Merge with
+  `gh pr merge 464 -R slayer8366/Forager --merge --match-head-commit <Sorrel's reviewed sha>`.
