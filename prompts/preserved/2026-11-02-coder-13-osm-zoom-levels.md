@@ -302,3 +302,16 @@ messages name v5.9.0.
 - **The offline style's missing labels:** not added in this fix. Adding labels is new content, not a zoom.
   - It goes on the owner's list with the B2 items. Its existing layers' zooms are matched, like v4's.
 - **Z2's scope is unchanged:** the new v5 content, plus the offline style's existing layers, plus patch 0008.
+
+## Correction, 14:56 PST: osm-zooms-style is cut from origin/pre-main, not origin/main
+
+This supersedes "cut from origin/main" in Z2's Style item.
+
+- **Found by Willow** (read at 14:58). **Checked by Aspen:**
+  - origin/main `8d0eefdbc`'s `map-style/` has only v1 and v2, without `overrides/forager-fill-in.mjs` or
+    `forager-reference.mjs`;
+  - origin/pre-main `04746d8f0` has both, plus v3 and v4;
+  - pre-main's `generate-street.mjs` imports `applyFillIn` and `withReferenceLayers` (lines 33-34);
+  - main's `street-style-v4.json` came by the folder-only Worker release `328a1388f`.
+- **Planner's word:** cut `osm-zooms-style` from origin/pre-main `04746d8f0`. Add `forager-street-v5.json`, wired
+  to nothing. No push to main or pre-main.
