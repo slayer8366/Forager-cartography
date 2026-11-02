@@ -237,3 +237,56 @@ messages name v5.9.0.
   - The feature has to be in our tiles from level N − 2.
   - Rules that depend on size or tags shift the same way.
   - The tests check first appearance at camera N − 1.5. The renders show both maps at the same camera zooms.
+
+## Update, 14:53 PST: Hold A is passed on Juniper's table; Z2 goes, with these decisions
+
+### The table
+
+- **Juniper's comparison:** Forager `osm-zoom-levels` `53c5d6801`, `docs/audits/2026-11-02-osm-zoom-levels-comparison.md`.
+  - 116 rows, and 114 differ.
+  - 52 need style only, 43 need data, and 19 need both.
+  - Targets are camera N − 1.5, with the data in tiles from level N − 2.
+- **Aspen spot-checked four rows against openstreetmap-carto v6.1.0** (raw files at the tag). All match:
+  - wood pattern `[zoom >= 13]`, `landcover.mss:776`;
+  - orchard pattern `[zoom >= 13]`, `landcover.mss:146`;
+  - river names `[zoom >= 13]`, `water.mss:393-394`;
+  - river lines from 8, `water.mss:64-75`.
+- **One of Juniper's open points is answered:** the live archive's manifest names `map_build_commit 53a7283`
+  (Willow, premise 4). So the live tiles were built from 0001-0007.
+
+### The planner's decisions for Z2
+
+1. **The target:** every row of Juniper's table, where both maps draw the thing.
+   - The style's minzoom goes to camera **N − 1.5**.
+   - The data must be in the tiles from level **N − 2**, under Juniper's rules and size conditions.
+2. **Equal both ways.** Where ours appears earlier than OSM, it moves later to match. The owner's words are
+   "set it to OSM zoom levels", "on the entire map".
+   - List every row that moves later. The owner sees them in the renders.
+3. **Earlier owner rulings on specific zooms are superseded** by "on the entire map". Examples:
+   - -1737's buildings from zoom 14;
+   - -27197's glyph minzoom 12;
+   - patch 0005's minor roads at z10.
+   - List each one you change, with its RECORD number, so the owner can see them.
+4. **The size floors change too:** land-use polygons (`L:267-268`, and the bbox filter at `L:332-348`) and water
+   (`W:363-364`). They change so small areas appear at OSM's zooms. Measure the cost in Z2's size test.
+5. **Not in this fix:** things only one map draws (Juniper's B2). That includes kinds our style has no layer
+   for. List them for the owner, and don't add them.
+6. **The style:**
+   - Edit through `map-style/generate-street.mjs`, not by hand, on Forager branch `osm-zooms-style`.
+   - Write the result as a new file, `map-style/forager-street-v5.json`.
+   - Don't wire it into the Worker or the app.
+   - **Whether it ships as v5 or replaces v4 in place** is decided before the merge, with the owner. Read
+     before deciding:
+     - `StreetStyle.kt:15-21` says a style URL "never changes meaning", because MapLibre keys downloaded regions
+       by it;
+     - the Worker serves styles with `max-age=86400`.
+7. **The data:**
+   - Patch `0008-osm-first-zooms.patch` on `osm-zooms-map-build`, from `53a728341`, as filed.
+   - Read Natural Earth's per-feature `min_zoom` where it decides a row.
+8. **The tests, as filed in Z2,** with these changes:
+   - "first appears at OSM's zoom" now means camera N − 1.5, with tile level N − 2 in the decode;
+   - the renders use a MapLibre page set up like the app: OSM as a 256 px raster, ours as the vector style. Both
+     at the same camera zooms.
+   - Include the owner's Molalla views, and one zoom either side.
+9. **Timing:** writing the code can start now. **No test build runs until coder-12's convert has finished** and
+   Willow has reported Hold 2.
