@@ -1,5 +1,5 @@
-2026-11-02 13:08:34 PST running inside a private PID namespace: unshare -Urpf --mount-proc /usr/bin/python3 -u /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/relief_tests.py /tmp/coder12-r0-20261102T130834
-2026-11-02 13:08:35 PST relief_tests.py in /tmp/coder12-r0-20261102T130834; relief.py at /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files
+2026-11-02 13:14:11 PST running inside a private PID namespace: unshare -Urpf --mount-proc /usr/bin/python3 -u /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/relief_tests.py /tmp/coder12-r0-20261102T131411
+2026-11-02 13:14:11 PST relief_tests.py in /tmp/coder12-r0-20261102T131411; relief.py at /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files
 
 enumerated: z5 103 z6 330 z7 1163 z8 4349 z9 16757 z10 65689 z11 260118 total 348509
 table:      z5 103 z6 330 z7 1163 z8 4349 z9 16757 z10 65689 z11 260118 total 348509
@@ -29,34 +29,39 @@ control 2, build.pgid holds the caller's own group (13): exit 1; signal syscalls
 control 3, build.pgid holds the sentinel's group (5): exit 1; signal syscalls none; sentinel alive -> ok
   stop: group 5: pid 5 S sleep 900
   stop: refusing, sending nothing: group 5 holds 1 process(es) that aren't relief.py build, e.g. pid 5 sleep 900
-run 1: pid 28, pgid 28; 4 tile(s) committed; the group before the stop:
+run 1: pid 28, pgid 28; 2 tile(s) committed; the group before the stop:
   pid 28 S /usr/bin/python3 /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/rel
   pid 32 R /usr/bin/python3 /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/rel
-  pid 33 R /usr/bin/python3 /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/rel
-relief.py stop /tmp/coder12-r0-20261102T130834/resume: exit 0; signal syscalls ['kill(-28, SIGTERM) = 0']
+  pid 33 S /usr/bin/python3 /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/rel
+relief.py stop /tmp/coder12-r0-20261102T131411/resume: exit 0; signal syscalls ['kill(-28, SIGTERM) = 0']
   stop: group 28: pid 28 S /usr/bin/python3 /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/relief.py bui
-  stop: group 28: pid 32 D /usr/bin/python3 /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/relief.py bui
-  stop: group 28: pid 33 D /usr/bin/python3 /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/relief.py bui
+  stop: group 28: pid 32 S /usr/bin/python3 /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/relief.py bui
+  stop: group 28: pid 33 S /usr/bin/python3 /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/relief.py bui
   stop: os.killpg(28, SIGTERM) to 3 relief.py build process(es)
   stop: group 28 is empty after 0.0 s
 run 1 exit 143; live processes left in the group: none; sentinel alive; files: ['part-0.mbtiles', 'part-0.mbtiles-shm', 'part-0.mbtiles-wal', 'part-1.mbtiles', 'part-1.mbtiles-shm', 'part-1.mbtiles-wal']
-tiles in the part files after the stop: 20 of 20
+tiles in the part files after the stop: 4 of 20
 run 1 log:
-  2026-11-02 13:08:41 PST start: pid 28 pgid 28 nice 10; GDAL 3.6.2, numpy 1.24.2, Pillow 9.4.0; 3631 cells; procs 2, chunk 2
-  2026-11-02 13:08:41 PST tiles wanted: z5 0 z6 0 z7 0 z8 0 z9 0 z10 0 z11 20 total 20
-  2026-11-02 13:08:41 PST already in part files: 0; to do: 20
-  2026-11-02 13:08:41 PST to stop it: /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/relief.py stop /tmp/coder12-r0-20261102T130834/resume
-  2026-11-02 13:08:41 PST guards: stop under 50.0G free, or on get_throttled bit 0 or 2 (or bit 16 or 18 newly set); now free 153.2G, throttled=0x0, 48.3'C
-  2026-11-02 13:08:41 PST z5 0/0 z6 0/0 z7 0/0 z8 0/0 z9 0/0 z10 0/0 z11 0/20; total 0/20; this run 0 in 0 s (0.0/s); free 153.2G; 49.9'C (peak 49.9'C); throttled=0x0
-  2026-11-02 13:08:42 PST stopping: SIGTERM
-  2026-11-02 13:08:42 PST stopped; part files hold 20 of 20 tiles; a restart resumes
+  2026-11-02 13:14:16 PST start: pid 28 pgid 28 nice 10; GDAL 3.6.2, numpy 1.24.2, Pillow 9.4.0; 3631 cells; procs 2, chunk 2; chunk delay 1 s (test only)
+  2026-11-02 13:14:16 PST tiles wanted: z5 0 z6 0 z7 0 z8 0 z9 0 z10 0 z11 20 total 20
+  2026-11-02 13:14:16 PST already in part files: 0; to do: 20
+  2026-11-02 13:14:16 PST to stop it: /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/relief.py stop /tmp/coder12-r0-20261102T131411/resume
+  2026-11-02 13:14:16 PST guards: stop under 50.0G free, or on get_throttled bit 0 or 2 (or bit 16 or 18 newly set), or after two 10-minute lines in a row with no new tiles; now free 153.1G, throttled=0x0, 51.0'C
+  2026-11-02 13:14:16 PST z5 0/0 z6 0/0 z7 0/0 z8 0/0 z9 0/0 z10 0/0 z11 0/20; total 0/20; this run 0 in 0 s (0.0/s); free 153.1G; 50.5'C (peak 51.0'C); throttled=0x0
+  2026-11-02 13:14:16 PST stopping: SIGTERM
+  2026-11-02 13:14:16 PST stopped; part files hold 4 of 20 tiles; a restart resumes
 run 2 exit 0; log:
-  2026-11-02 13:08:44 PST start: pid 50 pgid 50 nice 10; GDAL 3.6.2, numpy 1.24.2, Pillow 9.4.0; 3631 cells; procs 2, chunk 2
-  2026-11-02 13:08:44 PST tiles wanted: z5 0 z6 0 z7 0 z8 0 z9 0 z10 0 z11 20 total 20
-  2026-11-02 13:08:44 PST already in part files: 20; to do: 0
-  2026-11-02 13:08:44 PST nothing to do
+  2026-11-02 13:14:19 PST start: pid 50 pgid 50 nice 10; GDAL 3.6.2, numpy 1.24.2, Pillow 9.4.0; 3631 cells; procs 2, chunk 2; chunk delay off
+  2026-11-02 13:14:19 PST tiles wanted: z5 0 z6 0 z7 0 z8 0 z9 0 z10 0 z11 20 total 20
+  2026-11-02 13:14:19 PST already in part files: 4; to do: 16
+  2026-11-02 13:14:19 PST to stop it: /home/bwann83/forager-cartography/.claude/worktrees/bridge-cse_01Hqu21r21FGQXWzLeRtR3yv/docs/audits/2026-11-02-relief-build-files/relief.py stop /tmp/coder12-r0-20261102T131411/resume
+  2026-11-02 13:14:19 PST guards: stop under 50.0G free, or on get_throttled bit 0 or 2 (or bit 16 or 18 newly set), or after two 10-minute lines in a row with no new tiles; now free 153.1G, throttled=0x0, 49.4'C
+  2026-11-02 13:14:19 PST z5 0/0 z6 0/0 z7 0/0 z8 0/0 z9 0/0 z10 0/0 z11 4/20; total 4/20; this run 0 in 0 s (0.0/s); free 153.1G; 49.9'C (peak 49.9'C); throttled=0x0
+  2026-11-02 13:14:20 PST z5 0/0 z6 0/0 z7 0/0 z8 0/0 z9 0/0 z10 0/0 z11 20/20; total 20/20; this run 16 in 1 s (15.8/s); free 153.1G; 50.5'C (peak 49.9'C); throttled=0x0
+  2026-11-02 13:14:20 PST done: every wanted tile is in a part file
+  2026-11-02 13:14:20 PST end: build exit 0
 after run 2: 20 distinct tiles, 20 rows; missing []; extra []
-count check of /tmp/coder12-r0-20261102T130834/resume/parts (2 file(s))
+count check of /tmp/coder12-r0-20261102T131411/resume/parts (2 file(s))
 zoom  expected   present   missing  duplicated  unexpected  not-png
 z5           0         0         0           0           0        0
 z6           0         0         0           0           0        0
@@ -66,11 +71,12 @@ z9           0         0         0           0           0        0
 z10          0         0         0           0           0        0
 z11         20        20         0           0           0        0
 count check: PASS
+start lines: run 1 shows the 1 s test delay; run 2 shows it off
 controls ok; the real stop ok; sentinel alive at the end
-==> 4 stop and resume: FAIL - 3 refusals sent nothing; stop sent only kill(-28, SIGTERM); stopped at 20/20, restart did 0, each tile once; the sentinel lived
+==> 4 stop and resume: PASS - 3 refusals sent nothing; stop sent only kill(-28, SIGTERM); stopped at 4/20, restart did 16, each tile once; the sentinel lived
 
 dropped 11/330/732 from the copy part-0.mbtiles
-count check of /tmp/coder12-r0-20261102T130834/gap (2 file(s))
+count check of /tmp/coder12-r0-20261102T131411/gap (2 file(s))
 zoom  expected   present   missing  duplicated  unexpected  not-png
 z5           0         0         0           0           0        0
 z6           0         0         0           0           0        0
@@ -81,7 +87,7 @@ z10          0         0         0           0           0        0
 z11         20        19         1           0           0        0
   z11 missing: 11/330/732
 count check: FAIL: z11 missing 1
-count check of /tmp/coder12-r0-20261102T130834/synthetic (1 file(s))
+count check of /tmp/coder12-r0-20261102T131411/synthetic (1 file(s))
 zoom  expected   present   missing  duplicated  unexpected  not-png
 z5         103       103         0           0           0        0
 z6         330       330         0           0           0        0
@@ -92,7 +98,7 @@ z10      65689     65689         0           0           0        0
 z11     260118    260118         0           0           0        0
 count check: PASS
 synthetic: dropped z7 0/42, duplicated z9 0/169 in part-1
-count check of /tmp/coder12-r0-20261102T130834/synthetic (2 file(s))
+count check of /tmp/coder12-r0-20261102T131411/synthetic (2 file(s))
 zoom  expected   present   missing  duplicated  unexpected  not-png
 z5         103       103         0           0           0        0
 z6         330       330         0           0           0        0
@@ -106,7 +112,7 @@ z11     260118    260118         0           0           0        0
 count check: FAIL: z7 missing 1; z9 duplicated 1
 ==> 5 count check catches a gap: PASS - 20-tile copy: FAIL naming z11; synthetic full set: PASS, then FAIL naming z7 and z9
 
-count check of /tmp/coder12-r0-20261102T130834/resume/parts (2 file(s))
+count check of /tmp/coder12-r0-20261102T131411/resume/parts (2 file(s))
 zoom  expected   present   missing  duplicated  unexpected  not-png
 z5           0         0         0           0           0        0
 z6           0         0         0           0           0        0
@@ -116,11 +122,11 @@ z9           0         0         0           0           0        0
 z10          0         0         0           0           0        0
 z11         20        20         0           0           0        0
 count check: PASS
-2026-11-02 13:08:51 PST merge: parts 0.0G, free 153.1G
-2026-11-02 13:08:51 PST merged part-0.mbtiles
-2026-11-02 13:08:51 PST merged part-1.mbtiles
-2026-11-02 13:08:51 PST wrote /tmp/coder12-r0-20261102T130834/resume/relief.mbtiles, 2703360 bytes
-count check of /tmp/coder12-r0-20261102T130834/resume/relief.mbtiles (1 file(s))
+2026-11-02 13:14:27 PST merge: parts 0.0G, free 153.1G
+2026-11-02 13:14:27 PST merged part-0.mbtiles
+2026-11-02 13:14:27 PST merged part-1.mbtiles
+2026-11-02 13:14:27 PST wrote /tmp/coder12-r0-20261102T131411/resume/relief.mbtiles, 2703360 bytes
+count check of /tmp/coder12-r0-20261102T131411/resume/relief.mbtiles (1 file(s))
 zoom  expected   present   missing  duplicated  unexpected  not-png
 z5           0         0         0           0           0        0
 z6           0         0         0           0           0        0
@@ -130,6 +136,10 @@ z9           0         0         0           0           0        0
 z10          0         0         0           0           0        0
 z11         20        20         0           0           0        0
 count check: PASS
+relief.py hood (on relief.mbtiles, before converting): exit 0
+  Hood z11 tiles wholly inside the trial area: 20; byte-identical 16, different 4, missing 0; 4 differing pixels in all, largest decoded difference 0.0039 m in 11/333/733
+  Hood z11 tiles on the edge of the trial area: 0; byte-identical 0, different 0, missing 0
+  Hood check (inner tiles within 0.00390625 m, none missing): PASS
 pmtiles convert exit 0
 metadata: {'name': 'forager-relief', 'format': 'png', 'type': 'baselayer', 'minzoom': '5', 'maxzoom': '11', 'bounds': '-180,17,180,84', 'encoding': 'terrarium', 'attribution': 'Heights: USGS 3DEP; NRCan MRDEM'}
 pmtiles spec version: 3
@@ -145,28 +155,33 @@ tile contents count: 20
 clustered: true
 internal compression: gzip
 tile compression: none
-type baselayer
-attribution Heights: USGS 3DEP; NRCan MRDEM
 encoding terrarium
 format png
 maxzoom 11
 minzoom 5
 name forager-relief
+type baselayer
+attribution Heights: USGS 3DEP; NRCan MRDEM
 
-Hood z11 tiles wholly inside the trial area: 20; byte-identical 16, different 4, missing 0; largest decoded difference 0.0039 m in 11/333/733
+Hood z11 tiles wholly inside the trial area: 20; byte-identical 16, different 4, missing 0; 4 differing pixels in all, largest decoded difference 0.0039 m in 11/333/733
 Hood z11 tiles on the edge of the trial area: 0; byte-identical 0, different 0, missing 0
 Mount Hood: highest z11 pixel 3391.58 m in 11/331/733 (9 of 9 tiles around the summit found); expected about 3,390 m (the trial read 3,392)
 relief.pmtiles: 2673557 bytes, sha256 f769d75e512b3fcbe808f910bd866ca1d3dd2dc456b41a8e5624462bc3468525
 relief.mbtiles: 2703360 bytes
-now: 52.1'C, throttled=0x0
-==> 6 merge, convert, verify (20 tiles): FAIL - Hood summit 3391.582 m in 11/331/733; the reference reads 3391.582 m
+now: 51.0'C, throttled=0x0
+Hood z11 tiles wholly inside the trial area: 20; byte-identical 16, different 4, missing 0; 4 differing pixels in all, largest decoded difference 0.0039 m in 11/333/733
+Hood z11 tiles on the edge of the trial area: 0; byte-identical 0, different 0, missing 0
+full VRT, from relief.pmtiles: 16 byte-identical, 4 different (4 pixels), missing 0; largest 0.0039 m -> within 1/256 m
+trial's two-cell VRT: 20 of 20 byte-identical to the reference
+control, 11/331/733 + 0.01 m: 65536 pixels differ, largest 0.0078 m -> rejected by the 1/256 m rule
+==> 6 merge, convert, verify (20 tiles): PASS - two-cell VRT 20/20 identical; full VRT 16 identical, 4 within 1/256 m (4 px); Hood summit 3391.582 m in 11/331/733, the reference reads 3391.582 m
 
 11/2045/677 (179.473..179.648 E, 51.84..51.94 N): 0.04 s; highest 854.9 m, land pixels 31637, east column highest 421.6 m
 11/2046/677 (179.648..179.824 E, 51.84..51.94 N): 0.03 s; highest 844.3 m, land pixels 14698, east column highest 0.0 m
 11/2047/677 (179.824..180.000 E, 51.84..51.94 N): 0.01 s; highest 0.0 m, land pixels 0, east column highest 0.0 m
-5/30/10 (157.500..168.750 E, 48.92..55.78 N): 0.48 s; highest 0.0 m, land pixels 0, east column highest 0.0 m
-5/31/10 (168.750..180.000 E, 48.92..55.78 N): 0.90 s; highest 578.2 m, land pixels 568, east column highest 0.0 m
+5/30/10 (157.500..168.750 E, 48.92..55.78 N): 0.47 s; highest 0.0 m, land pixels 0, east column highest 0.0 m
+5/31/10 (168.750..180.000 E, 48.92..55.78 N): 0.77 s; highest 578.2 m, land pixels 568, east column highest 0.0 m
 ==> 7 antimeridian render: PASS - the 180 E tiles take about as long as their neighbours
 
-2026-11-02 13:08:55 PST summary: 1 tile counts PASS; 2 antimeridian PASS; 3 Terrarium round trip PASS; 4 stop and resume FAIL; 5 count check catches a gap PASS; 6 merge, convert, verify (20 tiles) FAIL; 7 antimeridian render PASS
-2026-11-02 13:08:55 PST namespace run exit 1
+2026-11-02 13:14:33 PST summary: 1 tile counts PASS; 2 antimeridian PASS; 3 Terrarium round trip PASS; 4 stop and resume PASS; 5 count check catches a gap PASS; 6 merge, convert, verify (20 tiles) PASS; 7 antimeridian render PASS
+2026-11-02 13:14:33 PST namespace run exit 0
