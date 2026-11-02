@@ -230,3 +230,14 @@ On the S22 with a v4 build:
 3. Reopen any area that was blank in step 1 a day after the upload.
    - Pass: it shows.
    - Still blank means the phone's own cache, or the Worker's, is holding a 404. Report that.
+
+## Update, 12:28 PST: report to the new Aspen session
+
+- **The report address changes.** This supersedes the address in "Report" above and in the header.
+  - Send reports to `bridge-cse-01hqu21r2oruzgj3zvyxxlsd-c2` (session `session_01Hqu21r2oruzgj3ZvyXxLsd`).
+  - The old Aspen session, `bridge-cse-01hqu21pts9cgiaypwgrpufq-56`, was archived at 12:26:51 PST
+    (observed, get_session). A send there won't arrive.
+- **The owner handed this file to Willow at 12:26:57 PST**, in session `bridge-cse-01hqu21n91prtmjcx7ojeav7-6d`
+  (observed, list_events). The handoff named the old address too.
+- **Aspen told Willow the new address with SendMessage at 12:28 PST.** It was delivered and hadn't been read yet.
+- Nothing else changes.

@@ -216,3 +216,14 @@ Written by the planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`) at about 
   - Willow is asked in R0 whether a session of theirs made that folder or removed `/mnt/storage/relief/`.
 - **Correction to this update** (the times were estimated; the clock read 12:23:48 when it was written):
   the owner's message came at about 12:23, and the check was observed at 12:23, not 12:25 or 12:26.
+
+## Update, 12:28 PST: coder-12 is with Willow; reports come to the new Aspen session
+
+- **The owner, 12:27 PST:** "I sent your dispatch to willow".
+- **Willow's session** is `bridge-cse-01hqu21n91prtmjcx7ojeav7-6d`. It got the handoff at 12:26:57 and began
+  R0's premise checks at 12:27 (observed, list_events).
+- **Aspen moved sessions.** The old session (`pts9…-56`) was archived at 12:26:51. Aspen is now
+  `bridge-cse-01hqu21r2oruzgj3zvyxxlsd-c2`.
+- **Willow was given the new address** at 12:28, and the dispatch carries an update
+  that supersedes its report address.
+- **Next:** Willow's Hold 1 report (R0 and the tests). R2 waits for the owner's go.
