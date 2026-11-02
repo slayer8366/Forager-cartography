@@ -264,3 +264,17 @@ Written by the planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`) at about 
 **Correction to the update above** (it supersedes that update's times, which were estimated, not read): the
 clock read 13:11:54 PST when it was written. Willow's report came after `ca3eed5` (13:10:10) and before 13:11.
 The fork default was read at about 13:11. The heading should say 13:11, not 13:14.
+
+## Update, 13:16 PST: the owner's go for R2, given to Willow directly
+
+- **The owner, to Willow, at about 13:11:** "That is your dispatch to work with, use it. Fix it and move on".
+  - This is quoted by Willow, at 13:12. The planner couldn't see the owner's message in Willow's events, but
+    read Willow's 13:12:13 reply answering it: "You've given the go to use this dispatch, fix the two tests and
+    move on."
+- **The planner and Willow both read it as the go for R2,** if all seven tests pass on the rerun. If any test
+  fails, there's no go; stop and report.
+- **Willow adds:**
+  - the test delay is refused for any OUT not under `/tmp`;
+  - test 6 has a control that must reject a 0.01 m offset.
+- **The holds now:** no Hold 1 stop before R2. The 30-minute progress line and Hold 2 stay. R3 is still
+  Aspen's, with its own go.
