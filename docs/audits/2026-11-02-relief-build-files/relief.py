@@ -384,7 +384,7 @@ def hood_vs_reference(pmt, want=None):
         w, n = lonlat(11, x, y); e, s = lonlat(11, x+1, y+1)
         (inner if REF_W < w and e < REF_E and REF_S < s and n < REF_N else edge).append((x, y, p))
     res = {}
-    for label, ts in (("inside", inner), ("edge", edge)):
+    for label, ts in (("wholly inside", inner), ("on the edge of", edge)):
         same = diff = missing = 0; worst = (0.0, None)
         for x, y, p in ts:
             b = pm_tile(pmt, 11, x, y)
