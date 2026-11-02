@@ -123,3 +123,7 @@ last sections first). Dispatches are in `prompts/preserved/`.
   This Aspen is `session_01Hqu21ntTjr3Lo2Pf81mxzk`.
 - **The owner pre-approved #464:** "Go ahead and merge 464 when Sorrel says ok". Merge with
   `gh pr merge 464 -R slayer8366/Forager --merge --match-head-commit <Sorrel's reviewed sha>`.
+- **Aspen merged #464 into `pre-main`: `0cdde916d`** (Sorrel: mergeable at eafc26a5e, no blocking;
+  review on Forager `sorrel-464-night-tables` f8d8f0a8d). Follow-ups sent to Willow: SF-1 (the source-text
+  check is easy to fool), N-1 (streetTables default args), N-2. Throwaway `sorrel-464-revert-check`
+  (3296299e3) is kept until the owner says delete.
