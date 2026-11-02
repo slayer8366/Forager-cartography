@@ -467,3 +467,22 @@ Read by the planner at 13:16:11 PST, unless marked.
   - Willow started nothing after 14:00.
   - Willow's watcher saw the group gone at 14:00:38.
   - Inferred: the remaining 241,949 tiles take about 85 min, at the 48 tiles/s z11 rate.
+
+## Update, 14:17 PST: R2 resumed on the owner's word
+
+- **The owner, to Aspen, about 14:15 PST:** "Restart the relief build". This supersedes 14:00's "Nothing
+  happens until the map build is finished" for the relief build.
+  - The relief tiles don't depend on the zoom-level work: they're built from elevation, and OSM's standard
+    style has no hill shading.
+- **Aspen resumed it at 14:16:10** from the same pinned script, appending to `build.log` (observed):
+  - pgid 10404: the leader and 4 workers, at nice 10;
+  - "chunk delay off";
+  - "already in part files: 106592; to do: 241917".
+    - That's 32 more than the stop line, so one chunk was committed during the stop.
+    - The start check found no duplicated or unexpected tiles.
+  - 149.6 GB free, 51.6 °C, `throttled=0x0`.
+- **"Restart" was read as a resume,** which gives the same output as a run from zero (the same script and
+  data), about 40 minutes sooner (inferred). If the owner wants it from zero, that's still possible after this.
+- **Willow takes the remaining coder-12 steps,** through Hold 2, as filed. The deletion of the parts still needs
+  the conditions of the 13:48 update.
+- **No coder-13 test build runs while R2 runs.**
