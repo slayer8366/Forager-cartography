@@ -103,3 +103,14 @@ last sections first). Dispatches are in `prompts/preserved/`.
   - N-2: relief must be on R2 before any APK with v4 reaches phones, or regions downloaded earlier lack
     relief until re-downloaded.
 - Items 2 and 3 above are done.
+
+## Update, about 23:00 PST (next Aspen)
+
+- **Throwaway branches deleted on the owner's word ("Delete the throwaway branches").**
+  - The five were already gone from GitHub (`git ls-remote` over HTTPS, `slayer8366/Forager`).
+  - Removed what was left on the Pi: the clean worktrees `coder10-trial`, `coder11-revert`,
+    `coder11-appswitch-revert` and `coder07-worker`, the local branches, and the stale tracking refs.
+  - The last SHAs, in case they're ever wanted: `hillshade-trial-s22` cae711fff, `hillshade-trial-tiles`
+    a0088b496, `street-v4-revert-hillshade-night` e71acecd8, `app-switch-revert-check` 0c684805a,
+    `worker-sprite-v6` 220094639.
+  - Kept `worker-sprite-v6-pre-main` (PR #453's head, merged; not on the list).
