@@ -2,7 +2,7 @@
 
 From the Pi planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`, named
 `bridge-cse-01hqu21pts9cgiaypwgrpufq-56` in ListAgents) to Willow Quadrat, Pi coder. Written 2026-11-02 at
-about 12:18 PST, revised 12:23. Report times in Pacific time.
+about 12:18 PST, revised to 12:24. Report times in Pacific time.
 
 This replaces step 2 of `2026-11-01-coder-11-hillshade-rollout.md` and of coder-11b
 (`2026-11-02-coder-11-relief-go.md`). The plan behind it is `docs/design/2026-11-02-relief-build-plan.md`
@@ -15,7 +15,7 @@ This replaces step 2 of `2026-11-01-coder-11-hillshade-rollout.md` and of coder-
 - **On who runs it, about 12:17 PST:** "Give me the dispatch and I'll hand it to Willow."
 - **Then, about 12:20 PST:** "This is the first time doing this so let's be careful with execution".
 - **Then, about 12:22 PST:** "No trial run, all trials that ran were good."
-- **Then, about 12:25 PST:** "Use the data from the last trial of mt hood. that stands as current".
+- **Then, about 12:23 PST:** "Use the data from the last trial of mt hood. that stands as current".
   - The planner reads this as: the 11-01 Hood trial is the current reference, for the look and for the
     numbers. See premise 7.
 - **So there is no pilot, and the go is in two parts:**
@@ -60,7 +60,7 @@ where marked.
 7. **The trial script and the reference:** `/mnt/archive/aspen-hillshade-trial/make-relief.py`, plus its
    256 px tiles in `tiles/png256/` (z11 columns 324-335).
    - **This is the last Mount Hood trial, and the owner's current reference.** The planner checked at
-     12:25: all 156 local tiles are byte-identical to the tiles the S22 trial loaded, which are Forager
+     12:23: all 156 local tiles are byte-identical to the tiles the S22 trial loaded, which are Forager
      commit `a0088b496` (the `hillshade-trial-tiles` branch is deleted, but the commit is in `~/Forager`).
    - **Its numbers stand as current:**
      - 156 tiles, 16.0 MB;

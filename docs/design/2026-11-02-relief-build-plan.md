@@ -214,3 +214,5 @@ Written by the planner (Aspen, session `cse_01Hqu21pTS9CgiAYPwgrpuFQ`) at about 
   - `~/scratch/willow-relief/`: Willow's coder-10 sizing samples, kansas and coast.
   - `/mnt/archive/willow-relief/test/`: empty, made today at 11:08 PST.
   - Willow is asked in R0 whether a session of theirs made that folder or removed `/mnt/storage/relief/`.
+- **Correction to this update** (the times were estimated; the clock read 12:23:48 when it was written):
+  the owner's message came at about 12:23, and the check was observed at 12:23, not 12:25 or 12:26.
