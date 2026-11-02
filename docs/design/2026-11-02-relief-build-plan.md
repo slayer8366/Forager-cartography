@@ -350,3 +350,11 @@ Read by the planner at 13:16:11 PST, unless marked.
   - **Not checked:** whether the owner means restarting from zero. Ask before the restart.
 - **The relief build waits until the map build is finished.** A restart needs the owner's go, relayed by
   Aspen. R3 waits too.
+
+**Correction and addition to the update above:**
+- The clock read 14:01:24 PST when it was written, so the heading should say 14:01. This supersedes "14:02".
+- **Willow, 14:01:09 (observed):**
+  - no `relief.py` running; `relief/` as left, with parts at 8.31 GB;
+  - Willow started nothing after 14:00.
+  - Willow's watcher saw the group gone at 14:00:38.
+  - Inferred: the remaining 241,949 tiles take about 85 min, at the 48 tiles/s z11 rate.
