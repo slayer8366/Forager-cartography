@@ -516,3 +516,14 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
   `osm_pass2`. Aspen checks that at about 01:00.
 - **Kept:** the 11-01 output, now on USB. It's the local rollback copy, and `check_map.py`'s LIVE control. When it's
   no longer needed, the symlink comes out with it.
+
+## Note, 01:14 PST (11-03): words to use, from the owner
+
+- **The owner, verbatim:** "Refer to our maps as trail maps, and not osm.. To avoid confusion".
+- **From here:**
+  - **"Trail Map"** means ours: the app's "Forager Trail Map", its tiles `us.pmtiles`, and its styles Street v4
+    and v5.
+  - **"the OpenStreetMap map"** means only the app's reference basemap, tile.openstreetmap.org.
+  - **"OSM data"** stays for the source data.
+- **This dispatch's title and earlier wording** ("our map", "OSM's zooms", "street map") stand as written. Read
+  them in these terms.
