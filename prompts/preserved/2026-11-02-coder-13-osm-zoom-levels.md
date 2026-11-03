@@ -333,3 +333,41 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
   - `water_stream` goes from 14 to 10.5 and 11.5;
   - no labels are added.
 - **Relief:** the merge was at about 3 of 25 GB at 15:56 (Willow).
+
+## Update, 17:57 PST: Hold B; a tile-size test first, then the install, then the build
+
+- **Willow's Hold B** (`willow-osm-zooms` `41fa3ec`, `z2-report.md`; observed by Willow):
+  - **The code:**
+    - patch 0008 is Forager `osm-zooms-map-build` `96e4c0305`, 1,404 lines; 590 tests pass, with 77 new; jar
+      `3b90772f`;
+    - Street v5 is `osm-zooms-style` `50242c74c`: 181 layers, 55 of v4's 104 changed;
+    - `forager-offline-v2.json` is `5d8653721`.
+  - **The Molalla test:**
+    - 33 data classes pass at N − 2.
+    - Two fail on length, not zoom: two tiny highway=road pieces and one 44 m tunnel, under the 0.5 px line
+      floor.
+    - The z15 counts are equal, except +12 stream lines from merging.
+    - The archive is +8.2%, and the busiest tile is 193 KB gzipped.
+    - 36 render shots, with no errors.
+  - **Projection** (inferred): 38-42 GB, and about 14.5-15 h for the run.
+    - **The risk:** at 3-5× landuse, the densest z7-z10 tiles could reach about 1-1.5 MB gzipped.
+- **Aspen's spot-check:** 0008's water values (rivers 6, streams 10, intermittent 11) are carto's 8, 12 and 13
+  minus 2.
+- **The planner's word:**
+  1. **(a) first:** take the 5 largest z7-z10 tiles in the live archive, and build an extract over the biggest,
+     patched and with the control.
+     - Pass: no tile over 500 KB gzipped, and the quarter-pixel floor stays at every zoom.
+     - Otherwise (b): the 2 px floor below z11. Retest and report.
+  2. **If (a) passes, the install:**
+     - first a rollback copy of jar `25e5b8db` and map-build `53a7283` in
+       `/mnt/storage/rollback/basemap-jar-before-coder13/`;
+     - then map-build `96e4c0305` and jar `3b90772f` into `/opt/forager-build`.
+     - Then Hold C. No build.
+  3. **Then Aspen starts `build-usca.sh --local 261030 --force`** as forager-build.
+     - `--force` is needed because the extracts equal current's manifest (lines 624-628).
+     - With `USCA_KEEP_GOOD_OUTPUTS=1` (pins.env:237), publishing removes the current local output. That's the
+       owner's rotation rule.
+     - R2's live `us.pmtiles` is untouched until the owner's upload go.
+  4. **For the owner:** the renders, rail drawn at 0.45 px, the half-zoom residuals, the superseded rulings and
+     the B2 list.
+     - The style merge and the wiring of v5 and offline-v2 wait for the owner's look.
