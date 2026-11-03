@@ -718,3 +718,16 @@ commit clock:
   layers lose their named night colour until the app maps clones to originals (`forager:layer-clones`). Rowan has
   been asked: before #474, or as a follow-up.
 - **Waiting on Rowan:** the pre-main test that already fails (fix or waive), and the night-gap timing.
+
+## Update, 15:40 PST (11-03): #474 is v4 only; CI matches pre-main's known red
+
+- **PR #474's head is `821fa67d6`** (offline and CACHE_VERSION commits dropped).
+  - It changes 12 files: the v4 styles and their Worker copies, the generator, the override, the checks and the
+    tests.
+  - Checked by Aspen: offline-style.json is unchanged against pre-main, and CACHE_VERSION is "3".
+- **CI run 41738214180:** 6 jobs pass. The two app-test jobs fail only RouteCardOnNavigationCardFont20Test, the same as
+  pre-main's own run 41728736456. Rowan is fixing it, with no waiver.
+- **For Rowan's app PR:** #474's body has the 13-clone night table (clone, original, intended night colour with its
+  source line, today's value). That fix is needed before any promotion.
+- **Next:** pre-main green, then #474 updated and green, then Aspen's line to Rowan, then the merge, then a
+  folder-only Worker release to main (after #472, which is merged).
