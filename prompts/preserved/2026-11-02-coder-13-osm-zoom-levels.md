@@ -694,3 +694,27 @@ commit clock:
   - the verified bundles of both repos.
 - **The real run starts** on fresh mirrors from the post-release tips, when Rowan says the release is out.
 - **The style PR and its Worker release** go ahead as normal.
+
+## Update, 15:19 PST (11-03): style PR #474 at Hold A; trimmed to v4 only
+
+- **Forager PR #474** (`trail-v4-first-zooms` into pre-main, from `671b669bf`), the helper briefed as Willow
+  (observed by it):
+  - street-v4, trail-v4 and their previews are layer for layer identical to the approved v5: 182 of 182 layers, 0
+    differences.
+  - The Molalla z12 render is pixel-identical to the approved panel. A control against the old v4 differs by 2.96%.
+  - v1-v3 are byte-identical.
+  - The new style loads against 11-01-build tiles with no errors.
+  - Worker tests 80 of 80, and the naming grep has 0 hits outside the data credit.
+- **CI was red** (run 41733683461):
+  - OfflineNightRecolourTest failed, from the offline-in-place commit;
+  - RouteCardOnNavigationCardFont20Test fails on pre-main itself too.
+- **Aspen's decisions:**
+  - Drop the offline-in-place commit. Rowan's condition limits the override to v4, and offline.json reaches the
+    release app's downloads, which is beyond the owner's "v4 in place". Aspen had added it on its own reading;
+    that was too broad.
+  - Drop the CACHE_VERSION 4 commit: styles are bundled, not edge-cached.
+  - The branch is now the v4 commit only, with CI re-run.
+- **Found:** a night gap in test builds. The app's night tables are keyed by layer id, so 13 of the new clone
+  layers lose their named night colour until the app maps clones to originals (`forager:layer-clones`). Rowan has
+  been asked: before #474, or as a follow-up.
+- **Waiting on Rowan:** the pre-main test that already fails (fix or waive), and the night-gap timing.
