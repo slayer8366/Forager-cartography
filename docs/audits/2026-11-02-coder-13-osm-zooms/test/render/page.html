@@ -1,0 +1,15 @@
+<!doctype html>
+<!-- coder-13 Z2 renders (Willow, scratch): one map, full screen, the style named in ?style=; window.idle once drawn.
+     MapLibre GL JS 6 is an ES module only, imported as map-style/preview/index.html does. -->
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="maplibre/maplibre-gl.css">
+<style>html,body,#map{margin:0;height:100%;width:100%}</style></head>
+<body><div id="map"></div>
+<script type="module">
+import * as maplibregl from "./maplibre/maplibre-gl.mjs";
+const q = new URLSearchParams(location.search);
+const [z, lat, lon] = location.hash.slice(1).split("/").map(Number);
+const map = (window.map = new maplibregl.Map({ container: "map", style: q.get("style"), center: [lon, lat], zoom: z,
+  attributionControl: false, fadeDuration: 0, maxZoom: 19 }));
+map.on("load", () => map.once("idle", () => { window.idle = true; }));
+</script></body></html>

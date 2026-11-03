@@ -1,0 +1,5 @@
+2026-11-02 17:13:06 PST patched jar 3b90772f218ab4fd, control jar 25e5b8db69a85f11
+2026-11-02 17:13:06 PST osmium extract -122.95,44.95,-122.25,45.40 from /srv/forager-build/sources/osm/us-261030.osm.pbf
+2026-11-02 17:18:28 PST extract: 16317785 bytes
+2026-11-02 17:18:28 PST planetiler: patched
+exit 1

@@ -1,0 +1,92 @@
+patched patched/molalla.pmtiles
+control control/molalla.pmtiles
+box (-122.95, 44.95, -122.25, 45.4), z15 over (-122.66, 45.1, -122.5, 45.2)
+
+2. First zooms (tile level; carto N - 2). PASS: patched equals it; control: differs where 0008 moves the row
+ row what                                       want patched control  result
+  35 motorway line                                 4       4       3  PASS, control differs
+  37 trunk line                                    4       4       6  PASS, control differs
+  38 primary line                                  6       6       7  PASS, control differs
+  39 secondary line                                7       7       9  PASS, control differs
+  40 tertiary line                                 8       8       9  PASS, control differs
+  41 link lines                                    8       8       5  PASS, control differs
+  42 residential, unclassified                    10      10      10  PASS
+  43 highway=road                                  8      12      12  FAIL, control differs
+  44 living street                                11      11      14  PASS, control differs
+  45 service                                      12      12      13  PASS, control differs
+  47 pedestrian street                            12      12      12  PASS
+  49 track                                        11      11      11  PASS
+  50 path                                         12      12      12  PASS
+  51 footway, steps                               12      12      13  PASS, control differs
+  52 cycleway, bridleway                          11      11      13  PASS, control differs
+  53 sidewalk, crossing                           12      12      14  PASS, control differs
+  74 trunk to secondary names                     11      11      12  PASS, control differs
+  75 tertiary names                               12      12      13  PASS, control differs
+  76 street names                                 13      13      14  PASS, control differs
+  78 track names                                  13      13      14  PASS, control differs
+  81 motorway shields                              8       8       7  PASS, control differs
+  83 trunk, primary shields                        9       9       8  PASS, control differs
+  84 secondary shields                            10      10      11  PASS, control differs
+  85 tertiary shields                             11    None    None  absent here (not checked)
+  60 major bridges                                11      11      12  PASS, control differs
+  61 tertiary and street bridges                  12      12      12  PASS
+  62 major tunnels                                10      11      12  FAIL, control differs
+  56 main-line rail                                6       6      11  PASS, control differs
+  59 rail spurs, sidings, yards                   11      11      11  PASS, CONTROL SAME
+  66 pier lines                                   10      10      13  PASS, control differs
+  65 taxiway lines                                 9       9      10  PASS, control differs
+  32 rivers                                        6       6       9  PASS, control differs
+  33 streams                                      10      10      13  PASS, control differs
+  93 towns                                         7       7       7  PASS
+  94 villages                                     10      10      10  PASS
+  95 hamlets                                      12      12      12  PASS, CONTROL SAME
+  98 suburbs                                      10      10      12  PASS, control differs
+ 105 peaks                                         9       9      13  PASS, control differs
+ 107 alpine and wilderness huts                   11    None    None  absent here (not checked)
+ 109 camp and picnic sites, viewpoints, shelters   14      14      12  PASS, control differs
+  69 admin level 5                                 6    None    None  absent here (not checked)
+  71 admin level 7                                 9    None    None  absent here (not checked)
+  72 admin level 8                                10      10      10  PASS
+
+   per feature: first level = min_zoom - 1 (what the style's per-level layers read)
+  88 lake and water labels                      51 features; 1 inconsistent; 15 first at another level than in the control; e.g. Clackamas River 11; North Fork Reservoir 11; Art McKay Reservoir 12; Spada Reservoir 12
+  92 cities                                     0 features; 0 inconsistent; 0 first at another level than in the control; e.g. 
+ 102 area names                                 225 features; 3 inconsistent; 93 first at another level than in the control; e.g. Molalla River Corridor Recreation Area 9; Table Rock Wilderness 9; Tualatin River National Wildlife Refuge 10; Champoeg State Heritage Area 10
+ 110 parking                                    3 features; 0 inconsistent; 3 first at another level than in the control; e.g. Bus Parking Lot 15; Additional Bus Parking 15; Wagonwheel Park Parking Lot 15
+     Molalla: first in patched 7, control 7
+     Liberal: first in patched 12, control 12
+     Molalla River: first in patched 6, control 9
+     Oregon City: first in patched 7, control 7
+     Canby: first in patched 8, control 8
+
+3. Feature counts per layer at z15 (core box), patched vs control
+   barriers     patched     230 control     230 
+   boundaries   patched      18 control      18 
+   buildings    patched   11856 control   11856 
+   earth        patched     210 control     210 
+   landuse      patched     918 control     918 
+   places       patched       8 control       8 
+   pois         patched     503 control     503 
+   roads        patched    1392 control    1392 
+   water        patched     486 control     474   DIFFERENT
+
+4. Tile bytes per zoom (as stored), patched vs control; tiles over 500 KB; the busiest
+   z0   tiles     1  patched      12,505  control      12,505  x1.00  largest   12,505 (0/0/0) vs   12,505
+   z1   tiles     1  patched      15,201  control      15,201  x1.00  largest   15,201 (1/0/0) vs   15,201
+   z2   tiles     1  patched      12,793  control      12,793  x1.00  largest   12,793 (2/0/1) vs   12,793
+   z3   tiles     1  patched      14,876  control      14,899  x1.00  largest   14,876 (3/1/2) vs   14,899
+   z4   tiles     1  patched       8,278  control       7,976  x1.04  largest    8,278 (4/2/5) vs    7,976
+   z5   tiles     1  patched       7,290  control       6,687  x1.09  largest    7,290 (5/5/11) vs    6,687
+   z6   tiles     2  patched       8,014  control       4,583  x1.75  largest    4,787 (6/10/22) vs    2,396
+   z7   tiles     2  patched      79,598  control      13,173  x6.04  largest   65,914 (7/20/45) vs    8,256
+   z8   tiles     4  patched     152,314  control      39,278  x3.88  largest  122,024 (8/40/91) vs   24,999
+   z9   tiles     4  patched     232,344  control      99,483  x2.34  largest  193,219 (9/81/183) vs   73,195
+   z10  tiles     9  patched     433,286  control     266,795  x1.62  largest  114,814 (10/162/367) vs   77,039
+   z11  tiles    25  patched     682,880  control     494,163  x1.38  largest   90,757 (11/325/733) vs   59,628
+   z12  tiles    81  patched   1,343,192  control     871,807  x1.54  largest   93,360 (12/652/1467) vs   55,497
+   z13  tiles   272  patched   2,331,568  control   2,118,104  x1.10  largest   67,957 (13/1302/2934) vs   60,823
+   z14  tiles   990  patched   5,168,428  control   4,849,328  x1.07  largest   63,004 (14/2610/5870) vs   61,296
+   z15  tiles   210  patched     504,388  control     503,895  x1.00  largest   26,395 (15/5225/11767) vs   26,394
+   tiles over 500 KB in patched: 0; busiest patched tile 193,219 bytes (9/81/183)
+
+summary: 8 failure(s)
