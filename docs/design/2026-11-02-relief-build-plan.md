@@ -509,3 +509,29 @@ This supersedes "Nothing was started" in the 14:01 update.
 - **At 18:43:30:** sending about 2.3 MB/s; router pings 23-29 ms.
 - **Projection** (inferred): about 1.9 h, so around 20:35. Aspen's check is at 20:40.
 - **The stop for this run** is `kill -TERM -- -86388`.
+
+## Update, 20:17 PST: R3 done; relief.pmtiles is on R2 and the Worker serves hill shading
+
+- **The upload finished at 20:13:18** (`upload.log`, observed):
+  - 369 of 369 parts; "completed, ETag \"91a9f977ec4c652f265418eb038c0eb8-369\"".
+  - **The read-back:**
+    - R2 size 24,728,704,911 equals the local size;
+    - the ETag on R2 equals the one computed from the local parts;
+    - type application/octet-stream;
+    - the md5chksum metadata matches;
+    - the first and last MiB are equal.
+  - DONE.
+- **The Worker** (Aspen, about 20:18, with fresh query strings):
+  - `/relief.json` answers 200 application/json: minzoom 5, maxzoom 11, bounds -180,17 to 180,84, the attribution.
+  - `/relief/11/331/733.png` (Hood) answers 200 image/png, 141,037 B. It's byte-identical to the local
+    `relief.pmtiles` tile, and so to the trial's.
+  - `/relief/11/164/558.png` (Denali) answers 200 image/png, 141,496 B.
+  - `cache-control: public, max-age=86400`.
+- **Hill shading is live for Street v4** (inferred from the style, which asks for these tiles).
+  - URLs requested before 20:13 may stay a cached 404 for up to a day. That's the Worker's cache, observed at
+    12:13.
+- **Kept:** `relief.mbtiles` (25.0 GB), which Aspen may now remove on the owner's word. It isn't removed yet.
+- **Follow-ups waiting for a go:**
+  - stop caching "Archive not found" for a day;
+  - give v4's `dem` source `bounds`;
+  - the phone checks (R4).
