@@ -402,3 +402,33 @@ This supersedes "Nothing was started" in the 14:01 update.
   - The weekly timer is still armed for Sun 11-08.
 - **The rule for Aspen from here:** after any rejected or interrupted command, read the system's state before
   saying whether it ran.
+
+## Update, 16:25 PST: R2's Hood check failed on cell-seam pixels; A on a control
+
+- **R2 finished at 15:47:13** (observed by Aspen in `build.log`): 348,509 of 348,509 tiles, exit 0, peak 68.6 °C,
+  `throttled=0x0`.
+- **Willow's report** (all observed by Willow):
+  1. **Merge** 15:51:03-16:16:01. `relief.mbtiles` is 25,005,854,720 bytes, and its count check passes.
+  2. **Content check** 16:17:00-16:23:07. The parts and the merged file give the same digest,
+     `6df46dd80aa8…f0d4`: PASS.
+  3. **Hood check, FAIL against the 1/256 m rule.**
+     - Of the 70 inner tiles, 54 are identical and 16 differ, in 75 pixels, by at most 0.8867 m (11/329/731).
+     - The 38 edge tiles differ (reported, not judged).
+- **Willow's diagnosis:**
+  - 59 of the pixels lie within 2 source samples of a whole-degree cell seam. At 11/329/731 that's the
+    -122° line between N45W123 and N45W122.
+  - The other 16 are within 1/256 m.
+  - Rendering the trial's two cells in relief.py's order reproduces the difference (observed).
+  - **Inferred:** adjacent `.hgt` cells share an edge row of samples, and in a VRT the later source wins.
+    - The trial listed N45W123 then N45W122; `relief.py` sorts by name, so N45W122 comes first.
+    - The two cells' shared samples differ by up to about 0.9 m.
+- **Nothing was deleted or converted.** Willow stopped as filed.
+- **Planner's decision: A, after a control.**
+  - **The control:** the two-cell VRT in the trial's order must reproduce the reference's seam tiles byte for byte.
+    That makes the cause observed.
+  - **If it passes, the Hood rule is:** a pixel more than 1/256 m off passes only if it's within 2 source samples
+    of a whole-degree seam; every other inner pixel must be within 1/256 m.
+  - **Then** condition 4, the free-space check, the convert, the result checks, and Hold 2.
+  - **Not B** (a re-render with the trial's order, about 2.5 h). Neither cell's edge row is truer, so B would
+    only change which equal sample wins at the seams.
+  - The owner sees this before the upload and can choose B.
