@@ -641,3 +641,25 @@ commit clock:
   by a read-only helper. Aspen spot-checked them, and sent them to Rowan by message, for Juniper's working list.
 - **The figures and their sources stay out of the repos** (the owner's ruling, RECORD -1997, via Rowan).
 - **The helper's only writes:** a scratch clone and a compute script in `/mnt/archive/history-rewrite-20261103/figures/`.
+
+## Note, 13:41 PST (11-03): the history clean-up dry run is done (method check); Forager's list goes back to Rowan
+
+- **A read-only helper ran it** in fresh mirrors on the Pi's SD card (`/mnt/archive/history-rewrite-20261103/`), using
+  git-filter-repo 2.47.0. Nothing was pushed.
+  - Bundles of both originals verify, and pushing from the backup mirrors is disabled.
+- **Results:**
+  - **Binary blobs:** 0 changed (filter-repo skips any blob with a NUL in its first 8 KiB).
+  - **Every predicted blob id matched.**
+  - **Only text changed,** across all refs.
+  - **No path or ref keeps the renamed words.**
+  - **Protected strings are unchanged:** data credits, osmdroid, .osm.pbf, BRouter classes, the app's Cartography feature.
+- **Found, and sent to Rowan for Forager's list:**
+  - filter-repo runs literal rules before regex rules, whatever the file order;
+  - the button-label rules break one app test on 470 branches;
+  - one citation regex also removes four BRouter file references;
+  - "OSM Carto" comes out half-replaced;
+  - some text is still left;
+  - 2,414 commit ids cited in Forager's files need the translation commit;
+  - 350 PR pages keep the old text.
+- **The run used tips from before Rowan's three merges.** A repeat script re-runs it on fresh mirrors.
+- **Cartography's draft list** (Forager's 249 lines plus 51 regex additions) waits for Rowan's revised list.
