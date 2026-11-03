@@ -500,3 +500,19 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
     the weekly build still resolve.
   - That gives about 30 GB of headroom at the peak (inferred).
   - `/mnt/storage` is `/dev/sda1` ext4 rw with 111 GB free (read 22:33).
+
+## Update, 23:04 PST: the 11-01 output is on the USB drive, verified; the NVMe has 105 GB free
+
+- **The copy** (observed): `sudo rsync -a`, 22:33:47-22:58:08.
+  - The check, 22:58-23:03:21: all 375 manifest outputs on the copy match their sha256, with 0 mismatches, and
+    the bytes are equal at 37,609,850,859.
+- **23:04** (observed):
+  - the NVMe copy is removed;
+  - the symlink is `out-usca/20261030T212451Z -> /mnt/storage/forager-build-out-usca/20261030T212451Z`, owned by
+    forager-build;
+  - `current` still resolves to it, and `pmtiles show` reads maxzoom 15 and 651,232,395 tiles;
+  - `/` went from 74.6 GB free to 105 GB.
+- **Projection** (inferred): about 30 GB of headroom at the peak, **if** Planetiler frees its 27 GB node map after
+  `osm_pass2`. Aspen checks that at about 01:00.
+- **Kept:** the 11-01 output, now on USB. It's the local rollback copy, and `check_map.py`'s LIVE control. When it's
+  no longer needed, the symlink comes out with it.
