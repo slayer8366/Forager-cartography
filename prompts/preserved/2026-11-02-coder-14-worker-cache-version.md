@@ -178,3 +178,15 @@ At each hold:
     out from `f9ca5824c`, commit `3b942c9f7`;
   - `check-release.sh`: "worker release ok: only server/pmtiles-worker changes, and it equals origin/pre-main's";
   - **PR #469**, waiting for CI. Aspen merges it on green, and that deploys.
+
+## Update, 10:22 PST (11-03): #469 held for Rowan's record
+
+- **Rowan asked** whether the #468 and #469 merges were on the owner's word, and when. Rowan records Forager merges
+  into pre-main and main on records-after-173, and had no entry for #466, #467 or #468. Rowan asked Aspen to
+  hold #469 until the owner confirms it to Rowan, and is asking the owner too.
+- **Aspen's answer:**
+  - The owner's go was "Yes, fix it now (Recommended)", between 20:25 and 20:28:59 on 11-02. Its option text
+    included the release to main and "I raise the version again right after tomorrow's upload".
+  - Aspen gave the times of the three merges, and apologised for not sending Rowan a line before each.
+- **#469 is held** until Rowan says the owner has confirmed it.
+- **From here,** Aspen sends Rowan a line before any merge into Forager's pre-main or main.
