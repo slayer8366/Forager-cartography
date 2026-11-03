@@ -1,0 +1,18 @@
+0:09:50 DEB [archive] - Max tile sizes
+             z0    z1    z2    z3    z4    z5    z6    z7    z8    z9   z10   z11   z12   z13   z14   z15   all
+     earth 1.9k  2.9k  2.3k  1.9k  1.2k   365    52    53    53    55   114   119  1.3k  1.3k  1.3k   891  2.9k
+ landcover 3.8k  8.4k  4.1k  6.4k  9.4k  6.4k  2.4k  1.8k     0     0     0     0     0     0     0     0  9.4k
+     water  11k  9.7k  5.9k    4k  2.1k   392   51k   35k   19k  9.9k   19k   13k  9.6k  5.8k  3.9k  2.2k   51k
+boundaries    0   159   201   295   443   551   612   478  2.3k  4.2k  4.9k  2.9k  2.1k    1k   845   539  4.9k
+   landuse    0     0     0   166    2k  9.4k   40k  353k  513k  317k  173k  207k  103k   61k   34k   24k  513k
+    places    0     0     0   485  1.8k  2.7k  3.7k  8.9k  5.3k  4.9k  7.7k  3.8k  2.8k    2k  1.5k  1.1k  8.9k
+     roads    0     0     0     0    4k  6.5k   42k   62k   72k   52k  150k   94k  114k   80k   44k   20k  150k
+      pois    0     0     0     0     0     0   105   918  1.1k   10k  4.2k  4.5k  3.3k  3.9k  6.3k   51k   51k
+ buildings    0     0     0     0     0     0     0     0     0     0     0  4.3k  8.4k   16k   34k  108k  108k
+  barriers    0     0     0     0     0     0     0     0     0     0     0     0     0     0     0  3.4k  3.4k
+ full tile  17k   21k   12k   12k   16k   26k  141k  462k  580k  348k  280k  296k  203k  150k   96k  129k  580k
+   gzipped  12k   16k   10k   10k   13k   19k   97k  303k  387k  239k  207k  194k  144k   98k   65k   65k  387k
+0:09:50 DEB [archive] -    Max tile: 580k (gzipped: 387k)
+0:09:50 DEB [archive] -    Avg tile: 3.2k (gzipped: 2.4k) using weighted average based on OSM traffic
+0:09:50 DEB [archive] -     # tiles: 198,160
+0:09:50 DEB [archive] -  # features: 14,181,903

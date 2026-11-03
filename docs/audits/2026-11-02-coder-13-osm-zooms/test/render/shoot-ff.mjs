@@ -7,11 +7,15 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 const D = "/home/bwann83/scratch/coder13/molalla/render";
 const PORT = 9223;
-const STYLES = { osm: "osm-raster.json", v5: "v5-patched.json", v4: "v4-control.json" };
+const STYLES = { osm: "osm-raster.json", v5: process.env.V5_STYLE ?? "v5-patched.json", v4: "v4-control.json" };
 const views = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
+// SHOTS (default shots) names the output folder under D; ONLY (e.g. "v5") limits the styles shot.
+const OUT = `${D}/${process.env.SHOTS ?? "shots"}`;
+const ONLY = process.env.ONLY ? process.env.ONLY.split(",") : Object.keys(STYLES);
+fs.mkdirSync(OUT, { recursive: true });
 const shots = [];
 for (const [slug, lat, lon, zooms] of views)
-  for (const z of zooms) for (const s of Object.keys(STYLES)) shots.push([s, slug, lat, lon, z, `${D}/shots/${slug}-z${z}-${s}.png`]);
+  for (const z of zooms) for (const s of ONLY) shots.push([s, slug, lat, lon, z, `${OUT}/${slug}-z${z}-${s}.png`]);
 fs.mkdirSync(`${D}/ff-profile`, { recursive: true });
 const ff = spawn("/usr/bin/firefox", ["--headless", "--no-remote", "--profile", `${D}/ff-profile`, `--remote-debugging-port=${PORT}`, "about:blank"],
   { stdio: ["ignore", "ignore", fs.openSync(`${D}/firefox.err`, "w")] });

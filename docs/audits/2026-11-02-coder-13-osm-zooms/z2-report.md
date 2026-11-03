@@ -202,3 +202,50 @@ Neither style is wired into the Worker or the app. Nothing was pushed to `main` 
 - **The style:** `generate-street.mjs`'s version table and the override pattern (`forager-fill-in.mjs`).
 - **The tests:** `~/pi29-logs/resume/tiles/mvt.py` for decoding; Hazel's `render-ff.mjs` for the renders; Planetiler's
   invocation from `build-usca.sh`.
+
+## Update, 18:55 PST: test (a) failed, (b) taken; the peak fix; the renders redone
+
+Observed unless marked.
+
+### The dense tiles (Aspen's (a), after Hold B)
+
+- **The live archive's five largest tiles per zoom** (`test/dense/largest-live.txt`), read from its directories
+  alone. The reader matched `pmtiles tile` on 8/70/97 (352,503 B) and 9/137/211 (311,067 B).
+- **The extract:** 8/70/97 and its eight z8 neighbours (-82.97,37.72,-78.75,40.98), 257.5 MB. The control reproduces
+  the live 8/70/97 exactly: 352 KB gzipped, landuse 513 KB raw.
+- **(a), the quarter pixel at every zoom: FAIL.** Five tiles over 500 KB gzipped:
+  - 7/35/48: 1 MB (control 263 KB);
+  - 8/70/97: 744 KB;
+  - 8/71/97: 606 KB;
+  - 8/69/97: 561 KB;
+  - 8/69/96: 497 KB.
+- **(b), upstream's landuse floor below z11 and the quarter pixel from z11: PASS.**
+  - The largest: 8/70/97 387 KB (control 352), 8/71/97 309, 7/35/48 303.
+  - Landuse at z0-10 equals the control; the archive is +5.1%.
+  - Per-zoom tables are in `test/dense/tile-sizes-*.txt`.
+- **(b) is patch 0008 as installed:** Forager `osm-zooms-map-build` `e904af99a`, jar sha256 `5f9a8bcd…c754`. 590 tests,
+  0 failures, 77 foragerOsm.
+- **Molalla rebuilt with (b):** 21.8 MB, +6.1%. Every first-zoom row reads as before (`test/zoomcheck-b.log`); z7-10
+  grow only 1.03-1.29x.
+
+### The peak fix (Forager `osm-zooms-style` `d7c57375c`)
+
+- The Molalla renders at 10 showed v5 drawing peak names and heights from 9.5. Carto names peaks from 13
+  (amenity-points.mss:1873; row 106) and draws the icon from 11.
+- Now `pois__peak` is the icon alone from 9.5 to 11.5, and `pois__peak__named`, a copy, draws icon and text from
+  11.5. v5 has 182 layers and is valid; v3, v4 and offline-v2 are unchanged.
+
+### The renders, and a mistake of mine in them
+
+- `renders/0008b-as-installed/` is the set for the owner: (b), v5 at `d7c57375c`. `renders/0008a-quarter-pixel-every-zoom/`
+  is the first set, kept labelled (`README-renders.md`).
+- **The mistake:** the first (b) re-render after the peak fix (`test/render/shoot-b2.log`) reused Firefox's cached
+  copy of the old v5 style file, so it still drew peak names at 10. I found it from the picture.
+- **Corrected:** the style was renamed (`v5-patched-b2.json`) and all 12 v5 panels were shot again
+  (`shoot-b3.log`). The zoom-10 image now equals a separate probe of the new style (sha256 `7fec06b0aa1e…`).
+- Tiles were never stale: pmtiles serve revalidates them by ETag.
+
+### Corrections to the sections above
+
+- The `mvn test` time was estimated (about 15:33), not read.
+- The 77 foragerOsm cases and the 590 test count hold for the (b) jar.
