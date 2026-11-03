@@ -546,3 +546,25 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
 - **Waiting for the owner:** whether "publish" covers the public repos (new names only, or also renaming and
   rewriting what's already there), or only what users see (the app and the served styles and TileJSON).
 - **Done in either case:** the served styles get neutral metadata before they ship.
+
+## Note, 05:16 PST (11-03): the owner chose a full clean-up, history included
+
+- **The owner, through the question tool:**
+  - "Option 3, clean it all up". Option 3: rename branches and files, and edit or rewrite the existing records.
+  - Then "Also rewrite history". That option: a force-push rewrite of both repos. Every commit id in the records,
+    builds and copies changes; every session stops and re-clones; GitHub keeps the old PR commits unless
+    GitHub Support purges them.
+- **Read first** (02:1x):
+  - no branch is protected in either repo;
+  - Forager has 1,205 remote branches, 9,915 commits and no tags.
+  - Rowan's Juniper inventory (`d66096114`, Forager `juniper/osm-style-name-check`, dispatch 2026-11-03-02)
+    found 0 public lines and 26 internal lines in pre-main's tree that name the reference style as ours or as a
+    target. Data credits and data references are out of scope.
+- **Proposed to Rowan** (who owns Forager's records):
+  1. one term list, kept on the Pi only, outside the repos;
+  2. a dry run in mirror clones, reviewed by both planners;
+  3. a pause window for every pushing session;
+  4. the force-push of all refs, then a commit at each tip translating old commit ids from filter-repo's map;
+  5. re-clones on the Pi.
+  - Not before the Trail Map upload is done.
+- **This repo's own wording from here is neutral.** The dispatch file names here change in the rewrite.
