@@ -479,3 +479,24 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
   - The upload: a whole-file replacement. 2 parts at a time is the most the Wi-Fi took on 11-02.
 - **Already skipped:** routing, names, BRouter, the build's validate (replaced by `check_map.py`) and publish.
 - **Already done:** the fetch (local) and the merge.
+
+## Update, 22:34 PST: the NVMe would run out at the archive stage; the 11-01 output moves to the USB drive
+
+- **The 22:30 check** (observed):
+  - Planetiler is in `osm_pass2` at 3:01 elapsed, 106M ways (50%).
+  - **The features file is 48 GB, against 41 GB for 11-01 at the same ways count.** At 2:30 and 2:00 the ratio is
+    also about 1.15-1.17.
+  - At 22:31, `/` had 84.6 GB free; memory 3.0 GiB available; 63.7 °C; `throttled=0x0`. The disk guard is active.
+- **Projection** (inferred from 11-01's log and the ratio):
+  - 11-01's features ended at 108 GB, and its archive at 35 GB.
+  - Here: features about 125 GB, the node map (27 GB) freed after pass 2, and an archive of about 38 GB. That's
+    about 166 GB at the peak, against 161 GB free at the start.
+  - So the disk guard would stop the run during the archive stage, about 03:00-04:30, and the night's work would
+    be lost.
+- **The fix (Aspen, no data deleted):** move `out-usca/20261030T212451Z` (36 GB, the 11-01 output, the local copy of
+  the live map) to `/mnt/storage/forager-build-out-usca/`.
+  - Verify every manifest output's sha256 on the copy.
+  - Then remove the NVMe copy and put a symlink at the old path, so `current`, `check_map.py`'s LIVE path and
+    the weekly build still resolve.
+  - That gives about 30 GB of headroom at the peak (inferred).
+  - `/mnt/storage` is `/dev/sda1` ext4 rw with 111 GB free (read 22:33).
