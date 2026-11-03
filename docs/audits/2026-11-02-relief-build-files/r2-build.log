@@ -1,0 +1,32 @@
+2026-11-02 13:15:38 PST R2 start, Willow (coder-12, session_01Hqu21r21FGQXWzLeRtR3yv): /home/bwann83/scratch/coder12-49/86f9114/relief.py = willow-relief-build 86f9114 (sha256 1c02851e...3378), procs 4, chunk 32
+2026-11-02 13:15:40 PST start: pid 6179 pgid 6179 nice 10; GDAL 3.6.2, numpy 1.24.2, Pillow 9.4.0; 3631 cells; procs 4, chunk 32; chunk delay off
+2026-11-02 13:15:40 PST tiles wanted: z5 103 z6 330 z7 1163 z8 4349 z9 16757 z10 65689 z11 260118 total 348509
+2026-11-02 13:15:40 PST already in part files: 0; to do: 348509
+2026-11-02 13:15:40 PST to stop it: /home/bwann83/scratch/coder12-49/86f9114/relief.py stop /mnt/storage/relief
+2026-11-02 13:15:40 PST guards: stop under 50.0G free, or on get_throttled bit 0 or 2 (or bit 16 or 18 newly set), or after two 10-minute lines in a row with no new tiles; now free 157.4G, throttled=0x0, 48.8'C
+2026-11-02 13:15:40 PST z5 0/103 z6 0/330 z7 0/1163 z8 0/4349 z9 0/16757 z10 0/65689 z11 0/260118; total 0/348509; this run 0 in 0 s (0.0/s); free 157.4G; 48.8'C (peak 48.8'C); throttled=0x0
+2026-11-02 13:25:41 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 2023/16757 z10 0/65689 z11 0/260118; total 7968/348509; this run 7968 in 601 s (13.3/s); free 156.7G; 64.2'C (peak 67.0'C); throttled=0x0
+2026-11-02 13:35:42 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 11346/65689 z11 0/260118; total 34048/348509; this run 34048 in 1201 s (28.3/s); free 154.6G; 64.8'C (peak 67.0'C); throttled=0x0
+2026-11-02 13:45:42 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 35858/65689 z11 0/260118; total 58560/348509; this run 58560 in 1802 s (32.5/s); free 152.6G; 64.2'C (peak 68.1'C); throttled=0x0
+2026-11-02 13:55:43 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 4313/260118; total 92704/348509; this run 92704 in 2402 s (38.6/s); free 150.5G; 67.5'C (peak 68.1'C); throttled=0x0
+2026-11-02 14:00:31 PST stopping: SIGTERM
+2026-11-02 14:00:31 PST stopped; part files hold 106560 of 348509 tiles; a restart resumes
+2026-11-02 14:16:08 PST restart (resume) by Aspen on the owner's word: "Restart the relief build"
+2026-11-02 14:16:10 PST start: pid 10404 pgid 10404 nice 10; GDAL 3.6.2, numpy 1.24.2, Pillow 9.4.0; 3631 cells; procs 4, chunk 32; chunk delay off
+2026-11-02 14:16:10 PST tiles wanted: z5 103 z6 330 z7 1163 z8 4349 z9 16757 z10 65689 z11 260118 total 348509
+2026-11-02 14:16:10 PST already in part files: 106592; to do: 241917
+2026-11-02 14:16:10 PST to stop it: /home/bwann83/scratch/coder12-49/86f9114/relief.py stop /mnt/storage/relief
+2026-11-02 14:16:11 PST guards: stop under 50.0G free, or on get_throttled bit 0 or 2 (or bit 16 or 18 newly set), or after two 10-minute lines in a row with no new tiles; now free 149.6G, throttled=0x0, 51.0'C
+2026-11-02 14:16:11 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 18201/260118; total 106592/348509; this run 0 in 0 s (0.0/s); free 149.6G; 51.6'C (peak 51.6'C); throttled=0x0
+2026-11-02 14:26:11 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 46937/260118; total 135328/348509; this run 28736 in 600 s (47.9/s); free 147.1G; 65.3'C (peak 65.3'C); throttled=0x0
+2026-11-02 14:36:12 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 72217/260118; total 160608/348509; this run 54016 in 1201 s (45.0/s); free 145.2G; 65.3'C (peak 67.5'C); throttled=0x0
+2026-11-02 14:46:12 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 94489/260118; total 182880/348509; this run 76288 in 1801 s (42.3/s); free 143.5G; 65.9'C (peak 67.5'C); throttled=0x0
+2026-11-02 14:56:12 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 117497/260118; total 205888/348509; this run 99296 in 2402 s (41.3/s); free 142.0G; 65.3'C (peak 67.5'C); throttled=0x0
+2026-11-02 15:06:13 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 140409/260118; total 228800/348509; this run 122208 in 3002 s (40.7/s); free 140.7G; 65.3'C (peak 67.5'C); throttled=0x0
+2026-11-02 15:16:13 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 164505/260118; total 252896/348509; this run 146304 in 3603 s (40.6/s); free 139.3G; 66.4'C (peak 67.5'C); throttled=0x0
+2026-11-02 15:26:14 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 190585/260118; total 278976/348509; this run 172384 in 4203 s (41.0/s); free 137.8G; 66.4'C (peak 67.5'C); throttled=0x0
+2026-11-02 15:36:14 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 220569/260118; total 308960/348509; this run 202368 in 4804 s (42.1/s); free 136.2G; 65.3'C (peak 68.1'C); throttled=0x0
+2026-11-02 15:46:15 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 254489/260118; total 342880/348509; this run 236288 in 5404 s (43.7/s); free 134.2G; 64.8'C (peak 68.6'C); throttled=0x0
+2026-11-02 15:47:13 PST z5 103/103 z6 330/330 z7 1163/1163 z8 4349/4349 z9 16757/16757 z10 65689/65689 z11 260118/260118; total 348509/348509; this run 241917 in 5463 s (44.3/s); free 134.1G; 63.1'C (peak 68.6'C); throttled=0x0
+2026-11-02 15:47:13 PST done: every wanted tile is in a part file
+2026-11-02 15:47:13 PST end: build exit 0

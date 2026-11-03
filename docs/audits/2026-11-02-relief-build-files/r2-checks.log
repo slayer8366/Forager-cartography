@@ -1,0 +1,10 @@
+count check of /mnt/storage/relief/parts (4 file(s))
+zoom  expected   present   missing  duplicated  unexpected  not-png
+z5         103       103         0           0           0        0
+z6         330       330         0           0           0        0
+z7        1163      1163         0           0           0        0
+z8        4349      4349         0           0           0        0
+z9       16757     16757         0           0           0        0
+z10      65689     65689         0           0           0        0
+z11     260118    260118         0           0           0        0
+count check: PASS

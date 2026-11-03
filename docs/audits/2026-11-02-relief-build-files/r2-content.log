@@ -1,0 +1,10 @@
+2026-11-02 16:17:00 PST content check start
+part-0.mbtiles: 87200 rows
+part-1.mbtiles: 87072 rows
+part-2.mbtiles: 86973 rows
+part-3.mbtiles: 87264 rows
+parts  (4 files): 348509 rows, 348509 distinct z/x/y, digest 6df46dd80aa88dcbc53cbec6d84ee0b997b66a167542cb0492367328e8b2f0d4
+merged (relief.mbtiles): 348509 rows, 348509 distinct z/x/y, digest 6df46dd80aa88dcbc53cbec6d84ee0b997b66a167542cb0492367328e8b2f0d4
+content check: PASS (366 s)
+content check exit 0
+2026-11-02 16:23:07 PST content check end

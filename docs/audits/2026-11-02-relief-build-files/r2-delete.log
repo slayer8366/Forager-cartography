@@ -1,0 +1,33 @@
+2026-11-02 16:26:12 PST before
+/dev/sda1 rw,noatime
+118946971648
+/mnt/storage/relief:
+total 24421396
+drwxr-xr-x 3 bwann83 bwann83        4096 Nov  2 16:12 .
+drwxr-xr-x 8 root    root           4096 Nov  2 12:33 ..
+-rw-r--r-- 1 bwann83 bwann83           0 Nov  2 13:15 build.lock
+-rw-r--r-- 1 bwann83 bwann83        5406 Nov  2 15:47 build.log
+-rw-r--r-- 1 bwann83 bwann83           6 Nov  2 14:16 build.pgid
+drwxr-xr-x 2 bwann83 bwann83        4096 Nov  2 15:47 parts
+-rw-r--r-- 1 bwann83 bwann83 25005854720 Nov  2 16:12 relief.mbtiles
+-rw-r--r-- 1 bwann83 bwann83     1628668 Nov  2 13:15 relief.vrt
+
+/mnt/storage/relief/parts:
+total 24419848
+drwxr-xr-x 2 bwann83 bwann83       4096 Nov  2 15:47 .
+drwxr-xr-x 3 bwann83 bwann83       4096 Nov  2 16:12 ..
+-rw-r--r-- 1 bwann83 bwann83 6221021184 Nov  2 15:47 part-0.mbtiles
+-rw-r--r-- 1 bwann83 bwann83 6184284160 Nov  2 15:47 part-1.mbtiles
+-rw-r--r-- 1 bwann83 bwann83 6273724416 Nov  2 15:47 part-2.mbtiles
+-rw-r--r-- 1 bwann83 bwann83 6326853632 Nov  2 15:47 part-3.mbtiles
+25005887488	/mnt/storage/relief/parts
+2026-11-02 16:26:12 PST after rm -r /mnt/storage/relief/parts
+143952891904
+total 24421392
+drwxr-xr-x 2 bwann83 bwann83        4096 Nov  2 16:26 .
+drwxr-xr-x 8 root    root           4096 Nov  2 12:33 ..
+-rw-r--r-- 1 bwann83 bwann83           0 Nov  2 13:15 build.lock
+-rw-r--r-- 1 bwann83 bwann83        5406 Nov  2 15:47 build.log
+-rw-r--r-- 1 bwann83 bwann83           6 Nov  2 14:16 build.pgid
+-rw-r--r-- 1 bwann83 bwann83 25005854720 Nov  2 16:12 relief.mbtiles
+-rw-r--r-- 1 bwann83 bwann83     1628668 Nov  2 13:15 relief.vrt

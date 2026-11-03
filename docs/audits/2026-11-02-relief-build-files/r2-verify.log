@@ -1,0 +1,35 @@
+2026-11-02 17:08:32 PST verify start
+pmtiles spec version: 3
+tile type: png
+bounds: (long: -180.000000, lat: 17.000000) (long: 180.000000, lat: 84.000000)
+min zoom: 5
+max zoom: 11
+center: (long: 0.000000, lat: 50.500000)
+center zoom: 5
+addressed tiles count: 348509
+tile entries count: 273752
+tile contents count: 265077
+clustered: true
+internal compression: gzip
+tile compression: none
+attribution Heights: USGS 3DEP; NRCan MRDEM
+encoding terrarium
+format png
+maxzoom 11
+minzoom 5
+name forager-relief
+type baselayer
+
+Hood z11 tiles wholly inside the trial area: 70; byte-identical 54, different 16, missing 0; 75 differing pixels in all, largest decoded difference 0.8867 m in 11/329/731
+Hood z11 tiles on the edge of the trial area: 38; byte-identical 0, different 38, missing 0; 1024770 differing pixels in all, largest decoded difference 1764.7734 m in 11/331/728
+Mount Hood: highest z11 pixel 3391.58 m in 11/331/733 (9 of 9 tiles around the summit found); expected about 3,390 m (the trial read 3,392)
+Denali: highest z11 pixel 6150.48 m in 11/164/558 (9 of 9 tiles around the summit found); expected near 6,190 m
+Mount Logan: highest z11 pixel 5909.63 m in 11/225/588 (9 of 9 tiles around the summit found); expected near 5,959 m
+Gulf of Maine sea: tile 11/639/750 min 0.000 m, max 0.000 m
+Aleutian tile east of 180 (Kiska, 177.6 E): 11/2034/675 present, 58053 bytes, highest pixel 1185.0 m
+Aleutian tile east of 180 (Semisopochnoi, 179.6 E): 11/2045/677 present, 65540 bytes, highest pixel 854.9 m
+relief.pmtiles: 24728704911 bytes, sha256 ec56bfb75d9f23b99e2eb621e405ddc1addf104a0f1360ad1d9178edddea8063
+relief.mbtiles: 25005854720 bytes
+now: 49.4'C, throttled=0x0
+verify exit 0
+2026-11-02 17:11:36 PST verify end

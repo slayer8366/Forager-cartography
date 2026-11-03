@@ -1,0 +1,39 @@
+2026-11-02 15:51:03 PST merge start
+count check of /mnt/storage/relief/parts (4 file(s))
+zoom  expected   present   missing  duplicated  unexpected  not-png
+z5         103       103         0           0           0        0
+z6         330       330         0           0           0        0
+z7        1163      1163         0           0           0        0
+z8        4349      4349         0           0           0        0
+z9       16757     16757         0           0           0        0
+z10      65689     65689         0           0           0        0
+z11     260118    260118         0           0           0        0
+count check: PASS
+2026-11-02 15:54:08 PST merge: parts 23.3G, free 134.1G
+2026-11-02 15:58:24 PST merged part-0.mbtiles
+2026-11-02 16:03:21 PST merged part-1.mbtiles
+2026-11-02 16:08:09 PST merged part-2.mbtiles
+2026-11-02 16:12:37 PST merged part-3.mbtiles
+2026-11-02 16:12:37 PST wrote /mnt/storage/relief/relief.mbtiles, 25005854720 bytes
+count check of /mnt/storage/relief/relief.mbtiles (1 file(s))
+zoom  expected   present   missing  duplicated  unexpected  not-png
+z5         103       103         0           0           0        0
+z6         330       330         0           0           0        0
+z7        1163      1163         0           0           0        0
+z8        4349      4349         0           0           0        0
+z9       16757     16757         0           0           0        0
+z10      65689     65689         0           0           0        0
+z11     260118    260118         0           0           0        0
+count check: PASS
+merge exit 0
+2026-11-02 16:16:01 PST merge end
+total 24421396
+drwxr-xr-x 3 bwann83 bwann83        4096 Nov  2 16:12 .
+drwxr-xr-x 8 root    root           4096 Nov  2 12:33 ..
+-rw-r--r-- 1 bwann83 bwann83           0 Nov  2 13:15 build.lock
+-rw-r--r-- 1 bwann83 bwann83        5406 Nov  2 15:47 build.log
+-rw-r--r-- 1 bwann83 bwann83           6 Nov  2 14:16 build.pgid
+drwxr-xr-x 2 bwann83 bwann83        4096 Nov  2 15:47 parts
+-rw-r--r-- 1 bwann83 bwann83 25005854720 Nov  2 16:12 relief.mbtiles
+-rw-r--r-- 1 bwann83 bwann83     1628668 Nov  2 13:15 relief.vrt
+118946971648

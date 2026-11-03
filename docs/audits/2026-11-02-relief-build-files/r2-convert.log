@@ -1,0 +1,34 @@
+2026-11-02 16:26:25 PST convert start
+2026/11/02 16:26:26 convert.go:158: Pass 1: Assembling TileID set
+2026/11/02 16:26:26 convert.go:189: Pass 2: writing tiles
+2026/11/02 16:49:18 convert.go:243: # of addressed tiles:  348509
+2026/11/02 16:49:18 convert.go:244: # of tile entries (after RLE):  273752
+2026/11/02 16:49:18 convert.go:245: # of tile contents:  265077
+2026/11/02 16:49:19 convert.go:261: Root dir bytes:  333
+2026/11/02 16:49:19 convert.go:262: Leaves dir bytes:  724109
+2026/11/02 16:49:19 convert.go:263: Num leaf dirs:  67
+2026/11/02 16:49:19 convert.go:264: Total dir bytes:  724442
+2026/11/02 16:49:19 convert.go:265: Average leaf dir bytes:  10807
+2026/11/02 16:49:19 convert.go:266: Average bytes per addressed tile: 2.08
+2026/11/02 17:07:20 convert.go:238: Finished in  40m54.923421202s
+convert exit 0
+2026-11-02 17:07:21 PST convert end
+/mnt/storage/relief:
+total 48570528
+drwxr-xr-x 3 bwann83 bwann83        4096 Nov  2 16:49 .
+drwxr-xr-x 8 root    root           4096 Nov  2 12:33 ..
+-rw-r--r-- 1 bwann83 bwann83           0 Nov  2 13:15 build.lock
+-rw-r--r-- 1 bwann83 bwann83        5406 Nov  2 15:47 build.log
+-rw-r--r-- 1 bwann83 bwann83           6 Nov  2 14:16 build.pgid
+-rw-r--r-- 1 bwann83 bwann83 25005854720 Nov  2 16:12 relief.mbtiles
+-rw-r--r-- 1 bwann83 bwann83 24728704911 Nov  2 17:07 relief.pmtiles
+-rw-r--r-- 1 bwann83 bwann83     1628668 Nov  2 13:15 relief.vrt
+drwxr-xr-x 2 bwann83 bwann83        4096 Nov  2 17:07 tmp
+
+/mnt/storage/relief/tmp:
+total 8
+drwxr-xr-x 2 bwann83 bwann83 4096 Nov  2 17:07 .
+drwxr-xr-x 3 bwann83 bwann83 4096 Nov  2 16:49 ..
+119224176640
+temp=47.7'C
+throttled=0x0

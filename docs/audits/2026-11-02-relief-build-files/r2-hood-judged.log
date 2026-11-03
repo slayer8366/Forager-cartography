@@ -1,0 +1,6 @@
+2026-11-02 16:25:57 PST Hood check, Aspen's rule of 16:3x (supersedes 1/256 m for seam pixels): a pixel over 1/256 m passes only within 2
+source samples (6 arc-seconds) of a whole-degree cell seam; every other inner pixel must be within 1/256 m. On relief.mbtiles.
+inner tiles 70: byte-identical 54, different 16, missing 0
+seam pixels: 59 over 1/256 m (pass by the seam rule), 1 within; largest 0.8867 m
+other pixels: 15 within 1/256 m, 0 over (must be 0); largest 0.0039 m
+Hood check by the seam rule: PASS

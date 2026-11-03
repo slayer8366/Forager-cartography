@@ -1,0 +1,10 @@
+control 16:3x PST: a two-cell VRT in the trial's order (make-relief.py: N45W123 then N45W122), each seam tile rendered with relief.render()
+make-relief.py CELLS: CELLS = ["/mnt/storage/elevation/hgt3/N45W123.hgt", "/mnt/storage/elevation/hgt3/N45W122.hgt"]
+VRT sources in order: ['N45W123.hgt', 'N45W122.hgt']
+inner tiles with a pixel over 1/256 m: ['11/329/729', '11/329/730', '11/329/731', '11/329/732', '11/329/735']
+  11/329/729: trial-order render vs reference: byte-identical
+  11/329/730: trial-order render vs reference: byte-identical
+  11/329/731: trial-order render vs reference: byte-identical
+  11/329/732: trial-order render vs reference: byte-identical
+  11/329/735: trial-order render vs reference: byte-identical
+control: 5 of 5 byte-identical -> PASS

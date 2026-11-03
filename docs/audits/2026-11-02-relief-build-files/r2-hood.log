@@ -1,0 +1,3 @@
+Hood z11 tiles wholly inside the trial area: 70; byte-identical 54, different 16, missing 0; 75 differing pixels in all, largest decoded difference 0.8867 m in 11/329/731
+Hood z11 tiles on the edge of the trial area: 38; byte-identical 0, different 38, missing 0; 1024770 differing pixels in all, largest decoded difference 1764.7734 m in 11/331/728
+Hood check (inner tiles within 0.00390625 m, none missing): FAIL: do not convert
