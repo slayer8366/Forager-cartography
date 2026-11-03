@@ -568,3 +568,44 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
   5. re-clones on the Pi.
   - Not before the Trail Map upload is done.
 - **This repo's own wording from here is neutral.** The dispatch file names here change in the rewrite.
+
+## Correction, 05:23 PST (11-03): times in tonight's notes; and the Trail Map's checks passed but the upload waited for Wi-Fi
+
+**The times.** This supersedes the times in the three notes above, which were estimated, not read. Times from the
+commit clock:
+- The words-to-use note: commit `2709bcf`, at the time git shows for it.
+- **The "inspiration, not the target" note** was committed at 03:27:33. The owner's word via Rowan came shortly
+  before. It was not "about 02:0x".
+- **The full clean-up note** was committed at 05:16:43. The owner's "Option 3, clean it all up" and "Also rewrite
+  history" came shortly before. It was not "about 02:15".
+- The clock read 05:18:15 at Aspen's next reading.
+
+**The overnight chain** (`chain.log`, observed):
+- **04:32:54:** the run left Planetiler for `routing-input` and was stopped. The basemap is kept:
+  37,141,650,068 B at `failed-usca/latest/out/forager-usca.pmtiles`.
+- **04:32:55: `check_map.py`, every check PASS:**
+  - zooms 0-15, bounds equal to live, all 9 layers, the 6 trail keys;
+  - size 37.1 GB, and addressed tiles 651,232,395, equal to live;
+  - `versions.txt` names jar `5f9a8bcd`, and Planetiler exited 0;
+  - all 9 coverage points have roads;
+  - **the zoom fix: new 6/10/23 has 207 water lines (kind river), and live has 0.**
+- **04:32:56: `upload_us.py` stopped**, "R2 over IPv6: False (no IPv6 route to 2606:4700:2ff9::1)". Nothing was
+  uploaded, and the live `us.pmtiles` is untouched.
+
+**Why:**
+- The Wi-Fi had dropped at **20:44:04 on 11-02**: `CTRL-EVENT-ASSOC-REJECT status_code=16`, then NetworkManager
+  "no-secrets", and `wlan0` was left inactive.
+- Since then the Pi had run on the Bluetooth tether to "Brandon Lee's Tab S8+" (`bnep0`), which carried tonight's
+  pushes and the Worker deploy checks.
+- The uploader's Wi-Fi-only rule kept 37 GB off the tether.
+
+**Rejoined:**
+- At 05:19:12, "Virusdownloader" was visible: channel 44, signal 65, WPA2.
+- Aspen ran `sudo nmcli --wait 45 con up Virusdownloader` at 05:19:20, and it was active at 05:19:53. IPv6 default
+  route via `wlan0`; R2 answered 400 over IPv6.
+- IPv4 on `wlan0` hadn't come back at that reading.
+
+**The upload restarted at 05:23:22:** `resume-upload.sh` (`upload_us.py`, then the Worker tile compare), pgid 154695,
+"R2 over IPv6: True".
+- Expected about 3.4 h at about 3 MB/s, so about 09:00 (inferred).
+- Then the cache version goes to "3", with Sorrel's should-fix tests.
