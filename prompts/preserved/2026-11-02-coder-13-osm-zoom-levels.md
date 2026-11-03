@@ -527,3 +527,22 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
   - **"OSM data"** stays for the source data.
 - **This dispatch's title and earlier wording** ("our map", "OSM's zooms", "street map") stand as written. Read
   them in these terms.
+
+## Note, 03:27 PST (11-03): the OpenStreetMap style is an inspiration, never published (owner, via Rowan)
+
+- **The owner, to Rowan, verbatim** (RECORD -1985, `f244beed9`): "OSM refers to the style, but we don't want to
+  publish that anywhere since it's an inspiration and not the target to copy directly."
+- **Read by Aspen at about 02:0x:**
+  - **Both repos are public** (`gh repo view … isPrivate` = false for slayer8366/Forager and slayer8366/Forager-cartography).
+    - So today's branch names (`osm-zooms-*`, `osm-zoom-levels`), patch `0008-osm-first-zooms`, Juniper's comparison,
+      these dispatches and the records are publicly visible.
+  - **The served v5 and offline-v2 styles (not yet wired)** name it in their `metadata`:
+    - v5: `overrides/forager-osm-zooms.mjs`;
+    - offline-v2: "(OSM's first zooms)".
+    - Both also carry the "© OpenStreetMap" data credit, which ODbL requires and which stays.
+  - **The Trail Map archive is clean:** patch 0008 changes no archive metadata, and the live `/us.json` holds only the
+    upstream description and the data credit.
+    - So tonight's upload publishes nothing new on this point.
+- **Waiting for the owner:** whether "publish" covers the public repos (new names only, or also renaming and
+  rewriting what's already there), or only what users see (the app and the served styles and TileJSON).
+- **Done in either case:** the served styles get neutral metadata before they ship.
