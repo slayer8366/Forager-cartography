@@ -157,3 +157,24 @@ At each hold:
   - fonts and sprites.
 - **Next:** after the Trail Map upload, a version-raise PR (`CACHE_VERSION = "3"`) through pre-main and a `worker/*`
   release. It also carries Sorrel's should-fix tests.
+
+## Update, 10:20 PST (11-03): the version raise, #468 merged; release #469 open
+
+- **Willow opened #468** (`worker-cache-version-3` into pre-main, `06b32fdf3`) at 09:05.
+  - Its report didn't arrive: Willow's session shows `computer_unreachable` from 10:16.
+- **Aspen read the diff:**
+  - `CACHE_VERSION` "2" → "3";
+  - the not-found test also asserts `Access-Control-Allow-Origin` and `Vary: Origin`;
+  - two font checks get failure messages.
+  - CI 7 of 7 passed.
+- **Aspen's checks, in `/tmp/aspen-468`, since removed:**
+  - 75 of 75;
+  - the revert check (ACAO dropped from the no-store 404) gave 74 of 75, with "the archive-not-found 404 must
+    carry Access-Control-Allow-Origin";
+  - restored, 75 of 75.
+- **Aspen merged #468 into pre-main at 10:19:14** (`f9ca5824c`).
+- **The release:**
+  - Willow being offline, Aspen made it: `worker/cache-version-3` from main `532f45dcf`, with the folder checked
+    out from `f9ca5824c`, commit `3b942c9f7`;
+  - `check-release.sh`: "worker release ok: only server/pmtiles-worker changes, and it equals origin/pre-main's";
+  - **PR #469**, waiting for CI. Aspen merges it on green, and that deploys.
