@@ -100,3 +100,16 @@ At each hold:
 - give the commits and PR links;
 - say what you didn't check;
 - include a Conventions line naming the neighbouring tests and code you followed.
+
+## Update, 01:15 PST (11-03): Hold A in; the review goes to a Sorrel helper
+
+- **Willow's Hold A** (about 21:00, 11-02):
+  - PR #466, `worker-cache-version` into pre-main, commit `50a43c4e1`, +98/-5 across three files;
+  - tests 75 of 75 (71 before); revert checks fail tests 72-75 as they should; CI 7 of 7 green.
+  - **Aspen read the diff:** it matches this dispatch.
+- **Sorrel's session** (`session_01Hqu21obr8SqgUyvBhiTw6o`) never got the review request. Its environment was
+  deleted at 21:00:48 PST (get_session: `environment_deleted`, not recoverable).
+- **So Aspen started a reviewer helper briefed as Sorrel,** from this session, in the background.
+  - It's read-only: no merges, pushes or GitHub comments.
+  - It runs the tests and revert checks in `/tmp/sorrel-466`.
+  - Its report comes back to Aspen.
