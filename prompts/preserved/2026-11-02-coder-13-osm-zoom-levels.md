@@ -371,3 +371,25 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
   4. **For the owner:** the renders, rail drawn at 0.45 px, the half-zoom residuals, the superseded rulings and
      the B2 list.
      - The style merge and the wiring of v5 and offline-v2 wait for the owner's look.
+
+## Update, 18:39 PST: (a) failed on tile size; (b) passes; re-render, then install
+
+- **Willow's results** (all observed by Willow):
+  - **The 5 largest live tiles per zoom** were read from `out-usca/current`. The biggest is 8/70/97, at 352,503 B.
+  - **The dense extract** covers 8/70/97 and its 8 neighbours (-82.97,37.72 to -78.75,40.98).
+    - The control reproduces the live 8/70/97 exactly.
+  - **(a), the quarter pixel at every zoom: FAIL.**
+    - 4 tiles were over 500 KB gzipped: 7/35/48 at 1 MB, and 8/70/97, 8/71/97 and 8/69/97.
+    - 8/69/96 was at 497 KB.
+  - **(b), upstream's 2 px floor and bbox filter below z11, the quarter pixel from z11: PASS.**
+    - It's Forager `osm-zooms-map-build` `e904af99a`; 590 tests pass. The jar is
+      `5f9a8bcdf60a35f6d8332f81919ba0c131a005762855116878fe7f1dd3c3c754`.
+    - No tile is over 500 KB. The largest is 8/70/97 at 387 KB, against the control's 352.
+    - Landuse equals the control at z0-10. The archive is +5.1%.
+- **What (b) means for the owner:** below camera zoom 11, small land fills come in 1-2 zooms after OSM's, as
+  they do in v4 today. From 11 they match.
+- **The planner's word:**
+  1. Re-render all 12 Molalla views with the (b) jar first, keeping the (a) set labelled.
+  2. Then the install: the rollback copy first, then `e904af99a` and jar `5f9a8bcd…c754`. This replaces
+     `96e4c0305` and `3b90772f` in the Hold B update.
+  3. Then Hold C.
