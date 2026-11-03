@@ -466,3 +466,16 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
   - the chain: `kill -TERM -- -118004` (bash);
   - the build: `sudo systemctl stop forager-build-usca-zoomfix`;
   - the upload: its pid, logged in `chain.log`.
+
+## Update, 20:21 PST: the owner's word on skipping
+
+- **The owner, verbatim:** "If routing still works by skipping it we should do it since the downloaded maps are so
+  close together", then "I fact anything we can skip for this build, we should".
+- **Routing still works** (read): the live route squares come from run `usca-20261101T174337Z`, which was built
+  from the same 10-30 extracts (its log has `routing-filter-us-261030`). The new basemap is built from the same files.
+- **What's left, and why none of it is skipped:**
+  - Planetiler: this is the zoom fix itself.
+  - `check_map.py`: 2-3 minutes, and the guard on the live map.
+  - The upload: a whole-file replacement. 2 parts at a time is the most the Wi-Fi took on 11-02.
+- **Already skipped:** routing, names, BRouter, the build's validate (replaced by `check_map.py`) and publish.
+- **Already done:** the fetch (local) and the merge.
