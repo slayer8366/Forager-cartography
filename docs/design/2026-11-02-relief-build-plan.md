@@ -486,3 +486,26 @@ This supersedes "Nothing was started" in the 14:01 update.
 - **After DONE:**
   - Check the Worker with fresh URLs (a query string): `/relief.json` and a Hood z11 tile, for 200 image/png.
   - Keep `relief.mbtiles` until then.
+
+## Update, 18:43 PST: the upload stalled at 4 parts at a time; restarted at 2 on the owner's word
+
+- **The stall** (observed in `upload.log`):
+  - 130 of 369 parts by 18:27, and none after.
+  - From 18:30, every part in flight (133, 135, 136, 137) failed again and again: closed connections,
+    TLS errors, read timeouts, and failed AAAA lookups.
+  - At 18:39, one IPv6 connection showed about 43,000 retransmissions, and router pings were 56-135 ms.
+  - Inferred: four parallel 64 MiB uploads flooded the Wi-Fi link, so DNS and connections failed.
+- **The owner's choice,** through the question tool at about 18:40: "Restart, 2 at a time (Recommended)".
+- **The restart:**
+  - Aspen stopped the uploader at 18:40:56 with bash's `kill -TERM -- -36152`.
+  - `THREADS` now defaults to 2.
+  - **A bug, fixed:** the first restart (18:41:30) stopped itself. R2's ListMultipartUploads gives the upload id
+    in another encoding than CreateMultipartUpload returned, so "other upload" matched our own.
+    - The check now requires no unfinished upload when there's no id of ours, and exactly one when resuming.
+    - `list_parts` with our saved id works (137 parts).
+  - **Restarted at 18:42:26,** pgid 86388:
+    - "parts on R2 137, all match local: True";
+    - 232 parts (15,534,790,543 B) to go, 2 at a time.
+- **At 18:43:30:** sending about 2.3 MB/s; router pings 23-29 ms.
+- **Projection** (inferred): about 1.9 h, so around 20:35. Aspen's check is at 20:40.
+- **The stop for this run** is `kill -TERM -- -86388`.
