@@ -466,3 +466,23 @@ This supersedes "Nothing was started" in the 14:01 update.
   - The uploader is `resume.py` adapted, into `r2:forager-maps/relief.pmtiles`.
   - The owner is offered forcing IPv6.
   - After the upload, the Worker is checked with fresh URLs, because of its day-long 404 cache.
+
+## Update, 17:16 PST: R3, the upload, started on the owner's go (IPv6)
+
+- **The owner,** through the question tool at about 17:15: "Yes, upload now (Recommended)" and "Force IPv6
+  (Recommended)".
+- **The uploader:** `/mnt/archive/aspen-upload-relief/upload_relief.py`, based on 11-02's `resume.py`. It runs:
+  1. one pass over `relief.pmtiles`: its size and sha256 must equal Hold 2's (`ec56bfb7…8063`);
+  2. a check that R2 has no `relief.pmtiles` and no other unfinished upload of it;
+  3. a multipart upload of 64 MiB parts (369), octet-stream, with `md5chksum` metadata;
+  4. the parts, 4 at a time, with Content-MD5 and the ETag checked, IPv6 only (`getaddrinfo` forced to
+     AF_INET6), and only while R2 routes via `wlan0`;
+  5. CompleteMultipartUpload;
+  6. the read-back: size, multipart ETag from the local parts, md5 metadata, first and last MiB.
+- **Started at 17:16:07,** pid and pgid 36152, under `setsid nohup`. It logs to
+  `/mnt/archive/aspen-upload-relief/upload.log`.
+  - It found R2 over IPv6: `2606:4700:113::1`, `2606:4700:2ff9::1`.
+  - Stop it with `kill -TERM -- -36152` (bash). The parts stay on R2, and a rerun resumes.
+- **After DONE:**
+  - Check the Worker with fresh URLs (a query string): `/relief.json` and a Hood z11 tile, for 200 image/png.
+  - Keep `relief.mbtiles` until then.
