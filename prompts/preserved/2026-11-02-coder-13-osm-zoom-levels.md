@@ -684,3 +684,13 @@ commit clock:
 - **Data:** Forager PR #473 takes the installed map-build (patch 0008, `e904af99a`) into pi-build as a fast-forward.
   Rowan has had a line; Aspen merges on green CI.
 - **Order, agreed with Rowan:** these merges first, then the real clean-up run on the finished state.
+
+## Note, 14:42 PST (11-03): the clean-up waits until after the release (owner)
+
+- **The owner, via Rowan** (RECORD -2016): "Hold until after release".
+- **Kept ready** on the Pi's SD card:
+  - the term list;
+  - the repeat script with the id translation;
+  - the verified bundles of both repos.
+- **The real run starts** on fresh mirrors from the post-release tips, when Rowan says the release is out.
+- **The style PR and its Worker release** go ahead as normal.
