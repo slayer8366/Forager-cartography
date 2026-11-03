@@ -190,3 +190,15 @@ At each hold:
   - Aspen gave the times of the three merges, and apologised for not sending Rowan a line before each.
 - **#469 is held** until Rowan says the owner has confirmed it.
 - **From here,** Aspen sends Rowan a line before any merge into Forager's pre-main or main.
+
+## Update, 10:53 PST (11-03): #469 merged and deployed; CACHE_VERSION 3 is live
+
+- **The owner confirmed it to Rowan:** "I approved Aspen's merges" (RECORD -2007). Rowan cleared #469.
+- **CI on #469:** 7 of 7 passed, including the release guard and the folder guard (10:44:01).
+- **Aspen merged #469 into main at 10:44:27:** merge commit `1b041a29d26c140f1855a584028d85c86c55edc1`.
+- **Live by 10:52:51** (observed):
+  - `/us/6/10/23.mvt` and `/us/10/163/367.mvt`, cached at this location under version 2 since 09:02, each came back
+    fresh first (no `cf-cache-status`), then HIT with age 0.
+  - The exact deploy minute wasn't caught.
+- **Rowan has been told** the merge commit and the deploy time.
+- **Still possible:** phones' own copies of old tiles, for up to a day after they fetched them (inferred).
