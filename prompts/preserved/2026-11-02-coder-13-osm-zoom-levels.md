@@ -393,3 +393,39 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
   2. Then the install: the rollback copy first, then `e904af99a` and jar `5f9a8bcd…c754`. This replaces
      `96e4c0305` and `3b90772f` in the Hold B update.
   3. Then Hold C.
+
+## Update, 19:08 PST: installed by Aspen on the owner's word; the zoom-fix map build is running
+
+- **Willow's session refused the install.** Its permission check called it "Modify Shared Resources". Willow
+  asked Aspen to run it instead.
+  - Aspen didn't run it on that request, and asked the owner (question tool, about 19:00).
+  - The owner: "Yes, Aspen installs (Recommended)", which covered the install, then starting the rebuild from
+    the 10-30 data.
+- **Before the install** (observed by Willow, checked by Aspen):
+  - the rollback copy `/mnt/storage/rollback/basemap-jar-before-coder13/` (jar `25e5b8db`, map-build
+    `53a7283` as a tarball, `SHA256SUMS`): `sha256sum -c` OK;
+  - the (b) renders, 12 views, in `willow-osm-zooms` `650b83e`, under `renders/0008b-as-installed/`;
+  - the peak-label fix, in style `d7c57375c`.
+- **The install, 19:02:55-19:02:57 (observed):**
+  - from `~/scratch/coder13/forager-mapbuild`, which is clean at `e904af99a`, with `install-map-build.sh`;
+  - the jar `basemap.prev-20261102` was kept, and the tested `0008b-5f9a8bcd.jar` was installed.
+  - **Checked after:**
+    - `map-build/COMMIT` is `e904af99ae28…`, and `pins.env` lists 0008;
+    - the jar's sha256 is `5f9a8bcdf60a…c754`;
+    - `map-build.prev` is `53a7283`, and the previous jar is `25e5b8db`.
+- **The build:**
+  - `sudo systemd-run --unit=forager-build-usca-zoomfix --uid=forager-build` with HOME and the working folder
+    `/srv/forager-build`, Nice 10 and CPUWeight 20, as the weekly unit has;
+  - the command is `build-usca.sh --local 261030 --force`.
+  - **Started at 19:03:17** as run `usca-20261103T030317Z`:
+    - the 10-30 extracts, with 0 to download;
+    - the NVMe check: 161.0 GB free, and 157.1 GB needed, which includes the 10% margin.
+  - **The disk guard** `forager-build-zoomfix-diskguard` stops the build if `/` falls under 4 GB free, and
+    ends with the build.
+  - The build's stop is `sudo systemctl stop forager-build-usca-zoomfix`. Previous outputs are left untouched
+    on a stop.
+- **Expected** (Willow, inferred): about 14.5-15 h, so done about 10:00 on 11-03, at 37-39 GB.
+- **After the build:**
+  - the build's own checks, then Aspen's against the live map;
+  - the upload to R2 needs the owner's go;
+  - the style merge, and the wiring of v5 and offline-v2, need the owner's look at the renders.
