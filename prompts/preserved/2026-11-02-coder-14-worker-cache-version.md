@@ -113,3 +113,27 @@ At each hold:
   - It's read-only: no merges, pushes or GitHub comments.
   - It runs the tests and revert checks in `/tmp/sorrel-466`.
   - Its report comes back to Aspen.
+
+## Update, 01:27 PST (11-03): the review passed; #466 merged into pre-main; the release goes next
+
+- **The Sorrel helper's review** (01:15-01:25 PST): **PASS with one should-fix, non-blocking.** No must-fix.
+  - **Observed by it:**
+    - The same 30 requests to the pre-main and PR builds gave identical status, headers and bodies, except
+      `no-store` on the three "Archive not found" answers, which keep ACAO and Vary.
+    - Every tile and asset key gains `?cv=`; the build-URL and routing keys are unchanged.
+    - 75 of 75 tests (71 before), and `tsc` is clean.
+    - The revert checks R1-R7 each fail the matching test.
+    - `CACHE_VERSION` is read as a [vars] string. A wrangler dry run lists it.
+  - **The should-fix:**
+    - the 404 test should also assert ACAO and Vary;
+    - the font checks at `worker.test.mjs:772` and `:793` need failure messages.
+    - These go into the version-raise PR after the Trail Map upload.
+  - **Notes:**
+    - Raise the version only in `wrangler.toml`. A deploy overwrites dashboard vars, since `keep_vars` isn't set.
+    - Phones keep their own copies, for a day for tiles and 7 days for fonts and sprites (inferred).
+    - Every tile misses once per location after a deploy or a raise.
+    - **The post-deploy check:** `/relief/10/164/368.png` should answer 200. It only tells the two apart before
+      about 20:13 PST 11-03.
+- **Aspen merged #466 into pre-main at 01:27:27:** merge commit `3b9c0b70b`. The owner's go covered it.
+- **Next:** Willow's release PR `worker/cache-version` to main (Hold B). Aspen merges it, which deploys. Then the
+  post-deploy check.
