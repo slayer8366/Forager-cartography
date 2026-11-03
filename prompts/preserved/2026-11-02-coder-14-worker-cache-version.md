@@ -137,3 +137,23 @@ At each hold:
 - **Aspen merged #466 into pre-main at 01:27:27:** merge commit `3b9c0b70b`. The owner's go covered it.
 - **Next:** Willow's release PR `worker/cache-version` to main (Hold B). Aspen merges it, which deploys. Then the
   post-deploy check.
+
+## Update, 01:48 PST (11-03): released and deployed; the post-deploy checks pass
+
+- **Willow's Hold B:**
+  - PR #467, `worker/cache-version` to main, commit `6dd668512`. It carries exactly #466's three files.
+  - `check-release.sh` passed in both modes, and CI 7 of 7 was green, with the release and folder guards.
+- **Aspen merged #467 into main at 01:46:55 PST** (merge commit `532f45dcf`).
+  - Before the merge, `/relief/10/164/368.png` answered 404 `cf-cache-status: HIT`, age 47,791 (01:46:38).
+- **Deployed between 01:47:04 and 01:47:26** (observed): that tile went from 404 HIT to 200.
+- **The post-deploy checks, 01:47:39** (observed, plain URLs with no query string):
+  - **The five relief tiles that were cached 404s at 20:25** (9/82/183, 10/163/368, 10/164/368, 11/327/734,
+    11/327/735) now answer 200 image/png.
+  - **A second request is a `cf-cache-status: HIT`,** so caching under `cv=2` works.
+  - **A missing archive** (`/zz-not-an-archive/5/1/1.png`) answers 404 `no-store`, twice, without a HIT.
+  - **`/us.json`, `/us/6/10/23.mvt`, `/style/street-v4.json` and `/relief.json`** answer 200, as before.
+- **Not checked:**
+  - phones' own caches, which may keep blank relief squares for up to a day (inferred);
+  - fonts and sprites.
+- **Next:** after the Trail Map upload, a version-raise PR (`CACHE_VERSION = "3"`) through pre-main and a `worker/*`
+  release. It also carries Sorrel's should-fix tests.
