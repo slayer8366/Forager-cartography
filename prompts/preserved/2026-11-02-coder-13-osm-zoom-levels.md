@@ -609,3 +609,28 @@ commit clock:
 "R2 over IPv6: True".
 - Expected about 3.4 h at about 3 MB/s, so about 09:00 (inferred).
 - Then the cache version goes to "3", with Sorrel's should-fix tests.
+
+## Update, 09:02 PST (11-03): the zoom-fix Trail Map is live on R2, read back; the Worker serves it
+
+- **The upload** (`chain.log`, observed):
+  - local size 37,141,650,068, 554 parts, sha256 `8e3f51de64dc69eeb1fcd12c778a018f2accacba5386e890782471d832e44f47`;
+  - the live `us.pmtiles` before: 35,256,335,758 B, ETag `b8adb3d8bc7f8ae187c789dcfb2143d3-526`, last modified 2026-11-02 18:29:35 UTC;
+  - 05:27:59-06:51:12, 554 of 554 parts, about 7.4 MB/s, 0 failed attempts.
+  - **The read-back, 06:51:14-15:**
+    - R2 size equals the local size;
+    - the R2 ETag `1f7de3da54ff12bc925b98981770ee51-554` equals the one from the local parts;
+    - the md5 metadata matches, and the first and last MiB are equal.
+  - DONE.
+- **The chain's Worker check** said "HTTP 200; identical: no". That's a flaw in the check, not the upload: the
+  Worker sends tiles decompressed, and the archive stores them gzipped.
+- **Aspen's check, 09:01-09:02:** for `/us/6/10/23.mvt`, fresh and plain URL alike, the Worker answered 200, 91,718 B,
+  uncompressed protobuf.
+  - Its water layer has **211 features, 207 of them river lines**. That's the same as the new local tile (gzipped,
+    63,956 B). The old local tile has 4 water features and 0 lines.
+  - `/us/10/163/367.mvt` (plain) has 72 water features and 69 lines.
+  - Neither was a cache HIT at that Cloudflare location.
+- **Next:**
+  - the `CACHE_VERSION` "3" raise (coder-14, with Sorrel's should-fix tests), sent to Willow at 09:0x, for tiles
+    cached at other locations between 01:47 and 06:51;
+  - the style (v5, or v4 in place, with neutral metadata) waits for the owner's look at the renders.
+- **Kept for rollback:** the 11-01 output, on USB with a symlink.
