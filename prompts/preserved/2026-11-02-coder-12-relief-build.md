@@ -541,3 +541,37 @@ This supersedes "Nothing was started" in the 14:01 update.
   - **Not B** (a re-render with the trial's order, about 2.5 h). Neither cell's edge row is truer, so B would
     only change which equal sample wins at the seams.
   - The owner sees this before the upload and can choose B.
+
+## Update, 17:13 PST: Hold 2, R2 complete; R3 waits for the owner's go
+
+- **Willow's Hold 2** (logs `willow-relief-build` `d12d002`, `r2-*.log`; observed by Willow):
+  - **The control:** the trial-order two-cell VRT renders all 5 seam tiles byte-identical to the reference.
+  - **The seam rule:** 59 pixels over 1/256 m, all within 2 samples of a seam; 15 others within 1/256 m, and
+    0 over. PASS.
+  - **Parts removed** at 16:26:12 (`rm -r parts` only). Free went from 118.9 to 144.0 GB.
+  - **The convert:** 16:26-17:07, exit 0. 273,752 tile entries and 265,077 distinct contents.
+  - **The heights** (highest z11 pixel, from `relief.pmtiles`):
+
+    | Place | Height | Tile | Note |
+    |---|---|---|---|
+    | Mount Hood | 3,391.58 m | 11/331/733 | |
+    | Denali | 6,150.48 m | 11/164/558 | the 3″ cell peaks at 6,155 m |
+    | Mount Logan | 5,909.63 m | 11/225/588 | the 3″ cell peaks at 5,910 m |
+    | Gulf of Maine | 0 m | 11/639/750 | |
+    | Kiska | 1,185 m | 11/2034/675 | east of 180°, present |
+    | Semisopochnoi | 854.9 m | 11/2045/677 | east of 180°, present |
+
+  - **The sha256** is `ec56bfb75d9f23b99e2eb621e405ddc1addf104a0f1360ad1d9178edddea8063`.
+  - At the end: 49.4 °C, `throttled=0x0`.
+- **Aspen's own reading at 17:12:50:**
+  - `relief.pmtiles` is 24,728,704,911 bytes.
+  - `pmtiles show`: png, z5-11, bounds -180,17 to 180,84, 348,509 addressed, type baselayer, attribution
+    "Heights: USGS 3DEP; NRCan MRDEM", encoding terrarium.
+  - Hood's 11/331/733 from the pmtiles is byte-identical to the trial's tile, and decodes to a 3,391.58 m maximum.
+  - 112 GB free.
+  - Aspen didn't recompute the sha256.
+- **Kept:** `relief.mbtiles` (25.0 GB), until the upload has been read back.
+- **Next: R3, the upload**, which is Aspen's and needs the owner's go.
+  - The uploader is `resume.py` adapted, into `r2:forager-maps/relief.pmtiles`.
+  - The owner is offered forcing IPv6.
+  - After the upload, the Worker is checked with fresh URLs, because of its day-long 404 cache.
