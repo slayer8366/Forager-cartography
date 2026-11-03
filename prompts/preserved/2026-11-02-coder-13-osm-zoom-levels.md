@@ -429,3 +429,40 @@ This supersedes "match the zooms … in offline-style.json" in the Juniper updat
   - the build's own checks, then Aspen's against the live map;
   - the upload to R2 needs the owner's go;
   - the style merge, and the wiring of v5 and offline-v2, need the owner's look at the renders.
+
+## Update, 20:20 PST: skip the routing rebuild; upload when the checks pass (owner)
+
+- **The owner,** through the question tool at about 20:15:
+  - "Skip routing (Recommended)";
+  - "Upload when checks pass (Recommended)".
+- **Why skipping is safe:**
+  - The zoom fix changes only the basemap. The routing, names and BRouter stages would rebuild exactly what's
+    live, from the same 10-30 extracts.
+  - In the 11-01 run those stages took 4 h 47 min after Planetiler's 9 h 02 min (read from its log).
+- **The chain:** `/mnt/archive/aspen-upload-us-zoomfix/chain.sh`, started 20:20:15, pgid 118004, as bwann83 under
+  `setsid nohup`. It logs to `chain.log`. In order:
+  1. **Waits for run `usca-20261103T030317Z` to leave the planetiler stage.**
+     - It requires "planetiler … exit 0" in the run log.
+     - At `routing-input` it runs `sudo systemctl stop forager-build-usca-zoomfix`.
+     - A stopped run moves its `out/`, the basemap, to `failed-usca/latest/` (`build-usca.sh:139-151`).
+  2. **Runs `check_map.py` on the kept basemap:**
+     - the build's own archive checks (zooms 0-15, bounds, 9 layers, the six trail keys);
+     - the coverage points (a z15 tile with roads at each);
+     - size 33-45 GB, and addressed tiles at least the live count;
+     - `versions.txt` names jar `5f9a8bcd`, and Planetiler exited 0;
+     - **the zoom fix itself:** Molalla's z6 tile 6/10/23 has water lines in the new map and none in the live one.
+     - **The control run, 20:1x,** with the live archive standing in as the new: every check passed except the
+       two fix checks (the jar and the z6 rivers), which failed as they should.
+  3. **Only if every check passes, `upload_us.py`:**
+     - from 11-02's uploader, 2 parts at a time, IPv6 only;
+     - it logs the live object first, then replaces `r2:forager-maps/us.pmtiles`;
+     - the read-back: size, ETag from the local parts, md5 metadata, first and last MiB.
+  4. **The Worker:** `/us/6/10/23.mvt` compared with the new tile.
+- **Expected** (inferred): Planetiler ends about 05:00, and the upload of about 37-39 GB takes about 3.5 h, so it's
+  live about 08:30-09:00.
+- **Routing on R2 is unchanged.** The weekly run on 11-08 does a full build with 0008.
+- **The local 11-01 output stays in `out-usca/current`,** since publish doesn't run. It's the local rollback copy.
+- **Stops:**
+  - the chain: `kill -TERM -- -118004` (bash);
+  - the build: `sudo systemctl stop forager-build-usca-zoomfix`;
+  - the upload: its pid, logged in `chain.log`.
