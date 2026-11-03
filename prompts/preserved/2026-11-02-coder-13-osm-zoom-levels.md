@@ -634,3 +634,10 @@ commit clock:
     cached at other locations between 01:47 and 06:51;
   - the style (v5, or v4 in place, with neutral metadata) waits for the owner's look at the renders.
 - **Kept for rollback:** the 11-01 output, on USB with a symlink.
+
+## Note, 11:00 PST (11-03): figures for the clean-up's term list sent to Rowan
+
+- **Rowan's 16 items** (Q01-Q11 and F01-F06; Q10 needs none) were read from the reference stylesheet's source on the Pi
+  by a read-only helper. Aspen spot-checked them, and sent them to Rowan by message, for Juniper's working list.
+- **The figures and their sources stay out of the repos** (the owner's ruling, RECORD -1997, via Rowan).
+- **The helper's only writes:** a scratch clone and a compute script in `/mnt/archive/history-rewrite-20261103/figures/`.
