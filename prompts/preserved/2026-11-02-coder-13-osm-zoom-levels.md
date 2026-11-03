@@ -663,3 +663,24 @@ commit clock:
   - 350 PR pages keep the old text.
 - **The run used tips from before Rowan's three merges.** A repeat script re-runs it on fresh mirrors.
 - **Cartography's draft list** (Forager's 249 lines plus 51 regex additions) waits for Rowan's revised list.
+
+## Update, 14:22 PST (11-03): the owner approved the zoom; v4 is updated in place; the merges go before the rewrite
+
+- **The owner, after looking at the renders:** "I approve the zoom. Go ahead and merge when ready".
+  - Then, through the question tool: "Update v4 in place". The other option was a new version shipped with the
+    next app update.
+- **Style** (a helper briefed as Willow, since Willow is offline; dispatch in its brief):
+  - Regenerate street-v4 (today's app) and trail-v4 (pre-main's app) with the approved first-zoom layers, from the
+    one generator, and offline.json in place too.
+  - v1-v3 stay byte for byte. The metadata is neutral, and the data credit stays.
+  - Worker CACHE_VERSION goes 3 → 4.
+  - **Rowan's five conditions:**
+    1. update the frozen-v4 sha checks in the same PR;
+    2. the two v4 files differ only in `name`;
+    3. the PR states what an old v4 download shows;
+    4. full CI green, with the run id;
+    5. Rowan's #472 goes first.
+  - Then a pre-main PR, Aspen's merge, and a folder-only release to main.
+- **Data:** Forager PR #473 takes the installed map-build (patch 0008, `e904af99a`) into pi-build as a fast-forward.
+  Rowan has had a line; Aspen merges on green CI.
+- **Order, agreed with Rowan:** these merges first, then the real clean-up run on the finished state.
