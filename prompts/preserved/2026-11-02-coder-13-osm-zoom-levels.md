@@ -778,3 +778,6 @@ commit clock:
   confirm the go directly. Then the line to Rowan, Rowan's reply, the merge, and the deploy check.
 - **From Aspen's helper's report:** #474's run ran PhotoViewerDialogTest 11 of 11 with 0 failures. pre-main
   `808187098`'s push run failed one case, on identical app code. Probably intermittent (inferred). Sent to Rowan.
+- **The owner to Aspen, about 20:30, through the question tool:** "Yes, merge when green". Rowan had it from the owner
+  as RECORD -2035. Next: CI green, then the line to Rowan and Rowan's reply, then the merge and the after-deploy check
+  against the saved copies.
