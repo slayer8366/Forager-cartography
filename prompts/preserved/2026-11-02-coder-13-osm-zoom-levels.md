@@ -731,3 +731,23 @@ commit clock:
   source line, today's value). That fix is needed before any promotion.
 - **Next:** pre-main green, then #474 updated and green, then Aspen's line to Rowan, then the merge, then a
   folder-only Worker release to main (after #472, which is merged).
+
+## Update, 20:16 PST (11-03): #474 merged into pre-main before Rowan's hold reached Aspen; the Worker release is held
+
+- **#474's CI went green:** run 41769709230, all 8 jobs, on head `d2508b927`. That head is `821fa67d6` plus a merge of
+  pre-main `808187098`, made at 19:50 PST, which touches nothing in map-style/, server/pmtiles-worker/ or .github/.
+  - RouteCardOnNavigationCardFont20Test passed because of the clock, not a fix (inferred from Rowan's RECORD -2018). The
+    run was at 03:52-04:11 UTC, outside the sundown window. Its fix is #476, still open.
+- **Rowan's line, then the merge:** Aspen sent Rowan the pre-merge line at about 20:13 and merged at **20:14:01**
+  (`22bf6292a`, `--match-head-commit d2508b927`).
+- **Rowan's hold arrived after the merge,** at about 20:15: "please hold #474. Don't merge yet". Rowan's condition
+  was that pre-main itself is green. It isn't: pre-main's push run 41766149924 on `808187098` failed "Build, test,
+  publish APK" (PhotoViewerDialogTest, under investigation per Rowan).
+- **Aspen's slip:** the 15:40 plan above says "pre-main green, then #474". Aspen didn't check pre-main's own push run,
+  and took #474's green as enough. Aspen told Rowan the merge commit straight away and offered a revert PR, not to be
+  opened unasked.
+- **What the merge deploys:** nothing to the Worker. pre-main's push run 41771944467 on `22bf6292a` builds a test APK
+  with the new v4 styles bundled. Only the owner's test builds load v4 (owner, 11-03).
+- **Held:** the folder-only Worker release to main waits until Rowan says pre-main is green.
+- **Unchanged:** the night-gap app PR (13 clones, table in #474's body) is still needed before any promotion (Rowan
+  -2018).
