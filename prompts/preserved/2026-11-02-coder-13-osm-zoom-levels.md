@@ -757,3 +757,24 @@ commit clock:
 - **The owner, about 20:15-20:17:** "Hold the merge". Asked whether that meant keeping #474 and holding the Worker
   release, or reverting #474, they said "Carry on as you were". So #474 stays in pre-main. The folder-only Worker
   release to main stays held until Rowan says pre-main is green, and nothing else gets opened or merged.
+
+## Update, 20:25 PST (11-03): Worker release PR #477 opened; the merge waits for the owner's confirmation to Aspen
+
+- **Rowan, about 20:2x:** the owner said to Rowan "Yes, tell Aspen to go ahead" with the folder-only Worker release.
+  Rowan withdrew the "pre-main green" hold for a folder-only release (Rowan's mistake, which the owner caught).
+  - Rowan's checks: branch from main 713c1e94f or later; check-release ok; the release and folder guards green; Worker
+    tests green; a line to Rowan before the merge. After the deploy, check that both v4 routes serve the new v4 and
+    that v1-v3 are unchanged.
+- **Forager PR #477** (`worker/trail-v4-first-zooms` → main, `905154826`, from main `713c1e94f`): main's
+  server/pmtiles-worker set to pre-main `22bf6292a`. 4 files changed: the two v4 styles, the README's route rows and the
+  street-v4 sha hold.
+  - `check-release.sh`: "worker release ok". The release and folder guards are green in CI.
+  - Worker tests on the Pi: 76 pass, 0 fail, 4 skipped. The 4 are the cross-folder checks, which skip on main by
+    design. The first run, before `npm run build`, failed two files; the two runs after the build passed.
+    CACHE_VERSION is "3".
+- **Live styles saved at 20:23:04** in `/mnt/archive/aspen-release-477/before/` (street-v1..v4, trail-v4, offline:
+  all 200), for the after-deploy check.
+- **The merge waits on the owner.** Their last direct word to Aspen was "Hold the merge", so Aspen asks them to
+  confirm the go directly. Then the line to Rowan, Rowan's reply, the merge, and the deploy check.
+- **From Aspen's helper's report:** #474's run ran PhotoViewerDialogTest 11 of 11 with 0 failures. pre-main
+  `808187098`'s push run failed one case, on identical app code. Probably intermittent (inferred). Sent to Rowan.
