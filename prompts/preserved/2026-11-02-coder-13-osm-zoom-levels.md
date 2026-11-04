@@ -754,3 +754,6 @@ commit clock:
 - **Rowan's reply, about 20:18:** no revert. #474 doesn't touch the app code behind pre-main's red, and the owner
   approved it. Recorded as RECORD -2034. The folder-only Worker release to main stays held until Rowan says pre-main is
   green.
+- **The owner, about 20:15-20:17:** "Hold the merge". Asked whether that meant keeping #474 and holding the Worker
+  release, or reverting #474, they said "Carry on as you were". So #474 stays in pre-main. The folder-only Worker
+  release to main stays held until Rowan says pre-main is green, and nothing else gets opened or merged.
