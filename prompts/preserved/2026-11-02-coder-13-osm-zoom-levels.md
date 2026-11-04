@@ -781,3 +781,22 @@ commit clock:
 - **The owner to Aspen, about 20:30, through the question tool:** "Yes, merge when green". Rowan had it from the owner
   as RECORD -2035. Next: CI green, then the line to Rowan and Rowan's reply, then the merge and the after-deploy check
   against the saved copies.
+
+## Update, 20:42 PST (11-03): #477 merged; the Worker serves the new v4; v1-v3 and offline unchanged
+
+- **CI on #477 was green on all 8 checks,** at 20:40: run 41772821434, the release guard 41772821418 and the folder
+  guard 41772821368. Aspen sent Rowan the pre-merge line and waited for the reply. Rowan: "go ahead and merge #477".
+- **Merged at 20:40:49** as `c61850aa2` (`--match-head-commit 905154826`). The new v4 was served by 20:41:26.
+- **Served styles at 20:41:30** against the 20:23:04 copies. Every route answered 200 on both a plain URL and a
+  cache-busting one, with identical bytes:
+  - street-v1, street-v2, street-v3 and offline: byte for byte as before.
+  - street-v4: "Forager Street v4", 182 layers (104 before), layers equal to #477's `street-style-v4.json`, 78
+    clones recorded.
+  - trail-v4: "Forager Trail v4", 182 layers (104 before), layers equal to #477's `trail-style-v4.json`, 78 clones.
+- **Sent to Rowan:** the merge commit and the comparison. The files and the script are in
+  `/mnt/archive/aspen-release-477/`.
+- **Still open:**
+  - the night-gap app PR (13 clones), before any promotion (Rowan -2018);
+  - pre-main's red PhotoViewerDialogTest (Rowan and Hazel);
+  - #476, the route-card clock fix.
+- **coder-13's style work is done:** the data has been live since 06:51 11-03, the v4 styles since 20:41 11-03.
