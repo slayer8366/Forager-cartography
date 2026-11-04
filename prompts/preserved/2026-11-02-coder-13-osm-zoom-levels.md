@@ -751,3 +751,6 @@ commit clock:
 - **Held:** the folder-only Worker release to main waits until Rowan says pre-main is green.
 - **Unchanged:** the night-gap app PR (13 clones, table in #474's body) is still needed before any promotion (Rowan
   -2018).
+- **Rowan's reply, about 20:18:** no revert. #474 doesn't touch the app code behind pre-main's red, and the owner
+  approved it. Recorded as RECORD -2034. The folder-only Worker release to main stays held until Rowan says pre-main is
+  green.
